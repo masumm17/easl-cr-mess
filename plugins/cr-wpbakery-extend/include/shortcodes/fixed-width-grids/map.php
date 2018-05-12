@@ -4,16 +4,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name' => __( 'Property Slider', 'crvc_extension' ),
-	'base' => 'cr_property_slider',
+	'name' => __( 'Fixed Width Grids', 'crvc_extension' ),
+	'base' => 'cr_fixed_width_grids',
 	'icon' => 'icon-wpb-ui-accordion',
 	'is_container' => true,
 	'show_settings_on_create' => false,
 	'as_parent' => array(
-		'only' => 'cr_property_slider_item',
+		'only' => 'cr_fixed_width_grids_item',
 	),
 	'category' => __( 'Cheval Residences', 'crvc_extension' ),
-	'description' => __( 'Property Slider', 'crvc_extension' ),
+	'description' => __( 'Fixed Width Grids', 'crvc_extension' ),
 	'params' => array_merge(
 		array(
 			array(
@@ -35,6 +35,6 @@ return array(
 		),
 		cr_vce_paramps_common_group()
 	),
-	'js_view' => 'CrScPropertySliderView',
-	'php_class_name' => 'CR_VcE_Sc_Property_Slider'
+	'js_view' => 'CrScFixedWidthGridView',
+	'php_class_name' => 'CR_VcE_Sc_Fixed_Width_Grids'
 );

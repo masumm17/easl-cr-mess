@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WPBakery Page Builder Extension for Cheval Resdences 
+Plugin Name: WPBakery Page Builder Extension for Cheval Residences 
 Plugin URI: http://wpbakery.com/vc
 Description: Extension pacakge for CR.
 Version: 1.0
@@ -260,6 +260,14 @@ class CR_VcE_Manager {
 			'name' => __('Property Slider Item', 'crvc_extension'),
 			'file' => $sc_dir . '/property-slider-item/class-property-slider-item.php',
 		);
+		$this->registered_shortcodes['cr_fixed_width_grids'] = array(
+			'name' => __('Fixed Width Grids', 'crvc_extension'),
+			'file' => $sc_dir . '/fixed-width-grids/class-fixed-width-grids.php',
+		);
+		$this->registered_shortcodes['cr_fixed_width_grids_item'] = array(
+			'name' => __('Fixed Width Grids Item', 'crvc_extension'),
+			'file' => $sc_dir . '/fixed-width-grids-item/class-fixed-width-grids-item.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -275,6 +283,8 @@ class CR_VcE_Manager {
 			'cr_two_col_content',
 			'cr_property_slider',
 			'cr_property_slider_item',
+			'cr_fixed_width_grids',
+			'cr_fixed_width_grids_item',
 		);
 	}
 	

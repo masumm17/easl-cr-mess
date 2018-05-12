@@ -84,4 +84,12 @@
             console.log(params);
         }
     });
+    // Fixed Width Grids Container View
+    window.CrScFixedWidthGridView = window.CrScContainerView.extend({
+
+    });
+    // Fixed Width Grids Item View
+    window.CrScFixedWidthGridItemView = window.CrScItemView.extend({
+
+    });
 })(jQuery);
