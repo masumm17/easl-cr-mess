@@ -1,0 +1,76 @@
+// COLORS
+$color-white: #fff;
+$color-black: #000;
+// 1 - Base color
+$color-base: #e5a514;
+$color-base-secondary: #cd8e01;
+
+// 2 - Cheval Three Quays colors
+$color-ctq: #00436a;
+$color-ctq-secondary: #0b74b1;
+
+// 3 - Cheval Thorney Court colors
+$color-ctc: #5c220f;
+$color-ctc-secondary: #9c4023;
+
+// 4 - Cheval Harrington Court colors
+$color-chc: #ea4d00;
+$color-chc-secondary: #fd7d3d;
+
+// 5 - Cheval Knightsbridge colors
+$color-ckb: #9e3039;
+$color-ckb-secondary: #d44954;
+
+// 6 - Cheval Phoenix House
+$color-cph: #9c9a00;
+$color-cph-secondary: #bdbb0b;
+
+// 7 - Cheval Calico House
+$color-cch: #004f50;
+$color-cch-secondary: #057a7b;
+
+// 8 - Cheval Hyde Park Gate
+$color-chpg: #53682b;
+$color-chpg-secondary: #708f34;
+
+// 9 - Cheval Gloucester Park
+$color-cgp: #6a1a41;
+$color-cgp-secondary: #b7417a;
+
+$themes-map-primary: (
+    ctq: $color-ctq, 
+    ctc: $color-ctc, 
+    chc: $color-chc, 
+    ckb: $color-ckb, 
+    cph: $color-cph, 
+    cch: $color-cch, 
+    chpg: $color-chpg, 
+    cgp: $color-cgp
+);
+$themes-map-secondary: (
+    ctq: $color-ctq-secondary, 
+    ctc: $color-ctc-secondary, 
+    chc: $color-chc-secondary, 
+    ckb: $color-ckb-secondary, 
+    cph: $color-cph-secondary, 
+    cch: $color-cch-secondary, 
+    chpg: $color-chpg-secondary, 
+    cgp: $color-cgp-secondary
+);
+
+
+
+// FONT
+$default-font-size: 1.6rem;
+
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 6rem;
+$gutter-horizontal: 6rem;
+
+// Z-index group
+// Header: 10
+// Full Width Popup/lightbox: 20
+// Page content: 1-5

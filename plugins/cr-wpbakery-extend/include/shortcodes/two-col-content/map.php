@@ -1,0 +1,108 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+
+return array(
+	'name' => __( 'Two Column Content', 'crvc_extension' ),
+	'base' => 'cr_two_col_content',
+	'icon' => 'icon-wpb-layer-shape-text',
+	'is_container' => false,
+	'show_settings_on_create' => false,
+	'category' => __( 'Cheval Residences', 'crvc_extension' ),
+	'description' => __( 'Two Column Content.', 'crvc_extension' ),
+	'params' => array_merge(
+		array(
+			array(
+				'type' => 'dropdown',
+				'heading' => __( 'Enable Bottom Button', 'crvc_extension' ),
+				'param_name' => 'enable_button',
+				'std' => 'no',
+				'value' => array(
+					__( 'No', 'crvc_extension' ) => 'no',
+					__( 'Yes', 'crvc_extension' ) => 'yes',
+				),
+				'description' => __( 'Enable button at bottom.', 'crvc_extension' ),
+			),
+			array(
+				'type' => 'vc_link',
+				'heading' => __( 'Button', 'crvc_extension' ),
+				'param_name' => 'button',
+				'value' => '',
+				'description' => __( 'This is shown at the bottom the module if enabled.', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'enable_button',
+					'value' => array('yes'),
+				),
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => __( 'Column 1 Title', 'crvc_extension' ),
+				'param_name' => 'col_1_title',
+				'value' => '',
+				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
+				'admin_label' => true,
+				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => __( 'Column 1 Note', 'crvc_extension' ),
+				'param_name' => 'col_1_note',
+				'value' => '',
+				'description' => __( 'Enter column 1 note.', 'crvc_extension' ),
+				'admin_label' => false,
+				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => __( 'Column 2 Title', 'crvc_extension' ),
+				'param_name' => 'col_2_title',
+				'value' => '',
+				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
+				'admin_label' => true,
+				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+			),
+			array(
+				'type' => 'param_group',
+				'heading' => __( 'Floor Plans', 'crvc_extension' ),
+				'param_name' => 'floorplans',
+				'description' => __( 'You can add maximum 3 floorplans. Only first 3 will be displayed.', 'crvc_extension' ),
+				'value' => urlencode( json_encode( array(
+					array(
+						'thumb' => '',
+						'url' => '',
+					),
+				) ) ),
+				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'params' => array(
+						array(
+							'type' => 'attach_image',
+							'heading' => __( 'Floorplan Thumb', 'crvc_extension' ),
+							'param_name' => 'thumb',
+							'value' => '',
+							'description' => __( 'Add floor plan thmbnail.', 'crvc_extension' ),
+							'admin_label' => true,
+						),
+						array(
+							'type' => 'vc_link',
+							'value' => '',
+							'param_name' => 'url',
+							'heading' => __( 'Url', 'crvc_extension' ),
+							'admin_label' => true,
+						),
+				),
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => __( 'Column 2 Note', 'crvc_extension' ),
+				'param_name' => 'col_2_note',
+				'value' => '',
+				'description' => __( 'Enter column 2 note.', 'crvc_extension' ),
+				'admin_label' => false,
+				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+			),
+		),
+		cr_vce_paramps_common_group()
+	),
+	'php_class_name' => 'CR_VcE_Sc_Two_Col_Content'
+);

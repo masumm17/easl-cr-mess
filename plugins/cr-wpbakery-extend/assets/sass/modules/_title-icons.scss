@@ -1,0 +1,44 @@
+.cr-title-icons{
+    &-module {
+        margin: 0 auto;
+        text-align: center;
+        
+        transition: all .85s;
+        transform: translateY(4rem);
+        &.cr_start_animation {
+            transform: translateY(0);
+        }
+    }
+    &-title {
+        color: $color-gray-1;
+        font-size: 2.8rem;
+        font-weight: 400;
+        line-height: 1.6em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    &-list-wrap {
+        margin-top: 2.5rem;
+    }
+    &-list {
+        list-style: none;
+        li {
+            display: inline-block;
+            margin: 0 2.2rem;
+            a {
+                width: 34px;
+                display: inline-block;
+                text-decoration: none;
+                text-align: center;
+            }
+            img {
+                height: 34px;
+                width: auto;
+                transition: all .5s;
+            }
+            a:hover img, a:active img{
+                transform: scale(1.2);
+            }
+        }
+    }
+}

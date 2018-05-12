@@ -1,0 +1,18 @@
+
+
+.cr-scc-buttons {
+    li {
+        a {
+            background-color: $color-base;
+            color: $color-white;
+            &:link, &:visited{
+                background-color: $color-base;
+                color: $color-white;
+            }
+            @include color-themes($color:false, $bgcolor:true, $secodary: false);
+            &:hover, &:active {
+                
+            }
+        }
+    }
+}

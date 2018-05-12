@@ -1,0 +1,4 @@
+.cr-sc-subtitle {
+    color: $color-base;
+    @include color-themes($color:true, $bgcolor:false, $secodary: false);
+}

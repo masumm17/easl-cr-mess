@@ -1,0 +1,50 @@
+.cr-single-col-content-wrapper{
+    max-width: 99rem;
+    margin: 0 auto;
+}
+.cr-scc-text {
+    color: $color-gray-1;
+    font-size: 1.6rem;
+    line-height: 1.9em;
+    margin-bottom: 3rem;
+    text-align: center;
+    transition: all .75s;
+    transform: translateY(5rem);
+    &.cr_start_animation {
+        transform: translateY(0);
+    }
+    p:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}
+.cr-scc-buttons {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+    
+    li {
+        margin: 0 6rem 2.5rem;
+        
+        a {
+            display: inline-block;
+            transition: all .75s;
+            transform: translateY(5rem);
+            &:link, &:visited{
+                background-color: $color-base;
+                color: $color-white;
+                display: inline-block;
+                font-size: 1.4rem;
+                line-height: 1rem;
+                font-weight: 400;
+                text-decoration: none;
+                padding: 1.8rem 3.2rem 1.6rem;
+            }
+            &.cr_start_animation {
+                transform: translateY(0);
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+.cr-2col-content {
+    &-button {
+        background-color: $color-base;
+        @include color-themes($color:false, $bgcolor:true);
+    }
+}

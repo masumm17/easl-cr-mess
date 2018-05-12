@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    line-height: 1.7em;
+    padding: 0;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
