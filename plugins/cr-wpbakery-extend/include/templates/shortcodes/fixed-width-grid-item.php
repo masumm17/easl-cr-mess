@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $atts
  * @var $content - shortcode content
  * Shortcode class
- * @var $this CR_VcE_Sc_Property_Slider_Item
+ * @var $this CR_VcE_Sc_Fixed_Width_Grid_Item
  */
 $el_class = $css = $css_animation = '';
 $image = $overlay_title = $overlay_subtitle = $cta_button = $overlay_trans_disable = '';
@@ -20,8 +20,8 @@ $image = preg_replace( '/[^\d]/', '', $image );
 $img_full = wp_get_attachment_image( $image, 'full', false, array('class' => 'fxw-grid-item-image') );
 
 if($img_full) {
-	CR_VcE_Sc_Fixed_Width_Grids::$items_count++;
-	CR_VcE_Sc_Fixed_Width_Grids::$items_data[] = $atts;
+	CR_VcE_Sc_Fixed_Width_Grid::$items_count++;
+	CR_VcE_Sc_Fixed_Width_Grid::$items_data[] = $atts;
 	
 	$cta_button_attributes = array();
 	if ( ! empty( $cta_button['url'] ) ) {

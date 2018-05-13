@@ -8,13 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $el_class
  * @var $el_id
- * @var $this CR_VcE_Sc_Fixed_Width_Grids
+ * @var $this CR_VcE_Sc_Fixed_Width_Grid
  */
 $el_class = $css = $css_animation = '';
 $title = $subtitle = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 $this->reset_items_data();
-CR_VcE_Sc_Fixed_Width_Grids::$data = $atts;
+CR_VcE_Sc_Fixed_Width_Grid::$data = $atts;
 extract( $atts );
 
 // It is required to be before to get slide items data
@@ -29,7 +29,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $atts['el_id'] ) . '"';
 }
 
-if( CR_VcE_Sc_Fixed_Width_Grids::$items_count > 0 ):
+if( CR_VcE_Sc_Fixed_Width_Grid::$items_count > 0 ):
 ?>
 <section class="fxw-grid-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php if($title || $subtitle): ?> 

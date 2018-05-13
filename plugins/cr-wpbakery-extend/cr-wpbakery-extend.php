@@ -260,13 +260,13 @@ class CR_VcE_Manager {
 			'name' => __('Property Slider Item', 'crvc_extension'),
 			'file' => $sc_dir . '/property-slider-item/class-property-slider-item.php',
 		);
-		$this->registered_shortcodes['cr_fixed_width_grids'] = array(
-			'name' => __('Fixed Width Grids', 'crvc_extension'),
-			'file' => $sc_dir . '/fixed-width-grids/class-fixed-width-grids.php',
+		$this->registered_shortcodes['cr_fixed_width_grid'] = array(
+			'name' => __('Fixed Width Grid', 'crvc_extension'),
+			'file' => $sc_dir . '/fixed-width-grid/class-fixed-width-grid.php',
 		);
-		$this->registered_shortcodes['cr_fixed_width_grids_item'] = array(
-			'name' => __('Fixed Width Grids Item', 'crvc_extension'),
-			'file' => $sc_dir . '/fixed-width-grids-item/class-fixed-width-grids-item.php',
+		$this->registered_shortcodes['cr_fixed_width_grid_item'] = array(
+			'name' => __('Fixed Width Grid Item', 'crvc_extension'),
+			'file' => $sc_dir . '/fixed-width-grid-item/class-fixed-width-grid-item.php',
 		);
 	}
 	/**
@@ -283,8 +283,8 @@ class CR_VcE_Manager {
 			'cr_two_col_content',
 			'cr_property_slider',
 			'cr_property_slider_item',
-			'cr_fixed_width_grids',
-			'cr_fixed_width_grids_item',
+			'cr_fixed_width_grid',
+			'cr_fixed_width_grid_item',
 		);
 	}
 	
