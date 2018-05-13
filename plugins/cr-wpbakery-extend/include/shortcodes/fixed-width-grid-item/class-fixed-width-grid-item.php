@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
-class CR_Sc_FW_Grid_Item extends CR_Sc_base {
+class CR_Sc_Fixed_Width_Grid_Item extends CR_Sc_base {
 	public function __construct() {
 		$this->tag = 'cr_fixed_width_grid_item';
 		$this->path = plugin_dir_path(__FILE__);
@@ -11,4 +11,4 @@ class CR_Sc_FW_Grid_Item extends CR_Sc_base {
 	}
 }
 
-new CR_Sc_FW_Grid_Item();
+new CR_Sc_Fixed_Width_Grid_Item();
