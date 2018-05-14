@@ -13,6 +13,7 @@ $crt_theme_mods = get_theme_mods();
 require get_template_directory() . '/inc/helper.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/class-nav-walker.php';
 
 if ( ! function_exists( 'crt_setup' ) ) :
 	function crt_setup() {

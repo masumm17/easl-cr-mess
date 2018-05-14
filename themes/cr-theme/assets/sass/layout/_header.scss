@@ -2,6 +2,7 @@
     height: 7rem;
     display: flex;
     flex-direction: row;
+    position: relative;
     .scroll-header & {
         background-color: rgba($color-black, .80);
     }
@@ -71,53 +72,6 @@
 }
 .site-primary-navigation {
     flex: 1 0 auto;
-}
-.header-primary-menu {
-	display: flex;
-	flex-direction: row;
-	list-style: none;
-	margin: 0;
-	padding: 0 2.3rem 0 0;
-	height: 7rem;
-	justify-content: flex-end;
-	align-items: center;
-    > li {
-        position: relative;
-        > a{
-            &:link, &:visited {
-                display: inline-block;
-                color: $color-white;
-                font-size: 1.4rem;
-                height: 7rem;
-                line-height: 7rem;
-                text-transform: uppercase;
-                padding: 0 2.2rem;
-            }
-            > span {
-                display: inline-block;
-                position: relative;
-                height: 7rem;
-                line-height: 7rem;
-                &::after {
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: $color-base;
-                    content: '';
-                    opacity: 0;
-                    transition: opacity 0.3s, transform 0.3s;
-                    transform: translateY(0);
-                    @include color-themes($color:false, $bgcolor:true);
-                }
-            }
-            &:hover > span::after, &:focus > span::after {
-                opacity: 1;
-                transform: translateY(-17px);
-            }
-        }
-    }
 }
 .section-header-highlight {
     .header-highlight-button {

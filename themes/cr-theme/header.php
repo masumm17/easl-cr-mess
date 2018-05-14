@@ -34,6 +34,7 @@
 					'fallback_cb'    => false,
 					'link_before'    => '<span class="link-inner">',
 					'link_after'     => '</span>',
+					'walker'		 => new CR_Dropdown_Walker_Nav_Menu,
 				) );
 				?>
 			</nav>
