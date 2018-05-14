@@ -1,0 +1,27 @@
+.fw-grid {
+    &-item {
+        &-inner {
+            .fw-grid-item-noimage & {
+                &::after, &::before {
+                    border: 1px solid $color-base-secondary;
+                    @include color-themes($color:false, $bgcolor:false, $border-color:true, $secodary: true);
+                }
+            }
+        }
+        &-subtitle {
+            color: $color-base-secondary;
+            @include color-themes($color:true, $bgcolor:false, $border-color:false, $secodary: true);
+        }
+        &-cta {
+            color: $color-white;
+            background-color: $color-base-secondary;
+            @include color-themes($color:false, $bgcolor:true, $border-color:false, $secodary: true);
+        }
+        &-noimage &-cta {
+            background-color: transparent;
+            color: $color-base;
+            border: 1px solid $color-base-secondary;
+            @include color-themes($color:true, $bgcolor:false, $border-color:true, $secodary: true);
+        }
+    } 
+}

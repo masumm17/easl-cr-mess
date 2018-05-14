@@ -1,0 +1,159 @@
+.fw-grid {
+    &-wrap {
+        .cr-title-subtitle-wrapper {
+            margin-bottom: 4rem;
+        }
+    }
+    &-inner {
+    }
+    &-con {
+    }
+    &-item {
+        
+        &-inner {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            .fw-grid-item-noimage & {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                
+                &::after, &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    border: 1px solid $color-base;
+                    z-index: 1;
+                }
+                &::after {
+                    left: 0;
+                    top: 0;
+                    right: 6px;
+                    bottom: 6px;
+                }
+                &::before {
+                    left: 6px;
+                    top: 6px;
+                    right: 0;
+                    bottom: 0;
+                }
+            }
+            .cr-has-overlay &::after {
+                content: "";
+                background-color: rgba($color-black, .5);
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transition: .5s all ease;
+                z-index: 2;
+            }
+            .cr-has-overlay:hover &::after {
+                //background-color: rgba($color-black, .65);
+            }
+        }
+        &-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            //transition: 1.8s all ease;
+            //backface-visibility: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        &:hover &-image{
+            //transform: scale(1.7);
+        }
+        &-text {
+            padding: 2rem 4rem;
+            z-index: 3;
+            
+            .fw-grid-item-noimage & {
+                
+            }
+            p {
+                color: $color-white;
+                margin-bottom: 4rem;
+                .fw-grid-item-noimage & {
+                    color: $color-gray-1
+                }
+            }
+        }
+        &:not(&-noimage) &-text {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        &-text-hover:not(&-noimage) &-text {
+            transform: translateY(0);
+            opacity: 0;
+            transition: all .75s;
+            position: relative;
+        }
+        &:hover &-text {
+            
+        }
+        &-text-hover:not(&-noimage):hover &-text {
+            opacity: 1;
+            transform: translateY(-50%);
+        }
+        &-title {
+            color: $color-white;
+            font-size: 2.4rem;
+            font-weight: 400;
+            line-height: 1.4em;
+            margin: 0 0 2.2rem;
+            text-transform: uppercase;
+            .fw-grid-item-noimage & {
+                color: $color-gray-1
+            }
+        }
+        &-noimage &-title {
+            color: $color-gray-1;
+        }
+        &-titleonly &-title {
+            margin-bottom: 0;
+        }
+        &:hover &-title {
+            
+        }
+        &-subtitle {
+            color: $color-base-secondary;
+            font-size: 1.8rem;
+            font-weight: 400;
+            line-height: 1.4em;
+            margin: 0 0 3rem;
+        }
+        &-cta {
+            display: inline-block;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1em;
+            padding: 1.4rem 4.4rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $color-white;
+            background-color: $color-base-secondary;
+        }
+        &-noimage &-cta {
+            background-color: transparent;
+            color: $color-base;
+            border: 1px solid $color-base;
+        }
+        .cr-iframe-video {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+    } 
+}

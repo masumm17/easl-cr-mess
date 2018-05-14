@@ -1,0 +1,27 @@
+.cr-grid {
+    &-row {
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    &-col {
+        margin: 0 0 1.6rem;
+        padding: 0 .8rem;
+        display: flex;
+        flex-direction: column;
+        &-inner {
+            flex: 1 auto;
+        }
+    }
+    &-col-1-of-3{
+        width: 33.333%;
+    }
+    &-col-2-of-3{
+        width: 66.667%;
+    }
+    &-col-full {
+        width: 100%;
+    }
+}

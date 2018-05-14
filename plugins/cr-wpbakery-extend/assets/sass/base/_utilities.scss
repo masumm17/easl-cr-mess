@@ -1,14 +1,32 @@
-.u-center-text { text-align: center !important; }
-.u-uppercase-text { text-align: center !important; }
+.cr-center-text { text-align: center !important; }
+.cr-left-text { text-align: center !important; }
+.cr-right-text { text-align: center !important; }
+.cr-uppercase-text { text-align: center !important; }
 
-.u-margin-bottom-small { margin-bottom: 1.5rem !important; }
-.u-margin-bottom-medium {
+.cr-margin-bottom-small { margin-bottom: 1.5rem !important; }
+.cr-margin-bottom-medium {
     margin-bottom: 4rem !important;
 }
 
-.u-margin-bottom-big { 
+.cr-margin-bottom-big { 
     margin-bottom: 8rem !important;
 }
 
-.u-margin-top-big { margin-top: 8rem !important; }
-.u-margin-top-huge { margin-top: 10rem !important; }
+.cr-margin-top-big { margin-top: 8rem !important; }
+.cr-margin-top-huge { margin-top: 10rem !important; }
+
+.cr-iframe-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    width: 100%;
+    height: 0;
+    
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+}

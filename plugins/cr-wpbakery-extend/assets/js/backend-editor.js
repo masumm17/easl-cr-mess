@@ -84,12 +84,41 @@
             console.log(params);
         }
     });
-    // Fixed Width Grids Container View
+    // Fixed Width Grid Container View
     window.CrScFixedWidthGridView = window.CrScContainerView.extend({
 
     });
-    // Fixed Width Grids Item View
+    // Fixed Width Grid Item View
     window.CrScFixedWidthGridItemView = window.CrScItemView.extend({
 
+    });
+    // Full Width Grid Container View
+    window.CrScFullWidthGridView = window.CrScContainerView.extend({
+
+    });
+    // Full Width Grid Item View
+    window.CrScFullWidthGridItemView = window.CrScItemView.extend({
+        changeShortcodeParams: function(model) {
+            var params, colClass, removeClass;
+            window.CrScFullWidthGridItemView.__super__.changeShortcodeParams.call(this, model);
+            params = model.get("params");
+            if(_.isObject(params) && _.isString(params.grid_size)) {
+                switch(params.grid_size) {
+                    case "3_3":
+                        removeClass = "vc_col-sm-4 vc_col-sm-8";
+                        colClass = "vc_col-sm-12";
+                        break;
+                    case "2_3":
+                        removeClass = "vc_col-sm-4 vc_col-sm-12";
+                        colClass = "vc_col-sm-8";
+                        break;
+                    default:
+                        removeClass = "vc_col-sm-8 vc_col-sm-12";
+                        colClass = "vc_col-sm-4";
+                        break;
+                }
+            }
+            this.$el.addClass(colClass).removeClass(removeClass);
+        }
     });
 })(jQuery);
