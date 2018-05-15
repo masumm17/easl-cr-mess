@@ -8,6 +8,8 @@
 
 ?>
 		</div>
+
+	</div>
 <?php
 $footer_logo = crt_footer_logo_img();
 $footer_company_name = crt_get_theme_mode('footer_company_name');
@@ -21,6 +23,7 @@ $footer_reservation = crt_get_theme_mode('footer_reservation');
 
 
 ?>
+	<div id="footer-top-line"></div>
 <footer id="site-footer" class="site-footer">
 	<div class="footer-top">
 		<div class="footer-widgets">
@@ -31,7 +34,7 @@ $footer_reservation = crt_get_theme_mode('footer_reservation');
 						<?php if($footer_telephone): ?><p><?php _e('F', 'crt');?>: <a href="tel:<?php echo esc_attr($footer_telephone); ?>"><?php echo esc_html($footer_fax); ?></a></p><?php endif;?> 
 					</div>
 				</div>
-				<div class="footer-center cr-animate-when-visible cr-animate-bothway">
+				<div class="footer-center">
 					<div class="footer-centerwrap">
 						<div class="footer-col-inner">
 							<?php if($footer_logo): ?><p class="footer-logo"><img alt="Cheval Residences Logo" src="<?php echo esc_url($footer_logo); ?>"/></p><?php endif; ?> 
@@ -79,8 +82,6 @@ $footer_reservation = crt_get_theme_mode('footer_reservation');
 		</div>
 	</div>
 </footer>
-
-	</div>
 <?php wp_footer(); ?>
 <script type="text/javascript"> (function (d, t) { var pp = d.createElement(t), s = d.getElementsByTagName(t)[0]; pp.src = '//app.pageproofer.com/overlay/js/3037/1254'; pp.type = 'text/javascript'; pp.async = true; s.parentNode.insertBefore(pp, s); })(document, 'script'); </script>
 </body>

@@ -2,6 +2,8 @@
     window.CRT = {
         $body: null,
         $wrap: null,
+        $footer: null,
+        $footerLine: null,
         debounce: function (func, wait, immediate) {
             var timeout;
             return function() {
@@ -26,12 +28,24 @@
                 this.$body.hasClass('fixed-header-enabled') && this.$body.removeClass('fixed-header-enabled');
             }
         },
+        scrollFooter: function() {
+            if(this.$footer.hasClass('cr-animate-footer')){
+                return false;
+            }
+            var footerTop = this.$footerLine.offset().top - this.$footer.outerHeight();
+            if($(window).scrollTop() > footerTop + 50) {
+                !this.$footer.hasClass('cr-animate-footer') && this.$body.addClass('cr-animate-footer');
+            }else{
+                this.$footer.hasClass('cr-animate-footer') && this.$body.removeClass('cr-animate-footer');
+            }
+        },
         scrollEvents: function() {
             this.scrollHeader();
+            this.scrollFooter();
         },
         resizeFooter: function() {
-            var h = $("#site-footer").outerHeight();
-            this.$wrap.css({
+            var h = this.$footer.outerHeight();
+            this.$body.css({
                 "padding-bottom": h + "px"
             });
         },
@@ -47,6 +61,8 @@
         init: function() {
             this.$body = $("body");
             this.$wrap = $("#cr-wrap");
+            this.$footer = $("#site-footer");
+            this.$footerLine = $("#footer-top-line");
             this.resizeFooter();
             this.scrollHeader();
             this.events();

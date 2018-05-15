@@ -1,8 +1,9 @@
-body {
-    //padding-bottom: 480px;
+#footer-top-line {
+    position: relative;
+    height: 1px;
 }
 .site-footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -62,10 +63,9 @@ body {
                     background: #070606;
                     z-index: 0;
                 }
-            }
-                
-            &.cr_start_animation .footer-centerwrap{
-                transform: translateY(0);
+                .cr-animate-footer & {
+                    transform: translateY(0);
+                }
             }
             .footer-col-inner {
                 position: relative;

@@ -22,9 +22,6 @@
 }
 #primary {
     flex: 1 0 auto;
-    position: relative;
-    z-index: 1;
-    background-color: $color-white;
 }
 .wpb_row.cr-row-has-hero-slider {
     margin-bottom: 2rem;
@@ -42,7 +39,7 @@
             margin-right: -1.5rem;
         }
         .wpb_row:last-child & {
-            padding-bottom: 0;
+            padding-bottom: 4rem;
         }
         @include clearfix;
     }
