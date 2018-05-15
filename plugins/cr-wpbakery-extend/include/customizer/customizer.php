@@ -31,11 +31,14 @@ class CR_VcE_Customizer {
 	 * @since 1.0
 	*/
    public function add_modules_sections( $wp_customize ) {
-		$wp_customize->add_panel( 'module_settings', array(
-			'title' => __( 'Modules Settings', 'crvc_extension' ),
-			'description' => __( 'Module settings','crvc_extension'),
-			'priority' => 180,
-		) );
+	   $panel_id = $wp_customize->get_panel('module_settings');
+		if(empty($panel_id)){
+			$wp_customize->add_panel( 'module_settings', array(
+				'title' => __( 'Modules Settings', 'crvc_extension' ),
+				'description' => __( 'Module settings','crvc_extension'),
+				'priority' => 180,
+			) );
+		}
 		$this->add_section_settings('title_icons', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {

@@ -37,7 +37,7 @@ final class CR_Core {
 		) );
 		// Include files
 		require_once $this->path('INC_DIR', 'classs-custom-types.php');
-		require_once $this->path('INC_DIR', 'customizer.php');
+		require_once $this->path('INC_DIR', 'customizer/customizer.php');
 		
 		$this->custom_types = CR_Custom_types::instance();
 		// Add hooks
@@ -82,7 +82,7 @@ final class CR_Core {
 		// Setup locale
 		load_plugin_textdomain( 'crt', false, $this->path( 'APP_DIR', 'locale' ) );
 		// Set up Customizer
-		$this->customizer = new CRT_Customizer();
+		$this->customizer = new CRT_Customizer($this->path('INC_DIR', 'customizer/'));
 	}
 	/**
 	 * Callback function for WP init action hook. Sets Vc mode and loads required objects.

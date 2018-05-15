@@ -1,6 +1,7 @@
 (function($){
     window.CRT = {
         $body: null,
+        $wrap: null,
         debounce: function (func, wait, immediate) {
             var timeout;
             return function() {
@@ -28,11 +29,26 @@
         scrollEvents: function() {
             this.scrollHeader();
         },
+        resizeFooter: function() {
+            var h = $("#site-footer").outerHeight();
+            this.$wrap.css({
+                "padding-bottom": h + "px"
+            });
+        },
+        resizeEevents: function() {
+            this.resizeFooter();
+        },
         events: function() {
             $(window).scroll($.proxy(this.scrollEvents, this));
+            $(window).on("resize", CRT.debounce(function(){
+                CRT.resizeEevents();
+            }, 250));
         },
         init: function() {
             this.$body = $("body");
+            this.$wrap = $("#cr-wrap");
+            this.resizeFooter();
+            this.scrollHeader();
             this.events();
         }
     };

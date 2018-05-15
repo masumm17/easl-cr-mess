@@ -221,3 +221,26 @@ function crt_header_highlighted_butotn() {
 
 	return $button_markup;
 }
+
+/**
+ * Returns footer logo image
+ *
+ * @since 4.0
+ */
+function crt_footer_logo_img() {
+	
+	// Get logo from theme mod
+	$logo = crt_get_theme_mode( 'footer_logo', '');
+	// Convert to URL if it's an ID
+	if ( $logo && is_numeric( $logo ) ) {
+		$logo = wp_get_attachment_image_src( $logo, 'full' );
+		$logo = isset( $logo[0] ) ? $logo[0] : '';
+	}
+	
+	if(!$logo) {
+		$logo = get_template_directory_uri() . 'assets/images/footer-logo.png';
+	}
+
+	// Set correct scheme and return
+	return $logo ? set_url_scheme( $logo ) : '';
+}

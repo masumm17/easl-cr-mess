@@ -34,10 +34,29 @@
         waypoint: function() {
             if("undefined" === typeof $.fn.waypoint){
                 return;
-            }
-            $('.cr-animate-when-visible').waypoint(function() {
-                $(this).addClass("cr_start_animation")
-            },{offset:"85%"});
+            }//triggerOnce: !0
+            $('.cr-animate-when-visible').each(function(){
+                var $el = $(this), reversible = $el.hasClass("cr-animate-bothway");
+                if(!reversible) {
+                    $el.waypoint(function(direction) {
+                        $el.addClass("cr_start_animation");
+                    },{offset:"85%"});
+                }else{
+                    $el.waypoint(function(direction) {
+                        if( direction === "down" ) {
+                            $el.addClass("cr_start_animation");
+                        }
+
+                    },{offset:"75%", triggerOnce: false});
+                    $el.waypoint(function(direction) {
+                        if( direction === "up" ) {
+                            $el.removeClass("cr_start_animation");
+                        }
+
+                    },{offset:"75%", triggerOnce: false});
+                }
+                    
+            });
         },
         heroSlider: function() {
             if("undefined" === typeof $.fn.revolution){
