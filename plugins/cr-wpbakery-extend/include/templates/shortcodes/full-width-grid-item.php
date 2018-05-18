@@ -38,6 +38,24 @@ switch($grid_size) {
 		break;
 }
 
+switch($display_option) {
+	case 'no_text': 
+		$cta_class = 'cr-button-secondary';
+		break;
+	case 'no_image': 
+		$cta_class = 'cr-button-bordered';
+		break;
+	case 'title_only': 
+		$cta_class = 'cr-button-secondary';
+		break;
+	case 'text_hover': 
+		$cta_class = 'cr-button-secondary';
+		break;
+	case 'text_always': 
+		$cta_class = 'cr-button-secondary';
+		break;
+}
+
 $image = preg_replace( '/[^\d]/', '', $image );
 $img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image '. $image_size) );
 
@@ -74,7 +92,7 @@ if(count($cta_button_attributes) > 0){
 	$cta_button_attributes = '';
 }
 if($cta_button_attributes) {
-	$html_cta = '<a class="fw-grid-item-cta cr-button" '. $cta_button_attributes . '><span>' . esc_html($cta_button['title']) . '</span></a>';
+	$html_cta = '<a class="fw-grid-item-cta '. $cta_class .'" '. $cta_button_attributes . '><span>' . esc_html($cta_button['title']) . '</span></a>';
 }
 $css_inner_class = '';
 if($enable_video == 'yes' && $video_id) {

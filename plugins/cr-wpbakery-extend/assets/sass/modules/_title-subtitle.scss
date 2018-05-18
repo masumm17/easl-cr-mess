@@ -1,3 +1,6 @@
+.cr-title-subtitle-wrapper {
+    margin: 0 0 2rem;
+}
 .cr-sc-title {
     color: $color-gray-1;
     font-size: 2.8rem;
@@ -7,7 +10,7 @@
     text-transform: uppercase;
     overflow: hidden;
     .cr-title-has-subtitle & {
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.8rem;
     }
     .cr-title-inner {
         display: inline-block;

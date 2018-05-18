@@ -38,7 +38,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 	</div>
 	<?php endif; ?><?php if(count($parsed_buttons) > 0): ?>
 	<div class="cr-scc-buttons-wrap">
-		<ul class="cr-scc-buttons">
+		<ul class="cr-scc-buttons cr-animate-when-visible">
 		<?php 
 		foreach($parsed_buttons as $button): 
 			$link_attributes = array();
@@ -53,7 +53,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 			$link_attributes = implode( ' ', $link_attributes );
 		?>
 			<li>
-				<a class="cr-animate-when-visible" <?php echo $link_attributes; ?>><?php echo esc_html($button['title']) ?></a>
+				<a class="cr-button" <?php echo $link_attributes; ?>><span class="cr-button-text"><?php echo esc_html($button['title']) ?></span></a>
 			</li>
 		<?php endforeach; ?>
 		</ul>

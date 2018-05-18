@@ -5,6 +5,9 @@
     }
     &-inner {
         display: flex;
+        max-width: 1344px;
+        margin-left: auto;
+        margin-right: auto;
     }
     &-amenities, &-floorplans {
         flex: 1 auto;
@@ -108,17 +111,5 @@
         text-align: center;
     }
     &-button {
-        &:link, &:visited {
-            color: $color-white;
-            display: inline-block;
-            font-size: 1.4rem;
-            font-weight: 1em;
-            padding: 1.8rem 3.5rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-        &:hover, &:active {
-            
-        }
     }
 }

@@ -140,7 +140,7 @@ if($column_1_enabled || $column_2_enabled):
 		}
 	?>
 		<div class="cr-2col-content-button-wrap">
-			<a class="cr-2col-content-button" <?php echo $button_attributes ?>><?php echo esc_html($button['title']); ?></a>
+			<a class="cr-2col-content-button cr-button" <?php echo $button_attributes ?>><?php echo esc_html($button['title']); ?></a>
 		</div>
 	<?php endif; ?>
 </section>

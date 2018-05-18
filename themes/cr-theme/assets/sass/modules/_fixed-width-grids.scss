@@ -4,10 +4,5 @@
             color: $color-base-secondary;
             @include color-themes($color:true, $bgcolor:false, $secodary: true);
         }
-        &-cta {
-            border: 1px solid $color-base-secondary;
-            color: $color-base-secondary;
-            @include color-themes($color:true, $bgcolor:false, $border-color:true, $secodary: true);
-        }
     } 
 }

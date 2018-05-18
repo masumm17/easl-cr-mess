@@ -217,7 +217,7 @@ function crt_header_highlighted_butotn() {
 	}else{
 		$newtab = '';
 	}
-	$button_markup = '<a class="header-highlight-button" href="'. esc_url($link) .'"'. $newtab .'><span>' . esc_html($title) . '</span></a>';
+	$button_markup = '<a class="header-highlight-button cr-button" href="'. esc_url($link) .'"'. $newtab .'><span>' . esc_html($title) . '</span></a>';
 
 	return $button_markup;
 }
