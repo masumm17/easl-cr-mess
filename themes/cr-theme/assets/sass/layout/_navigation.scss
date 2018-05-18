@@ -40,7 +40,9 @@
                     @include color-themes($color:false, $bgcolor:true);
                 }
             }
-            &:hover > span::after, &:active > span::after {
+        }
+        &:hover > a {
+            > span::after {
                 opacity: 1;
                 transform: translateY(-17px);
             }
