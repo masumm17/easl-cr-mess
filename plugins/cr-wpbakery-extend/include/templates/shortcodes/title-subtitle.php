@@ -31,7 +31,7 @@ $title = trim($title);
 $subtitle = trim($subtitle);
 ?> 
 
-<section class="cr-title-subtitle-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<section class="cr-module-wrap cr-title-subtitle-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<h2 class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></h2>
 	<?php if ($subtitle): ?>
 	<h2 class="cr-sc-subtitle"><span class="cr-subtitle-inner cr-animate-when-visible"><?php echo esc_html($subtitle); ?></span></h2>

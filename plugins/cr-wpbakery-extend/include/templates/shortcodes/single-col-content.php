@@ -31,7 +31,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 
 ?> 
 
-<section class="cr-single-col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<section class="cr-module-wrap cr-single-col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php if($content): ?>
 	<div class="cr-scc-text cr-animate-when-visible">
 		<?php echo wpb_js_remove_wpautop( $content, true ) ?>

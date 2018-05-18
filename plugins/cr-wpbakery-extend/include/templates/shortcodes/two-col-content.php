@@ -49,7 +49,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 if($column_1_enabled || $column_2_enabled):
 ?> 
 
-<section class="cr-2col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<section class="cr-module-wrap cr-2col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<div class="cr-2col-content-inner">
 		<?php if($column_1_enabled): ?>
 		<div class="cr-2col-content-amenities cr-animate-when-visible">

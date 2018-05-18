@@ -31,7 +31,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 
 if(CR_VcE_Sc_Property_Slider::$items_count >= 3):
 ?>
-<section class="property-slider-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<section class="cr-module-wrap property-slider-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php if($title || $subtitle): ?> 
 	<div class="cr-title-subtitle-wrapper <?php if($subtitle){ echo 'cr-title-has-subtitle'; } ?>">
 		<h2 class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></h2>

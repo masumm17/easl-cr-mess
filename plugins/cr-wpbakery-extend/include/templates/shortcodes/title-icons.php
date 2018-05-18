@@ -31,6 +31,6 @@ $title = trim($title);
 
 ?> 
 
-<section class="cr-title-icons-scwrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
+<section class="cr-module-wrap cr-title-icons-scwrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php get_title_icons_template($title); ?>
 </section>
