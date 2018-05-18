@@ -23,9 +23,9 @@
                 return false;
             }
             if($(window).scrollTop() > 0) {
-                !this.$body.hasClass('fixed-header-enabled') && this.$body.addClass('fixed-header-enabled');
+                !this.$body.hasClass('header-scrolled') && this.$body.addClass('header-scrolled');
             }else{
-                this.$body.hasClass('fixed-header-enabled') && this.$body.removeClass('fixed-header-enabled');
+                this.$body.hasClass('header-scrolled') && this.$body.removeClass('header-scrolled');
             }
         },
         scrollFooter: function() {

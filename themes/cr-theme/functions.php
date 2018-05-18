@@ -7,7 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $crt_theme_mods; // Store theme mods to prevent extra db checks and filter checks
 
 // Gets all theme mods and stores them in an easily accessable global var to limit DB requests & filter checks
-$crt_theme_mods = get_theme_mods();
+if(!isset($crt_theme_mods)){
+	$crt_theme_mods = get_theme_mods();
+}
 
 
 require get_template_directory() . '/inc/helper.php';
@@ -30,6 +32,12 @@ if ( ! function_exists( 'crt_setup' ) ) :
 			'gallery',
 			'caption',
 		) );
+		$image_sizes = crt_get_images_sizes();
+		add_image_size('cr_default', 1360);
+		foreach ($image_sizes as $size_name => $size_data ) {
+			add_image_size($size_name, $size_data['width'], $size_data['height']);
+			add_image_size($size_name . '_x', $size_data['width'], $size_data['height'], true);
+		}
 	}
 endif;
 add_action( 'after_setup_theme', 'crt_setup' );
@@ -38,6 +46,19 @@ function crt_content_width() {
 	$GLOBALS['content_width'] = NULL;
 }
 add_action( 'after_setup_theme', 'crt_content_width', 0 );
+
+add_filter( 'image_size_names_choose', 'crt_custom_image_sizes', 20 );
+ 
+function crt_custom_image_sizes( $sizes ) {
+	$image_sizes = crt_get_images_sizes();
+	$image_sizes_labels = array();
+	foreach ($image_sizes as $size_name => $size_data ) {
+		$image_sizes_labels[$size_name] = $size_data['name'];
+		$image_sizes_labels[$size_name. '_x'] = $size_data['name'] . ' Cropped';
+	}
+	$image_sizes_labels['cr_default'] = 'CR Default';
+    return array_merge( $sizes, $image_sizes_labels);
+}
 
 /**
  * Enqueue scripts and styles.

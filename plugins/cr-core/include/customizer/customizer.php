@@ -64,6 +64,7 @@ class CRT_Customizer {
 				'priority' => 180,
 			) );
 		}
+		$this->add_section_settings('general', $wp_customize);
 		$this->add_section_settings('header', $wp_customize);
 		$this->add_section_settings('footer', $wp_customize);
    }

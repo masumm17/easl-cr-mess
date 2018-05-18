@@ -6,10 +6,13 @@
  * @package Cheval_Residences_theme
  */
 
-?>
+?> 
 		</div>
-
+		<div id="footer-before-content">
+			<?php do_action('cr_before_footer'); ?>
+		</div>
 	</div>
+	
 <?php
 $footer_logo = crt_footer_logo_img();
 $footer_company_name = crt_get_theme_mode('footer_company_name');

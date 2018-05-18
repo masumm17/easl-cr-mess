@@ -17,12 +17,29 @@ extract( $atts );
 
 $cta_button = $this->parse_url($cta_button);
 
-$image = preg_replace( '/[^\d]/', '', $image );
-$img_full = wp_get_attachment_image( $image, 'full', false, array('class' => 'fxw-grid-item-image') );
+
 
 $class_to_filter = '';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
+// Set Grid Class
+switch($grid_size) {
+	case '3_3':
+		$image_size = 'fw1-2_x';
+		$css_class .= ' cr-grid-col-full';
+		break;
+	case '2_3':
+		$image_size = 'fw1-2_col2-3_x';
+		$css_class .= ' cr-grid-col-2-of-3';
+		break;
+	default:
+		$image_size = 'fw1-2_col1-3_x';
+		$css_class .= ' cr-grid-col-1-of-3';
+		break;
+}
+
+$image = preg_replace( '/[^\d]/', '', $image );
+$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image '. $image_size) );
 
 
 // Build item elements html
@@ -67,18 +84,6 @@ if($enable_video == 'yes' && $video_id) {
 
 $video_image = $html_image . $html_video;
 
-// Set Grid Class
-switch($grid_size) {
-	case '3_3':
-		$css_class .= ' cr-grid-col-full';
-		break;
-	case '2_3':
-		$css_class .= ' cr-grid-col-2-of-3';
-		break;
-	default:
-		$css_class .= ' cr-grid-col-1-of-3';
-		break;
-}
 // Set display option class and build html markup
 $html = '';
 switch($display_option) {

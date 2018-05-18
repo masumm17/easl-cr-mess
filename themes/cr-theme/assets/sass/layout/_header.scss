@@ -14,7 +14,7 @@
         z-index: 10;
         transition: background-color ease-in-out .5s;
     }
-    .fixed-header.fixed-header-enabled & {
+    .fixed-header.header-scrolled & {
         background-color: rgba($color-black, .80);
     }
         
@@ -26,7 +26,6 @@
         img {
             position: absolute;
             top: 13px;
-            transition: opacity .5s;
         }
         .site-main-logo {
             width: 135px;
@@ -48,7 +47,7 @@
                 visibility: visible;
             }
         }
-        .scroll-header & {
+        .fixed-header & {
             .site-main-logo {
                 opacity: 1;
                 visibility: visible;
@@ -58,7 +57,7 @@
                 visibility: hidden;
             }
         }
-        .fixed-header.fixed-header-enabled & {
+        .fixed-header.header-scrolled & {
             .site-main-logo {
                 opacity: 0;
                 visibility: hidden;

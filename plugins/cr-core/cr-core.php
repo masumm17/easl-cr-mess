@@ -36,6 +36,7 @@ final class CR_Core {
 			'HELPERS_DIR' => $dir . '/include/helpers',
 		) );
 		// Include files
+		require_once $this->path('INC_DIR', 'helpers.php');
 		require_once $this->path('INC_DIR', 'classs-custom-types.php');
 		require_once $this->path('INC_DIR', 'customizer/customizer.php');
 		
@@ -102,7 +103,7 @@ final class CR_Core {
 	}
 	
 	public function body_class($classes) {
-		if( is_page_template('pt-with-hero-slider.php')){
+		if('with_hero_slider' == $this->get_page_type()){
 			$classes[] = 'fixed-header';
 		}else{
 			$classes[] = 'scroll-header';
@@ -111,12 +112,36 @@ final class CR_Core {
 		return $classes;
 	}
 	
+	public function get_page_type() {
+		$page_type = '';
+		if ( is_singular() ) {
+			$page_type = function_exists('get_field') ? get_field('page_type', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'page_type', true);
+		}
+		if(!$page_type) {
+			$page_type = crt_get_theme_mode('default_page_types', 'minimal');
+		}
+		return $page_type;
+	}
+	
 	public function get_color_theme() {
 		if(!empty($_GET['color_theme'])){
 			return 'theme-' . sanitize_key($_GET['color_theme']);
 		}
+		$color_theme = '';
+		if ( is_singular() ) {
+			$color_theme = function_exists('get_field') ? get_field('color_theme', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'color_theme', true);
+		}
+		if(!$color_theme || 'default' == $color_theme) {
+			$color_theme = crt_get_theme_mode('color_theme', '');
+		}
 		
-		return 'theme-base';
+		if(!$color_theme) {
+			$color_theme = 'theme-base';
+		}else{
+			$color_theme = 'theme-' . $color_theme;
+		}
+		
+		return $color_theme;
 	}
 
 	/**
@@ -158,6 +183,9 @@ final class CR_Core {
 		return $path;
 	}
 	
+}
+if(!isset($crt_theme_mods)){
+	$crt_theme_mods = get_theme_mods();
 }
 function crt_get_core() {
 	return CR_Core::get_instance();

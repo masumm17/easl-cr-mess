@@ -170,6 +170,11 @@ class CR_VcE_Manager {
 			'frontend_enqueue_css_js'
 		));
 		
+		add_action('cr_before_footer', array(
+			$this,
+			'cr_before_footer'
+		));
+		
 	}
 	
 	/**
@@ -305,6 +310,28 @@ class CR_VcE_Manager {
 			}
 			require_once $settings['file'];
 		}
+	}
+	/**
+	 * Display global footer modules
+	 */
+	public function cr_before_footer() {
+		$this->footer_dispaly_stay_connected();
+	}
+	
+	public function footer_dispaly_stay_connected() {
+		$enabled = '';
+		if ( is_singular() ) {
+			$enabled = function_exists('get_field') ? get_field('stay_con_mod', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'stay_con_mod', true);
+		}
+		
+		if(!$enabled || 'default' == $enabled) {
+			$enabled = crt_get_theme_mode('stay_con_mod', 'enabled');
+		}
+		if('enabled' != $enabled) {
+			return;
+		}
+		
+		include $this->path('TEMPLATES_DIR', '/non-shortcodes/footer-stay-connected.php');
 	}
 
 	/**
