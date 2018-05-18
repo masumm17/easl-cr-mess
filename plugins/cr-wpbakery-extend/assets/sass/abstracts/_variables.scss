@@ -59,7 +59,16 @@ $themes-map-secondary: (
     chpg: $color-chpg-secondary, 
     cgp: $color-cgp-secondary
 );
-
+$themes-map-lightbg: (
+    ctq: #dbf2fc, 
+    ctc: #f6e7e3, 
+    chc: #fbece5, 
+    ckb: #fde9eb, 
+    cph: #eeeecf, 
+    cch: #daf0f0, 
+    chpg: #e2eecb, 
+    cgp: #eedee6
+);
 
 
 // FONT
@@ -71,3 +80,8 @@ $grid-width: 114rem;
 $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem;
+
+// Z-index group
+// Header: 10
+// Full Width Popup/lightbox: 20
+// Page content: 1-5

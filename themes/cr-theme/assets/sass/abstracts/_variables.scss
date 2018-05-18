@@ -1,6 +1,7 @@
 // COLORS
 $color-white: #fff;
 $color-black: #000;
+$color-gray-1: #2e2e2e;
 // 1 - Base color
 $color-base: #e5a514;
 $color-base-secondary: #cd8e01;
@@ -57,7 +58,16 @@ $themes-map-secondary: (
     chpg: $color-chpg-secondary, 
     cgp: $color-cgp-secondary
 );
-
+$themes-map-lightbg: (
+    ctq: #dbf2fc, 
+    ctc: #f6e7e3, 
+    chc: #fbece5, 
+    ckb: #fde9eb, 
+    cph: #eeeecf, 
+    cch: #daf0f0, 
+    chpg: #e2eecb, 
+    cgp: #eedee6
+);
 
 
 // FONT

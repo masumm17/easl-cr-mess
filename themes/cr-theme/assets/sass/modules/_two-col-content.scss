@@ -1,6 +1,9 @@
 .cr-2col-content {
-    &-button {
-        background-color: $color-base;
-        @include color-themes($color:false, $bgcolor:true);
+    &-amenities, &-floorplans {
+        @each $theme-name, $theme-color in $themes-map-lightbg{
+            .theme-#{$theme-name} & {
+                background-color: $theme-color;
+            }
+        }
     }
 }
