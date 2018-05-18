@@ -106,7 +106,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .cr-sc-subtitle {
 	color: #e5a514;
 	font-size: 2rem;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 1.6;
 	text-align: center;
 	overflow: hidden;
