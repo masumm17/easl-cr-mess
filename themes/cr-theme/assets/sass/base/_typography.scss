@@ -41,3 +41,16 @@ h6 {
     font-weight: 600;
     margin-bottom: 3rem;
 }
+
+a {
+    &, &:link, &:visited {
+        color: $color-base;
+    }
+    &:hover, &:active {
+        color: $color-base;
+        text-decoration: none;
+    }
+    &:focus {
+        outline: 0 none;
+    }
+}
