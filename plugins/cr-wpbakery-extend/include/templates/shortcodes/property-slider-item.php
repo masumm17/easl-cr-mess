@@ -17,7 +17,7 @@ extract( $atts );
 $cta_button = $this->parse_url($cta_button);
 
 $image = preg_replace( '/[^\d]/', '', $image );
-$img_full_src = wp_get_attachment_image( $image, 'fw2-3_col3-5_x', false, array('class' => 'property-slider-image') );
+$img_full_src = wp_get_attachment_image( $image, 'fw2-3_col2-3_x', false, array('class' => 'property-slider-image') );
 
 if($img_full_src) {
 	CR_VcE_Sc_Property_Slider::$items_count++;
