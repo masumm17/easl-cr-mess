@@ -1,7 +1,7 @@
 <?php
 
 class CR_VcE_Sc_Two_Col_Content extends CR_VcE_Shortcode {
-	private $max_floor_plans = 3;
+	private $max_floor_plans = 6;
 	public function get_floorplans_data( $atts ) {
 		$floorplans = array();
 		if ( isset( $atts['floorplans'] ) && strlen( $atts['floorplans'] ) > 0 ) {
