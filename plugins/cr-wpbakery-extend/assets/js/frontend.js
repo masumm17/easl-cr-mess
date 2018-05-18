@@ -67,9 +67,9 @@
                 delay = delay || 4000;
                 $slider.closest('.wpb_row').addClass('cr-row-has-hero-slider');
                 $slider.show().revolution({
-                    delay: delay,
+                    //delay: delay,
                     sliderLayout: "fullscreen",
-                    lazyType: "smart",
+                    lazyType: "all",
                     spinner: "spinner2",
                 });
             });

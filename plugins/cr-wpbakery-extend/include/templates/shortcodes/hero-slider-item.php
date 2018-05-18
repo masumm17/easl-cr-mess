@@ -20,8 +20,29 @@ CR_VcE_Sc_Hero_Slider::$items_count++;
 CR_VcE_Sc_Hero_Slider::$items_data[] = $atts;
 
 $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Slider::$data['duration'] : 4000;
+//$duration = $duration + 1200;
 ?> 
-<li data-transition="fade">
+<li data-transition="fade" 
+	data-hideafterloop="0" 
+	data-hideslideonmobile="off"  
+	data-easein="default" 
+	data-easeout="default" 
+	data-masterspeed="<?php echo esc_attr($duration); ?>"  
+	data-rotate="0"  
+	data-saveperformance="off"  
+	data-title="Slide" 
+	data-param1="" 
+	data-param2="" 
+	data-param3="" 
+	data-param4="" 
+	data-param5="" 
+	data-param6="" 
+	data-param7="" 
+	data-param8="" 
+	data-param9="" 
+	data-param10="" 
+	data-description=""
+	>
 	<?php 
 	if('video' == $type): 
 		$img_id = preg_replace( '/[^\d]/', '', $image_large );
@@ -70,13 +91,17 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
          data-bgfit="cover" 
          data-bgrepeat="no-repeat"
 		 data-kenburns="on" 
-         data-duration="<?php echo esc_attr($duration); ?>" 
+         data-duration="<?php echo esc_attr($duration * 4); ?>" 
          data-ease="Linear.easeNone" 
          data-scalestart="100" 
          data-scaleend="150" 
          data-offsetstart="0 0" 
          data-offsetend="0 0"
          data-rotatestart="0" 
-         data-rotateend="0"/>
+         data-rotateend="0" 
+		 
+		 data-bgparallax="10"  
+		 data-no-retina
+		 />
 	<?php endif; ?>
 </li>
