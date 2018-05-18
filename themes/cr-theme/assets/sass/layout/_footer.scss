@@ -122,23 +122,6 @@
                 color: $color-white;
                 text-decoration: none;
             }
-            &::after {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                height: 1px;
-                background-color: $color-base;
-                content: '';
-                opacity: 0;
-                transition: opacity 0.3s, transform 0.3s;
-                transform: translateY(1rem);
-                @include color-themes($color:false, $bgcolor:true);
-            }
-            &:hover::after, &:active::after {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     }
 }
@@ -200,12 +183,15 @@
 	width: 100%;
     height: 4rem;
     padding: .5rem 0;
+    text-align: center;
 }
 .footer-menu {
+    display: inline-block;
     list-style: none;
     text-align: center;
+    @include clearfix;
     li {
-        display: inline-block;
+        float: left;
         a {
             display: inline-block;
             padding:  0 1.8rem;
@@ -241,23 +227,6 @@
                 padding: 5px 2px;
                 display: inline-block;
                 position: relative;
-                &::after {
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: $color-base;
-                    content: '';
-                    opacity: 0;
-                    transition: opacity 0.3s, transform 0.3s;
-                    transform: translateY(1rem);
-                    @include color-themes($color:false, $bgcolor:true, $secodary: true);
-                }
-            }
-            &:hover > span::after, &:active > span::after {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
         
