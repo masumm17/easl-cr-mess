@@ -41,3 +41,13 @@
         transform: translate(0);
     }
 }
+
+@keyframes propertySlideStripe {
+    0% {
+        width: 1%;
+    }
+
+    100% {
+        width: 13%;
+    }
+}

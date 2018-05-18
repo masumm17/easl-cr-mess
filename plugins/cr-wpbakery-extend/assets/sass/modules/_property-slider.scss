@@ -29,20 +29,24 @@
         }
     }
     &-stripe {
-        width: 0;
         height: 100%;
         top: 0;
         left: 0;
         background: #f1f1f1;
         z-index: 2;
         position: absolute;
-        transition: all .5s cubic-bezier(.77,0,.175,1) .5s;
         &.right {
             left: auto;
             right: 0;
         }
-        .slick-active & {
-            width: 13%;
+        .slick-active {
+            width: 1%;
+        }
+        .property-slider-start-animate .slick-active & {
+            animation-name: propertySlideStripe;
+            animation-fill-mode: forwards;
+            animation-duration: .5s;
+            animation-timing-function: cubic-bezier(.77, 0, .175, 1);
         }
     }
     &-text {
@@ -52,13 +56,14 @@
         left: 5rem;
         width: 33%;
         padding: 3rem;
-        opacity: 0;
-        visibility: hidden;
         z-index: 3;
-        transition: all .5s cubic-bezier(.77,0,.175,1) .8s;
-        .slick-active & {
-            opacity: 1;
-            visibility: visible;
+        opacity: 0;
+        .property-slider-start-animate .slick-active & {
+            animation-name: moveInBottom;
+            animation-fill-mode: forwards;
+            animation-duration: .5s;
+            animation-timing-function: cubic-bezier(.77, 0, .175, 1);
+            animation-delay: .5s;
         }
         &-title {
             color: $color-gray-1;
