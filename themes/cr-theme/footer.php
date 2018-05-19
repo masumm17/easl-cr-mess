@@ -52,7 +52,7 @@ $footer_reservation = crt_get_theme_mode('footer_reservation');
 								</form>
 							</div>
 						</div>
-						<p class="footer-avvio"><a><?php _e('an avvio solution', 'crt') ?></a></p>
+						<p class="footer-avvio"><a href="" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 					</div>
 				</div>
 				<div class="footer-right">
