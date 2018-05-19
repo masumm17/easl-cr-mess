@@ -49,12 +49,6 @@
         }
         .cr-menu-level-1 {
             position: absolute;
-            left: 0;
-            right: 0;
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: stretch;
-            justify-content: flex-start;
             top: 100%;
             opacity: 0;
             visibility: hidden;
@@ -62,6 +56,17 @@
             transition: all .35s;
             pointer-events: none;
             list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            justify-content: flex-start;
+            &.cr-menu-level-full {
+                left: 0;
+                right: 0;
+            }
+            &.cr-menu-level-inline > li {
+                
+            }
             > li {
                 background-size: cover;
                 background-position: center center;
@@ -74,7 +79,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                transition: width .3s linear;
+                transition: all .5s ease-out;
                 &:first-child {
                     border-left: 1px solid $color-white;
                 }
@@ -142,29 +147,43 @@
                 &-1 {
                     justify-content: center;
                     > li {
-                        width: 33.333%;
+                        width: 33.333vw;
                         max-width: 44rem;
                     }
                 }
                 &-2 {
                     > li {
-                        width: 33.333%;
+                        width: 33.333vw;
                         max-width: 44rem;
+                        &.not-hover {
+                            width: 40%;
+                        }
+                        &:hover {
+                            width: 60%;
+                        }
                     }
                 }
                 &-3 {
                     > li {
                         width: 33.333%;
+                        &.not-hover {
+                            width: 25%;
+                            max-width: 100%;
+                        }
                         &:hover {
-                            width: 66.667%;
+                            width: 50%;
+                            max-width: 100%;
                         }
                     }
                 }
                 &-4 {
                     > li {
                         width: 25%;
+                        &.not-hover {
+                            width: 20%;
+                        }
                         &:hover {
-                            width: 50%;
+                            width: 40%;
                         }
                     }
                 }
@@ -172,8 +191,12 @@
                     
                     > li {
                         width: 20%;
+                        &.not-hover {
+                            width: 15%;
+                        }
                         &:hover {
-                            width: 40%;
+                            width: 30%;
+                            max-width: 100%;
                         }
                     }
                 }
@@ -181,8 +204,11 @@
                     
                     > li {
                         width: 16.667%;
+                        &.not-hover {
+                            width: 13%;
+                        }
                         &:hover {
-                            width: 33.334%;
+                            width: 35%;
                         }
                         
                     }

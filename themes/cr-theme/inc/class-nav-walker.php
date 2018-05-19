@@ -35,6 +35,11 @@ class CR_Dropdown_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$classes = array( 'sub-menu', 'cr-menu-level', 'cr-menu-level-' . ($depth + 1));
 		if(!empty($total_childs)){
 			$classes[] = 'cr-submenu-items-' . $total_childs;
+			if($total_childs < 3) {
+				$classes[] = 'cr-menu-level-inline';
+			}else{
+				$classes[] = 'cr-menu-level-full';
+			}
 		}
 
 		/**
