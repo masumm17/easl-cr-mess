@@ -281,6 +281,14 @@ class CR_VcE_Manager {
 			'name' => __('Full Width Grid Item', 'crvc_extension'),
 			'file' => $sc_dir . '/full-width-grid-item/class-full-width-grid-item.php',
 		);
+		$this->registered_shortcodes['cr_expanding_images'] = array(
+			'name' => __('Expanding Images', 'crvc_extension'),
+			'file' => $sc_dir . '/expanding-images/class-expanding-images.php',
+		);
+		$this->registered_shortcodes['cr_expanding_image_item'] = array(
+			'name' => __('Expanding Image Item', 'crvc_extension'),
+			'file' => $sc_dir . '/expanding-image-item/class-expanding-image-item.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -300,6 +308,8 @@ class CR_VcE_Manager {
 			'cr_fixed_width_grid_item',
 			'cr_full_width_grid',
 			'cr_full_width_grid_item',
+			'cr_expanding_images',
+			'cr_expanding_image_item',
 		);
 	}
 	

@@ -121,4 +121,13 @@
             this.$el.addClass(colClass).removeClass(removeClass);
         }
     });
+   
+    // Expanding Images Container View
+    window.CrScExpandingImagesView = window.CrScContainerView.extend({
+        maxShortcodes: 5
+    });
+    // Expanding Image Item View
+    window.CrScExpandingImageItemView = window.CrScItemView.extend({
+
+    });
 })(jQuery);

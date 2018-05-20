@@ -150,7 +150,12 @@
             });
         },
         events: function() {
-            
+            // Expanding Images
+            $(".expanding-image-item").on("mouseenter", function() {
+                $(this).addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
+            }).on("mouseleave", function() {
+                $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
+            });
         },
         init: function() {
             this.heroSlider();
