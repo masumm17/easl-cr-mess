@@ -124,7 +124,6 @@
                 CRT.resizeEevents();
             }, 250));
             $(".cr-menu-level-1 > li").on("mouseenter", function() {
-                console.log($(this));
                 $(this).addClass("on-hover").removeClass("not-hover").siblings("li").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
                 console.log($(this));
