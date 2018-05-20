@@ -16,12 +16,14 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        max-width: 1260px;
+        margin-left: auto;
+        margin-right: auto;
     }
     &-item {
-        flex: 1 auto;
-        max-width: 40.4rem;
         width: 33.33%;
-        margin: 0 .8rem 1.6rem;
+        padding: 0 .8rem 0;
+        margin-bottom: 1.6rem;
         
         &-inner {
             position: relative;
