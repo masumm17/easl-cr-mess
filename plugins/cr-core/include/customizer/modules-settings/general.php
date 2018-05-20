@@ -36,15 +36,15 @@ $wp_customize->add_control( 'color_theme', array(
 	'label' => __( 'Color Theme', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
-		'base' => 'Cheval Residences',
-		'ctq' => 'Cheval Three Quays',
-		'ctc' => 'Cheval Thorney Court',
-		'chc' => 'Cheval Harrington Court',
-		'ckb' => 'Cheval Knightsbridge',
-		'cph' => 'Cheval Phoenix House',
-		'cch' => 'Cheval Calico House',
-		'chpg' => 'Cheval Hyde Park Gate',
-		'cgp' => 'Cheval Gloucester Park',
+		'base' => __('Cheval Residences', 'crt' ),
+		'ctq' => __('Cheval Three Quays', 'crt' ),
+		'ctc' => __('Cheval Thorney Court', 'crt' ),
+		'chc' => __('Cheval Harrington Court', 'crt' ),
+		'ckb' => __('Cheval Knightsbridge', 'crt' ),
+		'cph' => __('Cheval Phoenix House', 'crt' ),
+		'cch' => __('Cheval Calico House', 'crt' ),
+		'chpg' => __('Cheval Hyde Park Gate', 'crt' ),
+		'cgp' => __('Cheval Gloucester Park', 'crt' ),
 	),
 ) );
 $wp_customize->add_control( 'default_page_types', array(
@@ -52,9 +52,9 @@ $wp_customize->add_control( 'default_page_types', array(
 	'label' => __( 'Color Theme', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
-		'with_hero_slider' => 'With Hero Slider',
-		'minimal' => 'Minimal Page Type',
-		'gallery' => 'Gallery',
+		'with_hero_slider' => __('With Hero Slider', 'crt'),
+		'minimal' => __('Minimal Page Type', 'crt' ),
+		'gallery' => __('Gallery', 'crt' ),
 	),
 ) );
 $wp_customize->add_control( 'enable_stay_connected', array(
@@ -62,8 +62,8 @@ $wp_customize->add_control( 'enable_stay_connected', array(
 	'label' => __( 'Enable Stay Connected Module', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
-		'enabled' => 'Enabled',
-		'disabled' => 'Disabled',
+		'enabled' => __('Enabled', 'crt' ),
+		'disabled' => __('Disabled', 'crt' ),
 	),
 ) );
 $wp_customize->add_control( 'enable_sticky_side_nav', array(
@@ -71,7 +71,7 @@ $wp_customize->add_control( 'enable_sticky_side_nav', array(
 	'label' => __( 'Enable Sticky Side Navigation', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
-		'enabled' => 'Enabled',
-		'disabled' => 'Disabled',
+		'enabled' => __('Enabled', 'crt' ),
+		'disabled' => __('Disabled', 'crt' ),
 	),
 ) );
