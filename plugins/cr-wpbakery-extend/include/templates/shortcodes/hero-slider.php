@@ -30,7 +30,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 if(CR_VcE_Sc_Hero_Slider::$items_count > 0):
 ?>
 <section class="cr-rev-slider-wrapper  rev_slider_wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
-	<div id="rev_slider_1" class="cr-rev-slider rev_slider" data-version="5.4.5" style="display:none" data-crdelay="<?php echo esc_attr($duration); ?>">
+	<div class="cr-rev-slider rev_slider" data-version="5.4.5" style="display:none" data-crdelay="<?php echo esc_attr($duration); ?>">
 		<ul>
 			<?php echo $prepareContent; ?>
 		</ul>
