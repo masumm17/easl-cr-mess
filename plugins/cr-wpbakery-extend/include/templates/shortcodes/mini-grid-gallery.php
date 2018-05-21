@@ -21,7 +21,16 @@ $column1_images = $this->get_iamges_data($column1_images);
 $column3_images = $this->get_iamges_data($column3_images);
 
 $column2_image = preg_replace( '/[^\d]/', '', $column2_image );
-$column2_image = wp_get_attachment_image( $column2_image, 'fw1-2_col1-3_x', false, array('class' => 'mini-gallery-col2-image') );
+
+
+$col2_blur = !empty($col2_blur) ? $col2_blur . 'px': false; 
+$column2_image_attributes = array(
+	'class' => 'mini-gallery-col2-image',
+);
+if($col2_blur) {
+	$column2_image_attributes['style'] = "-webkit-filter: blur({$col2_blur});filter: blur({$col2_blur});";
+}
+$column2_image = wp_get_attachment_image( $column2_image, 'fw1-2_col1-3_x', false, $column2_image_attributes );
 
 $cta_button = $this->parse_url($col2_cta);
 
@@ -94,9 +103,12 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 		<div class="mini-gallery-con">
 			<div class="mini-gallery-col mini-gallery-col1">
 				<div class="mini-gallery-col-inner mini-gallery-slider-wrapper">
-					<div id="mini-gallery-slider-<?php echo CR_VcE_Sc_Mini_Grid_Gallery::$count_instance; ?>-1" class="mini-gallery-slider" data-speed="<?php echo $slider_speed; ?>" data-effect="<?php echo esc_attr($slider_transition); ?>" data-pagination="<?php echo esc_attr($slider_pagination); ?>">
+					<div id="mini-gallery-slider-<?php echo CR_VcE_Sc_Mini_Grid_Gallery::$count_instance; ?>-1" class="mini-gallery-slider" 
+						 data-speed="<?php echo $slider_speed; ?>" 
+						 data-effect="<?php echo esc_attr($slider_transition); ?>" 
+						 data-pagination="<?php echo esc_attr($slider_pagination); ?>">
 						<?php foreach($column1_images as $img_data): ?>
-						<a href="<?php echo esc_url($img_data['full']); ?>" class="cr-lightbox-minimum">
+						<a href="<?php echo esc_url($img_data['full']); ?>" class="cr-fancybox-minimum" data-fancybox="miniGridGallery<?php echo CR_VcE_Sc_Mini_Grid_Gallery::$count_instance; ?>_1">
 							<img alt="" src="<?php echo esc_url($img_data['src']); ?>"/>
 						</a>
 						<?php endforeach; ?>
@@ -122,7 +134,7 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 				<div class="mini-gallery-col-inner mini-gallery-slider-wrapper">
 					<div id="mini-gallery-slider-<?php echo CR_VcE_Sc_Mini_Grid_Gallery::$count_instance; ?>-2" class="mini-gallery-slider" data-speed="<?php echo $slider_speed; ?>" data-effect="<?php echo esc_attr($slider_transition); ?>" data-pagination="<?php echo esc_attr($slider_pagination); ?>">
 						<?php foreach($column3_images as $img_data): ?>
-						<a href="<?php echo esc_url($img_data['full']); ?>" class="cr-lightbox-minimum">
+						<a href="<?php echo esc_url($img_data['full']); ?>" class="cr-fancybox-minimum" data-fancybox="miniGridGallery<?php echo CR_VcE_Sc_Mini_Grid_Gallery::$count_instance; ?>_2">
 							<img alt="" src="<?php echo esc_url($img_data['src']); ?>"/>
 						</a>
 						<?php endforeach; ?>
