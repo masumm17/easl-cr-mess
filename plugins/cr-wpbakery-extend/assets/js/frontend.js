@@ -87,9 +87,9 @@
                 }).slick({
                     speed: 700,
                     infinite: true,
-                    centerMode: true,
-                    centerPadding: '10%',
-                    slidesToShow: 1,
+                    //centerMode: true,
+                    //centerPadding: '10%',
+                    //slidesToShow: 1,
                     slidesToScroll: 1,
                     prevArrow: $slider.closest(".property-slider-inner").find(".property-slider-arrow-left"),
                     nextArrow: $slider.closest(".property-slider-inner").find(".property-slider-arrow-right"),

@@ -10,9 +10,16 @@
     }
     &-inner {
         display: block;
+        width: 1160px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
     }
     &-con {
-        
+        .slick-list {
+            overflow: visible;
+        }
     }
     &-item {
         position: relative;
@@ -100,11 +107,11 @@
         margin-top: -35px;
     }
     &-arrow-left {
-        left: 10%;
+        left: 0;
         margin-left: -35px;
     }
     &-arrow-right {
-        right: 10%;
+        right: 0;
         margin-right: -35px;
     }
 }
