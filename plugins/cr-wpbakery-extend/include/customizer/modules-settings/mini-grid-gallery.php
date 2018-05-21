@@ -22,7 +22,7 @@ $wp_customize->add_setting( 'mini_grid_gallery_transition', array(
 $wp_customize->add_setting( 'mini_grid_gallery_pagination', array(
 	'type' => 'option',
 	'capability' => 'edit_theme_options',
-	'default' => '1',
+	'default' => true,
 	'transport' => 'refresh',
 ) );
 

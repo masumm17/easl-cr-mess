@@ -115,5 +115,20 @@
         div.navBulletsWrapper {
             display:none;
         }
+        &-pagination {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: 5;
+            text-align: center;
+
+            color: $color-white;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.4em;
+            padding: 1rem 0;
+        }
     }
+        
 }

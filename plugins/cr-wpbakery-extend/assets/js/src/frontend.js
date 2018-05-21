@@ -100,10 +100,13 @@
             var o = this;
             o.Storage.MiniGridGalleries = {};
             $(".mini-gallery-slider").each(function(){
-                var $gallery = $(this), 
+                var $gallery = $(this),
+                    $pagination = $gallery.siblings(".mini-gallery-slider-pagination"),
+                    $current = $pagination.find(".mg-current"),
                     galleryId = $gallery.attr("id"), 
                     galleryEffect = $gallery.data("effect"), 
                     gallerySpeed = parseInt($gallery.data("speed")),
+                    galleryPagination = $gallery.data("pagination"),
                     effectRandom = false,
                     imageSlider = null;
                 if(galleryId){
@@ -114,7 +117,8 @@
                     }
                     
                     gallerySpeed = gallerySpeed ? gallerySpeed : 4000;
-                    imageSlider = new mcImgSlider({
+                    
+                    var options = {
                         sliderId: galleryId,
                         startSlide: 0,
                         effect: galleryEffect,
@@ -128,8 +132,20 @@
                         thumbnailsWrapperId: null,
                         m: false,
                         license: "mylicense"
-                    });
+                    };
+                    if(galleryPagination === "yes" && $pagination.length){
+                        options.beforeSlideChange = function(args){
+                        };
+                        options.afterSlideChange = function(args){
+                            $current.html(args[0] + 1);
+                        };
+                    }
+                    imageSlider = new mcImgSlider(options);
                     o.Storage.MiniGridGalleries[galleryId] = imageSlider;
+                    if(galleryPagination === "yes" && $pagination.length){
+                        $current.html(1);
+                        $pagination.removeClass("cr-hide");
+                    }
                 }
             });
         },
