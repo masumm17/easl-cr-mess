@@ -45,8 +45,8 @@
         },
         resetMenuProps: function() {
             this.$menu.find(".cr-menu-level-1.cr-menu-level-inline").css({
-                "left": auto,
-                "right": auto
+                "left": "auto",
+                "right": "auto"
             });
         },
         setMenuProp: function() {
