@@ -211,7 +211,9 @@ class CR_VcE_Manager {
 		wp_register_script('slick', $this->asset_url( 'library/slick/slick.min.js' ), array('jquery'), NULL, true);
 		wp_register_style('slick', $this->asset_url( 'library/slick/slick.css'), array(), NULL);
 		
-		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'slider-revolution', 'waypoints', 'slick'), NULL, true);
+		wp_register_script('js-img-slider', $this->asset_url( 'library/js-img-slider/js-img-slider.min.js' ), array('jquery'), NULL, true);
+		
+		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider'), NULL, true);
 		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('slider-revolution', 'slick'), NULL);
 		
 		wp_enqueue_style('cr-wpb');
@@ -289,6 +291,10 @@ class CR_VcE_Manager {
 			'name' => __('Expanding Image Item', 'crvc_extension'),
 			'file' => $sc_dir . '/expanding-image-item/class-expanding-image-item.php',
 		);
+		$this->registered_shortcodes['cr_mini_grid_gallery'] = array(
+			'name' => __('Mini Grid Gallery', 'crvc_extension'),
+			'file' => $sc_dir . '/mini-grid-gallery/class-mini-grid-gallery.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -310,6 +316,7 @@ class CR_VcE_Manager {
 			'cr_full_width_grid_item',
 			'cr_expanding_images',
 			'cr_expanding_image_item',
+			'cr_mini_grid_gallery',
 		);
 	}
 	

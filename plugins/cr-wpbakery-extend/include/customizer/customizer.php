@@ -40,6 +40,7 @@ class CR_VcE_Customizer {
 			) );
 		}
 		$this->add_section_settings('title_icons', $wp_customize);
+		$this->add_section_settings('mini_grid_gallery', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {
 	   require_once  $this->settings_path . str_replace( '_', '-', $sectiono_id ).'.php';

@@ -96,6 +96,51 @@
                 });
             });
         },
+        miniGridGallery: function() {
+            var o = this;
+            o.Storage.MiniGridGalleries = {};
+            $(".mini-gallery-slider").each(function(){
+                var $gallery = $(this), 
+                    galleryId = $gallery.attr("id"), 
+                    galleryEffect = $gallery.data("effect"), 
+                    gallerySpeed = parseInt($gallery.data("speed")),
+                    effectRandom = false,
+                    imageSlider = null;
+                if(galleryId){
+                    galleryEffect = galleryEffect ? '' + galleryEffect : "13";
+                    if(galleryEffect === "random") {
+                        galleryEffect = "13,17,14,7";
+                        effectRandom = true;
+                    }
+                    
+                    gallerySpeed = gallerySpeed ? gallerySpeed : 4000;
+                    imageSlider = new mcImgSlider({
+                        sliderId: galleryId,
+                        startSlide: 0,
+                        effect: galleryEffect,
+                        effectRandom: effectRandom,
+                        pauseTime: gallerySpeed,
+                        transitionTime: 500,
+                        slices: 8,
+                        boxes: 7,
+                        hoverPause: 2,
+                        autoAdvance: true,
+                        thumbnailsWrapperId: null,
+                        m: false,
+                        license: "mylicense"
+                    });
+                    o.Storage.MiniGridGalleries[galleryId] = imageSlider;
+                }
+            });
+        },
+        miniGalleryGridResize: function() {
+            if (typeof this.Storage.MiniGridGalleries === 'undefined'){
+                return;
+            }
+            for(var sliderID in ChevRes.Storage.MiniGridGalleries) {
+                ChevRes.Storage.MiniGridGalleries[sliderID].reload();
+            }
+        },
         YoutubeVideosFrames: function() {
             var video_count = 0;
             
@@ -149,7 +194,14 @@
                 }
             });
         },
+        resizeEevents: function() {
+            this.miniGalleryGridResize();
+        },
         events: function() {
+            // Resize events
+            $(window).on("resize", ChevRes.debounce(function(){
+                ChevRes.resizeEevents();
+            }, 250));
             // Expanding Images
             $(".expanding-image-item").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
@@ -161,6 +213,7 @@
             this.heroSlider();
             this.waypoint();
             this.propertySlider();
+            this.miniGridGallery();
             this.YoutubeVideosFrames();
             this.events();
         }

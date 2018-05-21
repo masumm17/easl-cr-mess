@@ -7,6 +7,8 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/js-img-slider";
+
 @import "modules/hero-slider";
 @import "modules/sticky-side-nav";
 @import "modules/title-subtitle";
@@ -17,6 +19,7 @@
 @import "modules/fixed-width-grid";
 @import "modules/full-width-grid";
 @import "modules/expanding-images";
+@import "modules/mini-grid-gallery";
 
 @import "layout/grid";
 

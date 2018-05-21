@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 trait CR_VcE_Common_Metods {
+	protected $module_settings;
 	/**
 	* @return mixed
 	*/
@@ -11,6 +12,12 @@ trait CR_VcE_Common_Metods {
 		$file_name = str_replace('cr_', '', $this->shortcode);
 		$file_name = strtolower($file_name);
 		return str_replace( '_', '-', $file_name );
+	}
+	public function load_settings() {
+		// Inidividual module can set
+	}
+	public function get_module_setting($key = false) {
+		return isset($this->module_settings[$key]) ? $this->module_settings[$key] : '';
 	}
 	/**
 	* Find html template for shortcode output.
@@ -63,9 +70,19 @@ trait CR_VcE_Common_Metods {
 class CR_VcE_Shortcode extends WPBakeryShortCode {
 	use CR_VcE_Common_Metods;
 	
+	public function __construct( $settings ) {
+		$this->load_settings();
+		parent::__construct( $settings );
+	}
+	
 }
 
 
 class CR_VcE_Shortcode_Container extends WPBakeryShortCodesContainer {
 	use CR_VcE_Common_Metods;
+	
+	public function __construct( $settings ) {
+		$this->load_settings();
+		parent::__construct( $settings );
+	}
 }
