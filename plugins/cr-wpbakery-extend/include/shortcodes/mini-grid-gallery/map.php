@@ -54,7 +54,7 @@ return array(
 				'param_name' => 'col2_blur',
 				'value' => '',
 				'param_holder_class' => 'vc_col-sm-6',
-				'description' => __( 'Set column 2 Image blur amount(0-100).', 'crvc_extension' ),
+				'description' => __( 'Set column 2 Image blur amount in px. Default 5.', 'crvc_extension' ),
 				'admin_label' => false,
 				'group' => __( 'Collumn 2', 'crvc_extension' ),
 			),

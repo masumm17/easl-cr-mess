@@ -149,6 +149,18 @@
                 }
             });
         },
+        lightbox: function() {
+            $(".cr-fancybox-minimum").fancybox({
+                infobar: false,
+                loop: true,
+                //toolbar: false,
+                buttons: ["close"],
+                animationDuration: 500,
+                transitionEffect: "fade",
+                transitionDuration: 500
+                
+            });
+        },
         miniGalleryGridResize: function() {
             if (typeof this.Storage.MiniGridGalleries === 'undefined'){
                 return;
@@ -230,6 +242,7 @@
             this.waypoint();
             this.propertySlider();
             this.miniGridGallery();
+            this.lightbox();
             this.YoutubeVideosFrames();
             this.events();
         }

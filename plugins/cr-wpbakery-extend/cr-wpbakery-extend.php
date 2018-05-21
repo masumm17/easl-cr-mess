@@ -211,10 +211,13 @@ class CR_VcE_Manager {
 		wp_register_script('slick', $this->asset_url( 'library/slick/slick.min.js' ), array('jquery'), NULL, true);
 		wp_register_style('slick', $this->asset_url( 'library/slick/slick.css'), array(), NULL);
 		
+		wp_register_script('fancybox', $this->asset_url( 'library/fancybox/jquery.fancybox.min.js' ), array('jquery'), NULL, true);
+		wp_register_style('fancybox', $this->asset_url( 'library/fancybox/jquery.fancybox.css'), array(), NULL);
+		
 		wp_register_script('js-img-slider', $this->asset_url( 'library/js-img-slider/js-img-slider.min.js' ), array('jquery'), NULL, true);
 		
-		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider'), NULL, true);
-		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('slider-revolution', 'slick'), NULL);
+		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'fancybox', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider'), NULL, true);
+		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('fancybox', 'slider-revolution', 'slick'), NULL);
 		
 		wp_enqueue_style('cr-wpb');
 		wp_enqueue_script('cr-wpb');

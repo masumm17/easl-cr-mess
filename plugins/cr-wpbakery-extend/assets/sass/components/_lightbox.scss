@@ -1,0 +1,54 @@
+.fancybox {
+    &-slide {
+        &--image {
+            padding: 0;
+        }
+    }
+    &-navigation {
+        
+    }
+    &-button{
+        &--close {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-image: url('../images/lightbox-close.png');
+            top: 2.4rem;
+            right: 3.2rem;
+            position: absolute;
+            svg {
+                display: none;
+            }
+        } 
+    }
+    &-navigation &-button {
+        background-color: rgba($color-black, .86);
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 10.8rem;
+        height: 11.2rem;
+        padding: 0;
+        transition: all .5s!important;
+        svg {
+            display: none;
+        }
+        &--arrow_right {
+            background-image: url('../images/lightbox-next.png');
+            right: 0;
+            &:hover {
+                background-position: 70% center;
+            }
+        }
+        &--arrow_left {
+            background-image: url('../images/lightbox-prev.png');
+            left: 0;
+            &:hover {
+                background-position: 30% center;
+            }
+        }
+    }
+    &-is-open &-bg {
+        opacity: 1;
+        background-color: rgba($color-black, .9);
+    }
+}
