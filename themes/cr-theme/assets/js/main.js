@@ -45,8 +45,8 @@
         },
         resetMenuProps: function() {
             this.$menu.find(".cr-menu-level-1.cr-menu-level-inline").css({
-                "left": auto,
-                "right": auto
+                "left": "auto",
+                "right": "auto"
             });
         },
         setMenuProp: function() {
@@ -92,14 +92,11 @@
             }
         },
         scrollFooter: function() {
-            if(this.$footer.hasClass('cr-animate-footer')){
-                return false;
-            }
-            var footerTop = this.$footerLine.offset().top - this.$footer.outerHeight();
-            if(this.vp.scrollTop > footerTop + 50) {
-                !this.$footer.hasClass('cr-animate-footer') && this.$body.addClass('cr-animate-footer');
+            var footerTop = this.$footerLine.offset().top + this.$footer.outerHeight() - 100 ;
+            if( (this.vp.scrollTop + this.vp.height) > footerTop) {
+                !this.$body.hasClass('cr-animate-footer') && this.$body.addClass('cr-animate-footer');
             }else{
-                this.$footer.hasClass('cr-animate-footer') && this.$body.removeClass('cr-animate-footer');
+                this.$body.hasClass('cr-animate-footer') && this.$body.removeClass('cr-animate-footer');
             }
         },
         scrollEvents: function() {
@@ -108,7 +105,7 @@
             this.scrollFooter();
         },
         resizeFooter: function() {
-            var h = this.$footer.outerHeight();
+            var h = this.$footer.outerHeight(true);
             this.$body.css({
                 "padding-bottom": h + "px"
             });
@@ -126,9 +123,11 @@
             $(".cr-menu-level-1 > li").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings("li").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
-                console.log($(this));
                 $(this).removeClass("on-hover").siblings("li").removeClass("not-hover");
             });
+            $(window).on("load", $.proxy(function(){
+                this.resizeFooter();
+            }, this));
         },
         init: function() {
             this.setViewPort();
