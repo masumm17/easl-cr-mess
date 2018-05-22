@@ -1023,11 +1023,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .expanding-images-col-5 .expanding-image-item.not-hover {
-	width: 15%;
+	width: 16%;
 }
 
 .expanding-images-col-5 .expanding-image-item.on-hover {
-	width: 40%;
+	width: 36%;
 }
 
 .mini-gallery-con {
