@@ -60,6 +60,7 @@
             flex-wrap: nowrap;
             align-items: stretch;
             justify-content: flex-start;
+            z-index: 5;
             &.cr-menu-level-full {
                 left: 0;
                 right: 0;
