@@ -234,8 +234,8 @@ class MHM_Map_builder {
 						<td><label for="mhmmb-mf-filter">Filter</label></td>
 						<td>
 							<select id="mhmmb-mf-filter">
-							<% for(var i=0; i < filterdd.length; i++) { %>
 								<option value="">Select...</option>
+							<% for(var i=0; i < filterdd.length; i++) { %>
 								<option value="<%= filterdd[i].name %>" <% if(filterdd[i].name === filter){ %> selected="selected"<% } %>><%= filterdd[i].label %></option>
 							<% } %>
 						</td>
