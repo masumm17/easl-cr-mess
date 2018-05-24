@@ -1,0 +1,156 @@
+
+#mhm-action-buttons {
+    padding: 10px 8px 35px;
+    background: #ededed;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+#mhm-action-buttons .button {
+    margin-right: 10px;
+}
+#mhm-bdone, #mhm-mdone  {
+    right: 78px;
+    position: absolute;
+}
+#mhm-bcancel, #mhm-mcancel {
+    position: absolute;
+    right: 0;
+}
+#mhm-bcancel, #mhm-bdone, #mhm-mcancel, #mhm-mdone {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    transition: all .5s;
+}
+.mhm-setting-center #mhm-bcancel, 
+.mhm-setting-center #mhm-bdone,
+.mhm-setting-marker #mhm-mcancel, 
+.mhm-setting-marker #mhm-mdone {
+    visibility: visible;
+    opacity: 1;
+}
+#mhm-editor-form {
+    background: #fff;
+    padding: 15px;
+    position: absolute;
+    left: 50%;
+    top: 1px;
+    width: 440px;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all .3s;
+}
+.mhm-editor-shown #mhm-editor-form {
+    visibility: visible;
+    opacity: 1;
+}
+#mhm-editor-form table {
+    width: 100%;
+} 
+#mhm-editor-form table td {
+    vertical-align: top;
+}
+#mhm-editor-form table td:first-child {
+    width: 90px;
+    padding-right: 5px;
+}
+#mhm-editor-form input[type="text"],
+#mhm-editor-form input[type="url"],
+#mhm-editor-form textarea {
+    width: 100%;
+    display: block;
+    margin-bottom: 8px;
+}
+#mhm-map-container {
+    position: relative;
+    z-index: 1;
+    height: 90vh;
+    max-height: 768px;
+    border-top: 1px solid #f9f9f9;
+}
+.mhmmb-upload {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.mhm-editor-shown #mhm-map-container {
+    position: relative;
+}
+.mhm-setting-center #mhm-action-buttons::after,
+.mhm-editor-shown #mhm-action-buttons::after,
+.mhm-setting-marker #mhm-action-buttons::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+}
+.mhmmb-f-buttons td:last-child {
+    padding-top: 15px;
+}
+#mhm-filter-delete {
+}
+.mhm-form-new #mhm-filter-delete,.mhm-form-new #mhm-marker-delete  {
+    display: none;
+}
+
+
+#mhm-filter-icons-wrapper {
+    position: relative;
+    z-index: 2;
+}
+#mhm-filter-icons {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-45%);
+    transition: opacity .35s;
+}
+.mhm-setting-center #mhm-filter-icons,
+.mhm-setting-marker #mhm-filter-icons {
+    opacity: 0;
+    visibility: hidden;
+}
+#mhm-filter-icons .mhmmb-filter-icon {
+    width: 64px;
+    height: auto;
+    display: inline-block;
+    margin: 0px 3px;
+    cursor: pointer;
+}
+.mhmmb-filter-icon img {
+    max-width: 100%;
+    height: auto;
+}
+
+.mhm-editor-shown #mhm-map-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
+}
+
+.mhm-has-prev {
+    float: right;
+}
+.mhmbb-upload-prev {
+    float: left;
+    margin: 0;
+}
+.mhmbb-upload-prev img {
+    max-height: 112px;
+    max-width: 112px;
+}

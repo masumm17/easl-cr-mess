@@ -78,6 +78,7 @@ class CR_VcE_Manager {
 		//Load files
 		require $this->path('HELPERS_DIR', 'helper.php');
 		require $this->path('APP_ROOT', 'include/customizer/customizer.php');
+		require $this->path('APP_ROOT', 'include/map-builder/map-builder.php');
 		// Add hooks
 		add_action( 'plugins_loaded', array(
 			$this,
@@ -298,6 +299,10 @@ class CR_VcE_Manager {
 			'name' => __('Mini Grid Gallery', 'crvc_extension'),
 			'file' => $sc_dir . '/mini-grid-gallery/class-mini-grid-gallery.php',
 		);
+		$this->registered_shortcodes['cr_map'] = array(
+			'name' => __('Map', 'crvc_extension'),
+			'file' => $sc_dir . '/map/class-map.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -320,6 +325,7 @@ class CR_VcE_Manager {
 			'cr_expanding_images',
 			'cr_expanding_image_item',
 			'cr_mini_grid_gallery',
+			'cr_map',
 		);
 	}
 	
