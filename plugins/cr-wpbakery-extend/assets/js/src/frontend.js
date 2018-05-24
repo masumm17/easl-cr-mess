@@ -222,6 +222,150 @@
                 }
             });
         },
+        maps: function() {
+            if(typeof crMapData === "undefined" ||  !crMapData.KEY){
+                return;
+            }
+            var map_count = 0;
+            ChevRes.Storage.MapData = {
+                appKey: crMapData.KEY,
+                maps: {}
+            };
+            ChevRes.Storage.Maps = {};
+            $(".cr-map").each(function(){
+                var id = $(this).attr("id");
+                if(id && crMapData && crMapData[id]){
+                    map_count++;
+                    ChevRes.Storage.MapData.maps[id] = crMapData[id];
+                }
+            });
+            if(typeof google === "undefined" || typeof google.maps === "undefined"){
+                if(map_count){
+                    var tag = document.createElement('script');
+                    tag.async = true;
+                    tag.defer = true;
+                    tag.src = "https://maps.googleapis.com/maps/api/js?key=" + ChevRes.Storage.MapData.appKey + "&callback=crInitMaps";
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                }
+            }else{
+                map_count && this.initMaps();
+            }
+        },
+        initMaps: function() {
+            if (typeof ChevRes.Storage.MapData === 'undefined'){
+                return;
+            }
+            for(var mapID in ChevRes.Storage.MapData.maps) {
+                ChevRes.createMap(mapID);
+            }
+            $(".cr-map-filter-icon").on("click", function(e){
+                e.preventDefault();
+                var $t = $(this), filterID = $t.data("filtername"), mapID = $t.data("mapid"), show = $t.hasClass("cr-map-marker-hidden");
+                if(!mapID || !filterID){
+                    return;
+                }
+                show ? $t.removeClass("cr-map-marker-hidden"): $t.addClass("cr-map-marker-hidden");
+                
+                if(ChevRes.Storage.Maps[mapID] === "undefined"){
+                    return;
+                }
+                for(var i=0; i < ChevRes.Storage.Maps[mapID].markers.length; i++) {
+                    var fid = ChevRes.Storage.Maps[mapID].markers[i].crFilterID;
+                    if("nofilter" === fid){
+                        continue;
+                    }
+                    if(filterID !== fid){
+                        show ? ChevRes.Storage.Maps[mapID].markers[i].setMap(ChevRes.Storage.Maps[mapID].map):ChevRes.Storage.Maps[mapID].markers[i].setMap(null);
+                    }
+                    
+                }
+                
+            });
+        },
+        markerContent: function(marker) {
+            var html = "";
+            html += '<div class="cr-map-infobox">';
+                html += '<div class="cr-map-infobox-inner">';
+                    html += '<h4 class="cr-map-infobox-title">' + marker.title + '</h4>';
+                    html += '<div class="cr-map-infobox-text-image"><div class="cr-map-infobox-text-image-inner">';
+                    if(marker.thumb) {
+                        html += '<div class="cr-map-infobox-image">';
+                        html += '<a href="' + marker.full_image + '"><img alt="" src="' + marker.thumb + '"/></a>';
+                        html += '</div>';
+                    }
+                    if(marker.text) {
+                        html += '<div class="cr-map-infobox-text">' 
+                            html += '<p>' + marker.text + '</p>';
+                            if(marker.cta_title) {
+                                html += '<div class="cr-map-infobox-cta-wrap">';
+                                    html += '<a class="cr-button-bordered" href="' + marker.cta_url + '"';
+                                    if(marker.cta_nt === "yes") {
+                                        html += ' target="_blank"';
+                                    }
+                                    html += '>' + marker.cta_title + '</a>';
+                                html += '</div>';
+                            }
+                        html += '</div>';
+                    }
+                    html += '</div></div>';
+                html += '</div>';
+            html += '</div>';
+            return html;
+        },
+        closeMapInfoboxes: function(mapID, index) {
+            if(typeof ChevRes.Storage.Maps[mapID] === "undefined") {
+                return;
+            }
+            var markers = ChevRes.Storage.Maps[mapID].markers;
+            for(var i=0; i < markers.length; i++){
+                if(markers[i].crMarkerIndex !== index) { 
+                    markers[i].crInfoWindow.close();
+                    markers[i].crInfoOpened = false;
+                }
+            }
+        },
+        createMap: function(mapID) {
+            //ChevRes.Storage.Maps;
+            var mapData = ChevRes.Storage.MapData.maps[mapID];
+            ChevRes.Storage.Maps[mapID] = {
+                map: null,
+                markers: []
+            };
+            var map = new google.maps.Map(document.getElementById(mapID), {
+                center: mapData.center,
+                zoom: 12
+            });
+            for(var i = 0; i < mapData.markers.length; i++) {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    draggable: false,
+                    position: {lat: mapData.markers[i].lat, lng: mapData.markers[i].lng},
+                    icon: mapData.markers[i].icon,
+                });
+                marker.crMapID = mapID;
+                marker.crMarkerIndex = i;
+                marker.crFilterID = mapData.markers[i].filter ? mapData.markers[i].filter : "nofilter";
+                ChevRes.Storage.Maps[mapID].markers.push(marker);
+                marker.crInfoWindow = new google.maps.InfoWindow({
+                    content: this.markerContent(mapData.markers[i]),
+                    maxWidth: 425,
+                    setZIndex: 10
+                });
+                marker.crInfoOpened = false;
+                marker.addListener('click', function() {
+                    ChevRes.closeMapInfoboxes(this.crMapID, this.crMarkerIndex);
+                    if(this.crInfoOpened){
+                        this.crInfoWindow.close();
+                        this.crInfoOpened = false;
+                    }else{
+                       this.crInfoWindow.open(this.getMap(), this); 
+                       this.crInfoOpened = true;
+                    }
+                });
+            }
+            ChevRes.Storage.Maps[mapID].map = map;
+        },
         resizeEevents: function() {
             this.miniGalleryGridResize();
         },
@@ -244,6 +388,7 @@
             this.miniGridGallery();
             this.lightbox();
             this.YoutubeVideosFrames();
+            this.maps();
             this.events();
         }
     };
@@ -255,6 +400,9 @@
             ChevRes.createYTPlayer(playerID);
         }
     };
+    window.crInitMaps = function() {
+        ChevRes.initMaps();
+    }
     $(document).ready(function(){
         ChevRes.init();
     });

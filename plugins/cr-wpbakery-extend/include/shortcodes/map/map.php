@@ -2,7 +2,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+$maps_dropdown = array('Select a map' => '');
+$map_posts = get_posts(array(
+	'post_type' => 'cr_map',
+	'posts_per_page' => -1,
+	'orderby' => 'title',
+	'order' => 'ASC',
+));
 
+if($map_posts){
+	foreach ($map_posts as $map) {
+		$maps_dropdown[ get_the_title($map)] = $map->ID;
+	}
+}
 return array(
 	'name' => __( 'Map', 'crvc_extension' ),
 	'base' => 'cr_map',
@@ -29,8 +41,15 @@ return array(
 				'description' => __( 'Enter optional subtitle', 'crvc_extension' ),
 				'admin_label' => true,
 			),
+			array(
+				'type' => 'dropdown',
+				'heading' => __( 'Select a Map', 'crvc_extension' ),
+				'param_name' => 'map',
+				'value' => $maps_dropdown,
+				'description' => __( 'Select a map.', 'crvc_extension' ),
+			),
 		),
 		cr_vce_paramps_common_group()
 	),
-	'php_class_name' => 'CR_VcE_Map'
+	'php_class_name' => 'CR_VcE_Sc_Map'
 );

@@ -1,0 +1,84 @@
+.cr-map {
+    &-con {
+        position: relative;
+        margin-top: 6.6rem;
+    }
+    &-filter {
+        &s{
+            height: 1px;
+            position: absolute;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        &s-list {
+            display: inline-block;
+            list-style: none;
+            margin-top: -45px;
+            @include clearfix;
+        }
+        &-icon {
+            float: left;
+            width: 9.4rem;
+            margin: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    &-infobox {
+        padding: 1rem 0 1rem 2rem;
+        width: 40.5rem;
+        
+        &-title {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            line-height: 1em;
+            color: $color-gray-1;
+            margin: 0 0 1.2rem;
+        }
+        &-text-image {
+            display: table;
+            width: 100%;
+            &-inner {
+                display: table-row;
+            }
+        }
+        &-image {
+            width: 14rem;
+            padding-right: 1.8rem;
+            display: table-cell;
+            padding-top: 3px;
+            vertical-align: top;
+            img {
+                max-width: 100%!important;
+                height: auto;
+            }
+        }
+        &-text {
+            vertical-align: top;
+            display: table-cell;
+            p {
+                font-size: 1.1rem;
+                line-height: 1.6em;
+                color: $color-gray-1;
+                margin: 0 0 2rem;
+            }
+        }
+        &-cta-wrap {
+            text-align: right;
+            a.cr-button-bordered {
+                font-size: 1rem;
+                padding: 1.1rem 1.6rem 1rem;
+            }
+        }
+    }
+    height: calc((100vh - 70px));
+    max-height: 55rem;
+}
