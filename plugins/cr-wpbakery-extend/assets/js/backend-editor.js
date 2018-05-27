@@ -130,4 +130,12 @@
     window.CrScExpandingImageItemView = window.CrScItemView.extend({
 
     });
+    // Property Gallery Container View
+    window.CrScGalleryView = window.CrScContainerView.extend({
+        maxShortcodes: 40,
+    });
+    // Property Gallery Item View
+    window.CrScGalleryItemView = window.CrScItemView.extend({
+        
+    });
 })(jQuery);

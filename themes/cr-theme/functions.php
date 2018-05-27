@@ -36,7 +36,9 @@ if ( ! function_exists( 'crt_setup' ) ) :
 		add_image_size('cr_default', 1360);
 		foreach ($image_sizes as $size_name => $size_data ) {
 			add_image_size($size_name, $size_data['width'], $size_data['height']);
-			add_image_size($size_name . '_x', $size_data['width'], $size_data['height'], true);
+			if(empty($size_data['nocrop'])){
+				add_image_size($size_name . '_x', $size_data['width'], $size_data['height'], true);
+			}
 		}
 	}
 endif;

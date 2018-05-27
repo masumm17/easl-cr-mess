@@ -87,9 +87,15 @@ function crt_get_images_sizes() {
 		'name' => 'Full Width'
 	);
 	
-	$base = 'cr_';
 	// Default
 	
+	foreach ($cols as $col) {
+		$sizes["flh_col{$col[0]}-{$col[1]}"] = array(
+			'width' => absint(ceil($col[0] * $max_width / $col[1] )),
+			'name' => "Flexible Height Column {$col[0]}/$col[1]",
+			'nocrop' => true,
+		);
+	}
 	// Full width row
 	$row_height = $max_height;
 	$row_base = "fw";

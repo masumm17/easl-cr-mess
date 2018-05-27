@@ -169,6 +169,31 @@
                 ChevRes.Storage.MiniGridGalleries[sliderID].reload();
             }
         },
+        gallery: function() {
+            if("undefined" === typeof $.fn.masonry){
+                return;
+            }
+            $('.cr-gallery-isotope').each(function() {
+                var $gallery = $(this);
+                $gallery.waitForImages(function(){
+                    $gallery.on("layoutComplete", function(e) {
+                        $(".cr-gallery-item", $(this)).waypoint(function() {
+                                $(this).addClass("cr_start_animation");
+                            }, {
+                                offset: '75%',
+                                triggerOnce: true
+                        });
+                    }).masonry({
+                        columnWidth: ".cr-gallery-item",
+                        percentPosition: true,
+                        itemSelector: ".cr-gallery-item",
+                        //horizontalOrder: true,
+                        resize: true
+                    });
+                });
+                    
+            });
+        },
         YoutubeVideosFrames: function() {
             var video_count = 0;
             
@@ -204,7 +229,7 @@
                         }, {
                             offset: '75%',
                             triggerOnce: !0
-                        })
+                        });
                     },
                     "onStateChange": function(e){
                         if (e.data === YT.PlayerState.PLAYING) {
@@ -386,6 +411,7 @@
             this.waypoint();
             this.propertySlider();
             this.miniGridGallery();
+            this.gallery();
             this.lightbox();
             this.YoutubeVideosFrames();
             this.maps();

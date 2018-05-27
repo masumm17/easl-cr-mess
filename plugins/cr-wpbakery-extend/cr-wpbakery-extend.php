@@ -217,7 +217,10 @@ class CR_VcE_Manager {
 		
 		wp_register_script('js-img-slider', $this->asset_url( 'library/js-img-slider/js-img-slider.min.js' ), array('jquery'), NULL, true);
 		
-		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'fancybox', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider'), NULL, true);
+		wp_register_script('waitforimages', $this->asset_url( 'library/jquery.waitforimages.min.js' ), array('jquery'), NULL, true);
+		wp_register_script('cr-masonry', $this->asset_url( 'library/masonry.pkgd.min.js' ), array('jquery'), NULL, true);
+		
+		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'waitforimages', 'fancybox', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider', 'cr-masonry'), NULL, true);
 		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('fancybox', 'slider-revolution', 'slick'), NULL);
 		
 		wp_enqueue_style('cr-wpb');
@@ -303,6 +306,14 @@ class CR_VcE_Manager {
 			'name' => __('Map', 'crvc_extension'),
 			'file' => $sc_dir . '/map/class-map.php',
 		);
+		$this->registered_shortcodes['cr_gallery'] = array(
+			'name' => __('Gallery', 'crvc_extension'),
+			'file' => $sc_dir . '/gallery/class-gallery.php',
+		);
+		$this->registered_shortcodes['cr_gallery_item'] = array(
+			'name' => __('Gallery Item', 'crvc_extension'),
+			'file' => $sc_dir . '/gallery-item/class-gallery-item.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -326,6 +337,8 @@ class CR_VcE_Manager {
 			'cr_expanding_image_item',
 			'cr_mini_grid_gallery',
 			'cr_map',
+			'cr_gallery',
+			'cr_gallery_item',
 		);
 	}
 	
