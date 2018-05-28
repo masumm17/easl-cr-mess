@@ -30,7 +30,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 }
 
 if(CR_VcE_Sc_Gallery::$items_count > 0):
-	//$this->enqueue_scritps();
+	CR_VcE_Sc_Gallery::$count_instance++;
 ?>
 <section class="cr-module-wrap cr-gallery-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php if($title || $subtitle): ?> 

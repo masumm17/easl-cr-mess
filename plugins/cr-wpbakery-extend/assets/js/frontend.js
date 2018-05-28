@@ -1,4 +1,20 @@
 (function($){
+    function escapeHtml(string) {
+        var entityMap = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+          "/": "&#x2F;",
+          "`": "&#x60;",
+          "=": "&#x3D;"
+        };
+
+        return String(string).replace(/[&<>"'`=\/]/g, function(s) {
+          return entityMap[s];
+        });
+    }
     window.ChevRes = {
         defaults: {
             YT: {
@@ -150,15 +166,100 @@
             });
         },
         lightbox: function() {
+            if("undefined" === typeof $.fn.fancybox){
+                return;
+            }
+            var shareTpl =  '' + 
+                '<li>' + 
+                    '<a target="_blank" class="cr-lightbox-share-icon-pin" href="https://www.pinterest.com/pin/create/button/?url={{url}}&description={{descr}}&media={{media}}"></a>' +
+                '</li><li>' +     
+                    '<a target="_blank" class="cr-lightbox-share-icon-tw" href="https://twitter.com/intent/tweet?url={{url}}&text={{descr}}"></a>' + 
+                '</li><li>' +  
+                    '<a target="_blank" class="cr-lightbox-share-icon-fb" href="https://www.facebook.com/sharer/sharer.php?u={{url}}"></a>' +
+                '</li>';
+            $.fancybox.defaults.btnTpl.crshare = '<div class="cr-lightbox-share">' +
+                '<button data-fancybox-crshare class="fancybox-button fancybox-button--crshare cr-lightbox-share-button" title="Share"></button>' + 
+                '<ul class="cr-lightbox-share-icons">' +
+                   
+                '</ul>' + 
+            '</div>';
             $(".cr-fancybox-minimum").fancybox({
                 infobar: false,
                 loop: true,
+                idleTime: 10,
                 //toolbar: false,
                 buttons: ["close"],
                 animationDuration: 500,
                 transitionEffect: "fade",
                 transitionDuration: 500
                 
+            });
+            $(".cr-gallery-slider").fancybox({
+                infobar: true,
+                loop: true,
+                idleTime: 100,
+                buttons: ["close", "crshare"],
+                animationDuration: 500,
+                transitionEffect: "fade",
+                transitionDuration: 500,
+                btnTpl: {
+                    arrowLeft:
+                        '<a data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}" href="javascript:;">' +
+                        '<svg width="32" height="32" viewBox="0 0 64 64">' + 
+                            '<path id="arrow-left-5" d="M48 10.667q1.104 0 1.885 0.781t0.781 1.885-0.792 1.896l-16.771 16.771 16.771 16.771q0.792 0.792 0.792 1.896t-0.781 1.885-1.885 0.781q-1.125 0-1.896-0.771l-18.667-18.667q-0.771-0.771-0.771-1.896t0.771-1.896l18.667-18.667q0.771-0.771 1.896-0.771zM32 10.667q1.104 0 1.885 0.781t0.781 1.885-0.792 1.896l-16.771 16.771 16.771 16.771q0.792 0.792 0.792 1.896t-0.781 1.885-1.885 0.781q-1.125 0-1.896-0.771l-18.667-18.667q-0.771-0.771-0.771-1.896t0.771-1.896l18.667-18.667q0.771-0.771 1.896-0.771z" />' +
+                        '</svg>' + 
+                        '<span></span>' +
+                        "</a>",
+
+                    arrowRight:
+                        '<a data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}" href="javascript:;">' +
+                        '<svg width="32" height="32" viewBox="0 0 64 64">' +
+                            '<path d="M29.333 10.667q1.104 0 1.875 0.771l18.667 18.667q0.792 0.792 0.792 1.896t-0.792 1.896l-18.667 18.667q-0.771 0.771-1.875 0.771t-1.885-0.781-0.781-1.885q0-1.125 0.771-1.896l16.771-16.771-16.771-16.771q-0.771-0.771-0.771-1.896 0-1.146 0.76-1.906t1.906-0.76zM13.333 10.667q1.104 0 1.875 0.771l18.667 18.667q0.792 0.792 0.792 1.896t-0.792 1.896l-18.667 18.667q-0.771 0.771-1.875 0.771t-1.885-0.781-0.781-1.885q0-1.125 0.771-1.896l16.771-16.771-16.771-16.771q-0.771-0.771-0.771-1.896 0-1.146 0.76-1.906t1.906-0.76z" />' + 
+                        '</svg>' + 
+                        '<span></span>' +
+                        "</a>"
+                },
+                caption: function(instance, item) {
+                    return $(this).closest(".cr-gallery-item-inner").find(".cr-gallery-item-caption").html();
+                },
+                afterShow: function(instance, item) {
+                    var $container = instance.$refs.container,
+                        url,
+                        caption,
+                        current = instance.current || null,
+                        $nextButton = $("[data-fancybox-next]"),
+                        $prevButton = $("[data-fancybox-prev]");
+                    
+                    if ($.type(current.opts.share.url) === "function") {
+                        url = current.opts.share.url.apply(current, [instance, current]);
+                    }
+                    caption = instance.$caption ? encodeURIComponent(instance.$caption.find(".cr-lightbox-caption-title").text()) : "";
+                    var shareTplParsed = shareTpl.replace(/\{\{media\}\}/g, current.type === "image" ? encodeURIComponent(current.src) : "")
+                        .replace(/\{\{url\}\}/g, encodeURIComponent(url))
+                        .replace(/\{\{url_raw\}\}/g, escapeHtml(url))
+                        .replace(/\{\{descr\}\}/g, caption);
+                    $container.find(".cr-lightbox-share-icons").html(shareTplParsed);
+                    if(instance.group.lengthn < 2){
+                        return;
+                    }
+                    var currPos = instance.currPos % instance.group.length, prevPos, nextPos;
+                    if(currPos === 0) {
+                        prevPos = instance.group.length - 1;
+                        nextPos = 1;
+                    } else if(currPos < 0) {
+                        prevPos = instance.group.length + currPos - 1;
+                        nextPos = (instance.group.length + currPos + 1) % instance.group.length;
+                    } else {
+                        prevPos = currPos - 1;
+                        nextPos = (currPos + 1) % instance.group.length;
+                    }
+                    
+                    var prevImgSrc, nextImgSrc;
+                    prevImgSrc = instance.group[prevPos].opts.$orig.closest(".cr-gallery-item-inner").find('.cr-gallery-item-image').attr("src");
+                    nextImgSrc = instance.group[nextPos].opts.$orig.closest(".cr-gallery-item-inner").find('.cr-gallery-item-image').attr("src");
+                    $prevButton.find("span").css("background-image", "url('" + prevImgSrc + "')");
+                    $nextButton.find("span").css("background-image", "url('" + nextImgSrc + "')");
+                }
             });
         },
         miniGalleryGridResize: function() {

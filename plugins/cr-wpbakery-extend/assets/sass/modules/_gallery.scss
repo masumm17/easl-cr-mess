@@ -30,7 +30,7 @@
             overflow: hidden;
             .cr-has-overlay &::after {
                 content: "";
-                background-color: rgba($color-black, .68);
+                background-color: rgba($color-black, .76);
                 position: absolute;
                 left: 0;
                 top: 0;

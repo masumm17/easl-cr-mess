@@ -1,4 +1,7 @@
 .fancybox {
+    &-toolbar {
+        position: static;
+    }
     &-slide {
         &--image {
             padding: 0;
@@ -13,42 +16,236 @@
             height: 4rem;
             border-radius: 50%;
             background-image: url('../images/lightbox-close.png');
+            background-repeat: no-repeat;
+            background-position: center center;
             top: 2.4rem;
             right: 3.2rem;
             position: absolute;
+            z-index: 99997;
             svg {
                 display: none;
             }
-        } 
+        }
+        &--share {
+            background-color: $color-white;
+            background-image: url('../images/lightbox-share.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 9.8rem;
+            height: 7.5rem;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 99997;
+            svg {
+                display: none;
+            }
+        }
     }
     &-navigation &-button {
         background-color: rgba($color-black, .86);
-        background-repeat: no-repeat;
-        background-position: center center;
         width: 10.8rem;
         height: 11.2rem;
         padding: 0;
+        transform: translateY(-50%);
         transition: all .5s!important;
         svg {
-            display: none;
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+            top: 50%;
+            transition: fill 0.5s;
+            transform: translateY(-50%);
+            fill: #d9d9d9;
+            path {
+                fill: inherit;
+                stroke: inherit;
+                stroke-linejoin: inherit;
+                stroke-width: inherit;
+            }
+        }
+        span {
+            display: block;
+            width: 10.8rem;
+            height: 11.2rem;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat; 
+            position: absolute;
+            top: 0;
+            transform: rotateY(-90deg);
+            transition: transform 0.5s;
+            backface-visibility: hidden;
+            z-index: 1;
+        }
+        &:hover {
+            background-color: $color-white;
+            svg {
+                fill: $color-gray-1;
+            }
         }
         &--arrow_right {
-            background-image: url('../images/lightbox-next.png');
             right: 0;
+            span {
+                transform-origin: 100% 50%;
+                right: 100%;
+            }
             &:hover {
-                background-position: 70% center;
+                span {
+                    transform: rotateY(0deg);
+                }
             }
         }
         &--arrow_left {
-            background-image: url('../images/lightbox-prev.png');
             left: 0;
+            svg {
+            }
+            span {
+                transform-origin: 0 50%;
+                left: 100%;
+            }
             &:hover {
-                background-position: 30% center;
+                span {
+                    transform: rotateY(0deg);
+                }
             }
         }
     }
     &-is-open &-bg {
         opacity: 1;
         background-color: rgba($color-black, .9);
+    }
+    &-caption {
+        background-color: rgba(0,0,0,.86);
+        border-left: 1px solid rgba(158,158,158, .24);
+        left: 98px;
+        right: 98px;
+        padding: 1.5rem 0;
+        
+        display: flex;
+        
+        &::before, &::after {
+            display: none;
+        }
+    }
+    &-infobar {
+        background-color: rgba(0,0,0,.86);
+        top: auto;
+        left: 0;
+        bottom: 0;
+        height: 7.5rem;
+        line-height: 7.5rem;
+        width: 9.8rem;
+        color: $color-white;
+        font-family: 'Playfair Display', serif;
+        font-size: 2.4rem;
+        align-items: center;
+        z-index: 99997;
+        pointer-events: auto;
+        padding: 0;
+        mix-blend-mode: initial;
+    }
+}
+.cr-lightbox {
+    &-caption {
+        padding: 0 3rem;
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &-title {
+            color: $color-white;
+            font-weight: 400;
+            font-size: 1.8rem;
+            line-height: 1em;
+            margin: 0;
+        }
+        &-subtitle {
+            color: $color-base-secondary;
+            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 1em;
+            margin: 1rem 0 0;
+        }
+        &-ctas {
+            list-style: none;
+            text-align: right;
+            li {
+                display: inline-block;
+                margin-right: 1.5rem;
+                a {
+                    &, &:link, &:visited {
+                        padding: 0 3.6rem;
+                        height: 4.5rem;
+                        line-height: 4.5rem;
+                        white-space: nowrap;
+                    }
+                        
+                    &:hover, &:active {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+    &-share {
+        width: 9.8rem;
+        height: 7.5rem;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 99997;
+        &-button {
+            background-color: $color-white;
+            background-image: url('../images/lightbox-share.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-left: 1px solid rgba($color-white, .75);
+            border-top: 1px solid rgba($color-white, .75);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+        &-icon {
+            &s {
+                background-color: rgba($color-white, .86);
+                border-left: 1px solid rgba($color-white, .75);
+                border-top: 1px solid rgba($color-white, .75);
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                list-style: none;
+                z-index: 1;
+                transform: translateY(0);
+                transition: all .65s;
+                li {
+                    a {
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        display: block;
+                        cursor: pointer;
+                        height: 5.8rem;
+                        width: 9.8rem;
+                    }
+                }
+            }
+            &-fb {
+                background-image: url('../images/social-media/cr-fb-icon.svg');
+            }
+            &-tw {
+                background-image: url('../images/social-media/cr-twitter-icon.svg');
+            }
+            &-pin {
+                background-image: url('../images/social-media/cr-pinterest-icon.svg');
+            }
+        }
+        &:hover &-icons {
+            transform: translateY(-100%);
+        }
     }
 }
