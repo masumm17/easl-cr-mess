@@ -1,0 +1,69 @@
+.accommodations{
+    &-filters {
+        &::after, &::before {
+            border: 1px solid $color-base;
+            @include color-themes($color:false, $bgcolor:false, $border-color:true, $secodary: false);
+        }
+        &-inner {
+            @each $theme-name, $theme-color in $themes-map-lightbg{
+                .theme-#{$theme-name} & {
+                    background-color: $theme-color;
+                }
+            }
+        }
+    }
+    &-item {
+        &-subtitle {
+            color: $color-base-secondary;
+            @include color-themes($color:true, $bgcolor:false, $secodary: true);
+        }
+    }
+    &-filter {
+        &-location, &-roomtype {
+            @include color-themes($color:false, $bgcolor:false, $border-color:true, $secodary: false);
+        }
+        &-selected {
+            @include color-themes($color:true, $bgcolor:false, $secodary: false);
+        }
+        &-options {
+            @each $theme-name, $theme-color in $themes-map-lightbg{
+                .theme-#{$theme-name} & {
+                    background-color: $theme-color;
+                }
+            }
+        }
+        &-arrow {
+            svg {
+                .cr-path-darrow {
+                    @each $theme-name, $theme-color in $themes-map-primary{
+                        .theme-#{$theme-name} & {
+                            fill: $theme-color;
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
+        &-options {
+            li {
+                @include color-themes($color:true, $bgcolor:false, $secodary: false);
+                &.selected-option, &:hover {
+                    color: $color-white;
+                    @include color-themes($color:false, $bgcolor:true, $secodary: false);
+                }
+            }
+        }
+        &-loader {
+            svg {
+                circle {
+                    @each $theme-name, $theme-color in $themes-map-primary{
+                        .theme-#{$theme-name} & {
+                            fill: $theme-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

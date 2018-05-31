@@ -1,3 +1,15 @@
+if (!Object.is) {
+  Object.is = function(x, y) {
+    // SameValue algorithm
+    if (x === y) { // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+     // Step 6.a: NaN == NaN
+     return x !== x && y !== y;
+    }
+  };
+}
 (function($){
     function escapeHtml(string) {
         var entityMap = {
@@ -15,6 +27,191 @@
           return entityMap[s];
         });
     }
+    function crArrayUnion(arr1, arr2) {
+        var result = [], merged = arr1.concat(arr2);
+        for(i = 0; i < merged.length; i++) {
+            if(result.indexOf(merged[i]) === -1){
+               result.push(merged[i]);
+            }
+        }
+        return result;
+    }
+    function crArrayIntersection(arr1, arr2) {
+        var result = [];
+        if(!Array.isArray(arr1) || !Array.isArray(arr2)) {
+            return false;
+        }
+        for(i = 0; i < arr1.length; i++) {
+            if(arr2.indexOf(arr1[i]) !== -1){
+               result.push(arr1[i]);
+            }
+        }
+        return result;
+    }
+    function crArrayIntersected(arr1, arr2) {
+        if(!Array.isArray(arr1) || !Array.isArray(arr2)) {
+            return false;
+        }
+        for(i = 0; i < arr1.length; i++) {
+            if(arr2.indexOf(arr1[i]) !== -1){
+               return true;
+            }
+        }
+        return false;
+    }
+    function AccommodationFilter($el) {
+        this.$el = $el;
+        this.$list = $el.find(".accommodations-list");
+        this.termsData = {};
+        this.filters = {location: -1, roomtype: -1, amenity: -1};
+        this.lastState = {location: -1, roomtype: -1, amenity: -1};
+        this.requesting = false;
+        this.init();
+    };
+    AccommodationFilter.prototype.loadData = function() {
+        var ob = this;
+        $(".accommodations-filter-options li", this.$el).each(function() {
+            var $li = $(this),
+                taxonomy = $li.data("taxonomy"),
+                id = parseInt($li.data("id")),
+                ids = '' + $li.data("ids");
+            if(id !== -1 && ids.length > 0) {
+                ids = ids.length > 0 ? ids.split(",") : [];
+                ids = $.map(ids, function(n, i) {
+                    return parseInt(n);
+                });
+                ob.termsData[id] = {
+                    id: id,
+                    ids: ids,
+                    taxonomy: taxonomy
+                };
+            }
+        });
+    };
+    AccommodationFilter.prototype.updateFiltersView = function(filterType) {
+        var toHide = [], toShow = [], restrictedIDs = [], showAll = true, counter = 0, selectedFilter = [];
+        for(var f in this.filters) {
+            if(this.filters[f]=== -1) {
+                continue;
+            }
+            counter ++;
+            showAll = false;
+            selectedFilter.push(f); 
+            if(counter === 1) {
+                restrictedIDs = this.termsData[this.filters[f]].ids;
+            }else{
+                restrictedIDs = crArrayIntersection(restrictedIDs, this.termsData[this.filters[f]].ids);
+            }
+            
+        }
+        for( var i in this.termsData) {
+            if(showAll) {
+                toShow.push('[data-id="' + this.termsData[i].id + '"]');
+                continue;
+            }
+            if(selectedFilter.length === 1 && this.termsData[i].taxonomy === selectedFilter[0]) {
+                toShow.push('[data-id="' + this.termsData[i].id + '"]');
+                continue;
+            }
+            if(this.termsData[i].taxonomy === filterType && this.filters[filterType] !== -1) {
+                continue;
+            }
+            if(!crArrayIntersected(restrictedIDs, this.termsData[i].ids)) {
+                toHide.push('[data-id="' + this.termsData[i].id + '"]');
+            } else {
+                toShow.push('[data-id="' + this.termsData[i].id + '"]');
+            }
+        }
+        toHide = $(toHide.join(","));
+        toShow = $(toShow.join(","));
+        toHide.addClass("cr-filter-hide");
+        toShow.removeClass("cr-filter-hide");
+    };
+    AccommodationFilter.prototype.events = function() {
+        var ob = this;
+        $(".accommodations-filter-selected", this.$el).on("click", function(e) {
+            var $filter = $(this).closest(".accommodations-filter");
+            $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options");
+        });
+        $(".accommodations-filter-options li", this.$el).on("click", function(e) {
+            var $li = $(this), 
+                $list = $li.closest(".accommodations-filter-options"),
+                $filter = $li.closest(".accommodations-filter"),
+                $t = $filter.find(".accommodations-filter-selected"), 
+                selectedID, filterType;
+            if($li.hasClass("selected-option")){
+                $li.removeClass("selected-option");
+                return;
+            }
+            $list.find("li").removeClass("selected-option");
+            $li.addClass("selected-option");
+            $t.find(".accommodations-filter-selected-name").html($li.text());
+            $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options");
+
+            selectedID = parseInt($li.data("id"));
+            filterType = $filter.data("type");
+            if(filterType && (typeof ob.filters[filterType] !== "undefined") ) {
+                ob.filters[filterType] = selectedID;
+                ob.updateFiltersView(filterType);
+            }
+        });
+        $(".accommodations-filter-button", this.$el).on("click", function(e) {
+            e.preventDefault();
+            if(ob.requesting) {
+                console.log("requesting in progress...");
+                return;
+            }
+            //if(JSON.stringify(ob.lastState) === JSON.stringify(ob.filters)) {
+            //    return;
+            //}
+            ob.lastState = $.extend({}, ob.filters);
+            var filterData = {};
+            filterData.action = "cr_get_accommodations";
+            if(ob.filters.location > 0) {
+                filterData.acmf_location = [ob.filters.location];
+            }
+            if(ob.filters.roomtype > 0) {
+                filterData.acmf_room_type = [ob.filters.roomtype];
+            }
+            if(ob.filters.amenity > 0) {
+                filterData.acmf_amenities = [ob.filters.amenity];
+            }
+            ob.requesting = true;
+            ob.$el.addClass("cr-ajax-loading");
+            ob.$list.html("");
+            $.ajax({
+                url: crSettings.ajaxURL,
+                method: "get",
+                data: filterData,
+                dataType: "json",
+                success: function(response){
+                    ob.requesting = false;
+                    if(!response || !response.status){
+                        console.log("Failed!");
+                        return;
+                    }
+                    if("NOTOK" === response.status){
+                        ob.$list.html(response.msg);
+                        return;
+                    }
+                    ob.$el.removeClass("cr-ajax-loading");
+                    ob.$list
+                        .html(response.html)
+                        .find(".cr-animate-when-visible")
+                        .waypoint(function(direction) {
+                            $(this).addClass("cr_start_animation");
+                        },{offset:"85%"});
+                }
+            }).fail(function() {
+                ob.requesting = false;
+                console.log("Failed!");
+            });
+        });
+    };
+    AccommodationFilter.prototype.init = function() {
+        this.loadData();
+        this.events();
+    };
     window.ChevRes = {
         defaults: {
             YT: {
@@ -312,6 +509,11 @@
                     
             });
         },
+        accommodationFilter: function() {
+           $(".accommodations-con").each(function() {
+               new AccommodationFilter($(this));
+           });
+        },
         YoutubeVideosFrames: function() {
             var video_count = 0;
             
@@ -533,6 +735,7 @@
             this.lightbox();
             this.YoutubeVideosFrames();
             this.maps();
+            this.accommodationFilter();
             this.events();
         }
     };

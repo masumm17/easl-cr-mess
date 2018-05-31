@@ -66,7 +66,7 @@ function crt_custom_image_sizes( $sizes ) {
  * Enqueue scripts and styles.
  */
 function crt_scripts() {
-	wp_enqueue_style('crt-google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700');
+	wp_enqueue_style('crt-google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700|Playfair+Display:400');
 	wp_enqueue_style( 'crt-main-style', get_template_directory_uri() . '/assets/css/main.min.css' );
 	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
 }

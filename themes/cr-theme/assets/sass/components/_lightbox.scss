@@ -1,0 +1,10 @@
+.cr-lightbox {
+    &-caption {
+        &-title {
+        }
+        &-subtitle {
+            color: $color-base-secondary;
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+        }
+    }
+}

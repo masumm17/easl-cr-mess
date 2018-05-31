@@ -223,6 +223,12 @@ class CR_VcE_Manager {
 		wp_register_script('cr-wpb', $this->asset_url( 'js/frontend.min.js' ), array('jquery', 'waitforimages', 'fancybox', 'slider-revolution', 'waypoints', 'slick', 'js-img-slider', 'cr-masonry'), NULL, true);
 		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('fancybox', 'slider-revolution', 'slick'), NULL);
 		
+		$script_data = array(
+			'ajaxURL' => admin_url( '/admin-ajax.php' )
+		);
+		
+		wp_localize_script('cr-wpb', 'crSettings', $script_data);
+		
 		wp_enqueue_style('cr-wpb');
 		wp_enqueue_script('cr-wpb');
 		
@@ -314,6 +320,10 @@ class CR_VcE_Manager {
 			'name' => __('Gallery Item', 'crvc_extension'),
 			'file' => $sc_dir . '/gallery-item/class-gallery-item.php',
 		);
+		$this->registered_shortcodes['cr_accommodations'] = array(
+			'name' => __('Accommodations', 'crvc_extension'),
+			'file' => $sc_dir . '/accommodations/class-accommodations.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -339,6 +349,7 @@ class CR_VcE_Manager {
 			'cr_map',
 			'cr_gallery',
 			'cr_gallery_item',
+			'cr_accommodations',
 		);
 	}
 	
