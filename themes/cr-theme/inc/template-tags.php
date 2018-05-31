@@ -205,19 +205,26 @@ function crt_header_highlighted_butotn() {
 	$link = crt_get_theme_mode( 'search_availabilty_link', '');
 	$title = crt_get_theme_mode( 'search_availabilty_title', '');
 	$newtab = crt_get_theme_mode( 'search_availabilty_nt', '');
+	$enquire_now = crt_get_theme_mode( 'enable_enquire_button', '');
 	
 	$button_markup = '';
 	
-	if(!$link || !$title){
+	if(!$title){
 		return '';
 	}
+	$classes = 'header-highlight-button cr-button';
 	
 	if($newtab){
 		$newtab = ' target="_blank"';
 	}else{
 		$newtab = '';
 	}
-	$button_markup = '<a class="header-highlight-button cr-button" href="'. esc_url($link) .'"'. $newtab .'><span>' . esc_html($title) . '</span></a>';
+	if(!$enquire_now) {
+		$link = '#search-availablity';
+		$classes = 'booking-panel-trigger ' . $classes;
+		$newtab = '';
+	}
+	$button_markup = '<a class="' . $classes . '" href="'. esc_url($link) .'"'. $newtab .'><span>' . esc_html($title) . '</span></a>';
 
 	return $button_markup;
 }

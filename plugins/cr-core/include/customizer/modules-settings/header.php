@@ -37,6 +37,12 @@ $wp_customize->add_setting( 'search_availabilty_nt', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
+$wp_customize->add_setting( 'enable_enquire_button', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
 $wp_customize->add_setting( 'fixed_header_logo', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
@@ -51,18 +57,24 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fixe
 	'label' => __( 'Fixed Header Logo', 'crt' ),
 	'section' => 'crt_header',
 ) ) );
-$wp_customize->add_control( 'search_availabilty_link', array(
-	'type' => 'url',
-	'label' => __( 'Search Availabilty Link', 'crt' ),
+ 
+$wp_customize->add_control( 'enable_enquire_button', array(
+	'type' => 'checkbox',
+	'label' => __( 'Enable Enquire Now', 'crt' ),
 	'section' => 'crt_header',
 ) );
 $wp_customize->add_control( 'search_availabilty_title', array(
 	'type' => 'text',
-	'label' => __( 'Search Availabilty Title', 'crt' ),
+	'label' => __( 'Search Availabilty / Enquire Now  Title', 'crt' ),
+	'section' => 'crt_header',
+) );
+$wp_customize->add_control( 'search_availabilty_link', array(
+	'type' => 'url',
+	'label' => __( 'Enquire Now Link', 'crt' ),
 	'section' => 'crt_header',
 ) );
 $wp_customize->add_control( 'search_availabilty_nt', array(
 	'type' => 'checkbox',
-	'label' => __( 'Search Availabilty New Tab', 'crt' ),
+	'label' => __( 'Enquire Now New Tab', 'crt' ),
 	'section' => 'crt_header',
 ) );
