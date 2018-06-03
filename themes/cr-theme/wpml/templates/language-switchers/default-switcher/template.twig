@@ -1,0 +1,5 @@
+<div class="cr-language-chooser {{ css_classes }}">
+    {% for code, language in languages %}
+        <a class="{{ language.css_classes }} {% if language.is_current %}cr-language-active{% endif %}" href="{{ language.url }}">{{ code }}</a>
+    {% endfor %}
+</div>

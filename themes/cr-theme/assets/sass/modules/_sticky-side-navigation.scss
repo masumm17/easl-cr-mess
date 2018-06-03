@@ -1,0 +1,99 @@
+.sticky-side-nav {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    width: 14.8rem;
+    transform: translate(0, -50%);
+    transition: all .75s;
+    z-index: 100;
+    &.sticky-side-nav-collasped {
+        transform: translate(9.4rem, -50%);
+    }
+    &-items {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    &-item {
+        padding: 0;
+        background-color: rgba($color-black, .86);
+        position: relative;
+        border-bottom: 1px solid #191919;
+        transition: all .75s;
+        &-ls {
+            
+        }
+        &:last-child {
+            border-bottom: 0 none;
+        }
+        &:hover {
+            .sticky-side-nav-collasped & {
+                transform: translateX(-9.4rem);
+            }
+                
+            > a , > a:link, > a:active{
+                color: $color-base;
+                @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            }
+        }
+        > a {
+            &, &:link, &:active {
+                display: block;
+                padding: 1rem 2rem 1rem 5.4rem;
+                min-height: 4.4rem;
+                font-size: 1.2rem;
+                line-height: 1.4em;
+                color: $color-white;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+        }
+        &-icon {
+            position: absolute;
+            left: 1.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.4rem;
+            height: 2.1rem;
+            text-align: left;
+            svg, img {
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+        &-text {
+            vertical-align: middle;
+            position: relative;
+            top: 2px;
+        }
+    }
+    .cr-language-chooser {
+        @include clearfix;
+        border: 0 none;
+        margin: 0 0 0 1.2rem;
+        padding: 1rem 0 1rem 3.6rem;
+        position: relative;
+        > a {
+            float: left;
+            padding: .6rem;
+            margin: 0;
+            width: auto;
+            min-height: 0;
+            font-size: 1.2rem;
+            line-height: 1.4em;
+            color: $color-white;
+            text-transform: uppercase;
+            text-decoration: none;
+            &.cr-language-active {
+                position: absolute;
+                left: 0; 
+                top: 1rem;
+                margin: 0;
+            }
+            &.cr-language-active, &:hover, &:active {
+                color: $color-base;
+                @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            }
+        }
+    }    
+}

@@ -46,5 +46,10 @@
 				<?php echo $header_highlight_button; ?>
 			</div>
 			<?php endif; ?>
+			<?php 
+			if(crt_sticky_nav_enabled()) {
+				get_template_part('modules/stikcy-side-navigation');
+			}
+			?> 
 		</header>
 		<div id="primary" class="content-area">

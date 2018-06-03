@@ -369,6 +369,11 @@
                 this.resizeFooter();
             }, this));
         },
+        timeLine: function() {
+            $(".sticky-side-nav").length && setTimeout(function(){
+                $(".sticky-side-nav").addClass("sticky-side-nav-collasped");
+            }, 5000);
+        },
         init: function() {
             this.setViewPort();
             this.$body = $("body");
@@ -381,6 +386,7 @@
             this.bookingPanel();
             this.scrollHeader();
             this.events();
+            this.timeLine();
         }
     };
     $(document).ready(function(){

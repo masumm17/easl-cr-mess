@@ -67,6 +67,7 @@ class CRT_Customizer {
 		}
 		$this->add_section_settings('general', $wp_customize);
 		$this->add_section_settings('header', $wp_customize);
+		$this->add_section_settings('sticky_side_navigation', $wp_customize);
 		$this->add_section_settings('booking_panel', $wp_customize);
 		$this->add_section_settings('footer', $wp_customize);
    }

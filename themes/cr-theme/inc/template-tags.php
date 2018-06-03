@@ -275,3 +275,14 @@ function crt_get_mode_img($key, $size = 'full',  $default = '') {
 	// Set correct scheme and return
 	return $image ? set_url_scheme( $image ) : '';
 }
+
+function crt_sticky_nav_enabled() {
+	$enabled = '';
+	if ( is_singular() ) {
+		$enabled = function_exists('get_field') ? get_field('sticky_side_nav', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'sticky_side_nav', true);
+	}
+	if(!$enabled || 'default' == $enabled) {
+		$enabled = crt_get_theme_mode('stikcy_side_navigation_enable', false);
+	}
+	return $enabled;
+}

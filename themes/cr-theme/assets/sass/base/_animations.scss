@@ -41,3 +41,8 @@
         transform: translate(0);
     }
 }
+@keyframes stickyNaveAnim {
+    to {
+        transform: translate(9.4rem, -50%);
+    }
+}
