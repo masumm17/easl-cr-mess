@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) die('-1');
 $wp_customize->add_section( 'crt_booking_panel', array(
 	'panel' => 'module_settings',
 	'title' => __( 'Booking Panel', 'crt' ),
-	'priority' => 160,
+	'priority' => 161,
 	'capability' => 'edit_theme_options',
 ) );
 $wp_customize->add_setting( 'booking_panel_title', array(
