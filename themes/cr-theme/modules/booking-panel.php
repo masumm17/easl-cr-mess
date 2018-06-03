@@ -104,7 +104,7 @@ if(count($dropdown_columns) == 0) {
 							<div class="booking-panel-col-inner">
 								<h5 class="booking-panel-label"><?php _e('Choose your residence', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
-									<select name="keyword" id="keyword"class="booking-panel-input-keword-select u-hide">
+									<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
 										<option value="*"><?php _e('-- All Residences --', 'crt') ?></option>
 										<?php
 										foreach($dropdown_columns as $dd_col):
