@@ -81,6 +81,237 @@
                 });
             }
         },
+        bookingPanel: function() {
+            
+            var $el = $("#booking-panel"), 
+                $dummy = $("#residences-keyword-dummy", $el),
+                $residence = $("#residences-keyword", $el),
+                $fieldsWrap = $(".booking-panel-fields", $el),
+                $keywordSelect = $("#keyword", $el);
+            if(!$el.length || typeof BookingPanelData === "undefined") {
+                return;
+            }
+            
+            
+            $.widget( "custom.bookingpanel", $.ui.autocomplete, {
+                _create: function() {
+                    var self = this;
+                    this.currentResidene;
+                    this.panelCol = this.element.closest(".booking-panel-col");
+                    this.panelFields = this.element.closest(".booking-panel-fields");
+                    this.scrollerWrap = this.panelFields.find(".booking-panel-dd-scroller");
+                    this.errorMessage = this.element.data("errormessage");
+                    this._super();
+                    this.widget().menu( "option", "items", ".booking-panel-dd-item" );
+                    this.menu.element.addClass('booking-panel-dd-menu');
+                    this._on(this.element, {
+                        bookingpanelopen: function(event, ui) {
+                            self.menu.element.addClass("booking-panel-dd-menu-active");
+                        },
+                        bookingpanelclose: function(event, ui) {
+                            self.menu.element.removeClass("booking-panel-dd-menu-active");
+                        }
+                    });
+                 },
+                _renderMenu: function(ul, columns) {
+                    var self = this;
+                    this.currentResidene = this.element.val();
+                    var ul2 = $('<ul>').addClass("booking-panel-dd-wrap");
+                    if(typeof columns.error !== "undefined" && columns.error) {
+                        this.errorMessage && $("<li>").addClass("bookig-panel-dd-error").html(this.errorMessage.replace("%search_term%", "<strong>" + this._value() + "</strong>")).appendTo(ul2);
+                        ul2.appendTo(ul);
+                    }else{
+                        $.each(columns, function(i, column) {
+                            self._renderColumn(ul2, column);
+                        });
+                        if(ul2.find(">li").length>0) {
+                            $("<li>").addClass("booking-panel-dd-wrapli").append(ul2).appendTo(ul);
+                            $("<li>").addClass("booking-panel-dd-scroller").append("<span></span>").appendTo(ul);
+                        }else{
+                            this.errorMessage && $("<li>").addClass("bookig-panel-dd-error").html(this.errorMessage).appendTo(ul);
+                        }
+                    }
+                    
+                },
+                _renderColumn: function(ul, column) {
+                    var self = this;
+                    var col = $('<li class="booking-panel-dd-col"></li>');
+                    $.each(column, function(i, group) {
+                        
+                        var ul2 = $("<ul>").addClass("booking-panel-dd-group");
+                        $.each(group.items, function(e, item) {
+                            self._renderItem(ul2, item);
+                        });
+                        if(ul2.find(">li").length > 0) {
+                            col.append('<span class="booking-panel-dd-group-name">' + group.groupName + '</span>');
+                            col.append(ul2);
+                        }
+                    });
+                    return col.appendTo(ul);
+                },
+                _renderItem: function(ul, item) {
+                    var $li = $("<li>");
+                    if(this.currentResidene === item.label) {
+                        $li.addClass("cr-state-active");
+                    }
+                    if(item.disable) {
+                        $li.addClass("ui-state-disabled");
+                    }
+                    $li
+                        .html(item.label)
+                        .addClass("booking-panel-dd-item")
+                        .data( "ui-autocomplete-item", item )
+                        .appendTo(ul);
+                },
+                _resizeMenu: function() {
+                    var wrapLi = this.menu.element.find(".booking-panel-dd-wrapli"),
+                        wrap = this.menu.element.find(".booking-panel-dd-wrap");
+                    this.menu.element.css({
+                        width: this.panelCol.outerWidth(),
+                        height: this.panelFields.outerHeight() - this.panelCol.outerHeight() - 4
+                    });
+                    if(wrapLi.outerHeight() < wrap.outerHeight()){
+                        wrapLi.mCustomScrollbar({
+                            axis: "y"
+                        });
+                        this.menu.element.addClass("booking-panel-dd-hasscroller");
+                        $(".booking-panel-dd-scroller span").on("click", function(e) {
+                            e.preventDefault();
+                            wrapLi.mCustomScrollbar("scrollTo", "-=" + wrapLi.outerHeight() );
+                        });
+                    }else{
+                        this.menu.element.removeClass("booking-panel-dd-hasscroller");
+                    }
+                },
+                __response: function( content ) {
+                    if ( content ) {
+                        content = this._normalize( content );
+                    }
+                    this._trigger( "response", null, { content: content } );
+                    if ( !this.options.disabled && content && content.length && !this.cancelSearch ) {
+                        this._suggest( content );
+                        this._trigger( "open" );
+                    } else {
+                        this._suggest( {error: true} );
+                        this._trigger( "open" );
+                        // use ._close() instead of .close() so we don't cancel future searches
+                        //this._close();
+                    }
+                }
+            });
+            $residence.bookingpanel({
+                minLength: 0,
+                source:BookingPanelData.source,
+                position: {
+                    my: "left top",
+                    at: "left top",
+                    of: $(".booking-panel-dd-position", $el)
+                },
+                select: function( event, ui ) {
+                    $dummy.html(ui.item.label);
+                    $keywordSelect.val(ui.item.value);
+                },
+                source: function( request, response ) {
+                    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                    var groupMatcher = new RegExp( '^' + $.ui.autocomplete.escapeRegex(request.term), "i" );
+                    var suggestions = [];
+                    $.each(BookingPanelData.column, function(colIndex, column) {
+                        var col = [];
+                        $.each(column, function(groupName, items) {
+                            var cgroup = {}, gitems = [];
+                            if( !request.term ||  groupMatcher.test(groupName) ) {
+                                cgroup = {groupName: groupName, items: items};
+                            }else{
+                                $.each(items, function(itemIndex, item) {
+                                    if( matcher.test(item.label) || matcher.test(item.value) ) {
+                                        gitems.push(item);
+                                    }
+                                });
+                                if(gitems.length > 0) {
+                                    cgroup.groupName = groupName;
+                                    cgroup.items = gitems;
+                                }
+                            }
+                            if(typeof cgroup.items !== "undefined" && cgroup.items.length > 0) {
+                                col.push(cgroup);
+                            }
+                        });
+                        col.length > 0 && suggestions.push(col);
+                    });
+                    response(suggestions);
+                  },
+            });
+            $el.find("#booking-panel-dd-keywords").on("click", function(e) {
+                e.preventDefault();
+                !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
+            });
+            
+            var $checkout = $("#booking-panel-departure-dummy").datepicker({
+                dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
+                firstDay: 1,
+                altField: "#booking-panel-departure",
+                altFormat: "dd MM yy",
+                minDate: +1,
+                onSelect: function(date, inst){
+                    $checkout.removeClass("bp-date-picker-shown");
+                    $("#bp-departure-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", new Date(date) ));
+                    $("#bp-departure-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", new Date(date) ));
+                }
+            });
+            $checkout.datepicker("setDate", 1 );
+            $("#bp-departure-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", $checkout.datepicker("getDate") ));
+            $("#bp-departure-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkout.datepicker("getDate") ));
+            
+            var $checkin = $("#booking-panel-checkin-dummy").datepicker({
+                dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
+                firstDay: 1,
+                altField: "#booking-panel-checkin",
+                altFormat: "dd MM yy",
+                minDate: 0,
+                onSelect: function(date, inst){
+                    if(date){
+                        var dateObject = new Date(date);
+                        dateObject.setDate(dateObject.getDate()+1);                                 
+                        $checkout.datepicker("option", "minDate", dateObject);
+                        $checkin.removeClass("bp-date-picker-shown");
+                        
+                        $("#bp-departure-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", $checkout.datepicker("getDate") ));
+                        $("#bp-departure-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkout.datepicker("getDate") ));
+                    }
+                    $("#bp-arrival-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", new Date(date) ));
+                    $("#bp-arrival-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", new Date(date) ));
+                }
+            });
+            //$checkin.datepicker("setDate", 0 );
+            $("#bp-arrival-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", $checkin.datepicker("getDate") ));
+            $("#bp-arrival-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkin.datepicker("getDate") ));
+            
+            $("#bp-arrival-date").on("click", function(e) {
+                $checkin.toggleClass("bp-date-picker-shown");
+            });
+            $("#bp-departure-date").on("click", function(e) {
+                $checkout.toggleClass("bp-date-picker-shown");
+            });
+            $(".booking-panel-sb-trigger").on("click", function(e) {
+                e.preventDefault();
+                var $sb = $(this).closest(".booking-panel-col").find(".booking-panel-select-box");
+                $sb.toggleClass("cr-show-selectbox");
+            });
+            $(".booking-panel-select-box li").on("click", function(e) {
+                e.preventDefault();
+                var $li = $(this), val = $li.data('value');
+                $li.siblings(".cr-sb-selected").not($li).removeClass("cr-sb-selected");
+                $li
+                    .addClass("cr-sb-selected")
+                    .closest(".booking-panel-col")
+                        .find(".booking-panel-sb-trigger strong")
+                            .html($li.text())
+                            .end()
+                        .find("select").val($li.data('value'));
+                $li.closest(".booking-panel-select-box").removeClass("cr-show-selectbox");
+            });
+            
+        },
         scrollHeader: function() {
             if(!this.$body.hasClass('fixed-header')){
                 return false;
@@ -116,6 +347,7 @@
             this.resizeFooter();
         },
         events: function() {
+            var ob = this;
             $(window).scroll($.proxy(this.scrollEvents, this));
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();
@@ -124,6 +356,14 @@
                 $(this).addClass("on-hover").removeClass("not-hover").siblings("li").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
                 $(this).removeClass("on-hover").siblings("li").removeClass("not-hover");
+            });
+            $(".booking-panel-trigger").on("click", function(e) {
+                e.preventDefault();
+                ob.$body.addClass("booking-panel-shown");
+            });
+            $(".booking-panel-close").on("click", function(e) {
+                e.preventDefault();
+                ob.$body.removeClass("booking-panel-shown");
             });
             $(window).on("load", $.proxy(function(){
                 this.resizeFooter();
@@ -138,6 +378,7 @@
             this.$footerLine = $("#footer-top-line");
             this.setMenuProp();
             this.resizeFooter();
+            this.bookingPanel();
             this.scrollHeader();
             this.events();
         }

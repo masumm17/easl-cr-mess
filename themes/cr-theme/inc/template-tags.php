@@ -251,3 +251,27 @@ function crt_footer_logo_img() {
 	// Set correct scheme and return
 	return $logo ? set_url_scheme( $logo ) : '';
 }
+
+
+/**
+ * Returns footer logo image
+ *
+ * @since 4.0
+ */
+function crt_get_mode_img($key, $size = 'full',  $default = '') {
+	
+	// Get logo from theme mod
+	$image = crt_get_theme_mode( $key, '');
+	// Convert to URL if it's an ID
+	if ( $image && is_numeric( $logo ) ) {
+		$image = wp_get_attachment_image_src( $image, $size );
+		$image = isset( $logo[0] ) ? $logo[0] : '';
+	}
+	
+	if(!$image && $default) {
+		$image = $default;
+	}
+
+	// Set correct scheme and return
+	return $image ? set_url_scheme( $image ) : '';
+}

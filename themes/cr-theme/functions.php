@@ -68,6 +68,12 @@ function crt_custom_image_sizes( $sizes ) {
 function crt_scripts() {
 	wp_enqueue_style('crt-google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700|Playfair+Display:400');
 	wp_enqueue_style( 'crt-main-style', get_template_directory_uri() . '/assets/css/main.min.css' );
+	if(!crt_get_theme_mode( 'enable_enquire_button', '')) {
+		wp_enqueue_script( 'mCustomScrollbar', get_template_directory_uri() . '/assets/library/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js', array('jquery'), NULL, true  );
+		wp_enqueue_style( 'mCustomScrollbar', get_template_directory_uri() . '/assets/library/mCustomScrollbar/jquery.mCustomScrollbar.min.css' );
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script('jquery-ui-autocomplete');
+	}
 	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
 }
 add_action( 'wp_enqueue_scripts', 'crt_scripts', 20);

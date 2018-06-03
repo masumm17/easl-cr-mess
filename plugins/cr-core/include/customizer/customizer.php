@@ -12,6 +12,7 @@ class CRT_Customizer {
 		add_action( 'customize_register', array( $this, 'include_controls' ) );
 		add_action( 'customize_register', array( $this, 'add_modules_sections' ));
 		add_action( 'customize_register', array( $this, 'remove_core_sections' ), 21 );
+		add_action( 'customize_controls_print_styles', array( $this, 'print_styles' ), 21 );
 	}
 	
 	public function remove_core_sections( $wp_customize ) {
@@ -66,10 +67,20 @@ class CRT_Customizer {
 		}
 		$this->add_section_settings('general', $wp_customize);
 		$this->add_section_settings('header', $wp_customize);
+		$this->add_section_settings('booking_panel', $wp_customize);
 		$this->add_section_settings('footer', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {
 	   require_once  $this->settings_path . str_replace( '_', '-', $sectiono_id ).'.php';
 		
+   }
+   public function print_styles() {
+	?> 
+<style type="text/css" id="wpex-customizer-controls-css">
+	#_customize-input-booking_panel_kewords {
+		font-size: 10px;
+	}
+</style>
+	<?php
    }
 }

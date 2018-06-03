@@ -1,0 +1,572 @@
+.booking-panel {
+    &-shown {
+        //overflow: hidden;
+    }
+    background-size: cover;
+    background-position: center center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -10;
+    transition: all .75s;
+    &-shown & {
+        opacity: 1;
+        visibility: visible;
+        z-index: 9999;
+    }
+	
+    &-close {
+        position: absolute;
+        top: 3.6rem;
+        right: 10.6rem;
+        width: 4.6rem;
+        height: 4.6rem;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        z-index: 2;
+        .bp-color-white & {
+            background-image: url('../images/theme-base/booking-panel/cr-close-button-bk.svg');
+        }
+        .bp-color-black & {
+            background-image: url('../images/theme-base/booking-panel/cr-close-icon.svg');
+        }
+    }
+    &-inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        .bp-color-white & {
+            background-color: rgba($color-black, .84);
+        }
+        .bp-color-black & {
+            background-color: rgba($color-white, .84);
+        }
+    } 
+    &-container {
+        width: 100%;
+        max-width: 86rem;
+        margin: 0 auto;
+    }
+    &-form {
+        input[type="text"] {
+            background: transparent;
+            border: 0 none;
+            padding: 4px 3rem .8rem;
+            text-align: center;
+            font-size: 1.4rem;
+            line-height: 1.4em;
+            color: $color-base;
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            .bp-color-white & {
+                border-bottom: 1px solid #515151;
+            }
+            .bp-color-black & {
+                border-bottom: 1px solid #cbcbcb;
+            }
+        }
+        #residences-keyword {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            z-index: 2;
+        }
+        #booking-panel-promo {
+            max-width: 16rem;
+            padding-left: 1.4rem;
+            padding-right: 1.4rem;
+        }
+        ::placeholder {
+            opacity: 1;
+            .bp-color-white & {
+                color: #bbb;
+            }
+            .bp-color-black & {
+                color: #6c6c6c;
+            }
+        }
+    }
+    &-title {
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 1em;
+        margin: 0 0 5rem;
+        
+        .bp-color-white & {
+            color: $color-white;
+        }
+        .bp-color-black & {
+            color: $color-gray-1;
+        }
+    }
+    &-fields {
+        margin-bottom: 4.8rem;
+    }
+    &-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        &-bottom {
+            border-top: 1px solid #939393;
+        }
+    }
+    &-col {
+        margin-bottom: 4px;
+        display: flex;
+        flex-direction: column;
+        padding: 1.3rem 0;
+        position: relative;
+        justify-content: flex-end;
+        &:not(:last-child) {
+            margin-right: 4px;
+        }
+        &1 {
+            width: 100%;
+        }
+        &2 {
+            width: calc( (100% - 4px)/2 );
+        }
+        &3 {
+            width: calc( (100% - 8px)/3 );
+        }
+        .bp-color-white &.cr-has-bg {
+            background-color: $color-white;
+        }
+        .bp-color-black &.cr-has-bg {
+            background-color: $color-black;
+        }
+        &-button, &-brg {
+            text-align: right;
+        }
+    }
+    
+    &-fields  &-col{
+        min-height: 13rem;
+        padding: 3rem 2rem;
+        text-align: center;
+        justify-content: flex-start;
+    }
+    
+    &-row-acp &-col{
+        overflow: hidden;
+    }
+    &-label {
+        margin: 0 0 2rem;
+        font-size: 1.6rem;
+        font-weight: 400;
+        .bp-color-white & {
+            color: $color-gray-2;
+        }
+        .bp-color-black & {
+            color: $color-white;
+        }
+    }
+    &-value {
+        display: block;
+        min-width: 9rem;
+        min-height: 3.6rem;
+        margin: 0 0 1.5rem;
+        font-size: 3.2rem;
+        font-weight: 300;
+        line-height: 1em;
+        position: relative;
+        color: $color-base;
+        @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+    }
+    &-monthyear {
+        display: block;
+        min-width: 9rem;
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1em;
+        .bp-color-white & {
+            color: #6d6d6d;
+        }
+        .bp-color-black & {
+            color: #c8c8c8;
+        }
+    }
+    &-button {
+        padding: 2.4rem 7rem;
+    }
+    
+    &-residences-dummy {
+        opacity: 0;
+        z-index: 1;
+        position: relative;
+        min-width: 32rem;
+        display: inline-block;
+        padding: 4px 3rem .8rem;
+        text-align: center;
+        font-size: 1.4rem;
+        line-height: 1.4em;
+    }
+    &-input {
+        &-wrap {
+            margin: 0;
+            display: inline-block;
+            position: relative;
+        }
+        &-keword-select {
+            display: none;
+        }
+    }
+    &-link {
+        &, &:link, &:visited {
+            font-size: 1.4rem;
+            display: inline-block;
+            position: relative;
+            padding-left: 3rem;
+            .bp-color-white & {
+            }
+            .bp-color-black & {
+                color: #000;
+            }
+        }
+        &::after {
+            content: "";
+            width: 2rem;
+            height: 2rem;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &-cl {
+            position: relative;
+            bottom: -4px;
+            &::after {
+                background-image: url('../images/theme-base/booking-panel/cr-person.svg');
+            }
+        }
+        &-rac {
+            &::after {
+                background-image: url('../images/theme-base/booking-panel/cr-callback-request.svg');
+            }
+        }
+        &-brg {
+            &::after {
+                background-image: url('../images/theme-base/booking-panel/cr-circle-tick.svg');
+            }
+        }
+    }
+    &-dd-icon {
+        background-size: 14px auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        width: 2.4rem;
+        height: 2.4rem;
+        position: absolute;
+        right: -3.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+        .bp-color-white & {
+            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-booking-down-arrow.svg');
+        }
+        .bp-color-black & {
+            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-white-arrow-down-dark-panel.svg');
+        }
+    }
+    &-dd-position {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        z-index: -1;
+        opacity: 0;
+    }
+    &-dd-menu {
+        border-left: 0 none!important;
+        border-right: 0 none!important;
+        border-bottom: 0 none!important;
+        border-top: 1px solid #2c2c2c!important;
+        overflow: hidden;
+        &.booking-panel-dd-menu-active {
+        }
+        .ui-menu-icon {
+            display: none!important;
+        }
+        .bp-color-white & {
+            border-color: #bbb!important;
+            background-color: $color-white!important;
+        }
+        .bp-color-black & {
+            background-color: $color-black!important;
+        }
+    }
+    &-dd-wrapli {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 3.6rem;
+        overflow: hidden;
+        z-index: 1;
+    }
+    &-dd-scroller {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        height: 3.6rem;
+        z-index: 2;
+        text-align: center;
+        border-top: 1px solid #2c2c2c!important;
+        padding-top: .4rem;
+        
+        .bp-color-white & {
+            border-color: #bbb!important;
+        }
+        .bp-color-black & {
+        }
+        .booking-panel-dd-hasscroller & {
+            display: block;
+        }
+        span {
+            display: inline-block;
+            width: 2.8rem;
+            height: 2.8rem;
+            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-scroll-down-circle.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            cursor: pointer;
+        }
+    }
+    &-dd-wrap {
+        font-size: 1.4rem;
+        line-height: 1.6em;
+        border: 0 none!important;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        display: flex!important;
+        position: relative !important;
+        padding-top: 1.5rem;
+        
+        .bp-color-white & {
+            background-color: $color-white!important;
+        }
+        .bp-color-black & {
+            background-color: $color-black!important;
+        }
+    }
+    &-dd-col {
+        width: 50%;
+        max-width: 300px;
+        .ui-icon {
+            display: none!important;
+        }
+    }
+    &-dd-group-name{
+        display: block;
+        margin: 0 0 .8rem;
+        text-transform: uppercase;
+        .bp-color-white & {
+            color: #696969;
+        }
+        .bp-color-black & {
+            color: #6c6c6c;
+        }
+    }
+    &-dd-group {
+        background-color: transparent!important;;
+        display: block!important;
+        position: relative!important;
+        border: 0 none!important;
+        margin: 0 0 1.5rem;
+    }
+    &-dd-item {
+        font-size: 1.4rem;
+        color: $color-white;
+        margin: 0 0 .8rem !important;
+        transition: color .35s;
+        .bp-color-white & {
+            color: $color-gray-2;
+        }
+        .bp-color-black & {
+            color: $color-white;
+        }
+        &.cr-state-active, &:hover {
+            color: $color-base;
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+        }
+    }
+    &-select-box {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .35s;
+        transform: translateY(100%);
+        &.cr-show-selectbox {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: inline-block;
+            li {
+                float: left;
+                padding: .5rem 1rem;
+                font-size: 1.4rem;
+                line-height: 1em;
+                cursor: pointer;
+                color: $color-gray-1;
+                margin: 0 1px;
+                transition: color .35s;
+                .bp-color-white & {
+                    
+                }
+                .bp-color-black & {
+                    color: $color-white;
+                }
+                &.cr-sb-selected ,&:hover {
+                    color: $color-white;
+                    background-color: $color-base;
+                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $secodary: false);
+                }
+            }
+        }
+        
+    }
+}
+
+.bp-date-picker-div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0px;
+    bottom: 0px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(8rem);
+    transition: all .3s;
+    z-index: 5;
+    &.bp-date-picker-shown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .ui-datepicker {
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        left: 0;
+        top: 100%;
+        border: 0 none;
+        border-radius: 0;
+        margin: 0;
+        padding: 0 2rem 2.8rem;
+        .bp-color-white & {
+            background: $color-white;
+        }
+        .bp-color-black & {
+            background: $color-black;
+        }
+        .ui-datepicker-header {
+            border-radius: 0;
+            border: 0 none;
+            background: transparent;
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            font-weight: 400;
+            position: relative;
+            margin: 0 0 1.8rem;
+            .bp-color-white & {
+                color: $color-gray-1;
+            }
+            .bp-color-black & {
+                color: #c8c8c8;
+            }
+            .ui-datepicker-prev, .ui-datepicker-next  {
+                display: inline-block;
+                width: 1rem;
+                height: 1.8rem;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                span {
+                    display: none;
+                }
+            }
+            .ui-datepicker-prev {
+                background-image: url('../images/theme-base/booking-panel/inner-panel/cr-calendar-left-arrow.svg');
+                left: 2rem;
+            }
+            .ui-datepicker-next {
+                background-image: url('../images/theme-base/booking-panel/inner-panel/cr-calendar-right-arrow.svg');
+                right: 2rem;
+            }
+            
+        }
+        table {
+            margin: 0;
+            th, td {
+                font-weight: 400;
+                font-size: 1.4rem;
+                line-height: 1em;
+                text-align: center;
+                .bp-color-white & {
+                    color: #cfcfcf;
+                }
+                .bp-color-black & {
+                    color: #353535;
+                }
+                span, a {
+                    border: 0 none;
+                    background: transparent;
+                    color: inherit;
+                    padding: .8em 1.5rem;
+                    color: $color-gray-1;
+                    text-align: center;
+                    .bp-color-white & {
+                        color: $color-gray-1;
+                    }
+                    .bp-color-black & {
+                        color: #eeeeee;
+                    }
+                }
+            }
+            td a {
+                &.ui-state-active {
+                    background-color: $color-base;
+                    color: $color-white;
+                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $secodary: false);
+                }
+            }
+        }
+    }
+}

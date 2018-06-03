@@ -11,6 +11,8 @@
 
 @import "components/button";
 @import "components/lightbox";
+@import "components/jqueryui";
+@import "components/scroller";
 
 @import "modules/hero-slider";
 @import "modules/sticky-side-nav";
@@ -22,6 +24,7 @@
 @import "modules/fixed-width-grids";
 @import "modules/full-width-grid";
 @import "modules/accommodations";
+@import "modules/booking-panel";
 
 @import "layout/header";
 @import "layout/navigation";

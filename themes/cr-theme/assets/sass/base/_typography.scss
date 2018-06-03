@@ -18,6 +18,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1.8px;
     margin-bottom: 3rem;
+    @include color-themes($color:true, $bgcolor:false);
 }
 h3 {
     color: $color-base;
@@ -45,9 +46,11 @@ h6 {
 a {
     &, &:link, &:visited {
         color: $color-base;
+        @include color-themes($color:true, $bgcolor:false);
     }
     &:hover, &:active {
         color: $color-base;
+        @include color-themes($color:true, $bgcolor:false);
         text-decoration: none;
     }
     &:focus {

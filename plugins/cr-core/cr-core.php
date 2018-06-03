@@ -109,9 +109,18 @@ final class CR_Core {
 			$classes[] = 'scroll-header';
 		}
 		$classes[] = $this->get_color_theme();
+		if(!crt_get_theme_mode( 'enable_enquire_button', '')) {
+			$classes[] = $this->get_booking_panel_class();
+		}
 		return $classes;
 	}
-	
+	public function get_booking_panel_class() {
+		$panel_color = crt_get_theme_mode( 'booking_panel_color', '');
+		if(!in_array($panel_color, array('white', 'black'))) {
+			$panel_color = 'white';
+		}
+		return 'bp-color-' . $panel_color;
+	}
 	public function get_page_type() {
 		$page_type = '';
 		if ( is_singular() ) {
