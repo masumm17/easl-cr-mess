@@ -1,4 +1,94 @@
 (function($){
+    function CRInstagramFeed($el) {
+        this.$el = $el;
+        this.accesstoken = this.getData("secretkey");
+        this.number = parseInt(this.getData("number"));
+        this.ccenabled = this.getData("ccenabled");
+        this.ccpos = parseInt(this.getData("ccpos"));
+        this.ccContent = "";
+        if(this.ccenabled && this.$el.find(".cr-instagram-feed-text")) {
+            this.ccContent = this.$el.find(".cr-instagram-feed-text").html();
+        }
+        
+        
+        this.feeds = [];
+        this.fetchError = false;
+        this.imageSize = "standard_resolution";
+        if(this.accesstoken){
+            this.init();
+        }
+    }
+    CRInstagramFeed.prototype.getData = function(key) {
+        var data = this.$el.data(key);
+        return typeof data !== "undefined" ? data : false;
+    };
+    CRInstagramFeed.prototype.parseItem = function(item) {
+        var caption = (item.caption !== null) ? item.caption.text : "";
+        var imgUrl = item.images[this.imageSize].url;
+        return {
+            id: item.id,
+            caption: caption,
+            url: imgUrl,
+            likes: item.likes.count,
+            comments: item.comments.count,
+            plink: item.link,
+            username: item.user.username
+        };
+    };
+    CRInstagramFeed.prototype.displayFeed = function(html) {
+        this.$el.find(".cr-instagram-feed-inner").html(html);
+    };
+    CRInstagramFeed.prototype.updateFeeds = function() {
+        var ob = this;
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: CRTSettings.ajaxURL,
+            data: {
+                action: "cr_update_instagram_feed_cache",
+                feeds: ob.feeds
+            },
+            success: function (response) {
+                if(typeof response !== "undefined" || response.status === "OK"){
+                    ob.displayFeed(response.html);
+                }
+            },
+            error: function (response) {
+                console.log("Feed update errror");
+            }
+        });
+    };
+    CRInstagramFeed.prototype.fetchMedia = function(key) {
+        var ob = this;
+        var baseUrl = "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + this.accesstoken + "&count=" + parseInt(this.number);
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'jsonp',
+            url: baseUrl,
+            success: function (response) {
+                if(!response || typeof response === "undefined"){
+                    ob.fetchError = true;
+                    return;
+                }
+                if (response.meta.code !== 200) {
+                    ob.fetchError = true;
+                    return;
+                }
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].type === "image") {
+                        ob.feeds.push(ob.parseItem(response.data[i]));
+                    }
+                }
+                ob.feeds.length > 0 && ob.updateFeeds();
+            },
+            error: function (response) {
+                ob.fetchError = true;
+            }
+        });
+    };
+    CRInstagramFeed.prototype.init = function() {
+        this.fetchMedia();
+    };
     window.CRT = {
         vp: {width: null, height: null, scrollTop: null},
         $body: null,
@@ -374,6 +464,11 @@
                 $(".sticky-side-nav").addClass("sticky-side-nav-collasped");
             }, 5000);
         },
+        instagramFeed: function() {
+            $(".cr-instagram-feed-wrap").each(function(){
+                $(this).hasClass("cr-fetch-feed") && (new CRInstagramFeed($(this)));
+            });
+        },
         init: function() {
             this.setViewPort();
             this.$body = $("body");
@@ -387,6 +482,7 @@
             this.scrollHeader();
             this.events();
             this.timeLine();
+            this.instagramFeed();
         }
     };
     $(document).ready(function(){

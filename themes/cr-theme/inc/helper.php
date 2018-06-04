@@ -140,3 +140,32 @@ function crt_get_images_sizes() {
 	return $sizes;
 }
 endif;
+
+if(!function_exists('cr_truncate')):
+/**
+ * 
+ * @param type $str
+ * @param type $len
+ * @param type $trail
+ * @param type $word_wrap
+ * @return type
+ */
+function cr_truncate($str, $len = 200, $trail = '', $word_wrap = true) {
+    // Strip all html tags
+    $str = strip_tags($str);
+    // Strip Shortcodes
+    $str = strip_shortcodes($str);
+    // And the boundary spaces
+    $str = trim($str);
+    // No need to trancate if string length is lesser
+    if (strlen($str) < $len) {
+        return $str;
+    }
+    // Do the truncate magic
+    if ($word_wrap)
+        $str = substr($str, 0, strrpos(substr($str, 0, $len), ' '));
+    else
+        $str = substr($str, 0, $len);
+    return $str . $trail;
+}
+endif;

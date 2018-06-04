@@ -59,6 +59,19 @@ final class CR_Core {
 			'body_class',
 		), 8 );
 		
+		add_action('cr_before_footer', array(
+			$this,
+			'before_footer'
+		), 20);
+		add_action('wp_ajax_cr_update_instagram_feed_cache', array(
+			$this,
+			'update_instagram_feed_cache'
+		));
+		add_action('wp_ajax_nopriv_cr_update_instagram_feed_cache', array(
+			$this,
+			'update_instagram_feed_cache'
+		));
+		
 	}
 	/**
 	 * Get the instance of CR_VCE_Manager
@@ -151,6 +164,111 @@ final class CR_Core {
 		}
 		
 		return $color_theme;
+	}
+	
+	public function before_footer() {
+		$this->footer_instragram_feed();
+	}
+	
+	public function footer_instragram_feed() {
+		$enabled = '';
+		if ( is_singular() ) {
+			$enabled = function_exists('get_field') ? get_field('sticky_side_nav', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'sticky_side_nav', true);
+		}
+		if(!$enabled || 'default' == $enabled) {
+			$enabled = crt_get_theme_mode('default_page_types', 'minimal');
+		}else{
+			$enabled = 'enabled' == $enabled ? true : false;
+		}
+		if(!$enabled) {
+			return '';
+		}
+		get_template_part('modules/instagram-feed/instagram-feed');
+	}
+	
+	public function update_instagram_feed_cache() {
+		if(empty($_POST['feeds']) || !is_array($_POST['feeds']) || count($_POST['feeds']) < 1){
+			return;
+		}
+		// Validate the feed
+		$instagram_user_name = crt_get_theme_mode('instagram_feed_username', '');
+		$expiration = crt_get_theme_mode('instagram_feed_cache_expiration', '');
+		$expiration = absint($expiration);
+		if(!$expiration) {
+			$expiration = 2;
+		}
+		$validated_feeds = array();
+		$valid = true;
+		
+		foreach ($_POST['feeds'] as $feed) {
+			$feed = wp_parse_args($feed, array(
+				'id' => '',
+				'camption' => '',
+				'url' => '',
+				'likes' => 0,
+				'comments' => 0,
+				'plink'	   => '',
+				'username' => '',
+			));
+			if($feed['username'] != $instagram_user_name) {
+				continue;
+			}
+			$validated_feeds[] = $feed;
+		}
+		
+		if(count($validated_feeds) > 0) {
+			set_transient('cr_instagram_feed', $validated_feeds, $expiration * HOUR_IN_SECONDS);
+		}else{
+			wp_send_json(array(
+				'status' => 'NOTOK',
+			));
+		}
+		$number = crt_get_theme_mode( 'instagram_feed_number', '');
+		$cc_enabled = crt_get_theme_mode( 'instagram_feed_cc_enable', '');
+		$cc_position = crt_get_theme_mode( 'instagram_feed_cc_pos', '');
+		$cc_text = crt_get_theme_mode( 'instagram_feed_cc_text', '');
+		$cc_link_title = crt_get_theme_mode( 'instagram_feed_cc_link_title', '');
+		$cc_link_url = crt_get_theme_mode( 'instagram_feed_cc_link_url', '');
+		$cc_link_nt = crt_get_theme_mode( 'instagram_feed_cc_link_nt', '');
+
+		$number = absint($number);
+		if($number) {
+			$number = 13;
+		}
+		$cc_position = absint($cc_position);
+		if(!$cc_position) {
+			$cc_position = 7;
+		}
+		$output = '';
+		ob_start();
+		$count = 0;
+		$custom_content_shown = false;
+		foreach($validated_feeds as $item){
+			$count++;
+			if($count > $number){
+				break;
+			}
+			if($cc_enabled && $count == $cc_position ){
+				$custom_content_shown = true;
+				include locate_template('modules/instagram-feed/instagram-feed-custom-item.php');
+			}
+			include locate_template('modules/instagram-feed/instagram-feed-item.php');
+			
+		}
+		if(!$custom_content_shown) {
+			$custom_content_shown = true;
+			include locate_template('modules/instagram-feed/instagram-feed-custom-item.php');
+		}
+		$output = ob_get_clean();
+		if(!$output) {
+			wp_send_json(array(
+				'status' => 'NOTOK',
+			));
+		}
+		wp_send_json(array(
+			'status' => 'OK',
+			'html' => $output,
+		));
 	}
 
 	/**

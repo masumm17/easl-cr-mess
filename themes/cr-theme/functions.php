@@ -74,7 +74,11 @@ function crt_scripts() {
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script('jquery-ui-autocomplete');
 	}
+	$script_data = array(
+		'ajaxURL' => admin_url( '/admin-ajax.php' ),
+	);
 	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
+	wp_localize_script('crt-main-script', 'CRTSettings', $script_data);
 }
 add_action( 'wp_enqueue_scripts', 'crt_scripts', 20);
 
