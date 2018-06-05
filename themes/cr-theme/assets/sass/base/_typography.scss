@@ -57,3 +57,26 @@ a {
         outline: 0 none;
     }
 }
+.content-area a {
+    display: inline-block;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $color-base;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        transform: translateY(1rem);
+        @include color-themes($color:false, $bgcolor:true);
+}
+    &:hover {
+        &::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
