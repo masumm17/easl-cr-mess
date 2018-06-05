@@ -53,6 +53,7 @@ if($column_1_enabled || $column_2_enabled):
 	<div class="cr-2col-content-inner">
 		<?php if($column_1_enabled): ?>
 		<div class="cr-2col-content-amenities cr-animate-when-visible">
+			<div class="cr-2col-content-bg"></div>
 			<div class="cr-2col-content-col-inner">
 				<?php if($col_1_title): ?>
 				<h2 class="cr-2col-content-title"><?php echo esc_html($col_1_title); ?></h2>
@@ -82,7 +83,8 @@ if($column_1_enabled || $column_2_enabled):
 		</div>
 		<?php endif; ?>
 		<?php if($column_2_enabled): ?>
-		<div class="cr-2col-content-floorplans">
+		<div class="cr-2col-content-floorplans cr-animate-when-visible">
+			<div class="cr-2col-content-bg"></div>
 			<div class="cr-2col-content-col-inner">
 				<?php if($col_2_title): ?>
 				<h2 class="cr-2col-content-title"><?php echo esc_html($col_2_title); ?></h2>
@@ -139,7 +141,7 @@ if($column_1_enabled || $column_2_enabled):
 			$button_attributes = '';
 		}
 	?>
-		<div class="cr-2col-content-button-wrap">
+		<div class="cr-2col-content-button-wrap cr-animate-when-visible">
 			<a class="cr-2col-content-button cr-button" <?php echo $button_attributes ?>><?php echo esc_html($button['title']); ?></a>
 		</div>
 	<?php endif; ?>

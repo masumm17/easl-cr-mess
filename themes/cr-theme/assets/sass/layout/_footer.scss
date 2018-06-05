@@ -78,7 +78,7 @@
                     background: linear-gradient(to top, rgba($color-black, 1), transparent 50%);
                     z-index: 0;
                 }
-                .cr-animate-footer & {
+                .page-loaded .cr-animate-footer & {
                     transform: translateY(0);
                 }
             }

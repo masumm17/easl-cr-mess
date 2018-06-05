@@ -99,7 +99,7 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>
-	<div class="mini-gallery-inner">
+	<div class="mini-gallery-inner cr_start_animation">
 		<div class="mini-gallery-con">
 			<div class="mini-gallery-col mini-gallery-col1">
 				<div class="mini-gallery-col-inner mini-gallery-slider-wrapper">

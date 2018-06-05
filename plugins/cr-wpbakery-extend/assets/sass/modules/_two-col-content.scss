@@ -3,6 +3,20 @@
         position: relative;
         z-index: 1;
     }
+    &-bg {
+        background-color: #f6eeda;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 0;
+        width: 100%;
+        transition: all .75s;
+        transition-delay: .25s;
+        .page-loaded .cr_start_animation & {
+            height: 100%;
+        }
+    }
     &-inner {
         display: flex;
         max-width: 1344px;
@@ -13,7 +27,6 @@
         flex: 1 auto;
         width: 50%;
         margin: 0 7px;
-        background-color: #f6eeda;
         padding: 45px 23px;
         position: relative;
         &::after, &::before {
@@ -25,7 +38,14 @@
             bottom: 0;
             border: 1px solid #fff;
             z-index: 1;
+            opacity: 0;
+            transition: all .25s;
+            transition-delay: 1s;
         }
+        .page-loaded &.cr_start_animation::after, 
+        .page-loaded &.cr_start_animation::before{
+                opacity: 1;
+            }
         &::after {
             left: 6px;
             top: 6px;
@@ -42,6 +62,12 @@
     &-col-inner {
         position: relative;
         z-index: 2;
+        transform: translateY(10rem);
+        transition: transform .75s;
+        transition-delay: 1s;
+        .page-loaded .cr_start_animation & {
+            transform: translateY(0);
+        }
     }
     &-title {
         color: $color-gray-1;
@@ -93,6 +119,9 @@
                 padding: 0 .8rem;
                 margin-bottom: 1.6rem;
                 width: 33.333%;
+                a:after {
+                    display: none;
+                }
                 img {
                     width: 100%;
                     height: auto;
@@ -108,7 +137,11 @@
     }
     &-button-wrap {
         padding: 3rem 0 2rem;
-        text-align: center;
+        text-align: center;transform: translateY(10rem);
+        transition: transform .75s;
+        .page-loaded &.cr_start_animation {
+            transform: translateY(0);
+        }
     }
     &-button {
     }

@@ -10,7 +10,7 @@
     text-align: center;
     transition: all .75s;
     transform: translateY(5rem);
-    &.cr_start_animation {
+    .page-loaded &.cr_start_animation {
         transform: translateY(0);
     }
     p:not(:last-child) {
@@ -30,7 +30,7 @@
         transition: all .75s;
         transform: translateY(5rem);
     }
-    &.cr_start_animation li{
+    .page-loaded &.cr_start_animation li{
         transform: translateY(0);
     }
 }

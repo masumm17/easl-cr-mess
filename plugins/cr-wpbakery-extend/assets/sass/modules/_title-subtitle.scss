@@ -16,7 +16,7 @@
         display: inline-block;
         transition: all .85s;
         transform: translate3d(0px, 100%, 0px);
-        &.cr_start_animation {
+        .page-loaded &.cr_start_animation {
             transform: translate3d(0px, 0%, 0px);
         }
     }
@@ -34,7 +34,7 @@
         display: inline-block;
         transition: all .85s;
         transform: translate3d(0px, 100%, 0px);
-        &.cr_start_animation {
+        .page-loaded &.cr_start_animation {
             transform: translate3d(0px, 0%, 0px);
         }
     }

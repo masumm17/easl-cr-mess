@@ -1,5 +1,5 @@
 .cr-2col-content {
-    &-amenities, &-floorplans {
+     &-bg {
         @each $theme-name, $theme-color in $themes-map-lightbg{
             .theme-#{$theme-name} & {
                 background-color: $theme-color;

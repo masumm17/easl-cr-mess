@@ -19,7 +19,7 @@
         transform: translateY(10rem);
         transition: all .75s;
         
-        &.cr_start_animation {
+        .page-loaded &.cr_start_animation {
             opacity: 1;
             transform: translateY(0);
         }

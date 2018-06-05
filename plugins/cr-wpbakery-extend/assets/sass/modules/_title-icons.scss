@@ -5,7 +5,7 @@
         
         transition: all .85s;
         transform: translateY(4rem);
-        &.cr_start_animation {
+        .page-loaded &.cr_start_animation {
             transform: translateY(0);
         }
     }

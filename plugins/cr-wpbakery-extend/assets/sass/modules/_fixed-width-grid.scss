@@ -7,7 +7,7 @@
     &-inner {
        transition: all .75s;
        transform: translateY(6rem);
-       &.cr_start_animation {
+       .page-loaded &.cr_start_animation {
            transform: translateY(0);
        }
     }

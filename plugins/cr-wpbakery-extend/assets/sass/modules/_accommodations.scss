@@ -18,7 +18,7 @@
        z-index: 2;
        transition: all .75s;
        transform: translateY(6rem);
-       &.cr_start_animation {
+       .page-loaded &.cr_start_animation {
            transform: translateY(0);
        }
        
@@ -49,7 +49,7 @@
                     left: 0;
                     width: 0;
                     height: 1px;
-                    .cr_start_animation  & {
+                    .page-loaded .cr_start_animation  & {
                         width: 100%;
                     }
                 }
@@ -58,7 +58,7 @@
                     top: 6px;
                     width: 0;
                     height: 1px;
-                    .cr_start_animation  & {
+                    .page-loaded .cr_start_animation  & {
                         width: 100%;
                     }
                 }
@@ -72,7 +72,7 @@
                     right: 0;
                     width: 0;
                     height: 1px;
-                    .cr_start_animation  & {
+                    .page-loaded .cr_start_animation  & {
                         width: 100%;
                     }
                 }
@@ -81,7 +81,7 @@
                     bottom: 0;
                     width: 0;
                     height: 1px;
-                    .cr_start_animation & {
+                    .page-loaded .cr_start_animation & {
                         width: 100%;
                     }
                 }
@@ -95,7 +95,7 @@
                     width: 1px;
                     height: 0;
                     bottom: 0;
-                    .cr_start_animation & {
+                    .page-loaded .cr_start_animation & {
                         height: 100%;
                     }
                 }
@@ -104,7 +104,7 @@
                     height: 0;
                     bottom: -6px;
                     width: 1px;
-                    .cr_start_animation & {
+                    .page-loaded .cr_start_animation & {
                         height: 100%;
                     }
                 }
@@ -118,7 +118,7 @@
                     height: 0;
                     top: 0;
                     width: 1px;
-                    .cr_start_animation  & {
+                    .page-loaded .cr_start_animation  & {
                         height: 100%;
                     }
                 }
@@ -127,7 +127,7 @@
                     top: 6px;
                     width: 1px;
                     height: 0;
-                    .cr_start_animation  & {
+                    .page-loaded .cr_start_animation  & {
                         height: 100%;
                     }
                 }
@@ -269,7 +269,7 @@
         transition: all .75s;
         transform: translateY(12rem);
         opacity: 0;
-        &.cr_start_animation {
+        .page-loaded &.cr_start_animation {
             transform: translateY(0);
             opacity: 1;
         }

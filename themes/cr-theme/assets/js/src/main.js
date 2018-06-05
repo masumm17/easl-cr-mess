@@ -2,19 +2,15 @@
     function CRInstagramFeed($el) {
         this.$el = $el;
         this.accesstoken = this.getData("secretkey");
-        this.number = parseInt(this.getData("number"));
+        this.number = parseInt(this.getData("number")) * 2;
         this.ccenabled = this.getData("ccenabled");
         this.ccpos = parseInt(this.getData("ccpos"));
-        this.ccContent = "";
-        if(this.ccenabled && this.$el.find(".cr-instagram-feed-text")) {
-            this.ccContent = this.$el.find(".cr-instagram-feed-text").html();
-        }
         
         
         this.feeds = [];
         this.fetchError = false;
         this.imageSize = "standard_resolution";
-        if(this.accesstoken){
+        if(this.accesstoken && this.number > 0){
             this.init();
         }
     }
@@ -36,9 +32,10 @@
         };
     };
     CRInstagramFeed.prototype.displayFeed = function(html) {
-        this.$el.find(".cr-instagram-feed-inner").html(html);
-        this.$el.waitForImages(function() {
-            this.$el.addClass("cr-instagram-feed-image-loaded");
+        var $el = this.$el;
+        $el.find(".cr-instagram-feed-con").html(html);
+        $el.waitForImages(function() {
+            $el.addClass("cr-instagram-feed-image-loaded");
         })
             .find(".cr-instagram-feed-item")
             .waypoint(function() {

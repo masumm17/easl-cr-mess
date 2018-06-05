@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) die('-1');
 					<span><?php echo $item['comments']; ?></span>
 				</div>
 				<div class="cr-instagram-feed-plink">
-					<a href="<?php echo esc_url($item['url']); ?>" target="_blank"></a>
+					<a href="<?php echo esc_url($item['plink']); ?>" target="_blank"></a>
 				</div>
 			</div>
 		</div>
