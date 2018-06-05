@@ -160,8 +160,16 @@ CR_VcE_Sc_Full_Width_Grid::$items_data[] = $atts;
 
 
 ?> 
-<div class="fw-grid-item cr-grid-col <?php echo $css_class; ?>">
+<div class="fw-grid-item cr-grid-col cr-animate-when-visible <?php echo $css_class; ?>">
 	<div class="fw-grid-item-inner cr-grid-col-inner <?php echo $css_inner_class; ?>">
+		<?php if($display_option == 'no_image'):?> 
+		<div class="fw-grid-item-borders">
+			<div class="fw-grid-item-borders-top"></div>
+			<div class="fw-grid-item-borders-bottom"></div>
+			<div class="fw-grid-item-borders-left"></div>
+			<div class="fw-grid-item-borders-right"></div>
+		</div>
+		<?php endif; ?>
 		<?php echo $html; ?>
 	</div>
 </div>

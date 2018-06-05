@@ -40,7 +40,7 @@ if( CR_VcE_Sc_Full_Width_Grid::$items_count > 0 ):
 		<?php endif; ?>
 	</div>
 	<?php endif; ?>
-	<div class="fw-grid-inner cr-animate-when-visible">
+	<div class="fw-grid-inner">
 		<div class="fw-grid-con cr-grid-row">
 			<?php echo $prepareContent; ?>
 		</div>
