@@ -1,4 +1,11 @@
 .cr-map {
+    &-inner {
+        transform: translateY(10rem);
+        transition: all .75s;
+        .page-loaded &.cr_start_animation {
+           transform: translateY(0);
+       }
+    }
     &-con {
         position: relative;
         margin-top: 6.6rem;
