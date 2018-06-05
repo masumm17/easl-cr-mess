@@ -284,5 +284,5 @@ function crt_sticky_nav_enabled() {
 	if(!$enabled || 'default' == $enabled) {
 		$enabled = crt_get_theme_mode('stikcy_side_navigation_enable', false);
 	}
-	return $enabled;
+	return $enabled == 'enabled';
 }

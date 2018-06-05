@@ -78,5 +78,14 @@
         padding: 0 3.2rem;
         font-size: 1.6rem;
         line-height: 6.8rem;
+        overflow: hidden;
+        span {
+            display: inline-block;
+            transform: translateY(100%);
+            transition: all .5s;
+            .page-loaded & {
+                transform: translateY(0);
+            }
+        }
     }
 }

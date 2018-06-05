@@ -436,6 +436,11 @@
             this.setMenuProp();
             this.resizeFooter();
         },
+        hidePreloader: function() {
+            $(".loading-animation").length && $(".loading-animation").fadeOut(250, function() {
+                $(".loading-animation").remove();
+            });
+        },
         events: function() {
             var ob = this;
             $(window).scroll($.proxy(this.scrollEvents, this));
@@ -456,6 +461,8 @@
                 ob.$body.removeClass("booking-panel-shown");
             });
             $(window).on("load", $.proxy(function(){
+                this.$body.addClass("page-loaded");
+                this.hidePreloader();
                 this.resizeFooter();
             }, this));
         },

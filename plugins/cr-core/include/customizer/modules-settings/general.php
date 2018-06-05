@@ -25,10 +25,15 @@ $wp_customize->add_setting( 'enable_stay_connected', array(
 	'default' => 'enabled',
 	'transport' => 'refresh',
 ) );
-$wp_customize->add_setting( 'enable_sticky_side_nav', array(
+$wp_customize->add_setting( 'preloader_enabled', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
-	'default' => 'enabled',
+	'default' => 'disabled',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'preloader_image', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
 	'transport' => 'refresh',
 ) );
 $wp_customize->add_control( 'color_theme', array(
@@ -66,12 +71,17 @@ $wp_customize->add_control( 'enable_stay_connected', array(
 		'disabled' => __('Disabled', 'crt' ),
 	),
 ) );
-$wp_customize->add_control( 'enable_sticky_side_nav', array(
+$wp_customize->add_control( 'preloader_enabled', array(
 	'type' => 'select',
-	'label' => __( 'Enable Sticky Side Navigation', 'crt' ),
+	'label' => __( 'Enable Preloading Animation', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
 		'enabled' => __('Enabled', 'crt' ),
 		'disabled' => __('Disabled', 'crt' ),
 	),
 ) );
+
+$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'preloader_image', array(
+	'label' => __( 'Preloader Image', 'crt' ),
+	'section' => 'crt_general',
+) ) );

@@ -11,7 +11,7 @@ $wp_customize->add_section( 'crt_stikcy_side_navigation', array(
 $wp_customize->add_setting( 'stikcy_side_navigation_enable', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
-	'default' => '',
+	'default' => 'enabled',
 	'transport' => 'refresh',
 ) );
 
@@ -22,9 +22,13 @@ $wp_customize->add_setting( 'stikcy_side_navigation_items', array(
 	'transport' => 'refresh',
 ) );
 $wp_customize->add_control( 'stikcy_side_navigation_enable', array(
-	'type' => 'checkbox',
+	'type' => 'select',
 	'label' => __( 'Enable', 'crt' ),
 	'section' => 'crt_stikcy_side_navigation',
+	'choices' => array(
+		'enabled' => __('Enabled', 'crt' ),
+		'disabled' => __('Disabled', 'crt' ),
+	),
 ) );
 $wp_customize->add_control( 'stikcy_side_navigation_items', array(
 	'type' => 'textarea',

@@ -17,7 +17,7 @@
         border: none;
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:false, $bgcolor:true);
+        @include color-themes($color:$color-white, $bgcolor:true);
     }
     
     &::before {
@@ -118,7 +118,7 @@
         border: none;
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:false, $bgcolor:true, $secodary: true);
+        @include color-themes($color:$color-white, $bgcolor:true, $secodary: true);
     }
     
     &::before {

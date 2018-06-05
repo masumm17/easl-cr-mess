@@ -1,0 +1,24 @@
+.loading-animation {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: #303030;
+    color: $color-white;
+}
+.loading-animation img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0.5;
+    transform: translate(-50%,-50%);
+    max-width: 200px;
+    animation-name: preloaderFlash;
+    //animation-delay: .5s;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}

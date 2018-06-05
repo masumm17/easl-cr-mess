@@ -20,12 +20,19 @@
                 line-height: 7rem;
                 text-transform: uppercase;
                 padding: 0 2.2rem;
+                overflow: hidden;
             }
             > span {
                 display: inline-block;
                 position: relative;
                 height: 7rem;
                 line-height: 7rem;
+                transform: translateY(100%);
+                transition: all .5s;
+                .page-loaded & {
+                    transform: translateY(0);
+                }
+                
                 &::after {
                     position: absolute;
                     top: 100%;

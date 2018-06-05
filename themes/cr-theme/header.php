@@ -17,6 +17,15 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php 
+	$preloaer_eanbled = crt_get_theme_mode('preloader_enabled'); 
+	$preloaer_image = crt_get_mode_img('preloader_image'); 
+	?>
+	<?php if($preloaer_eanbled && $preloaer_image): ?>
+	<div class="loading-animation">
+		<img src="<?php echo esc_url($preloaer_image); ?>" alt="<?php _e('Loading...', 'crt'); ?>"/>
+	</div>
+	<?php endif; ?>
 	<div id="cr-wrap">
 		<header id="masthead" class="site-header">
 			<div class="site-branding">
