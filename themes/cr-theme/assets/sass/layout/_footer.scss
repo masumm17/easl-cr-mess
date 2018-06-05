@@ -1,5 +1,8 @@
 #footer-before-content {
     padding-bottom: 3rem;
+    .cr-container:not(:last-child) {
+        margin-bottom: 2rem;
+    }
 }
 #footer-top-line {
     position: relative;

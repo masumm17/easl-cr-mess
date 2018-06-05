@@ -37,6 +37,13 @@
     };
     CRInstagramFeed.prototype.displayFeed = function(html) {
         this.$el.find(".cr-instagram-feed-inner").html(html);
+        this.$el.waitForImages(function() {
+            this.$el.addClass("cr-instagram-feed-image-loaded");
+        })
+            .find(".cr-instagram-feed-item")
+            .waypoint(function() {
+                $(this).addClass("cr_start_animation");
+            },{offset:"85%"});
     };
     CRInstagramFeed.prototype.updateFeeds = function() {
         var ob = this;
@@ -473,7 +480,17 @@
         },
         instagramFeed: function() {
             $(".cr-instagram-feed-wrap").each(function(){
-                $(this).hasClass("cr-fetch-feed") && (new CRInstagramFeed($(this)));
+                if($(this).hasClass("cr-fetch-feed")){
+                    new CRInstagramFeed($(this));
+                }else{
+                    $(this).waitForImages(function() {
+                        $(this).addClass("cr-instagram-feed-image-loaded");
+                    })
+                        .find(".cr-instagram-feed-item")
+                        .waypoint(function() {
+                            $(this).addClass("cr_start_animation");
+                        },{offset:"85%"});
+                }
             });
         },
         init: function() {
