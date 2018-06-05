@@ -1,10 +1,9 @@
 .fw-grid {
     &-item {
-        &-inner {
-            .fw-grid-item-noimage & {
+        &-borders{
+            > div {
                 &::after, &::before {
-                    border: 1px solid $color-base-secondary;
-                    @include color-themes($color:false, $bgcolor:false, $border-color:true, $secodary: true);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $secodary: true);
                 }
             }
         }

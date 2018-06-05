@@ -39,6 +39,12 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 	<div class="accommodations-inner">
 		<div class="accommodations-con">
 			<div class="accommodations-filters cr-animate-when-visible">
+				<div class="accommodations-filters-borders">
+					<div class="accommodations-filters-borders-top"></div>
+					<div class="accommodations-filters-borders-bottom"></div>
+					<div class="accommodations-filters-borders-left"></div>
+					<div class="accommodations-filters-borders-right"></div>
+				</div>
 				<div class="accommodations-filters-inner">
 					<div class="accommodations-filter accommodations-filter-location" data-type="location">
 						<h5 class="accommodations-filter-label"><?php _e('Location', 'crvc_extension'); ?></h5>
