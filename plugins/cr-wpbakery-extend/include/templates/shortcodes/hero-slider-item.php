@@ -134,7 +134,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 	<?php endif; ?> 
 	<?php if($tagline_type === 'type1' && $tagline_title && $tagline_image): ?>
 	<div class="tp-caption hero-slider-caption hero-slider-caption-1"
-		 data-frames='[{"delay":0,"speed":1450,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1450,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
+		 data-frames='[{"delay":0,"speed":750,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":750,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
 		 data-x="center" 
 		 data-y="center" data-width="100%" >
 		<div class="hero-slider-caption-content" >
@@ -154,7 +154,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 	</div>
 	<?php elseif($tagline_type === 'type2' && $tagline_title && $tagline_subtitle): ?> 
 	<div class="tp-caption hero-slider-caption hero-slider-caption-2"
-		 data-frames='[{"delay":0,"speed":1450,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1450,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
+		 data-frames='[{"delay":0,"speed":750,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":750,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
 		 data-x="center" 
 		 data-y="center" data-width="100%" >
 		<div class="hero-slider-caption-content" >
@@ -176,7 +176,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 	</div>
 	<?php elseif($tagline_type === 'type3' && $tagline_title && $tagline_subtitle): ?> 
 	<div class="tp-caption hero-slider-caption hero-slider-caption-3"
-		 data-frames='[{"delay":0,"speed":1450,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1450,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
+		 data-frames='[{"delay":0,"speed":750,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":750,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
 		 data-x="center" 
 		 data-y="center" data-width="100%" >
 		<div class="hero-slider-caption-content" >
@@ -188,7 +188,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 	</div>
 	<?php elseif($tagline_type === 'type4' && $tagline_title && $tagline_subtitle): ?> 
 	<div class="tp-caption hero-slider-caption hero-slider-caption-4"
-		 data-frames='[{"delay":0,"speed":1450,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1450,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
+		 data-frames='[{"delay":0,"speed":750,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":750,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]' 
 		 data-x="left" 
 		 data-y="center" data-width="100%">
 		<div class="hero-slider-caption-content" >
