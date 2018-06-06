@@ -30,23 +30,23 @@ function cr_vce_paramps_common_group($label = true) {
 		$animation,
 		array(
 			'type' => 'el_id',
-			'heading' => __( 'Element ID', 'js_composer' ),
+			'heading' => __( 'Element ID', 'crvc_extension' ),
 			'param_name' => 'el_id',
 			'group' => __( 'Extra Options', 'crvc_extension' ),
-			'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'js_composer' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
+			'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'crvc_extension' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
 		),
 		array(
 			'type' => 'textfield',
-			'heading' => __( 'Extra class name', 'js_composer' ),
+			'heading' => __( 'Extra class name', 'crvc_extension' ),
 			'param_name' => 'el_class',
 			'group' => __( 'Extra Options', 'crvc_extension' ),
-			'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+			'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'crvc_extension' ),
 		),
 		array(
 			'type' => 'css_editor',
-			'heading' => __( 'CSS box', 'js_composer' ),
+			'heading' => __( 'CSS box', 'crvc_extension' ),
 			'param_name' => 'css',
-			'group' => __( 'Design Options', 'js_composer' ),
+			'group' => __( 'Design Options', 'crvc_extension' ),
 		),
 	);
 }

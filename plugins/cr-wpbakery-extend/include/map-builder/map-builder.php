@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MHM_Map_builder {
 	private $path;
 	private $url;
-	private $text_domain_name = '';
+	private $text_domain_name = 'crvc_extension';
 	private $cpt = 'cr_map';
 	/**
 	 * Core singleton class
@@ -37,14 +37,14 @@ class MHM_Map_builder {
 	 * @param str $text_domain
 	 */
 	public function get_text_domain_name() {
-		apply_filters('mhm_map_builder_text_domain_nmae', '');
+		return apply_filters('mhm_map_builder_text_domain_nmae', $this->text_domain_name);
 	}
 	/**
 	 * Set text domain
 	 * @param str $text_domain
 	 */
 	public function get_custom_types_data($text_domain) {
-		$this->text_domain = $text_domain;
+		
 	}
 	/**
 	 * Init the tool

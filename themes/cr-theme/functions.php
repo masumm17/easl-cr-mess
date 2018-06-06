@@ -22,8 +22,8 @@ if ( ! function_exists( 'crt_setup' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		register_nav_menus( array(
-			'header_menu' => esc_html__( 'Header', 'cr-theme' ),
-			'footer_menu' => esc_html__( 'Footer', 'cr-theme' ),
+			'header_menu' => esc_html__( 'Header', 'crt' ),
+			'footer_menu' => esc_html__( 'Footer', 'crt' ),
 		) );
 		add_theme_support( 'html5', array(
 			'search-form',

@@ -21,7 +21,7 @@
 		the_content();
 
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cr-theme' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'crt' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -34,7 +34,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'cr-theme' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'crt' ),
 						array(
 							'span' => array(
 								'class' => array(),

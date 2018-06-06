@@ -449,7 +449,7 @@ class CR_VcE_Manager {
 			$plugin_data = get_plugin_data( __FILE__ );
 			echo '
 			<div class="updated">
-			  <p>' . sprintf( __( '<strong>%s</strong> requires <strong><a href="http://bit.ly/vcomposer" target="_blank">Visual Composer</a></strong> plugin to be installed and activated on your site.', 'vc_extend' ), $plugin_data[ 'Name' ] ) . '</p>
+			  <p>' . sprintf( __( '<strong>%s</strong> requires <strong><a href="http://bit.ly/vcomposer" target="_blank">Visual Composer</a></strong> plugin to be installed and activated on your site.', 'crvc_extension' ), $plugin_data[ 'Name' ] ) . '</p>
 			</div>';
 		}
 	}

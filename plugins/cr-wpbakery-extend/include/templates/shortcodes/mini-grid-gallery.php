@@ -114,7 +114,7 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 						<?php endforeach; ?>
 					</div>
 					<?php if($slider_pagination == 'yes'): ?>
-					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crt') ?> <span class="mg-all"><?php echo count($column1_images); ?></span></div>
+					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crvc_extension') ?> <span class="mg-all"><?php echo count($column1_images); ?></span></div>
 					<?php endif;?>
 				</div>
 			</div>
@@ -139,7 +139,7 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 						</a>
 						<?php endforeach; ?>
 					</div>
-					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crt') ?> <span class="mg-all"><?php echo count($column3_images); ?></span></div>
+					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crvc_extension') ?> <span class="mg-all"><?php echo count($column3_images); ?></span></div>
 				</div>
 			</div>
 		</div>
