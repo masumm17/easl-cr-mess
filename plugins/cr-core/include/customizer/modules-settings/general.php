@@ -36,6 +36,13 @@ $wp_customize->add_setting( 'preloader_image', array(
 	'capability' => 'edit_theme_options',
 	'transport' => 'refresh',
 ) );
+$wp_customize->add_setting( 'seasonal_styles', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'transport' => 'refresh',
+	'default' => 'none'
+) );
+
 $wp_customize->add_control( 'color_theme', array(
 	'type' => 'select',
 	'label' => __( 'Color Theme', 'crt' ),
@@ -85,3 +92,15 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'prel
 	'label' => __( 'Preloader Image', 'crt' ),
 	'section' => 'crt_general',
 ) ) );
+
+$wp_customize->add_control( 'seasonal_styles', array(
+	'type' => 'select',
+	'label' => __( 'Seasonal Styles', 'crt' ),
+	'section' => 'crt_general',
+	'choices' => array(
+		'none' => __('None', 'crt' ),
+		'1' => __('Seasonal Style 1', 'crt' ),
+		'2' => __('Seasonal Style 2', 'crt' ),
+		'3' => __('Seasonal Style 3', 'crt' ),
+	),
+) );

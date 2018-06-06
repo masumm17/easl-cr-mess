@@ -79,6 +79,13 @@ function crt_scripts() {
 	);
 	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
 	wp_localize_script('crt-main-script', 'CRTSettings', $script_data);
+	
+	// Seasonal Styles
+	$seasonal_styles = crt_get_theme_mode('seasonal_styles', 'none');
+	if($seasonal_styles && ('none' != $seasonal_styles)) {
+		$seasonal_stylesheet_url = get_stylesheet_directory_uri() . '/assets/css/season-' . $seasonal_styles .'.css';
+		wp_enqueue_style( 'crt-seasonal-style', $seasonal_stylesheet_url );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'crt_scripts', 20);
 
