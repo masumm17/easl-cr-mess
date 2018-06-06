@@ -19,7 +19,9 @@
         z-index: 1;
         @include color-themes($color:$color-white, $bgcolor:true);
     }
-    
+    &::after {
+        display: none!important;
+    }
     &::before {
         content: "";
         z-index: -1;
@@ -70,6 +72,9 @@
         @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: false);
     }
     
+    &::after {
+        display: none!important;
+    }
     &::before {
         content: "";
         z-index: -1;
@@ -119,6 +124,9 @@
         cursor: pointer;
         z-index: 1;
         @include color-themes($color:$color-white, $bgcolor:true, $secodary: true);
+    }
+    &::after {
+        display: none!important;
     }
     
     &::before {
@@ -172,6 +180,9 @@
         @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: true);
     }
     
+    &::after {
+        display: none!important;
+    }
     &::before {
         content: "";
         z-index: -1;

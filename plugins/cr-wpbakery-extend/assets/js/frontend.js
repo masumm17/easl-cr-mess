@@ -283,7 +283,7 @@ if (!Object.is) {
                     //delay: delay,
                     sliderLayout: "fullscreen",
                     lazyType: "all",
-                    spinner: "spinner2",
+                    spinner: "spinner2"
                 });
             });
         },

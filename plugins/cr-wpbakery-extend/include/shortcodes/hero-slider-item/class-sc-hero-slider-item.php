@@ -1,7 +1,10 @@
 <?php
 
 class CR_VcE_Sc_Hero_Slider_Item extends CR_VcE_Shortcode {
-	
+		public function get_image_src($attachment_id, $size = 'cr_default') {
+			$attachment_src = wp_get_attachment_image_src($attachment_id, $size);
+			return !empty($attachment_src) ? $attachment_src[0] : '';
+		}
 
 		/**
 		 * @param $atts
@@ -56,6 +59,9 @@ class CR_VcE_Sc_Hero_Slider_Item extends CR_VcE_Shortcode {
 		protected function content( $atts, $content = null ) {
 			$type = !empty($atts['type']) ? $atts['type'] : 'image';
 			if('video' == $type && 0 < CR_VcE_Sc_Hero_Slider::item_type_count($type)) {
+				return '';
+			}
+			if(CR_VcE_Sc_Hero_Slider::$items_count > 6){
 				return '';
 			}
 			return parent::content( $atts, $content );
