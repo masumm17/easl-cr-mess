@@ -1,0 +1,150 @@
+body .vc_pageable-slide-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+div.vc_gitem-is-link {
+    cursor: default;
+}
+body .vc_gitem-zone .vc-zone-link {
+    display: none!important;
+}
+body .vc_gitem-zone-a .vc_gitem-zone-mini {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left:0;
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color-black, .5);
+        z-index: 1;
+    }
+}
+body {
+    
+    .vc_gitem-zone-a .vc_gitem-row-position-top, 
+    .vc_gitem-zone-b .vc_gitem-row-position-top {
+        position: relative;
+        color: $color-white;
+        z-index: 2;
+        text-align: center;
+        .vc_custom_heading {
+            margin: 0 0 2.4rem;
+            font-size: 1.4rem;
+            line-height: 1.4em;
+            &.vc_gitem-post-data-source-post_excerpt {
+                margin-bottom: 3rem;
+            }
+            :last-child {
+                margin-bottom: 0;
+            }
+            h4 {
+                color: $color-base;
+                font-size: 2rem;
+                font-weight: 400;
+                line-height: 1.4em;
+                margin: 0;
+            }
+            p {
+                margin: 0;
+            } 
+        }
+        
+    }
+}
+body .vc_gitem-zone-a .vc_gitem-zone-mini .vc_btn3,
+body .vc_grid-container-wrapper .vc_pageable-load-more-btn .vc_btn3 {
+    background-color: $color-base;
+    color: $color-white;
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 2rem 3.6rem 2rem;
+    position: relative;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    @include color-themes($color:$color-white, $bgcolor:true);
+    &::after {
+        display: none;
+    }
+    &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        background-color: darken($color-base, 7);//#cd8e01
+        transition: all .3s;
+        @each $theme-name, $theme-color in $themes-map-primary {
+            .theme-#{$theme-name} & {
+                background-color: darken($theme-color, 7);
+            }
+        }
+    }
+
+    &:hover {
+        background-color: $color-base;
+        color: $color-white;
+        @include color-themes($color:$color-white, $bgcolor:true);
+        &::before {
+            height: 100%;
+        }
+    }
+}
+
+.entry {
+    &-featured-image{
+        margin-top: -7rem;
+        margin-bottom: 3rem;
+        opacity: 0;
+        transition: opacity .5s;
+        .page-loaded &.cr_start_animation {
+            opacity: 1;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+    &-content-wrap {
+        max-width: 99rem;
+        margin: 0 auto 3rem;
+    }
+    &-header {
+        
+    }
+    &-content {
+        text-align: center;
+        transform: translateY(10rem);
+        transition: transform .5s;
+        .page-loaded &.cr_start_animation {
+            transform: translateY(0);
+        }
+        p {
+            margin: 0 0 2.6rem;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &-footer {}
+}
