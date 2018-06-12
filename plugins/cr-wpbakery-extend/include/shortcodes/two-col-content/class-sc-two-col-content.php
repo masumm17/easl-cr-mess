@@ -30,10 +30,10 @@ class CR_VcE_Sc_Two_Col_Content extends CR_VcE_Shortcode {
 			if( strlen($url['url']) > 0) {
 				$parsed_floorplan_data[] = array(
 					'thumb' => $thumb[0],
-					'url' => $flp['url'],
-					'target' => $flp['target'],
-					'title' => $flp['title'],
-					'rel' => $flp['rel'],
+					'url' => $url['url'],
+					'target' => $url['target'],
+					'title' => $url['title'],
+					'rel' => $url['rel'],
 				);
 			}
 			if($count == $this->max_floor_plans){
