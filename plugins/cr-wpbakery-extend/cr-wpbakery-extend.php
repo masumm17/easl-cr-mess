@@ -324,6 +324,10 @@ class CR_VcE_Manager {
 			'name' => __('Accommodations', 'crvc_extension'),
 			'file' => $sc_dir . '/accommodations/class-accommodations.php',
 		);
+		$this->registered_shortcodes['cr_enquiry_form'] = array(
+			'name' => __('Enquiry Form', 'crvc_extension'),
+			'file' => $sc_dir . '/enquiry-form/class-enquiry-form.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -350,6 +354,7 @@ class CR_VcE_Manager {
 			'cr_gallery',
 			'cr_gallery_item',
 			'cr_accommodations',
+			'cr_enquiry_form',
 		);
 	}
 	
