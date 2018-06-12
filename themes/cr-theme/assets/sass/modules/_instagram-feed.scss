@@ -140,14 +140,16 @@
     &-likes {
         span {
                 &::after {
-                background-image: url('../images/theme-base/instagram/cr-like-icon.svg');
+                background-image: url('../images/theme-base/instagram/like-icon.svg');
+                @include bgimage-themes("instagram/like-icon.svg");
             }
         }
     }
     &-comments {
         span{
             &::after {
-                background-image: url('../images/theme-base/instagram/cr-comments.svg');
+                background-image: url('../images/theme-base/instagram/comments.svg');
+                @include bgimage-themes("instagram/comments.svg");
             }
         }
             
@@ -160,7 +162,8 @@
             padding-left: 2rem!important;
             background-position: right center!important;
             &::after {
-                background-image: url('../images/theme-base/instagram/cr-instagram-small-icon.svg');
+                background-image: url('../images/theme-base/instagram/instagram-small-icon.svg');
+                @include bgimage-themes("instagram/instagram-small-icon.svg");
             }
         }   
     }

@@ -31,10 +31,12 @@
         cursor: pointer;
         z-index: 2;
         .bp-color-white & {
-            background-image: url('../images/theme-base/booking-panel/cr-close-button-bk.svg');
+            background-image: url('../images/theme-base/booking-panel/close-button-bk.svg');
+            @include bgimage-themes("booking-panel/booking-panel/close-button-bk.svg");
         }
         .bp-color-black & {
-            background-image: url('../images/theme-base/booking-panel/cr-close-icon.svg');
+            background-image: url('../images/theme-base/booking-panel/close-icon.svg');
+            @include bgimage-themes("booking-panel/booking-panel/close-icon.svg");
         }
     }
     &-inner {
@@ -255,16 +257,19 @@
             bottom: -4px;
             &::after {
                 background-image: url('../images/theme-base/booking-panel/cr-person.svg');
+            @include bgimage-themes("booking-panel/booking-panel/cr-person.svg");
             }
         }
         &-rac {
             &::after {
                 background-image: url('../images/theme-base/booking-panel/cr-callback-request.svg');
+            @include bgimage-themes("booking-panel/booking-panel/cr-callback-request.svg");
             }
         }
         &-brg {
             &::after {
                 background-image: url('../images/theme-base/booking-panel/cr-circle-tick.svg');
+            @include bgimage-themes("booking-panel/booking-panel/cr-circle-tick.svg");
             }
         }
     }
@@ -280,10 +285,12 @@
         top: 50%;
         transform: translateY(-50%);
         .bp-color-white & {
-            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-booking-down-arrow.svg');
+            background-image: url('../images/theme-base/booking-panel/inner-panel/booking-down-arrow.svg');
+            @include bgimage-themes("booking-panel/inner-panel/booking-down-arrow.svg");
         }
         .bp-color-black & {
-            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-white-arrow-down-dark-panel.svg');
+            background-image: url('../images/theme-base/booking-panel/inner-panel/white-arrow-down-dark-panel.svg');
+            @include bgimage-themes("booking-panel/inner-panel/white-arrow-down-dark-panel.svg");
         }
     }
     &-dd-position {
@@ -348,6 +355,7 @@
             width: 2.8rem;
             height: 2.8rem;
             background-image: url('../images/theme-base/booking-panel/inner-panel/cr-scroll-down-circle.svg');
+            @include bgimage-themes("booking-panel/inner-panel/cr-scroll-down-circle.svg");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
@@ -523,11 +531,13 @@
                 }
             }
             .ui-datepicker-prev {
-                background-image: url('../images/theme-base/booking-panel/inner-panel/cr-calendar-left-arrow.svg');
+                background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-left-arrow.svg');
+            @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg.svg");
                 left: 2rem;
             }
             .ui-datepicker-next {
-                background-image: url('../images/theme-base/booking-panel/inner-panel/cr-calendar-right-arrow.svg');
+                background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-right-arrow.svg');
+            @include bgimage-themes("booking-panel/inner-panel/calendar-right-arrow.svg");
                 right: 2rem;
             }
             

@@ -198,7 +198,7 @@
         z-index: 99997;
         &-button {
             background-color: $color-white;
-            background-image: url('../images/lightbox-share.png');
+            background-image: url('../images/theme-base/gallery-icons/connect.svg');
             background-repeat: no-repeat;
             background-position: center center;
             border-left: 1px solid rgba($color-white, .75);
@@ -235,13 +235,13 @@
                 }
             }
             &-fb {
-                background-image: url('../images/social-media/cr-fb-icon.svg');
+                background-image: url('../images/theme-base/social-media/fb-icon.svg');
             }
             &-tw {
-                background-image: url('../images/social-media/cr-twitter-icon.svg');
+                background-image: url('../images/theme-base/social-media/twitter-icon.svg');
             }
             &-pin {
-                background-image: url('../images/social-media/cr-pinterest-icon.svg');
+                background-image: url('../images/theme-base/social-media/pinterest-icon.svg');
             }
         }
         &:hover &-icons {

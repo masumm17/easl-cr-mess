@@ -32,6 +32,15 @@
         }
     }
 }
+@mixin bgimage-themes($image: false) {
+    @each $theme-name, $imgroot in $themes-map-bgimage {
+        .theme-#{$theme-name} & {
+            @if $image {
+                background-image: url('../images/#{$imgroot}/#{$image}')
+            }
+        }
+    }
+}
 
 // MEDIA QUERY MANAGER
 /*

@@ -21,11 +21,22 @@
             @if $bgcolor {
                 background-color: $theme-color;
             }
-            @if $color {
+            @if $color == true {
                 color: $theme-color;
+            } @else if $color != false {
+                color: $color;
             }
             @if $border-color {
                 border-color: $theme-color;
+            }
+        }
+    }
+}
+@mixin bgimage-themes($image: false) {
+    @each $theme-name, $imgroot in $themes-map-bgimage {
+        .theme-#{$theme-name} & {
+            @if $image {
+                background-image: url('../images/#{$imgroot}/#{$image}')
             }
         }
     }

@@ -1,3 +1,13 @@
+.fancybox {
+    &-button{
+        &--close {
+            background-image: url('../images/lightbox-close.png');
+        }
+        &--share {
+            background-image: url('../images/lightbox-share.png');
+        }
+    }
+}
 .cr-lightbox {
     &-caption {
         &-title {
@@ -5,6 +15,26 @@
         &-subtitle {
             color: $color-base-secondary;
             @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+        }
+    }
+    &-share {
+        &-button {
+            background-image: url('../images/theme-base/gallery-icons/connect.svg');
+            @include bgimage-themes("gallery-icons/connect.svg");
+        }
+        &-icon {
+            &-fb {
+                background-image: url('../images/theme-base/social-media/fb-icon.svg');
+                @include bgimage-themes("social-media/fb-icon.svg");
+            }
+            &-tw {
+                background-image: url('../images/theme-base/social-media/twitter-icon.svg');
+                @include bgimage-themes("social-media/twitter-icon.svg");
+            }
+            &-pin {
+                background-image: url('../images/theme-base/social-media/pinterest-icon.svg');
+                @include bgimage-themes("social-media/pinterest-icon.svg");
+            }
         }
     }
 }

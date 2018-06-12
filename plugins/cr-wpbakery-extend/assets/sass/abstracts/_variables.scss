@@ -2,7 +2,7 @@
 $color-white: #fff;
 $color-black: #000;
 $color-gray-1: #2e2e2e;
-
+$color-gray-2: #171717;
 // 1 - Base color
 $color-base: #e5a514;
 $color-base-secondary: #cd8e01;
@@ -68,6 +68,17 @@ $themes-map-lightbg: (
     cch: #daf0f0, 
     chpg: #e2eecb, 
     cgp: #eedee6
+);
+
+$themes-map-bgimage: (
+    ctq: theme-ctq, 
+    ctc: theme-ctc, 
+    chc: theme-chc, 
+    ckb: theme-ckb, 
+    cph: theme-cph, 
+    cch: theme-cch, 
+    chpg: theme-chpg, 
+    cgp: theme-cgp
 );
 
 
