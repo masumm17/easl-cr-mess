@@ -18,3 +18,7 @@
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
     }
 }
+.hero-slider-scroll-down {
+    background-image: url('../images/theme-base/page-scroll-down-arrow/page-scroll-down-arrow.svg');
+    @include bgimage-themes("page-scroll-down-arrow/page-scroll-down-arrow.svg");
+}

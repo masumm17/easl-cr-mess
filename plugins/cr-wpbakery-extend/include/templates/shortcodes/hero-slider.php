@@ -35,5 +35,6 @@ if(CR_VcE_Sc_Hero_Slider::$items_count > 0):
 			<?php echo $prepareContent; ?>
 		</ul>
 	</div>
+	<span class="hero-slider-scroll-down"></span>
 </section>
 <?php endif; ?>
