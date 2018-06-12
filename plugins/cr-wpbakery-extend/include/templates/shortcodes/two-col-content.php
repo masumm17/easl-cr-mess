@@ -11,17 +11,28 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 $el_class = $css = $css_animation = '';
 $enable_button = $button = $col_1_title = $col_1_note = $col_2_title = $col_2_note = '';
+$amenity_ids = array();
 $floorplans = array();
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 $parsed_floorplans = $this->get_floorplans_data( $atts );
 $button = $this->parse_url($button);
-$amenities = get_posts(array(
+
+$amenitey_args = array(
 	'post_type' => CR_Custom_types::get_amenity_data('type'),
 	'numberposts' => -1,
 	'orderby' => 'menu_order',
 	'order' => 'ASC',
-));
+);
+
+$amenity_ids = $this->get_inlcluded_amenities($amenity_ids);
+
+if(count($amenity_ids) > 0) {
+	$amenitey_args['post__in'] = $amenity_ids;
+	$amenitey_args['orderby'] = 'post__in';
+}
+
+$amenities = get_posts($amenitey_args);
 if(!$amenities || is_wp_error($amenities)){
 	$amenities = array();
 }
