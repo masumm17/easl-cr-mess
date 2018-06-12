@@ -61,7 +61,7 @@ $wp_customize->add_control( 'color_theme', array(
 ) );
 $wp_customize->add_control( 'default_page_types', array(
 	'type' => 'select',
-	'label' => __( 'Color Theme', 'crt' ),
+	'label' => __( 'Page Type', 'crt' ),
 	'section' => 'crt_general',
 	'choices' => array(
 		'with_hero_slider' => __('With Hero Slider', 'crt'),
