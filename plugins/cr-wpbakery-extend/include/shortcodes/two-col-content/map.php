@@ -73,6 +73,18 @@ return array(
 				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
 			),
 			array(
+				'type' => 'dropdown',
+				'heading' => __( 'Disable Column 2', 'crvc_extension' ),
+				'param_name' => 'disable_col2',
+				'std' => 'no',
+				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'value' => array(
+					__( 'No', 'crvc_extension' ) => 'no',
+					__( 'Yes', 'crvc_extension' ) => 'yes',
+				),
+				'description' => __( 'Disable column two.', 'crvc_extension' ),
+			),
+			array(
 				'type' => 'textfield',
 				'heading' => __( 'Column 2 Title', 'crvc_extension' ),
 				'param_name' => 'col_2_title',
@@ -80,12 +92,20 @@ return array(
 				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
 				'admin_label' => true,
 				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col2',
+					'value' => array('no'),
+				),
 			),
 			array(
 				'type' => 'param_group',
 				'heading' => __( 'Floor Plans', 'crvc_extension' ),
 				'param_name' => 'floorplans',
 				'description' => __( 'You can add maximum 3 floorplans. Only first 3 will be displayed.', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col2',
+					'value' => array('no'),
+				),
 				'value' => urlencode( json_encode( array(
 					array(
 						'thumb' => '',
@@ -119,6 +139,10 @@ return array(
 				'description' => __( 'Enter column 2 note.', 'crvc_extension' ),
 				'admin_label' => false,
 				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col2',
+					'value' => array('no'),
+				),
 			),
 		),
 		cr_vce_paramps_common_group()

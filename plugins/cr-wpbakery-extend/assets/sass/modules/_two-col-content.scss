@@ -18,13 +18,13 @@
         }
     }
     &-inner {
-        display: flex;
         max-width: 1344px;
         margin-left: auto;
         margin-right: auto;
+        display: flex;
+        justify-content: center;
     }
     &-amenities, &-floorplans {
-        flex: 1 auto;
         width: 50%;
         margin: 0 7px;
         padding: 45px 23px;
@@ -79,10 +79,17 @@
         text-transform: uppercase;
     }
     &-amenities {
+        .cr-2col-content-nofloorpans & .cr-2col-content-col-inner {
+            text-align: center;
+        }
         &-list{
             list-style: none;
             padding-left: 6rem;
-
+            .cr-2col-content-nofloorpans & {
+                display: inline-block;
+                text-align: left;
+                padding: 0;
+            }
             li {
                 color: $color-gray-1;
                 font-size: 1.6rem;
@@ -106,6 +113,7 @@
             }
         }
         & .cr-2col-content-note {
+            margin-top: 3rem;
             padding: 0 6rem;
         }
     }
@@ -132,6 +140,7 @@
             }
         }
         & .cr-2col-content-note {
+            margin-top: 3rem;
             text-align: center;
         }
     }
