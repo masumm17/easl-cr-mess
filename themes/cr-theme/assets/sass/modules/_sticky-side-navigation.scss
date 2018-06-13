@@ -31,13 +31,12 @@
                 transform: translateX(-9.4rem);
             }
                 
-            > a , > a:link, > a:active{
-                color: $color-base;
-                @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            > a , > a:link, > a:visted{
+                color: $color-white;
             }
         }
         > a {
-            &, &:link, &:active {
+            &, &:link, &:visited {
                 display: block;
                 padding: 1rem 2rem 1rem 5.4rem;
                 min-height: 4.4rem;
@@ -91,8 +90,7 @@
                 margin: 0;
             }
             &.cr-language-active, &:hover, &:active {
-                color: $color-base;
-                @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+                color: $color-white;
             }
         }
     }    

@@ -69,6 +69,7 @@ function crt_scripts() {
 	wp_enqueue_style('crt-google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700|Playfair+Display:400');
 	wp_enqueue_style( 'crt-main-style', get_template_directory_uri() . '/assets/css/main.min.css' );
 	wp_enqueue_style( 'crt-custom-style', get_stylesheet_directory_uri() . '/assets/css/custom.css' );
+	wp_enqueue_script( 'crt-modernizr', get_template_directory_uri() . '/assets/library/modernizr-custom.js', array(), NULL, true );
 	if(!crt_get_theme_mode( 'enable_enquire_button', '')) {
 		wp_enqueue_script( 'mCustomScrollbar', get_template_directory_uri() . '/assets/library/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js', array('jquery'), NULL, true  );
 		wp_enqueue_style( 'mCustomScrollbar', get_template_directory_uri() . '/assets/library/mCustomScrollbar/jquery.mCustomScrollbar.min.css' );
@@ -78,7 +79,7 @@ function crt_scripts() {
 	$script_data = array(
 		'ajaxURL' => admin_url( '/admin-ajax.php' ),
 	);
-	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery'), NULL, true );
+	wp_enqueue_script( 'crt-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery', 'crt-modernizr'), NULL, true );
 	wp_enqueue_script( 'crt-custom-script', get_stylesheet_directory_uri() . '/assets/js/custom.js', array('jquery'), NULL, true );
 	wp_localize_script('crt-main-script', 'CRTSettings', $script_data);
 	
