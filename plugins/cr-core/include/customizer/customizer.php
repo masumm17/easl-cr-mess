@@ -70,6 +70,7 @@ class CRT_Customizer {
 		$this->add_section_settings('sticky_side_navigation', $wp_customize);
 		$this->add_section_settings('instagram_feed', $wp_customize);
 		$this->add_section_settings('booking_panel', $wp_customize);
+		$this->add_section_settings('404', $wp_customize);
 		$this->add_section_settings('footer', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {

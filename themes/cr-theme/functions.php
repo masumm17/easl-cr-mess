@@ -107,3 +107,14 @@ function crt_register_sidebars() {
 }
 add_action( 'widgets_init', 'crt_register_sidebars' );
 
+function crt_page_title($title) {
+	$custom_title = '';
+	if ( is_404() ) {
+		$custom_title = crt_get_theme_mode( '404_doc_title', '');
+	}
+	if($custom_title){
+		$title['title'] = $custom_title;
+	}
+	return $title;
+}
+add_filter('document_title_parts', 'crt_page_title');

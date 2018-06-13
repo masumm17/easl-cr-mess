@@ -8,53 +8,34 @@
  */
 
 get_header();
+
+$title = crt_get_theme_mode( '404_page_title', '');
+$subtitle = crt_get_theme_mode( '404_page_subtitle', '');
+$content = crt_get_theme_mode( '404_page_content', '');
 ?>
-
-	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'crt' ); ?></h1>
-				</header><!-- .page-header -->
-
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'crt' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'crt' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$cr_theme_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'crt' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$cr_theme_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+			<div class="cr-container">
+				<div class="cr-row">
+					<div class="cr-404-container">
+						<section class="cr-module-wrap cr-404-wrap">
+							<?php if($title || $subtitle): ?> 
+							<div class="cr-title-subtitle-wrapper <?php if($subtitle){ echo 'cr-title-has-subtitle'; } ?>">
+								<h2 class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></h2>
+								<?php if ($subtitle): ?>
+								<h2 class="cr-sc-subtitle"><span class="cr-subtitle-inner cr-animate-when-visible"><?php echo esc_html($subtitle); ?></span></h2>
+								<?php endif; ?>
+							</div>
+							<div class="cr-404-text cr-animate-when-visible">
+								<?php echo do_shortcode( $content ) ?>
+							</div>
+							<?php endif; ?>
+							<div class="cr-404-sitemap cr-animate-when-visible">
+								<?php get_template_part('template-parts/sitemap'); ?>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</main>
 <?php
 get_footer();

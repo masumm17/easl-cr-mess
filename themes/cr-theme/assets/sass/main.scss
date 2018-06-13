@@ -16,6 +16,7 @@
 @import "components/preloader";
 @import "components/form";
 @import "components/comments";
+@import "components/sitemap";
 
 @import "modules/hero-slider";
 @import "modules/title-subtitle";
@@ -35,6 +36,9 @@
 @import "layout/navigation";
 @import "layout/grid";
 @import "layout/footer";
+
+@import "pages/404";
+@import "pages/sitemap";
 
 //@import "pages/home";
 
