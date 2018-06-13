@@ -9,17 +9,29 @@ if(count($menu_locations) > 0):
 
 <div class="cr-site-map-wrap">
 	<div class="cr-site-map-inner">
-		<?php 
+		<?php
+		//'container'      => 'div',
+				//'container_class'      => 'cr-site-map-menu-wrap',
+		$all_menu_html = '';
 		foreach($menu_locations as $menu_loc) {
-			wp_nav_menu( array(
+			$menu_html = wp_nav_menu( array(
 				'theme_location' => $menu_loc,
-				'menu_class'     => 'cr-site-map-menu',
-				'container'      => 'div',
-				'container_class'      => 'cr-site-map-menu-wrap',
+				'menu_class'     => '',
+				'id' => '',
+				'container'      => '',
+				'container_class'      => '',
 				'fallback_cb'    => false,
 				'link_before'    => '',
 				'link_after'     => '',
+				'echo' => false,
 			) );
+			$menu_html = trim($menu_html);
+			$menu_html = preg_replace('/<\/ul>$/', '', $menu_html);
+			$menu_html = preg_replace('/^<ul[^>]+>/', '', $menu_html);
+			$all_menu_html .= $menu_html;
+		}
+		if($all_menu_html){
+			echo '<div class="cr-site-map-menu-wrap"><ul class="cr-site-map-menu">' . $all_menu_html . '</ul></div>';
 		}
 		?>
 	</div>
