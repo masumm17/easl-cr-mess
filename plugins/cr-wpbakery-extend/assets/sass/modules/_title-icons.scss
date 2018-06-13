@@ -30,6 +30,9 @@
                 display: inline-block;
                 text-decoration: none;
                 text-align: center;
+                &::after {
+                    display: none;
+                }
             }
             img {
                 height: 34px;

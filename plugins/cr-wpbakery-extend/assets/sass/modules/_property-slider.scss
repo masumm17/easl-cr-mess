@@ -98,13 +98,16 @@
         height: auto;
     }
     &-arrow-left, &-arrow-right {
-        position: absolute;
+        position: absolute!important;
         width: 70px;
         height: 70px;
         z-index: 10;
         top: 50%;
         cursor: pointer;
         margin-top: -35px;
+        &::after {
+            display: none;
+        }
     }
     &-arrow-left {
         left: 0;

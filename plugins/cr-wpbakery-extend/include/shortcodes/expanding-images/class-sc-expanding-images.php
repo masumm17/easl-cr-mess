@@ -22,7 +22,7 @@ class CR_VcE_Sc_Expanding_Images extends CR_VcE_Shortcode_Container {
 		self::$data = array();
 	}
 	public static function pass_item_restriction($atts, $content=null) {
-		if(empty($atts['image']) || empty($atts['cta_title']) ){
+		if(empty($atts['image']) ){
 			return false;
 		}
 		if( self::$items_count > 5 ){
