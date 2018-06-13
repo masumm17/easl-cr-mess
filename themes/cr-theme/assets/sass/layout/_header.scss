@@ -21,21 +21,24 @@
 }
 .site-branding {
 	position: relative;
-	width: 18.5rem;
+	width: 20rem;
     .site-logo {
         img {
             position: absolute;
             top: 13px;
         }
         .site-main-logo {
-            width: 135px;
-            height: auto;
-            left: 47px;
+            //width: 135px;
+            //height: auto;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .scroll-header-logo {
-            width: 42px;
-            height: auto;
-            left: 92px;
+            //width: 42px;
+            //height: auto;
+            
+            left: 50%;
+            transform: translateX(-50%);
         }
         .scroll-header & {
             .site-main-logo {
