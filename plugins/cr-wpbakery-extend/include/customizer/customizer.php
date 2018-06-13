@@ -12,6 +12,7 @@ class CR_VcE_Customizer {
 		$this->settings_path = $root_path . '/modules-settings/';
 		add_action( 'customize_register', array( $this, 'include_controls' ) );
 		add_action( 'customize_register', array( $this, 'add_modules_sections' ));
+		add_action( 'customize_controls_print_styles', array( $this, 'print_styles' ), 21 );
 	}
 	
 	/**
@@ -42,9 +43,22 @@ class CR_VcE_Customizer {
 		$this->add_section_settings('title_icons', $wp_customize);
 		$this->add_section_settings('mini_grid_gallery', $wp_customize);
 		$this->add_section_settings('map', $wp_customize);
+		$this->add_section_settings('enquiry_form', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {
 	   require_once  $this->settings_path . str_replace( '_', '-', $sectiono_id ).'.php';
 		
+   }
+   public function print_styles() {
+	?> 
+<style type="text/css" id="wpex-customizer-controls-css">
+	#_customize-input-cr_enquiry_form_code {
+		font-size: 11px;
+		font-family: monospace;
+		line-height: 1.5em;
+		height: 400px;
+	}
+</style>
+	<?php
    }
 }
