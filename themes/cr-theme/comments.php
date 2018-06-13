@@ -23,7 +23,6 @@ if ( post_password_required() ) {
 <div id="comments" class="comments-area">
 
 	<?php
-	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
@@ -31,20 +30,18 @@ if ( post_password_required() ) {
 			$cr_theme_comment_count = get_comments_number();
 			if ( '1' === $cr_theme_comment_count ) {
 				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'crt' ),
+					esc_html__( 'One comment on &ldquo;%1$s&rdquo;', 'crt' ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $cr_theme_comment_count, 'comments title', 'crt' ) ),
+				printf( 
+					esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', $cr_theme_comment_count, 'comments title', 'crt' ) ),
 					number_format_i18n( $cr_theme_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);
 			}
 			?>
-		</h2><!-- .comments-title -->
+		</h2>
 
 		<?php the_comments_navigation(); ?>
 
@@ -55,21 +52,33 @@ if ( post_password_required() ) {
 				'short_ping' => true,
 			) );
 			?>
-		</ol><!-- .comment-list -->
+		</ol>
 
 		<?php
 		the_comments_navigation();
-
-		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
 			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'crt' ); ?></p>
 			<?php
 		endif;
 
-	endif; // Check for have_comments().
+	endif;
 
-	comment_form();
+	comment_form(array(
+		'title_reply' => __('Leave a Comment', 'crt'),
+		'label_submit' => __('Submit Comment', 'crt'),
+		'format' => 'html5',
+		'comment_notes_before' => '',
+		'comment_notes_after' => '',
+		'fields' => array(
+			'author'  => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 'crt' ) . ( $req ? ' <span class="required">' . __('(required)', 'crt') . '</span>' : '' ) . '</label> ' .
+						 '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $html_req . ' /></p>',
+			'email'   => '<p class="comment-form-email"><label for="email">' . __( 'Email (will not be published)' ) . ( $req ? ' <span class="required">' . __('(required)', 'crt') . '</span>' : '' ) . '</label> ' .
+						 '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $html_req . ' /></p>',
+			
+		),
+		'class_submit' => 'cr-button'
+	));
 	?>
 
-</div><!-- #comments -->
+</div>

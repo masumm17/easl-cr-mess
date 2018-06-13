@@ -1,0 +1,24 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="num"],
+input[type="search"],
+textarea {
+    padding: 1.3rem 1.2rem 1rem;
+    border: 1px solid $color-base;
+    color: $color-gray-1;
+    @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: false);
+}
+input[type="text"]::placeholder, 
+input[type="email"]::placeholder, 
+input[type="password"]::placeholder, 
+input[type="url"]::placeholder, 
+input[type="tel"]::placeholder, 
+input[type="num"]::placeholder, 
+input[type="search"]::placeholder, 
+textarea::placeholder {
+    color: lighten($color-gray-1, 25%);
+    text-transform: uppercase;
+}

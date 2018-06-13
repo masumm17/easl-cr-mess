@@ -6,18 +6,8 @@
  */
 
 get_header();
-?>
 
-	
-		<main id="main" class="site-main">
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			get_template_part('template-parts/content', 'single');
-		endwhile;
-		?>
-		</main>
-	
+// Get Blog page template
+get_template_part( 'template-parts/blog' );
 
-<?php
 get_footer();

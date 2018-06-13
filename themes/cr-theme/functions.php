@@ -91,3 +91,19 @@ function crt_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'crt_scripts', 20);
 
+/**
+ * Register themes sidbars
+ */
+function crt_register_sidebars() {
+	register_sidebar( array(
+        'name' => __( 'Blog Sidebar', 'crt' ),
+        'id' => 'sidebar-blog',
+        'description' => __( 'Widgets in this area will be shown on blog page and single blog article.', 'crt' ),
+        'before_widget' => '<div id="%1$s" class="cr-blog-widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="cr-blog-widget-title">',
+		'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'crt_register_sidebars' );
+
