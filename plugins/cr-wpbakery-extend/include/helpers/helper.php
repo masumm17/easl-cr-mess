@@ -54,6 +54,9 @@ function cr_vce_paramps_common_group($label = true) {
 function get_title_icons_template($title_override = '') {
 	include cr_get_template_dir('non-shortcodes/title-icons.php');
 }
+function get_sitemap_template($title_override = '') {
+	include cr_get_template_dir('non-shortcodes/sitemap.php');
+}
 
 /**
  * 

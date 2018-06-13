@@ -328,6 +328,10 @@ class CR_VcE_Manager {
 			'name' => __('Enquiry Form', 'crvc_extension'),
 			'file' => $sc_dir . '/enquiry-form/class-enquiry-form.php',
 		);
+		$this->registered_shortcodes['cr_sitemap'] = array(
+			'name' => __('Sitemap', 'crvc_extension'),
+			'file' => $sc_dir . '/sitemap/class-sitemap.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -355,6 +359,7 @@ class CR_VcE_Manager {
 			'cr_gallery_item',
 			'cr_accommodations',
 			'cr_enquiry_form',
+			'cr_sitemap',
 		);
 	}
 	
