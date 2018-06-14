@@ -44,7 +44,7 @@
             transition: all 1s;
         }
         &:not(.on-hover) &-cta {
-            background-color: rgba($color-black, 0);
+            background-color: rgba($color-black, 0)!important;
         }
         
     }
