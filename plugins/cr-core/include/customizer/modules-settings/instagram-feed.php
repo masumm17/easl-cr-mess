@@ -8,10 +8,10 @@ $wp_customize->add_section( 'crt_instagram_feed', array(
 	'capability' => 'edit_theme_options',
 ) );
 
-$wp_customize->add_setting( 'instagram_feed_enable', array(
+$wp_customize->add_setting( 'instagram_feed_footer_enable', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
-	'default' => '',
+	'default' => 'disabled',
 	'transport' => 'refresh',
 ) );
 $wp_customize->add_setting( 'instagram_feed_secretkey', array(
@@ -75,10 +75,14 @@ $wp_customize->add_setting( 'instagram_feed_cc_link_nt', array(
 	'transport' => 'refresh',
 ) );
 
-$wp_customize->add_control( 'instagram_feed_enable', array(
-	'type' => 'checkbox',
-	'label' => __( 'Enable', 'crt' ),
+$wp_customize->add_control( 'instagram_feed_footer_enable', array(
+	'type' => 'select',
+	'label' => __( 'Display on Footer', 'crt' ),
 	'section' => 'crt_instagram_feed',
+	'choices' => array(
+		'enabled' => __('Enabled', 'crt' ),
+		'disabled' => __('Disabled', 'crt' ),
+	),
 ) );
 $wp_customize->add_control( 'instagram_feed_secretkey', array(
 	'type' => 'text',

@@ -175,13 +175,12 @@ final class CR_Core {
 	public function footer_instragram_feed() {
 		$enabled = '';
 		if ( is_singular() ) {
-			$enabled = function_exists('get_field') ? get_field('sticky_side_nav', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'sticky_side_nav', true);
+			$enabled = function_exists('get_field') ? get_field('footer_instagram_feed', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'footer_instagram_feed', true);
 		}
 		if(!$enabled || 'default' == $enabled) {
-			$enabled = crt_get_theme_mode('default_page_types', 'minimal');
-		}else{
-			$enabled = 'enabled' == $enabled ? true : false;
+			$enabled = crt_get_theme_mode('instagram_feed_footer_enable', 'disabled');
 		}
+		$enabled = 'enabled' == $enabled ? true : false;
 		if(!$enabled) {
 			return '';
 		}

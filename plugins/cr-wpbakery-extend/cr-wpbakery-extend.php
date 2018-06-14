@@ -332,6 +332,10 @@ class CR_VcE_Manager {
 			'name' => __('Sitemap', 'crvc_extension'),
 			'file' => $sc_dir . '/sitemap/class-sitemap.php',
 		);
+		$this->registered_shortcodes['cr_instagram_feed'] = array(
+			'name' => __('Instagram Feed', 'crvc_extension'),
+			'file' => $sc_dir . '/instagram-feed/class-instagram-feed.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -360,6 +364,7 @@ class CR_VcE_Manager {
 			'cr_accommodations',
 			'cr_enquiry_form',
 			'cr_sitemap',
+			'cr_instagram_feed',
 		);
 	}
 	
