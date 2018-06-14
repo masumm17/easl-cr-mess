@@ -6145,11 +6145,11 @@ textarea::placeholder {
 }
 
 .header-primary-menu > li .cr-menu-level-1.cr-submenu-items-5 > li.not-hover {
-	width: 15%;
+	width: 16%;
 }
 
 .header-primary-menu > li .cr-menu-level-1.cr-submenu-items-5 > li:hover {
-	width: 30%;
+	width: 36%;
 	max-width: 100%;
 }
 
