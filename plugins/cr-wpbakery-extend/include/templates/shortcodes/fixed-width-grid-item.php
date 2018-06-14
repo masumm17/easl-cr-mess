@@ -43,17 +43,19 @@ if($img_full) {
 	<div class="fxw-grid-item <?php if($overlay_trans_disable != 'yes'){echo 'cr-has-overlay';} ?>">
 		<div class="fxw-grid-item-inner">
 			<div class="fxw-grid-item-text">
-				<div class="fxw-grid-item-text-top">
-					<h3 class="fxw-grid-item-title"><?php echo cr_vce_truncate($overlay_title, 36); ?></h3>
-					<?php if($overlay_subtitle): ?>
-					<h4 class="fxw-grid-item-subtitle"><?php echo cr_vce_truncate($overlay_subtitle, 36); ?></h4>
-					<?php endif; ?>
-				</div>
-				<div class="fxw-grid-item-text-bottom">
-					<p><?php echo cr_vce_truncate($content, 186); ?></p>
-					<?php if($cta_button_attributes): ?>
-					<a class="fxw-grid-item-cta cr-button-secondary-bordered" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
-					<?php endif; ?>
+				<div class="fxw-grid-item-text-inner">
+					<div class="fxw-grid-item-text-top">
+						<h3 class="fxw-grid-item-title"><?php echo cr_vce_truncate($overlay_title, 36); ?></h3>
+						<?php if($overlay_subtitle): ?>
+						<h4 class="fxw-grid-item-subtitle"><?php echo cr_vce_truncate($overlay_subtitle, 36); ?></h4>
+						<?php endif; ?>
+					</div>
+					<div class="fxw-grid-item-text-bottom">
+						<p><?php echo cr_vce_truncate($content, 186); ?></p>
+						<?php if($cta_button_attributes): ?>
+						<a class="fxw-grid-item-cta cr-button-secondary-bordered" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 			<?php echo $img_full; ?>

@@ -124,9 +124,10 @@ switch($display_option) {
 		break;
 	case 'text_hover': 
 		$css_class .= ' fw-grid-item-text-hover';
-		$html  = '<div class="fw-grid-item-text">';
-			$html .= "{$html_title}{$html_subtitle}{$html_description}{$html_cta}";
-		$html .= '</div>';
+		$html  = '<div class="fw-grid-item-text"><div class="fw-grid-item-text-inner">';
+			$html .= '<div class="fw-grid-item-text-top">' . $html_title . '</div>';
+			$html .= '<div class="fw-grid-item-text-bottom">' . $html_subtitl . $html_description . $html_cta . '</div>';
+		$html .= '</div></div>';
 		$html .= $video_image;
 		break;
 	case 'text_always': 

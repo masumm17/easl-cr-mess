@@ -185,16 +185,53 @@
             transform: translateY(-50%);
         }
         &-text-hover:not(&-noimage) &-text {
+            top: 10%;
+            left: 5%;
+            right: 5%;
+            bottom: 10%;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             transform: translateY(0);
-            opacity: 0;
-            transition: all .75s;
+            &-inner {
+               transform: translateY(50%);
+               transition: all .75s; 
+            }
         }
         &:hover &-text {
             
         }
         &-text-hover:not(&-noimage):hover &-text {
-            opacity: 1;
+            &-inner {
+                transform: translateY(0);
+            }
+        }
+        
+        &-text-hover:not(&-noimage) &-text-top {
             transform: translateY(-50%);
+            position: relative;
+            transition: all .5s;
+            margin: 0 0 2.2rem;
+        }
+        &-text-hover:not(&-noimage):hover &-text-top {
+            transform: translateY(0);
+        }
+        &-text-hover:not(&-noimage) &-text-bottom {
+            //transform: translateY(5rem);
+            transition: all .5s;
+            transition-delay: .75s;
+            opacity: 0;
+            color: $color-white;
+            font-size: 1.4rem;
+            line-height: 2em;
+            p {
+                margin-bottom: 3.6rem;
+            }
+        }
+        &-text-hover:not(&-noimage):hover &-text-bottom {
+            opacity: 1;
+            //transform: translateY(0);
         }
         &-title {
             color: $color-white;

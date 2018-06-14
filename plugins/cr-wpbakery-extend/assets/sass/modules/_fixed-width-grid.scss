@@ -64,11 +64,18 @@
             bottom: 10%;
             z-index: 3;
             text-align: center;
-            transform: translateY(50%);
-            transition: all .75s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &-inner {
+               transform: translateY(50%);
+               transition: all .75s; 
+            }
         }
         &:hover &-text {
-            transform: translateY(0);
+            &-inner {
+                transform: translateY(0);
+            }
         }
         &-text-top {
             transform: translateY(-50%);
