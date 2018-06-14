@@ -185,10 +185,10 @@
             transform: translateY(-50%);
         }
         &-text-hover:not(&-noimage) &-text {
-            top: 10%;
-            left: 5%;
-            right: 5%;
-            bottom: 10%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             width: auto;
             display: flex;
             flex-direction: column;
