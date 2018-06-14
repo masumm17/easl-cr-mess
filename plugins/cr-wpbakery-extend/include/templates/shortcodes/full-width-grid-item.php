@@ -102,6 +102,10 @@ if($enable_video == 'yes' && $video_id) {
 
 $video_image = $html_image . $html_video;
 
+if( 'text_hover' == $display_option &&  $html_title && !$html_subtitle && !$html_description && !$html_cta) {
+	$display_option = 'title_only';
+}
+
 // Set display option class and build html markup
 $html = '';
 switch($display_option) {
@@ -126,7 +130,7 @@ switch($display_option) {
 		$css_class .= ' fw-grid-item-text-hover';
 		$html  = '<div class="fw-grid-item-text"><div class="fw-grid-item-text-inner">';
 			$html .= '<div class="fw-grid-item-text-top">' . $html_title . '</div>';
-			$html .= '<div class="fw-grid-item-text-bottom">' . $html_subtitl . $html_description . $html_cta . '</div>';
+			$html .= '<div class="fw-grid-item-text-bottom">' . $html_subtitle . $html_description . $html_cta . '</div>';
 		$html .= '</div></div>';
 		$html .= $video_image;
 		break;
