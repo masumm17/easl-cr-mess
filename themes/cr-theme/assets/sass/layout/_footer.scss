@@ -19,9 +19,8 @@
 }
 .footer-top {
     background-color: #000;
-    background-image: url('../images/footer-bg.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-image: url('../images/footer-bg.svg');
+    background-repeat: repeat;
     position: relative;
 }
 .footer-widgets{
@@ -78,7 +77,7 @@
                     background: linear-gradient(to top, rgba($color-black, 1), transparent 50%);
                     z-index: 0;
                 }
-                .page-loaded .cr-animate-footer & {
+                .page-loaded.cr-animate-footer & {
                     transform: translateY(0);
                 }
             }
