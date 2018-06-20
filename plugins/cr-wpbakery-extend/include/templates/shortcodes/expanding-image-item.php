@@ -41,7 +41,9 @@ if($img_full_src) {
 	?> 
 	<div class="expanding-image-item" style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>')">
 		<?php if($cta_title): ?>
-		<a class="expanding-image-item-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_title); ?></span></a>
+		<div class="expanding-image-item-cta-wrap">
+			<a class="expanding-image-item-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_title); ?></span></a>
+		</div>
 		<?php endif; ?>
 	</div>
 <?php } ?>
