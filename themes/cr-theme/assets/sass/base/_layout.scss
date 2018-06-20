@@ -6,6 +6,9 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+    .scroll-header & {
+        padding-top: 7rem;
+    }
     .fixed-header &::before{
         content: "";
         position: absolute;
