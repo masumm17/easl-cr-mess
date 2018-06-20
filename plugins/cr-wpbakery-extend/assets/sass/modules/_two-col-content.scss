@@ -12,7 +12,7 @@
         height: 0;
         width: 100%;
         transition: all .75s;
-        transition-delay: .25s;
+        //transition-delay: .25s;
         .page-loaded .cr_start_animation & {
             height: 100%;
         }
@@ -40,12 +40,12 @@
             z-index: 1;
             opacity: 0;
             transition: all .25s;
-            transition-delay: 1s;
+            transition-delay: .5s;
         }
-        .page-loaded &.cr_start_animation::after, 
-        .page-loaded &.cr_start_animation::before{
-                opacity: 1;
-            }
+        .page-loaded .cr_start_animation &::after, 
+        .page-loaded .cr_start_animation &::before{
+            opacity: 1;
+        }
         &::after {
             left: 6px;
             top: 6px;
@@ -62,10 +62,12 @@
     &-col-inner {
         position: relative;
         z-index: 2;
+        opacity: 0;
         transform: translateY(10rem);
-        transition: transform .75s;
-        transition-delay: 1s;
+        transition: all .5s;
+        transition-delay: .25s;
         .page-loaded .cr_start_animation & {
+            opacity: 1;
             transform: translateY(0);
         }
     }

@@ -68,9 +68,9 @@ if($column_1_enabled || $column_2_enabled):
 ?> 
 
 <section class="cr-module-wrap cr-2col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
-	<div class="cr-2col-content-inner">
+	<div class="cr-2col-content-inner cr-animate-when-visible">
 		<?php if($column_1_enabled): ?>
-		<div class="cr-2col-content-amenities cr-animate-when-visible">
+		<div class="cr-2col-content-amenities">
 			<div class="cr-2col-content-bg"></div>
 			<div class="cr-2col-content-col-inner">
 				<?php if($col_1_title): ?>
@@ -101,7 +101,7 @@ if($column_1_enabled || $column_2_enabled):
 		</div>
 		<?php endif; ?>
 		<?php if($column_2_enabled): ?>
-		<div class="cr-2col-content-floorplans cr-animate-when-visible">
+		<div class="cr-2col-content-floorplans">
 			<div class="cr-2col-content-bg"></div>
 			<div class="cr-2col-content-col-inner">
 				<?php if($col_2_title): ?>
