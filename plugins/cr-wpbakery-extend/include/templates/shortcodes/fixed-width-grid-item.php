@@ -17,7 +17,7 @@ extract( $atts );
 $cta_button = $this->parse_url($cta_button);
 
 $image = preg_replace( '/[^\d]/', '', $image );
-$image_size = 'fw1-2_col1-3_x';
+$image_size = 'fw2-3_col1-3_x';
 $img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image') );
 
 if($img_full) {
