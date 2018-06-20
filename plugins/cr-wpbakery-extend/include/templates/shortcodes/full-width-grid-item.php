@@ -57,7 +57,7 @@ switch($display_option) {
 }
 
 $image = preg_replace( '/[^\d]/', '', $image );
-$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image '. $image_size) );
+$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fw-grid-item-image '. $image_size) );
 
 
 // Build item elements html
