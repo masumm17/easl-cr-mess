@@ -249,6 +249,14 @@ class MHM_Map_builder {
 						<td><input id="mhmmb-mf-title" type="text" value="<%= title %>"/></td
 					</tr>
 					<tr>
+						<td><label for="mhmmb-mf-lat">Latitude</label></td>
+						<td><input id="mhmmb-mf-lat" type="text" value="<%= lat %>"/></td
+					</tr>
+					<tr>
+						<td><label for="mhmmb-mf-lng">Longitude</label></td>
+						<td><input id="mhmmb-mf-lng" type="text" value="<%= lng %>"/></td
+					</tr>
+					<tr>
 						<td><label for="mhmmb-mf-thumb">Marker Image</label></td>
 						<td>
 							<input class="mhmup-thumb" id="mhmmb-mf-thumb" type="hidden" value="<%= thumb %>"/>

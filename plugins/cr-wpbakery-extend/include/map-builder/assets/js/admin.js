@@ -287,9 +287,10 @@
         },
         showMarkerForm: function(e) {
             _.isObject(e) && e.preventDefault();
+            var latlong = this.activeMarker.getPosition().toJSON();
             this.$el.removeClass("mhm-setting-marker");
             this.editor.addClass("mhm-form-new");
-            var markerModel = new MHMMapBuilder.Models.Marker();
+            var markerModel = new MHMMapBuilder.Models.Marker({lat: latlong.lat, lng: latlong.lng});
             this.showEditor(this.markerFormTemplate(markerModel.toTemplateData()));
             markerModel.destroy();
         },
@@ -309,7 +310,12 @@
         },
         saveMarker: function(e) {
             _.isObject(e) && e.preventDefault();
-            var latlong = this.activeMarker.getPosition().toJSON();
+            var latlong = {
+                lat: parseFloat(this.editor.find("#mhmmb-mf-lat").val()),
+                lng: parseFloat(this.editor.find("#mhmmb-mf-lng").val())
+            };
+            console.log(latlong);
+            this.activeMarker.setPosition(latlong);
             var markerData = {
                 lat: latlong.lat,
                 lng: latlong.lng,
