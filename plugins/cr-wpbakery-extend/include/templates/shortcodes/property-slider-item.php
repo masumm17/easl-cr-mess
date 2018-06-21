@@ -44,7 +44,7 @@ if($img_full_src) {
 		<div class="property-slider-stripe right"></div>
 		<div class="property-slider-text">
 			<h3 class="property-slider-text-title"><?php echo cr_vce_truncate($overlay_title, 23, '', false); ?></h3>
-			<p><?php echo cr_vce_truncate($content, 180); ?></p>
+			<p><?php echo cr_vce_truncate($content, 220); ?></p>
 			<?php if($cta_button_attributes): ?>
 			<a class="property-slider-text-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 			<?php endif; ?>
