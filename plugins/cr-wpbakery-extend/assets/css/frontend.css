@@ -273,7 +273,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .cr-lightbox-caption-subtitle {
 	color: #cd8e01;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1em;
 	margin: 1rem 0 0;
@@ -294,7 +294,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .cr-lightbox-caption-ctas li a:visited {
 	padding: 0 3.6rem;
 	height: 4.5rem;
-	line-height: 4.5rem;
+	line-height: 4.3rem;
 	white-space: nowrap;
 }
 

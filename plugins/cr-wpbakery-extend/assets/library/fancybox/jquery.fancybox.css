@@ -14,7 +14,6 @@ body.compensate-for-scrollbar {
 .fancybox-container {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   height: 100%;
   left: 0;
   position: fixed;
@@ -300,12 +299,10 @@ body.compensate-for-scrollbar {
 
 .fancybox-button,
 .fancybox-button:visited,
-.fancybox-button:link {
-  color: #ccc; }
+.fancybox-button:link { }
 
 .fancybox-button:focus,
-.fancybox-button:hover {
-  color: #fff; }
+.fancybox-button:hover {}
 
 .fancybox-button.disabled,
 .fancybox-button.disabled:hover,
@@ -449,12 +446,9 @@ body.compensate-for-scrollbar {
 .fancybox-caption a,
 .fancybox-caption a:link,
 .fancybox-caption a:visited {
-  color: #ccc;
   text-decoration: none; }
 
-.fancybox-caption a:hover {
-  color: #fff;
-  text-decoration: underline; }
+.fancybox-caption a:hover { }
 
 /* Loading indicator */
 .fancybox-loading {
