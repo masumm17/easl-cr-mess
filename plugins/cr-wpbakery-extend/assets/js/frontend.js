@@ -610,8 +610,11 @@ if (!Object.is) {
                 if(!mapID || !filterID){
                     return;
                 }
-                show ? $t.removeClass("cr-map-marker-hidden"): $t.addClass("cr-map-marker-hidden");
-                
+                if(show){
+                    return;
+                }
+                $t.addClass("cr-map-marker-hidden");
+                $t.siblings().not($t).removeClass("cr-map-marker-hidden");
                 if(ChevRes.Storage.Maps[mapID] === "undefined"){
                     return;
                 }
@@ -620,8 +623,10 @@ if (!Object.is) {
                     if("nofilter" === fid){
                         continue;
                     }
-                    if(filterID !== fid){
-                        show ? ChevRes.Storage.Maps[mapID].markers[i].setMap(ChevRes.Storage.Maps[mapID].map):ChevRes.Storage.Maps[mapID].markers[i].setMap(null);
+                    if(filterID === fid){
+                        !ChevRes.Storage.Maps[mapID].markers[i].getMap() && ChevRes.Storage.Maps[mapID].markers[i].setMap(ChevRes.Storage.Maps[mapID].map);
+                    }else{
+                        ChevRes.Storage.Maps[mapID].markers[i].setMap(null);
                     }
                     
                 }
