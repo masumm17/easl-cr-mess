@@ -105,13 +105,22 @@ $video_image = $html_image . $html_video;
 if( 'text_hover' == $display_option &&  $html_title && !$html_subtitle && !$html_description && !$html_cta) {
 	$display_option = 'title_only';
 }
+if( 'title_only' == $display_option && $html_cta) {
+	$display_option = 'title_only_cta';
+}
 
 // Set display option class and build html markup
 $html = '';
 switch($display_option) {
 	case 'no_text': 
 		$css_class .= ' fw-grid-item-notext';
-		$html = $video_image;
+		$html = '';
+		if($html_cta){
+			$html  = '<div class="fw-grid-item-text">';
+				$html .= "{$html_cta}";
+			$html .= '</div>';
+		}
+		$html .= $video_image;
 		break;
 	case 'no_image': 
 		$css_class .= ' fw-grid-item-noimage';
@@ -124,6 +133,14 @@ switch($display_option) {
 		$html  = '<div class="fw-grid-item-text">';
 			$html .= "{$html_title}";
 		$html .= '</div>';
+		$html .= $video_image;
+		break;
+	case 'title_only_cta': 
+		$css_class .= ' fw-grid-item-text-hover';
+		$html  = '<div class="fw-grid-item-text"><div class="fw-grid-item-text-inner">';
+			$html .= '<div class="fw-grid-item-text-top">' . $html_title . '</div>';
+			$html .= '<div class="fw-grid-item-text-bottom">' . $html_cta . '</div>';
+		$html .= '</div></div>';
 		$html .= $video_image;
 		break;
 	case 'text_hover': 
@@ -142,9 +159,13 @@ switch($display_option) {
 		$html .= $video_image;
 		break;
 }
+
 // Set overlay class
 if($overlay_trans_disable != 'yes' && $display_option != 'no_image' && !$html_video){
 	$css_class .= ' cr-has-overlay';
+}
+if(($overlay_trans_disable != 'yes' || $html_title || $html_subtitle || $html_description || $html_cta) && $display_option != 'no_image'){
+	$css_class .= ' cr-has-overlay-text';
 }
 
 // set text alignment

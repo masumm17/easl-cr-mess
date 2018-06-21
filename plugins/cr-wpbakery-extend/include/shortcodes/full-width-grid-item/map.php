@@ -101,10 +101,6 @@ return array(
 				'param_name' => 'cta_button',
 				'value' => '',
 				'description' => __( 'Set call to action button link.', 'crvc_extension' ),
-				'dependency' => array(
-					'element' => 'display_option',
-					'value' => array( 'text_hover', 'text_always', 'no_image'),
-				),
 			),
 			array(
 				'type' => 'dropdown',
