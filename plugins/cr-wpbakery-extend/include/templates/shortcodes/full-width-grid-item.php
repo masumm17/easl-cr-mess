@@ -143,7 +143,7 @@ switch($display_option) {
 		break;
 }
 // Set overlay class
-if($overlay_trans_disable != 'yes' && $display_option != 'no_image'){
+if($overlay_trans_disable != 'yes' && $display_option != 'no_image' && !$html_video){
 	$css_class .= ' cr-has-overlay';
 }
 
