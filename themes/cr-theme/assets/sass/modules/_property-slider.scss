@@ -1,5 +1,8 @@
 .property-slider {
     &-text {
+        &-subtitle {
+            @include color-themes($color:true, $bgcolor:false);
+        }
         &-cta {
             background-color: $color-base;
             @include color-themes($color:false, $bgcolor:true);

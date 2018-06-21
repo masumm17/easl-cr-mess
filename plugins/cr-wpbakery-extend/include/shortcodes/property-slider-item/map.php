@@ -34,6 +34,13 @@ return array(
 				'description' => __( 'Set overlay title.', 'crvc_extension' ),
 			),
 			array(
+				'type' => 'textfield',
+				'heading' => __( 'Overlay Subtitle', 'crvc_extension' ),
+				'param_name' => 'overlay_subtitle',
+				'value' => '',
+				'description' => __( 'Set overlay subtitle.', 'crvc_extension' ),
+			),
+			array(
 				'type' => 'textarea_html',
 				'heading' => __( 'Overlay Description', 'crvc_extension' ),
 				'param_name' => 'content',

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Property_Slider_Item
  */
 $el_class = $css = $css_animation = '';
-$image = $overlay_title = $cta_button = '';
+$image = $overlay_title = $overlay_subtitle = $cta_button = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -42,8 +42,11 @@ if($img_full_src) {
 	<div class="property-slider-item">
 		<div class="property-slider-stripe"></div>
 		<div class="property-slider-stripe right"></div>
-		<div class="property-slider-text">
+		<div class="property-slider-text <?php if($overlay_subtitle){echo 'cr-has-subtitle';} ?>">
 			<h3 class="property-slider-text-title"><?php echo cr_vce_truncate($overlay_title, 23, '', false); ?></h3>
+			<?php if($overlay_subtitle): ?> 
+			<h3 class="property-slider-text-subtitle"><?php echo esc_html($overlay_subtitle); ?></h3>
+			<?php endif; ?>
 			<p><?php echo cr_vce_truncate($content, 220); ?></p>
 			<?php if($cta_button_attributes): ?>
 			<a class="property-slider-text-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
