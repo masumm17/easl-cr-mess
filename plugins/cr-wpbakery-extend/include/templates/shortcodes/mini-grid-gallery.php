@@ -87,7 +87,7 @@ if(count($cta_button_attributes) > 0 && !empty($cta_button['title'])){
 	$cta_button_attributes = '';
 }
 
-
+if($column2_image):
 CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 ?>
 <section class="cr-module-wrap mini-gallery-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
@@ -145,3 +145,4 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 		</div>
 	</div>
 </section>
+<?php endif; ?>
