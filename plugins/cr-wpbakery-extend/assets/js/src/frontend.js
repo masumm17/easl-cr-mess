@@ -10,6 +10,22 @@ if (!Object.is) {
     }
   };
 }
+if (!String.prototype.padStart) {
+    String.prototype.padStart = function padStart(targetLength,padString) {
+        targetLength = targetLength>>0; //truncate if number or convert non-number to 0;
+        padString = String((typeof padString !== 'undefined' ? padString : ' '));
+        if (this.length > targetLength) {
+            return String(this);
+        }
+        else {
+            targetLength = targetLength-this.length;
+            if (targetLength > padString.length) {
+                padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
+            }
+            return padString.slice(0,targetLength) + String(this);
+        }
+    };
+}
 (function($){
     function escapeHtml(string) {
         var entityMap = {
@@ -422,6 +438,20 @@ if (!Object.is) {
                 animationDuration: 500,
                 transitionEffect: "fade",
                 transitionDuration: 500,
+                // Base template for layout
+                baseTpl:
+                  '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+                  '<div class="fancybox-bg"></div>' +
+                  '<div class="fancybox-inner">' +
+                  '<div class="fancybox-infobar">' +
+                  "<span data-fancybox-index></span>/<span data-fancybox-count></span>" +
+                  "</div>" +
+                  '<div class="fancybox-toolbar">{{buttons}}</div>' +
+                  '<div class="fancybox-navigation">{{arrows}}</div>' +
+                  '<div class="fancybox-stage"></div>' +
+                  '<div class="fancybox-caption"></div>' +
+                  "</div>" +
+                  "</div>",
                 btnTpl: {
                     arrowLeft:
                         '<a data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}" href="javascript:;">' +

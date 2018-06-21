@@ -1,4 +1,7 @@
 .fancybox {
+    &-container {
+        font-family: inherit!important;
+    }
     &-toolbar {
         position: static;
     }
@@ -152,7 +155,7 @@
         flex-direction: column;
         justify-content: center;
         &-title {
-            color: $color-white;
+            color: $color-white!important;
             font-weight: 400;
             font-size: 1.8rem;
             line-height: 1em;
