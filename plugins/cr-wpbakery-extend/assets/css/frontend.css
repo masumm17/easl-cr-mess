@@ -1593,7 +1593,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .fw-grid-item-image {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	position: relative;
 	z-index: 1;
 }
