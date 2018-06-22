@@ -256,20 +256,20 @@
             position: relative;
             bottom: -4px;
             &::after {
-                background-image: url('../images/theme-base/booking-panel/cr-person.svg');
-            @include bgimage-themes("booking-panel/booking-panel/cr-person.svg");
+                background-image: url('../images/theme-base/booking-panel/person.svg');
+            @include bgimage-themes("booking-panel/booking-panel/person.svg");
             }
         }
         &-rac {
             &::after {
-                background-image: url('../images/theme-base/booking-panel/cr-callback-request.svg');
-            @include bgimage-themes("booking-panel/booking-panel/cr-callback-request.svg");
+                background-image: url('../images/theme-base/booking-panel/callback-request.svg');
+            @include bgimage-themes("booking-panel/booking-panel/callback-request.svg");
             }
         }
         &-brg {
             &::after {
-                background-image: url('../images/theme-base/booking-panel/cr-circle-tick.svg');
-            @include bgimage-themes("booking-panel/booking-panel/cr-circle-tick.svg");
+                background-image: url('../images/theme-base/booking-panel/circle-tick.svg');
+            @include bgimage-themes("booking-panel/booking-panel/circle-tick.svg");
             }
         }
     }
@@ -354,8 +354,8 @@
             display: inline-block;
             width: 2.8rem;
             height: 2.8rem;
-            background-image: url('../images/theme-base/booking-panel/inner-panel/cr-scroll-down-circle.svg');
-            @include bgimage-themes("booking-panel/inner-panel/cr-scroll-down-circle.svg");
+            background-image: url('../images/theme-base/booking-panel/inner-panel/scroll-down-circle.svg');
+            @include bgimage-themes("booking-panel/inner-panel/scroll-down-circle.svg");
             background-repeat: no-repeat;
             background-position: center center;
             background-size: contain;
