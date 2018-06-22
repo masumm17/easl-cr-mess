@@ -108,10 +108,10 @@
         margin: 0 0 5rem;
         
         .bp-color-white & {
-            color: $color-white;
+            color: $color-white!important;
         }
         .bp-color-black & {
-            color: $color-gray-1;
+            color: $color-gray-1!important;
         }
     }
     &-fields {
@@ -145,10 +145,10 @@
             width: calc( (100% - 8px)/3 );
         }
         .bp-color-white &.cr-has-bg {
-            background-color: $color-white;
+            background-color: $color-white!important;
         }
         .bp-color-black &.cr-has-bg {
-            background-color: $color-black;
+            background-color: $color-black!important;
         }
         &-button, &-brg {
             text-align: right;
@@ -170,10 +170,10 @@
         font-size: 1.6rem;
         font-weight: 400;
         .bp-color-white & {
-            color: $color-gray-2;
+            color: $color-gray-2!important;
         }
         .bp-color-black & {
-            color: $color-white;
+            color: $color-white!important;
         }
     }
     &-value {
@@ -532,7 +532,7 @@
             }
             .ui-datepicker-prev {
                 background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-left-arrow.svg');
-            @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg.svg");
+            @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg");
                 left: 2rem;
             }
             .ui-datepicker-next {

@@ -316,7 +316,7 @@
             transform: translateY(-50%);
         }
         &-title {
-            color: $color-white;
+            color: $color-white!important;
             font-size: 2rem;
             font-weight: 400;
             line-height: 1.4em;

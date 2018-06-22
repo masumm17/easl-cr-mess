@@ -47,7 +47,7 @@
             font-size: 1.4rem;
             text-transform: uppercase;
             line-height: 1em;
-            color: $color-gray-1;
+            color: $color-gray-1!important;
             margin: 0 0 1.2rem;
         }
         &-text-image {
@@ -74,7 +74,7 @@
             p {
                 font-size: 1.1rem;
                 line-height: 1.6em;
-                color: $color-gray-1;
+                color: $color-gray-1!important;
                 margin: 0 0 2rem;
             }
         }

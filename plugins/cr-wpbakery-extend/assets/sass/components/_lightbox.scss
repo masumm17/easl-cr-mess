@@ -30,7 +30,7 @@
             }
         }
         &--share {
-            background-color: $color-white;
+            background-color: $color-white!important;
             background-image: url('../images/lightbox-share.png');
             background-repeat: no-repeat;
             background-position: center center;
@@ -137,7 +137,7 @@
         height: 7.5rem;
         line-height: 7.5rem;
         width: 9.8rem;
-        color: $color-white;
+        color: $color-white!important;
         font-family: 'Playfair Display', serif;
         font-size: 2.4rem;
         align-items: center;
@@ -197,7 +197,7 @@
         bottom: 0;
         z-index: 99997;
         &-button {
-            background-color: $color-white;
+            background-color: $color-white!important;
             background-image: url('../images/theme-base/gallery-icons/connect.svg');
             background-repeat: no-repeat;
             background-position: center center;
