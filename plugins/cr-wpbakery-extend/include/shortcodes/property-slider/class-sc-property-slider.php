@@ -13,6 +13,19 @@ class CR_VcE_Sc_Property_Slider extends CR_VcE_Shortcode_Container {
 	public static $items_data = array();
 	
 	public static $data = array();
+	
+	public static $module_global_item_settings;
+
+
+
+	public function load_settings() {
+		$this->module_settings = array(
+			'title_length' => (int)get_option('property_slider_title_length'),
+			'subtitle_length' => (int)get_option('property_slider_subtitle_length'),
+			'content_length' => (int)get_option('property_slider_content_length'),
+		);
+		self::$module_global_item_settings = $this->module_settings;
+	}
 	/**
 	 * Reset Items data
 	 */

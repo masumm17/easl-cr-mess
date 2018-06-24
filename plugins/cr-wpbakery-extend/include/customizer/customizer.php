@@ -43,6 +43,7 @@ class CR_VcE_Customizer {
 		$this->add_section_settings('title_icons', $wp_customize);
 		$this->add_section_settings('mini_grid_gallery', $wp_customize);
 		$this->add_section_settings('map', $wp_customize);
+		$this->add_section_settings('property_slider', $wp_customize);
 		$this->add_section_settings('enquiry_form', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {

@@ -33,3 +33,7 @@
         pointer-events: none;
     }
 }
+.cr-lenght-limited-text {
+    white-space: nowrap;
+    overflow: hidden;
+}

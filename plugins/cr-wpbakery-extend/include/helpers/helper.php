@@ -67,6 +67,7 @@ function get_sitemap_template($title_override = '') {
  * @return type
  */
 function cr_vce_truncate($str, $len = 200, $trail = '', $word_wrap = true) {
+	$len = max(0, $len);
     // Strip all html tags
     $str = strip_tags($str);
     // Strip Shortcodes
@@ -74,7 +75,7 @@ function cr_vce_truncate($str, $len = 200, $trail = '', $word_wrap = true) {
     // And the boundary spaces
     $str = trim($str);
     // No need to trancate if string length is lesser
-    if (strlen($str) < $len) {
+    if (!$len || strlen($str) < $len) {
         return $str;
     }
     // Do the truncate magic
