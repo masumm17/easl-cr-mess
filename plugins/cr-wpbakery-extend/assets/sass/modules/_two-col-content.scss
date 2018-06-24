@@ -124,6 +124,8 @@
             display: flex;
             list-style: none;
             justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
             margin: 9rem 0 8rem;
             li {
                 padding: 0 .8rem;
@@ -137,8 +139,11 @@
                     height: auto;
                 }
             }
-            &-count-2 li {
+            &-count-1 li {
                 width: 50%;
+            }
+            &-count-2 li {
+                width: 40%;
             }
         }
         & .cr-2col-content-note {

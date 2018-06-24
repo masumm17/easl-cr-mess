@@ -107,7 +107,7 @@ if($column_1_enabled || $column_2_enabled):
 				<?php if($col_2_title): ?>
 				<h2 class="cr-2col-content-title"><?php echo esc_html($col_2_title); ?></h2>
 				<?php endif; ?>
-				<ul class="cr-2col-content-floorplans-thumbs cr-2col-content-floorpans-thumbs-count-<?php echo count($parsed_floorplans); ?>">
+				<ul class="cr-2col-content-floorplans-thumbs cr-2col-content-floorplans-thumbs-count-<?php echo count($parsed_floorplans); ?>">
 				<?php 
 				foreach($parsed_floorplans as $floorplan): 
 					$link_attributes = array();
