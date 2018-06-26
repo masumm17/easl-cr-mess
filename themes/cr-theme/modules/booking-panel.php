@@ -118,8 +118,8 @@ if(count($dropdown_columns) == 0) {
 											<?php endforeach;?>
 										<?php endforeach;?>
 									</select>
-									<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"></span>
 									<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_keword)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
+									<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_keword)); ?></span>
 									<span id="booking-panel-dd-keywords" class="booking-panel-dd-icon"></span>
 								</p>
 								<div class="booking-panel-dd-position"></div>
@@ -202,7 +202,7 @@ if(count($dropdown_columns) == 0) {
 							<div class="booking-panel-col-inner">
 								<h5 class="booking-panel-label"><?php _e('Promo Code', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
-									<input name="promotionCode" type="text" value="" id="booking-panel-promo" placeholder="<?php echo _e('Enter promo code', 'crt') ?>"/>
+									<input name="promotionCode" type="text" value="" id="booking-panel-promo" placeholder="<?php echo _e('Enter promo code', 'crt') ?>" autocomplete="off"/>
 								</p>
 							</div>
 						</div>

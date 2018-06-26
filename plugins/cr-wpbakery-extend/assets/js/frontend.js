@@ -232,7 +232,7 @@ if (!String.prototype.padStart) {
         defaults: {
             YT: {
                 autoplay: 0,
-                autohide: 0,
+                autohide: 1,
                 modestbranding: 1,
                 rel: 0,
                 showinfo: 0,
@@ -603,7 +603,7 @@ if (!String.prototype.padStart) {
                             $playerParent.addClass('cr-yt-not-started');
                             //e.target.playVideo();
                         } else if (e.data === YT.PlayerState.PAUSED) {
-                            $playerParent.addClass('cr-yt-not-paused');
+                            $playerParent.addClass('cr-yt-paused');
                         }
                     }
                 }

@@ -64,7 +64,7 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 						</ul>
 					</div>
 					<div class="accommodations-filter accommodations-filter-roomtype" data-type="roomtype">
-						<h5 class="accommodations-filter-label"><?php _e('Room Type', 'crvc_extension'); ?></h5>
+						<h5 class="accommodations-filter-label"><?php _e('Apartment Type', 'crvc_extension'); ?></h5>
 						<p class="accommodations-filter-selected">
 							<span class="accommodations-filter-selected-name"><?php _e('All', 'crvc_extension'); ?></span>
 							<span class="accommodations-filter-arrow">

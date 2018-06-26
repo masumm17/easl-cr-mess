@@ -51,7 +51,7 @@ if($img_full_src) {
 			<?php if($overlay_subtitle): ?> 
 			<h3 class="property-slider-text-subtitle <?php if($subtitle_length > 0) {echo 'cr-lenght-limited-text';}?>"><?php echo cr_vce_truncate($overlay_subtitle, $subtitle_length, '', false); ?></h3>
 			<?php endif; ?>
-			<p <?php if($subtitle_length > 0) {echo ' class="cr-lenght-limited-text" ';}?>><?php echo cr_vce_truncate($content, $content_length); ?></p>
+			<p <?php if($content_length > 0) {echo ' class="cr-lenght-limited-text" ';}?>><?php echo cr_vce_truncate($content, $content_length); ?></p>
 			<?php if($cta_button_attributes): ?>
 			<a class="property-slider-text-cta cr-button <?php if($title_length < 1) {echo 'cr-lenght-limited-text';}?>" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 			<?php endif; ?>

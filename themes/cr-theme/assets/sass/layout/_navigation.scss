@@ -28,7 +28,7 @@
                 height: 7rem;
                 line-height: 7rem;
                 transform: translateY(100%);
-                transition: all .5s;
+                transition: width .5s;
                 .page-loaded & {
                     transform: translateY(0);
                 }
@@ -87,7 +87,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                transition: all .5s ease-out;
+                transition: all .95s ease;
                 &:first-child {
                     border-left: 1px solid $color-white;
                 }
@@ -108,9 +108,6 @@
                     padding: 6rem 1rem 3rem;
                     white-space: nowrap;
                     > a{
-                        font-size: 1.5rem;
-                        letter-spacing: 0.7px;
-                        font-weight: 600;
                         position: absolute !important;
                         left: 50%;
                         top: 50%;
@@ -147,11 +144,11 @@
                           height: auto;
                           line-height: 1.4em;
                           &::after {
-                            transform: translateY(1rem)!important;
+                            transform: translateY(2.8rem)!important;
                           }
                       }
                       &:hover a > .link-inner::after {
-                            transform: translateY(0)!important;
+                            transform: translateY(.9rem)!important;
                         }
                     }
                 }

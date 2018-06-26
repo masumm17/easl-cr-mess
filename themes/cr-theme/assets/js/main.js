@@ -262,7 +262,7 @@
                         wrap = this.menu.element.find(".booking-panel-dd-wrap");
                     this.menu.element.css({
                         width: this.panelCol.outerWidth(),
-                        height: this.panelFields.outerHeight() - this.panelCol.outerHeight() - 4
+                        height: this.panelFields.outerHeight() - this.panelCol.outerHeight() - 3
                     });
                     if(wrapLi.outerHeight() < wrap.outerHeight()){
                         wrapLi.mCustomScrollbar({

@@ -268,7 +268,7 @@ class CR_Dropdown_Walker_Nav_Menu extends Walker_Nav_Menu {
 			if($depth < 1){
 				$element->classes[] = 'cr-menu-child-' . min(6, count($children_elements[$id]));
 			}else{
-				if($total_childs > 4) {
+				if($total_childs >= 4) {
 					$element->classes[] = 'cr-menu-child-twocol';
 				}
 			}

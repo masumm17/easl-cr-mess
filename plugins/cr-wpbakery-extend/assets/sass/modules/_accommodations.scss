@@ -290,9 +290,9 @@
                 transition: .5s all ease;
                 z-index: 2;
             }
-            &:hover &::after {
-                background-color: rgba($color-black, .65);
-            }
+        }
+        &:hover &-inner::after {
+            background-color: rgba($color-black, .65);
         }
         &-image {
             display: block;

@@ -1,6 +1,6 @@
 .booking-panel {
     &-shown {
-        //overflow: hidden;
+        overflow: hidden;
     }
     background-size: cover;
     background-position: center center;
@@ -85,6 +85,14 @@
             width: 100%;
             bottom: 0;
             z-index: 2;
+            font-weight: 300;
+            
+            font-size: 2.6rem;
+            &:placeholder-shown,
+            &:placeholder-shown + .booking-panel-residences-dummy {
+                font-size: 1.4rem;
+                line-height: 1.4em;
+            }
         }
         #booking-panel-promo {
             max-width: 16rem;
@@ -163,7 +171,7 @@
     }
     
     &-row-acp &-col{
-        overflow: hidden;
+        //overflow: hidden;
     }
     &-label {
         margin: 0 0 2rem;
@@ -215,8 +223,9 @@
         display: inline-block;
         padding: 4px 3rem .8rem;
         text-align: center;
-        font-size: 1.4rem;
-        line-height: 1.4em;
+        font-size: 2.6rem;
+        font-weight: 300;
+        line-height:1.4em;
     }
     &-input {
         &-wrap {
@@ -390,6 +399,9 @@
     &-dd-group-name{
         display: block;
         margin: 0 0 .8rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.7px;
         text-transform: uppercase;
         .bp-color-white & {
             color: #696969;
@@ -425,33 +437,37 @@
         position: absolute;
         left: 0;
         width: 100%;
-        bottom: 0;
+        top: 100%;
         visibility: hidden;
         opacity: 0;
         transition: all .35s;
-        transform: translateY(100%);
+        transform: translateY(5rem);
+        z-index: 10;
+        .bp-color-white & {
+            background-color: $color-white;
+        }
+        .bp-color-black & {
+            background-color: $color-black;
+        }
         &.cr-show-selectbox {
             visibility: visible;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(-3rem);
         }
         ul {
             list-style: none;
             margin: 0;
             padding: 0;
             text-align: center;
-            display: inline-block;
             li {
-                float: left;
-                padding: .5rem 1rem;
+                padding: 1.2rem 1rem;
                 font-size: 1.4rem;
                 line-height: 1em;
                 cursor: pointer;
-                color: $color-gray-1;
-                margin: 0 1px;
+                margin: 0 0 1px;
                 transition: color .35s;
                 .bp-color-white & {
-                    
+                    color: $color-gray-1;
                 }
                 .bp-color-black & {
                     color: $color-white;
@@ -460,6 +476,9 @@
                     color: $color-white;
                     background-color: $color-base;
                     @include color-themes($color:false, $border-color: false, $bgcolor:true, $secodary: false);
+                }
+                &:last-child {
+                    margin-bottom: 0;
                 }
             }
         }
