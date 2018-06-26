@@ -70,26 +70,36 @@
         @include clearfix;
         border: 0 none;
         margin: 0 0 0 1.2rem;
-        padding: 1rem 0 1rem 3.6rem;
+        padding: 0 0 0 3.6rem;
         position: relative;
         > a {
             float: left;
-            padding: .6rem;
+            padding: 0 .6rem;
             margin: 0;
             width: auto;
             min-height: 0;
             font-size: 1.2rem;
-            line-height: 1.4em;
+            line-height: 4.5rem;
+            height: 4.5rem;
             color: $color-white;
             text-transform: uppercase;
             text-decoration: none;
             &.cr-language-active {
                 position: absolute;
                 left: 0; 
-                top: 1rem;
+                top: 0;
                 margin: 0;
+                font-size: 1.6rem;
+                padding-left: .4rem;
             }
-            &.cr-language-active, &:hover, &:active {
+            &.cr-language-active {
+                &, &:hover, &:active {
+                    //color: $color-base-secondary;
+                    color: #e7a615;
+                    @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+                }
+            }
+            &:hover, &:active {
                 color: $color-white;
             }
         }
