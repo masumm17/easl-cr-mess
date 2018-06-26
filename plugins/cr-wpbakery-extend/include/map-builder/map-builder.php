@@ -261,7 +261,8 @@ class MHM_Map_builder {
 						<td>
 							<input class="mhmup-thumb" id="mhmmb-mf-thumb" type="hidden" value="<%= thumb %>"/>
 							<input class="mhmup-full" id="mhmmb-mf-full-image" type="hidden" value="<%= full_image %>"/>
-							<span class="mhmmb-upload thumb-full mhm-has-prev">Upload</span><p class="mhmbb-upload-prev"></p>
+							<span class="mhmmb-upload thumb-full mhm-has-prev">Upload</span>
+							<p class="mhmbb-upload-prev"><% if(thumb){ %><img alt="" src="<%= thumb %>"/><% } %></p>
 						</td
 					</tr>
 					<tr>
