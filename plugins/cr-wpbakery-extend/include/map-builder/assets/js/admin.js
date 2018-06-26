@@ -310,15 +310,16 @@
         },
         saveMarker: function(e) {
             _.isObject(e) && e.preventDefault();
-            var latlong = {
+            var latlng = {
                 lat: parseFloat(this.editor.find("#mhmmb-mf-lat").val()),
                 lng: parseFloat(this.editor.find("#mhmmb-mf-lng").val())
             };
-            console.log(latlong);
-            this.activeMarker.setPosition(latlong);
+            console.log(latlng);
+            this.activeMarker.setPosition(latlng);
+            console.log(this.activeMarker.getPosition().toJSON());
             var markerData = {
-                lat: latlong.lat,
-                lng: latlong.lng,
+                lat: latlng.lat,
+                lng: latlng.lng,
                 filter: this.editor.find("#mhmmb-mf-filter").val(),
                 icon: this.editor.find("#mhmmb-mf-icon").val(),
                 title: this.editor.find("#mhmmb-mf-title").val(),
