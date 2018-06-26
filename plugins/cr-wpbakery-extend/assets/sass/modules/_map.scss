@@ -52,27 +52,29 @@
             margin: 0 0 1.2rem;
         }
         &-text-image {
-            display: table;
             width: 100%;
             &-inner {
-                display: table-row;
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+                flex-wrap: nowrap;
             }
         }
         &-image {
             width: 14rem;
             padding-right: 1.8rem;
-            display: table-cell;
             padding-top: 3px;
-            vertical-align: top;
             img {
                 max-width: 100%!important;
                 height: auto;
             }
         }
         &-text {
-            vertical-align: top;
-            display: table-cell;
+            display: flex;
+            flex-direction: column;
+            flex: 1 auto;
             p {
+                flex: 1 auto;
                 font-size: 1.1rem;
                 line-height: 1.6em;
                 color: $color-gray-1!important;
