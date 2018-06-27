@@ -5,11 +5,12 @@ class CR_Dropdown_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	public function menu_item_image($item_id) {
 		$image = get_field('image', $item_id);
-		//$src = wp_get_attachment_image_src($logo, 'full');
-		if(!$image) {
+		$size = 'fw1-2_col2-3_x';//1280/540
+		$src = wp_get_attachment_image_src($image, $size);
+		if(!$src) {
 			return '';
 		}
-		return ' style="background-image: url('. esc_url($image['url']) .');"';
+		return ' style="background-image: url('. esc_url($src[0]) .');"';
 	}
 	/**
 	 * Starts the list before the elements are added.
