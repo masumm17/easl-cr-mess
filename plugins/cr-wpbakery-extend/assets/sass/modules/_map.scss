@@ -89,6 +89,13 @@
             }
         }
     }
-    height: calc((100vh - 70px));
-    max-height: 55rem;
+    &-outer {
+        overflow: hidden;
+        padding: 5.5rem 0;
+    }
+    &-outer & {
+        height: calc((100vh - 70px));
+        max-height: 55rem;
+        overflow: visible!important;
+    }
 }

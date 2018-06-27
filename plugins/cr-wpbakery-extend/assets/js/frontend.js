@@ -872,6 +872,9 @@ if (!String.prototype.padStart) {
                 });
             }
             ChevRes.Storage.Maps[mapID].map = map;
+            map.addListener("domready", function() {
+                this.panBy(0, 55);
+            })
         },
         resizeEevents: function() {
             this.miniGalleryGridResize();

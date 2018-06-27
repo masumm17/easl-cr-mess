@@ -53,7 +53,9 @@ $map_id = 'cr_map_' . $this->get_instance_count();
 				</ul>
 			</div>
 			<?php endif; ?>
-			<div class="cr-map" id="<?php echo $map_id; ?>"></div>
+			<div class="cr-map-outer">
+				<div class="cr-map" id="<?php echo $map_id; ?>"></div>
+			</div>
 		</div>
 	</div>
 </section>
