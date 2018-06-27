@@ -119,13 +119,37 @@
         &::after {
             display: none;
         }
+        .cr-ar-arrow {
+            fill: $color-black;
+        }
+        .cr-ar-circle {
+            fill: none;
+            stroke: rgba($color-black, .65);
+        }
+        .cr-ar-circle-hover {
+            fill: none;
+            stroke: rgba($color-black, 1);
+            stroke-dasharray: 215;
+            transition: all .75s;
+        }
+        &:hover .cr-ar-circle-hover {
+            stroke-dashoffset: 0!important;
+        }
     }
     &-arrow-left {
         left: 0;
         margin-left: -35px;
+        .cr-ar-circle-hover {
+            stroke-dashoffset: -215;
+        }
     }
     &-arrow-right {
         right: 0;
         margin-right: -35px;
+        .cr-ar-circle-hover {
+            stroke-dashoffset: 215;
+            transform: rotate(180deg);
+            transform-origin: center center;
+        }
     }
 }
