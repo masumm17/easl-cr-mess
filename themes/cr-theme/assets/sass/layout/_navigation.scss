@@ -87,6 +87,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                will-change: width, background-size;
                 transition: all .95s ease;
                 &:first-child {
                     border-left: 1px solid $color-white;
@@ -111,32 +112,23 @@
                         position: absolute !important;
                         left: 50%;
                         top: 50%;
+                        opacity: 1;
                         transform: translate(-50%, -50%);
-                        //transition: all .65s .3s;
                     }
                 }
                 &.menu-item-has-children {
                     .cr-menu-item-content > a {
-                        top: 2rem;
-                        transform: translate(-50%, 0);
+                        opacity: 1;
+                        transition-property: top, transform;
+                        transition-duration: .5s;
+                        transition-delay: .35s;
                     }
                     &.not-hover .cr-menu-item-content > a {
-                        animation-name: cr-menu-sm-2;
-                        animation-delay: .35s;
-                        animation-duration: .35s;
-                        animation-fill-mode: forwards;
-
-                        //top: 2rem;
-                        //transform: translate(-50%, 0);
                     }
                     &.on-hover .cr-menu-item-content > a {
-                        animation-name: cr-menu-sm-1;
-                        animation-delay: .95s;
-                        animation-duration: .35s;
-                        animation-fill-mode: forwards;
-
-                        //top: 2rem;
-                        //transform: translate(-50%, 0);
+                        transition-delay: .95s;
+                        top: 2rem;
+                        transform: translate(-50%, 0);
                     }
                 }
                 a {
@@ -152,22 +144,23 @@
                 .cr-menu-level-2 {
                     opacity: 0;
                     visibility: hidden;
-                    transition: all .25s ease .8s;
+                    transition: all .35s ease;
                     pointer-events: none;
                     list-style: none;
+                    transform: translateY(2rem);
                     > li {
-                      margin-bottom: 2rem ;
-                      :last-child {
-                          margin-bottom: 0;
-                      }
-                      .link-inner {
-                          height: auto;
-                          line-height: 1.4em;
-                          &::after {
-                            transform: translateY(2.8rem)!important;
-                          }
-                      }
-                      &:hover a > .link-inner::after {
+                        margin-bottom: 2rem ;
+                        :last-child {
+                            margin-bottom: 0;
+                        }
+                        .link-inner {
+                            height: auto;
+                            line-height: 1.4em;
+                            &::after {
+                              transform: translateY(2.8rem)!important;
+                            }
+                        }
+                        &:hover a > .link-inner::after {
                             transform: translateY(.9rem)!important;
                         }
                     }
@@ -175,10 +168,12 @@
                 &.cr-menu-child-twocol .cr-menu-level-2 {
                     column-count: 2;
                 }
-                &:hover .cr-menu-level-2 {
+                &.on-hover .cr-menu-level-2 {
+                    transition-delay: 1.4s;
                     opacity: 1;
+                    transform: translateY(0);
                     visibility: visible;
-                    pointer-events: auto;
+                    pointer-events: all;
                 }
             }
             &.cr-submenu-items {
@@ -255,6 +250,9 @@
                 }
                 
             }
+        }
+        &.tertiary-menu-strecthed .cr-menu-level-1 > li {
+            transition-delay: .85s;
         }
         &:hover .cr-menu-level-1 {
             opacity: 1;
