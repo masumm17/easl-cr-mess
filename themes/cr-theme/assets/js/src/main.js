@@ -454,7 +454,16 @@
             $(".cr-menu-level-1 > li").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings("li").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
+                var $t = $(this);
+                if($t.hasClass("menu-item-has-children")) {
+                    $t.closest(".menu-item-depth-0").addClass("tertiary-menu-strecthed");
+                } else {
+                    $t.closest(".menu-item-depth-0").removeClass("tertiary-menu-strecthed");
+                }
                 $(this).removeClass("on-hover").siblings("li").removeClass("not-hover");
+            });
+            $(".menu-item-depth-0").on("mouseleave", function() {
+                $(this).removeClass("tertiary-menu-strecthed");
             });
             $(".booking-panel-trigger").on("click", function(e) {
                 e.preventDefault();

@@ -24,6 +24,8 @@ $footer_website = crt_get_theme_mode('footer_website');
 $footer_website_nt = crt_get_theme_mode('footer_website_nt');
 $footer_reservation = crt_get_theme_mode('footer_reservation');
 
+$footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_addess));
+
 
 ?>
 	<div id="footer-top-line"></div>
@@ -42,7 +44,7 @@ $footer_reservation = crt_get_theme_mode('footer_reservation');
 						<div class="footer-col-inner">
 							<?php if($footer_logo): ?><p class="footer-logo"><img alt="Cheval Residences Logo" src="<?php echo esc_url($footer_logo); ?>"/></p><?php endif; ?> 
 							<?php if($footer_company_name): ?><h4 class="footer-company-name"><?php echo esc_html($footer_company_name); ?></h4><?php endif;?> 
-							<?php if($footer_company_addess): ?><h4 class="footer-company-address"><?php echo esc_html($footer_company_addess); ?></h4><?php endif;?> 
+							<?php if($footer_company_addess): ?><h4 class="footer-company-address"><?php echo $footer_company_addess; ?></h4><?php endif;?> 
 							<div class="footer-newsletter">
 								<form action="" method="get">
 									<p class="footer-nl-field">

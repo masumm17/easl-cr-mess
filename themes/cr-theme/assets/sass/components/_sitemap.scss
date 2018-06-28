@@ -16,7 +16,11 @@
             margin-left: 2em;
         }
         li {
-            margin: 0 0 .8rem;
+            margin: 0;
+            a {
+                display: inline-block;
+                margin: 0 0 .8rem;
+            }
         }
     }
 }
