@@ -17,7 +17,7 @@ extract( $atts );
 $cta_button = $this->parse_url($cta_button);
 
 $image = preg_replace( '/[^\d]/', '', $image );
-$img_full_src = wp_get_attachment_image( $image, 'fw2-3_col2-3_x', false, array('class' => 'property-slider-image') );
+$img_full_src = wp_get_attachment_image_src( $image, 'fw2-3_col2-3_x' );
 
 $title_length = $this->get_module_global_item_setting('title_length');
 $subtitle_length = $this->get_module_global_item_setting('subtitle_length');
@@ -56,6 +56,6 @@ if($img_full_src) {
 			<a class="property-slider-text-cta cr-button <?php if($title_length < 1) {echo 'cr-lenght-limited-text';}?>" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 			<?php endif; ?>
 		</div>
-		<?php echo $img_full_src; ?>
+		<div class="property-slider-image" style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>');"><img src="<?php echo $img_full_src[0]; ?>" width="1280" height="720"/></div>
 	</div>
 <?php } ?>
