@@ -112,12 +112,32 @@
                         left: 50%;
                         top: 50%;
                         transform: translate(-50%, -50%);
-                        transition: all .65s .3s;
+                        //transition: all .65s .3s;
                     }
                 }
-                &.menu-item-has-children:hover .cr-menu-item-content > a {
-                    top: 2rem;
-                    transform: translate(-50%, 0);
+                &.menu-item-has-children {
+                    .cr-menu-item-content > a {
+                        top: 2rem;
+                        transform: translate(-50%, 0);
+                    }
+                    &.not-hover .cr-menu-item-content > a {
+                        animation-name: cr-menu-sm-2;
+                        animation-delay: .35s;
+                        animation-duration: .35s;
+                        animation-fill-mode: forwards;
+
+                        //top: 2rem;
+                        //transform: translate(-50%, 0);
+                    }
+                    &.on-hover .cr-menu-item-content > a {
+                        animation-name: cr-menu-sm-1;
+                        animation-delay: .95s;
+                        animation-duration: .35s;
+                        animation-fill-mode: forwards;
+
+                        //top: 2rem;
+                        //transform: translate(-50%, 0);
+                    }
                 }
                 a {
                    color: $color-white;
@@ -177,7 +197,7 @@
                             width: 40%;
                             max-width: 100%;
                         }
-                        &:hover {
+                        &.on-hover{
                             width: 60%;
                             max-width: 100%;
                         }
@@ -190,7 +210,7 @@
                             width: 30%;
                             max-width: 100%;
                         }
-                        &:hover {
+                        &.on-hover {
                             width: 40%;
                             max-width: 100%;
                         }
@@ -202,7 +222,7 @@
                         &.not-hover {
                             width: 22%;
                         }
-                        &:hover {
+                        &.on-hover {
                             width: 34%;
                         }
                     }
@@ -214,7 +234,7 @@
                         &.not-hover {
                             width: 18%;
                         }
-                        &:hover {
+                        &.on-hover {
                             width: 28%;
                             max-width: 100%;
                         }
@@ -227,7 +247,7 @@
                         &.not-hover {
                             width: 15%;
                         }
-                        &:hover {
+                        &.on-hover {
                             width: 25%;
                         }
                         
