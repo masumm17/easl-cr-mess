@@ -31,13 +31,38 @@
         left: 50%;
         width: 24px;
         height: 24px;
+        top: 0;
+        left: 50%;
         margin-left: -12px;
-        border-left: 1px solid $color-white;
-        border-bottom: 1px solid $color-white;
         animation: scrolDownAnim 2s infinite;
         transform: rotate(-45deg);
         opacity: 0;
         box-sizing: border-box;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid $color-white;
+            border-bottom: 2px solid $color-white;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -1px;
+            width: 25px;
+            height: 25px;
+            border-left: 3px solid $color-black;
+            border-bottom: 3px solid $color-black;
+            box-sizing: border-box;
+            z-index: 1;
+            opacity: .4;
+        }
         &:nth-of-type(1) {
             animation-delay: 0s;
         }
@@ -68,8 +93,8 @@
         width: 24px;
         height: 24px;
         margin-left: -12px;
-        border-right: 1px solid $color-gray-1;
-        border-top: 1px solid $color-gray-1;
+        border-right: 2px solid $color-gray-1;
+        border-top: 2px solid $color-gray-1;
         animation: scrolDownAnim 2s infinite;
         transform: rotate(-45deg);
         opacity: 0;
