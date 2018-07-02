@@ -11,6 +11,9 @@
 		<div id="footer-before-content">
 			<?php do_action('cr_before_footer'); ?>
 		</div>
+		<div class="cr-scroll-up-wrap">
+			<span class="cr-scroll-up"><span></span><span></span><span></span></span>
+		</div>
 	</div>
 	
 <?php

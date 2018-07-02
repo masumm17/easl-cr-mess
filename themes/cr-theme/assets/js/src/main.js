@@ -473,6 +473,14 @@
                 e.preventDefault();
                 ob.$body.removeClass("booking-panel-shown");
             });
+            
+            $(".cr-scroll-up").on("click", function(e) {
+                e.preventDefault();
+                $('html, body').animate({ 
+                    scrollTop: 0
+                }, 750, 'linear');
+            });
+            
             $(window).on("load", $.proxy(function(){
                 this.$body.addClass("page-loaded");
                 this.hidePreloader();
