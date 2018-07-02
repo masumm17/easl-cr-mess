@@ -28,6 +28,8 @@ class CR_VcE_Sc_Accommodations extends CR_VcE_Shortcode {
 		$terms = get_terms( array(
 			'taxonomy' => $taxonomy,
 			'hide_empty' => true,
+			'orderby' => 'slug',
+			'order'		=> 'ASC',
 		) );
 		if( is_wp_error($terms)){
 			return '';
