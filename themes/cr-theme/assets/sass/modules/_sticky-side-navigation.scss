@@ -3,9 +3,13 @@
     right: 0;
     top: 50%;
     width: 14.8rem;
-    transform: translate(0, -50%);
+    transform: translate(100%, -50%);
     transition: all .75s;
+    transition-delay: 1s;
     z-index: 100;
+    .page-loaded & {
+        transform: translate(0, -50%);
+    }
     &.sticky-side-nav-collasped {
         transform: translate(9.4rem, -50%);
     }
