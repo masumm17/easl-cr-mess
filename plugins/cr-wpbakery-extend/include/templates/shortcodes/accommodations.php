@@ -58,7 +58,7 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 								</svg>
 							</span>
 						</p>
-						<ul class="accommodations-filter-options">
+						<ul class="accommodations-filter-options" data-taxonomy="location">
 							<li data-id="-1" class="selected-option"><?php _e('All', 'crvc_extension'); ?></li>
 							<?php echo CR_VcE_Sc_Accommodations::get_accommodations_filter('accommodation_location'); ?>
 						</ul>
@@ -75,7 +75,7 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 								</svg>
 							</span>
 						</p>
-						<ul class="accommodations-filter-options">
+						<ul class="accommodations-filter-options" data-taxonomy="roomtype">
 							<li data-id="-1" class="selected-option"><?php _e('All', 'crvc_extension'); ?></li>
 							<?php echo CR_VcE_Sc_Accommodations::get_accommodations_filter('accommodation_room_type'); ?>
 						</ul>
@@ -92,7 +92,7 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 								</svg>
 							</span>
 						</p>
-						<ul class="accommodations-filter-options">
+						<ul class="accommodations-filter-options" data-taxonomy="amenity">
 							<li data-id="-1" class="selected-option"><?php _e('All', 'crvc_extension'); ?></li>
 							<?php echo CR_VcE_Sc_Accommodations::get_accommodations_filter('accommodation_amenity'); ?>
 						</ul>
