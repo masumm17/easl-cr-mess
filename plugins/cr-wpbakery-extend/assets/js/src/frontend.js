@@ -692,6 +692,8 @@ if (!String.prototype.padStart) {
                 }
                 for(var i=0; i < ChevRes.Storage.Maps[mapID].markers.length; i++) {
                     var fid = ChevRes.Storage.Maps[mapID].markers[i].crFilterID;
+                    ChevRes.Storage.Maps[mapID].markers[i].crInfoWindow.close();
+                    ChevRes.Storage.Maps[mapID].markers[i].crInfoOpened = false;
                     if("nofilter" === fid){
                         continue;
                     }
@@ -702,8 +704,13 @@ if (!String.prototype.padStart) {
                     }
                     
                 }
-                
             });
+            setTimeout(function() {
+                for(var mapID in ChevRes.Storage.Maps) {
+                    console.log("panning");
+                    ChevRes.Storage.Maps[mapID].map.panBy(0, -55);
+                }
+            }, 250);
         },
         markerContent: function(marker) {
             var html = "";
@@ -756,7 +763,7 @@ if (!String.prototype.padStart) {
             };
             var map = new google.maps.Map(document.getElementById(mapID), {
                 center: mapData.center,
-                zoom: 12,
+                zoom: mapData.zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 styles: [
                     {
@@ -853,6 +860,7 @@ if (!String.prototype.padStart) {
                     draggable: false,
                     position: {lat: mapData.markers[i].lat, lng: mapData.markers[i].lng},
                     icon: mapData.markers[i].icon,
+                    zIndex: parseInt(mapData.markers[i].order)
                 });
                 marker.crMapID = mapID;
                 marker.crMarkerIndex = i;
@@ -861,7 +869,7 @@ if (!String.prototype.padStart) {
                 marker.crInfoWindow = new google.maps.InfoWindow({
                     content: this.markerContent(mapData.markers[i]),
                     maxWidth: 425,
-                    setZIndex: 10
+                    zIndex: 100
                 });
                 marker.crInfoOpened = false;
                 marker.addListener('click', function() {
@@ -877,7 +885,7 @@ if (!String.prototype.padStart) {
             }
             ChevRes.Storage.Maps[mapID].map = map;
             map.addListener("domready", function() {
-                this.panBy(0, 55);
+                this.panBy(0, 110);
             })
         },
         resizeEevents: function() {

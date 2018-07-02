@@ -20,6 +20,7 @@ class CR_VcE_Sc_Map extends CR_VcE_Shortcode {
 		}
 		
 		$map_center = get_post_meta($post_id, '_map_center', true);
+		$map_zoom = get_post_meta($post_id, '_map_zoom', true);
 		$map_filters = get_post_meta($post_id, '_map_filters', true);
 		$map_markers = get_post_meta($post_id, '_map_markers', true);
 		
@@ -32,6 +33,11 @@ class CR_VcE_Sc_Map extends CR_VcE_Shortcode {
 		}
 		if(isset($map_center['lng'])){
 			$map_center['lng'] = floatval($map_center['lng']);
+		}
+		if(!empty($map_zoom)){
+			$map_zoom = absint($map_zoom);
+		}else{
+			$map_zoom = 12;
 		}
 		foreach($map_markers as $key => $marker) {
 			if(isset($marker['lat'])){
@@ -47,6 +53,7 @@ class CR_VcE_Sc_Map extends CR_VcE_Shortcode {
 		
 		$this->map_data =  array(
 			'center' => $map_center,
+			'zoom' => $map_zoom,
 			'filters' => $map_filters,
 			'markers' => $map_markers,
 		);

@@ -112,9 +112,10 @@ class MHM_Map_builder {
 		}
 		
 		$map_center = get_post_meta($post_id, '_map_center', true);
+		$map_zoom = get_post_meta($post_id, '_map_zoom', true);
 		$map_filters = get_post_meta($post_id, '_map_filters', true);
 		$map_markers = get_post_meta($post_id, '_map_markers', true);
-		
+		//var_dump($map_markers);die();
 		$map_center = !empty($map_center) && is_array($map_center) ? $map_center : array();
 		$map_filters = !empty($map_filters) && is_array($map_filters) ? $map_filters : array();
 		$map_markers = !empty($map_markers) && is_array($map_markers) ? $map_markers : array();
@@ -124,6 +125,11 @@ class MHM_Map_builder {
 		}
 		if(isset($map_center['lng'])){
 			$map_center['lng'] = floatval($map_center['lng']);
+		}
+		if(!empty($map_zoom)){
+			$map_zoom = absint($map_zoom);
+		}else{
+			$map_zoom = 12;
 		}
 		foreach($map_markers as $key => $marker) {
 			if(isset($marker['lat'])){
@@ -137,6 +143,7 @@ class MHM_Map_builder {
 		return array(
 			'MAP_API_KEY' => get_option('cr_map_api_key'),
 			'center' => $map_center,
+			'zoom' => $map_zoom,
 			'filters' => $map_filters,
 			'markers' => $map_markers,
 		);
@@ -157,7 +164,12 @@ class MHM_Map_builder {
 		), 100);
 	}
 	
-	public function builder_markup() {
+	public function builder_markup($post) {
+		$map_zoom = get_post_meta($post->ID, '_map_zoom', true);
+		$map_zoom = absint($map_zoom);
+		if(!$map_zoom) {
+			$map_zoom = 12;
+		}
 		?> 
 		<div id="mhm-map-builder-wrap">
 			<?php wp_nonce_field('mhmmb_save_map', '_mhmmb_nonce'); ?>
@@ -165,6 +177,16 @@ class MHM_Map_builder {
 			<div id="mhm-marker-fields"></div>
 			<div id="mhm-map-builder-canvas">
 				<div id="mhm-action-buttons">
+					<div class="mhm-map-zoom">
+						<label>
+							<span>Zoom</span>
+							<select id="mhmmb-zoom-field" name="mhmmb_zoom">
+								<?php for($i = 1; $i <= 19; $i++ ): ?> 
+								<option value="<?php echo $i; ?>" <?php selected( $i, $map_zoom, true ); ?> ><?php echo $i; ?></option>
+								<?php endfor; ?>
+							</select>
+						</label>
+					</div>
 					<a id="mhm-set-center" class="button button-primary">Set Map Center</a>
 					<a id="mhm-add-filter" class="button button-primary">Add Filter</a>
 					<a id="mhm-add-marker" class="button button-primary">Add Marker</a>
@@ -249,6 +271,10 @@ class MHM_Map_builder {
 						<td><input id="mhmmb-mf-title" type="text" value="<%= title %>"/></td
 					</tr>
 					<tr>
+						<td><label for="mhmmb-mf-order">Order</label></td>
+						<td><input id="mhmmb-mf-order" type="text" value="<%= order %>"/></td
+					</tr>
+					<tr>
 						<td><label for="mhmmb-mf-lat">Latitude</label></td>
 						<td><input id="mhmmb-mf-lat" type="text" value="<%= lat %>"/></td
 					</tr>
@@ -296,6 +322,7 @@ class MHM_Map_builder {
 			<div class="mhmmb-fields-inner">
 				<input type="hidden" name="mhmmb_markers[<%= index %>][lat]" value="<%= lat %>"/>
 				<input type="hidden" name="mhmmb_markers[<%= index %>][lng]" value="<%= lng %>"/>
+				<input type="hidden" name="mhmmb_markers[<%= index %>][order]" value="<%= order %>"/>
 				<input type="hidden" name="mhmmb_markers[<%= index %>][filter]" value="<%= filter %>"/>
 				<input type="hidden" name="mhmmb_markers[<%= index %>][icon]" value="<%= icon %>"/>
 				<input type="hidden" name="mhmmb_markers[<%= index %>][title]" value="<%= title %>"/>
@@ -333,6 +360,7 @@ class MHM_Map_builder {
 		}
 		
 		$center_data = isset($_POST['mhmmb_center']) && is_array($_POST['mhmmb_center']) ? $_POST['mhmmb_center'] : '';
+		$map_zoom = isset($_POST['mhmmb_zoom']) ? absint($_POST['mhmmb_zoom']) : 12;
 		$filter_data = isset($_POST['mhmmb_filters']) && is_array($_POST['mhmmb_filters']) ? $_POST['mhmmb_filters'] : '';
 		$markers_data = isset($_POST['mhmmb_markers']) && is_array($_POST['mhmmb_markers']) ? $_POST['mhmmb_markers'] : '';
 		if($filter_data && count($filter_data) > 0){
@@ -344,6 +372,7 @@ class MHM_Map_builder {
 		
 		
 		update_post_meta($post_id, '_map_center', $center_data);
+		update_post_meta($post_id, '_map_zoom', $map_zoom);
 		update_post_meta($post_id, '_map_filters', $filter_data);
 		update_post_meta($post_id, '_map_markers', $markers_data);
 		

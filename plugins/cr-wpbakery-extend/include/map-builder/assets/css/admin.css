@@ -1,9 +1,14 @@
 
 #mhm-action-buttons {
-    padding: 10px 8px 35px;
+    padding: 10px 8px 35px 110px;;
     background: #ededed;
     border-radius: 5px 5px 0 0;
     position: relative;
+}
+.mhm-map-zoom {
+	position: absolute;
+	width: 96px;
+	left: 10px;
 }
 #mhm-action-buttons .button {
     margin-right: 10px;

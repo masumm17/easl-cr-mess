@@ -5,6 +5,8 @@
     MHMMapBuilder.Storage = {};
     MHMMapBuilder.Models = {};
     
+    MHMMapBuilder.Storage.zoom = 12;
+    
     MHMMapBuilder.Models.Center = Backbone.Model.extend({
         defaults: {
             lat: 51.505786,
@@ -37,6 +39,7 @@
         defaults: {
             lat: "",
             lng: "",
+            order: 0,
             filter: "",
             icon: "",
             title: "",
@@ -53,6 +56,7 @@
                 index: this.cid,
                 lat: this.get("lat"),
                 lng: this.get("lng"),
+                order: this.get("order"),
                 filter: this.get("filter"),
                 icon: this.get("icon"),
                 title: this.get("title"),
@@ -129,6 +133,8 @@
             "click #mhm-bdone": "saveCenter",
             "click #mhm-bcancel": "cancelCenter",
             
+            "change #mhmmb-zoom-field": "setZoom",
+            
             "click #mhm-add-filter": "showFilterForm",
             "click #mhm-filter-save": "saveFilter",
             "click #mhm-filter-delete": "deleteFilter",
@@ -163,6 +169,8 @@
             this.listenTo(MHMMapBuilder.Storage.markers, "marker.clicked", this.markerClicked);
             //this.listenTo(MHMMapBuilder.Storage.markers, "marker.dragged", this.markerDragged);
             
+            !_.isEmpty(MHMMapBuilderData.zoom) && (MHMMapBuilder.Storage.zoom = parseInt(MHMMapBuilderData.zoom));
+            
             !_.isEmpty(MHMMapBuilderData.center) && MHMMapBuilder.Storage.center.set(MHMMapBuilderData.center);
             this.initMap();
             !_.isEmpty(MHMMapBuilderData.filters) && MHMMapBuilder.Storage.filters.set(MHMMapBuilderData.filters);
@@ -175,13 +183,21 @@
             this.centerFields.html(this.centerFieldsTemplate(MHMMapBuilder.Storage.center.toJSON()));
             return this;
         },
+        setZoom: function(e) {
+            var zoom = $("#mhmmb-zoom-field").val();
+            zoom = parseInt(zoom);
+            if(_.isObject(MHMMapBuilder.map)){
+                MHMMapBuilder.map.setZoom(zoom);
+            }
+        },
         addExistingMarkers: function() {
             _.each(MHMMapBuilderData.markers, function(markerData){
                 var mapMarker = new google.maps.Marker({
                     map: MHMMapBuilder.map,
                     draggable: true,
                     animation: null,
-                    position: {lat: markerData.lat, lng: markerData.lng}
+                    position: {lat: markerData.lat, lng: markerData.lng},
+                    zIndex: parseInt(markerData.order)
                 });
                 markerData.marker = mapMarker;
             }, this);
@@ -314,23 +330,23 @@
                 lat: parseFloat(this.editor.find("#mhmmb-mf-lat").val()),
                 lng: parseFloat(this.editor.find("#mhmmb-mf-lng").val())
             };
-            console.log(latlng);
             this.activeMarker.setPosition(latlng);
-            console.log(this.activeMarker.getPosition().toJSON());
             var markerData = {
                 lat: latlng.lat,
                 lng: latlng.lng,
+                order: parseInt(this.editor.find("#mhmmb-mf-order").val()),
                 filter: this.editor.find("#mhmmb-mf-filter").val(),
                 icon: this.editor.find("#mhmmb-mf-icon").val(),
                 title: this.editor.find("#mhmmb-mf-title").val(),
                 thumb: this.editor.find("#mhmmb-mf-thumb").val(),
                 full_image: this.editor.find("#mhmmb-mf-full-image").val(),
-                text: this.editor.find("#mhmmb-mf-text").val(),
+                text: $.trim(this.editor.find("#mhmmb-mf-text").val()),
                 cta_title: this.editor.find("#mhmmb-mf-cta-title").val(),
                 cta_url: this.editor.find("#mhmmb-mf-cta-url").val(),
                 cta_nt: this.editor.find("#mhmmb-mf-cta-nt").is(":checked") ? "yes" : "no",
                 marker: this.activeMarker
             };
+            this.activeMarker.setZIndex(markerData.order);
             var modelID = this.editor.data("modelid");
             var markder = null;
             if(modelID){
@@ -412,7 +428,7 @@
         initMap: function() {
             MHMMapBuilder.map = new google.maps.Map(document.getElementById("mhm-map-container"), {
             center: MHMMapBuilder.Storage.center.toJSON(),
-            zoom: 12
+            zoom: MHMMapBuilder.Storage.zoom
         });
         }
     });
