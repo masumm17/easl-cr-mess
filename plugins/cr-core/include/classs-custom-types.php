@@ -37,6 +37,8 @@ class CR_Custom_types {
 			'accommodation_location' => array('type' => 'accommodation_location', 'slug' => 'accommodation_location'),
 			'accommodation_room_type' => array('type' => 'accommodation_room_type', 'slug' => 'accommodation_room_type'),
 			'accommodation_amenity' => array('type' => 'accommodation_amenity', 'slug' => 'accommodation_amenity'),
+			'room_type' => array('type' => 'room_type', 'slug' => 'room_type'),
+			'offer' => array('type' => 'offer', 'slug' => 'offer'),
 		);
 		add_action('init', array($this, 'register'), 0);
 	}
@@ -252,9 +254,95 @@ class CR_Custom_types {
 		);
 		register_taxonomy( $taxonomy_name, $type_name, $args );
 	}
+	
+	
+	/**
+	 * Post type register: amenity
+	 */
+	private function room_type(){
+		$type_name = self::get_room_type_data('type');
+		$type_slug = self::get_room_type_data('slug');
+		$labels = array(
+			'name'				 => _x( 'Room Type', 'post type general name', $this->text_domain_name ),
+			'singular_name'		 => _x( 'Room Type', 'post type singular name', $this->text_domain_name ),
+			'menu_name'			 => _x( 'Room Type', 'admin menu', $this->text_domain_name ),
+			'name_admin_bar'	 => _x( 'Room Type', 'add new on admin bar', $this->text_domain_name ),
+			'add_new'			 => _x( 'Add New Room Type', $this->text_domain_name ),
+			'add_new_item'		 => __( 'Add New ' . 'Room Type', $this->text_domain_name ),
+			'new_item'			 => __( 'New Room Type', $this->text_domain_name ),
+			'edit_item'			 => __( 'Edit Room Type', $this->text_domain_name ),
+			'view_item'			 => __( 'View Room Type', $this->text_domain_name ),
+			'all_items'			 => __( 'All room types', $this->text_domain_name ),
+			'search_items'		 => __( 'Search room types', $this->text_domain_name ),
+			'parent_item_colon'	 => __( 'Parent Room Type', $this->text_domain_name ),
+			'not_found'			 => __( 'No Room Type found.', $this->text_domain_name ),
+			'not_found_in_trash' => __( 'No Room Type found in Trash.', $this->text_domain_name ),
+			'attributes'		 => __( 'Room Type Attributes.', $this->text_domain_name ),
+		);
+		$args = array(
+			'labels'				 => $labels,
+			'public'				 => true,
+			'publicly_queryable'	 => true,
+			'show_ui'				 => true,
+			'show_in_menu'			 => true,
+			'query_var'				 => true,
+			'rewrite'				 => array('slug' => $type_slug),
+			'capability_type'		 => 'post',
+			'has_archive'			 => false,
+			'show_in_nav_menus'		 => true,
+			'hierarchical'			 => false,
+			'menu_position'			 => 25.2,
+			'supports'				 => array('title', 'editor', 'thumbnail'),
+		);
+
+		register_post_type( $type_name, $args );		
+	}
+	
+	
+	/**
+	 * Post type register: amenity
+	 */
+	private function offers(){
+		$type_name = self::get_offer_data('type');
+		$type_slug = self::get_offer_data('slug');
+		$labels = array(
+			'name'				 => _x( 'Offer', 'post type general name', $this->text_domain_name ),
+			'singular_name'		 => _x( 'Offer', 'post type singular name', $this->text_domain_name ),
+			'menu_name'			 => _x( 'Offer', 'admin menu', $this->text_domain_name ),
+			'name_admin_bar'	 => _x( 'Offer', 'add new on admin bar', $this->text_domain_name ),
+			'add_new'			 => _x( 'Add New Offer', $this->text_domain_name ),
+			'add_new_item'		 => __( 'Add New Offer', $this->text_domain_name ),
+			'new_item'			 => __( 'New Offer', $this->text_domain_name ),
+			'edit_item'			 => __( 'Edit Offer', $this->text_domain_name ),
+			'view_item'			 => __( 'View Offer', $this->text_domain_name ),
+			'all_items'			 => __( 'All Offers', $this->text_domain_name ),
+			'search_items'		 => __( 'Search Offers', $this->text_domain_name ),
+			'parent_item_colon'	 => __( 'Parent Offer', $this->text_domain_name ),
+			'not_found'			 => __( 'No offer found.', $this->text_domain_name ),
+			'not_found_in_trash' => __( 'No offer found in Trash.', $this->text_domain_name ),
+			'attributes'		 => __( 'Offer Type Attributes.', $this->text_domain_name ),
+		);
+		$args = array(
+			'labels'				 => $labels,
+			'public'				 => true,
+			'publicly_queryable'	 => true,
+			'show_ui'				 => true,
+			'show_in_menu'			 => true,
+			'query_var'				 => true,
+			'rewrite'				 => array('slug' => $type_slug),
+			'capability_type'		 => 'post',
+			'has_archive'			 => false,
+			'show_in_nav_menus'		 => true,
+			'hierarchical'			 => false,
+			'menu_position'			 => 25.2,
+			'supports'				 => array('title', 'editor', 'thumbnail'),
+		);
+
+		register_post_type( $type_name, $args );		
+	}
 
 	/**
-	 * Get Course data
+	 * Get Amenity data
 	 * @param string $key
 	 * @return string
 	 */
@@ -313,6 +401,28 @@ class CR_Custom_types {
 		return self::$types_data['accommodation_amenity'];
 	}
 	/**
+	 * Get Room Type data
+	 * @param string $key
+	 * @return string
+	 */
+	public static function get_room_type_data($key = ''){
+		if($key && isset(self::$types_data['room_type'][$key])){
+			return self::$types_data['room_type'][$key];
+		}
+		return self::$types_data['room_type'];
+	}
+	/**
+	 * Get offer data
+	 * @param string $key
+	 * @return string
+	 */
+	public static function get_offer_data($key = ''){
+		if($key && isset(self::$types_data['offer'][$key])){
+			return self::$types_data['offer'][$key];
+		}
+		return self::$types_data['offer'];
+	}
+	/**
 	 * Register each custom types
 	 */
 	public function register(){
@@ -321,5 +431,7 @@ class CR_Custom_types {
 		$this->accommodation_room_type();
 		$this->accommodation_amenity();
 		$this->accommodation();
+		$this->room_type();
+		$this->offers();
 	}
 }
