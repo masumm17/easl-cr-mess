@@ -61,11 +61,10 @@
             }
         }
         &-image {
-            width: 14rem;
             padding-right: 1.8rem;
             padding-top: 3px;
             img {
-                max-width: 100%!important;
+                width: 14rem!important;
                 height: auto;
             }
         }

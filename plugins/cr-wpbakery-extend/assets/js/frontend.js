@@ -765,6 +765,8 @@ if (!String.prototype.padStart) {
                 center: mapData.center,
                 zoom: mapData.zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
+                gestureHandling: "cooperative",
+                scrollwheel: false,
                 styles: [
                     {
                       "featureType": "administrative",
