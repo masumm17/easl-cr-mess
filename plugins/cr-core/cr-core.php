@@ -136,10 +136,10 @@ final class CR_Core {
 	}
 	public function get_page_type() {
 		$page_type = '';
-		if ( is_page() ) {
-			$page_type = function_exists('get_field') ? get_field('page_type', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'page_type', true);
-		}elseif( is_home() && !is_front_page() && ($page_for_posts = get_option ( 'page_for_posts' )) ){
+		if( is_home() && !is_front_page() && ($page_for_posts = get_option ( 'page_for_posts' )) ){
 			$page_type = function_exists('get_field') ? get_field('page_type', $page_for_posts) : get_post_meta($page_for_posts, 'page_type', true);
+		}elseif ( is_singular() ) {
+			$page_type = function_exists('get_field') ? get_field('page_type', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'page_type', true);
 		}
 		if(!$page_type || 'default' == $page_type) {
 			$page_type = crt_get_theme_mode('default_page_types', 'minimal');
