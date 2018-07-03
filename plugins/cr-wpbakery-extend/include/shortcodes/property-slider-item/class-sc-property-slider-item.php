@@ -11,7 +11,7 @@ class CR_VcE_Sc_Property_Slider_Item extends CR_VcE_Shortcode {
 	 *
 	 * @return mixed|void
 	 */
-	protected function content( $atts, $content = null ) {
+	protected function _hide_content( $atts, $content = null ) {
 		if(!CR_VcE_Sc_Property_Slider::pass_item_restriction($atts, $content)) {
 			return '';
 		}

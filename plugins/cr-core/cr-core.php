@@ -37,7 +37,7 @@ final class CR_Core {
 		) );
 		// Include files
 		require_once $this->path('INC_DIR', 'helpers.php');
-		require_once $this->path('INC_DIR', 'classs-custom-types.php');
+		require_once $this->path('INC_DIR', 'class-custom-types.php');
 		require_once $this->path('INC_DIR', 'customizer/customizer.php');
 		
 		$this->custom_types = CR_Custom_types::instance();

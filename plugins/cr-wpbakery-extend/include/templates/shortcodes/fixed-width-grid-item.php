@@ -10,11 +10,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Fixed_Width_Grid_Item
  */
 $el_class = $css = $css_animation = '';
-$image = $overlay_title = $overlay_subtitle = $cta_button = $overlay_trans_disable = '';
+$data_source = $offer_id = $room_type_id = $image = $overlay_title = $overlay_subtitle = $cta_button = $overlay_trans_disable = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$cta_button = $this->parse_url($cta_button);
+$custom_sourse_data = array();
+switch($data_source) {
+	case 'offers':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($offer_id);
+		break;
+	case 'room_types':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($room_type_id);
+		break;
+}
+
+if($custom_sourse_data) {
+	$image = $custom_sourse_data['image'];
+	$overlay_title = $custom_sourse_data['title'];
+	$overlay_subtitle = $custom_sourse_data['subtitle'];
+	$content = $custom_sourse_data['content'];
+	$cta_button = $custom_sourse_data['cta_button'];
+}else{
+	$cta_button = $this->parse_url($cta_button);
+}
 
 $image = preg_replace( '/[^\d]/', '', $image );
 $image_size = 'fw2-3_col1-3_x';

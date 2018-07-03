@@ -85,3 +85,41 @@ function cr_vce_truncate($str, $len = 200, $trail = '', $word_wrap = true) {
         $str = substr($str, 0, $len);
     return $str . $trail;
 }
+
+function cr_vce_post_type_dropdown_data($post_type, $empty_option = '' ) {
+	if($empty_option){
+		$dropdown[$empty_option] = '';
+	}
+	$items = get_posts(array(
+		'post_type' => $post_type,
+		'posts_per_page' => -1,
+		'orderby' => 'title',
+		'order' => 'ASC',
+	));
+
+	if($items){
+		foreach ($items as $item) {
+			$dropdown[ get_the_title($item)] = $item->ID;
+		}
+	}
+	return $dropdown;
+}
+function cr_vce_get_post_overlay_data($post_id) {
+	if(!function_exists('get_field')) {
+		return array(
+			'image' => '',
+			'title' => '',
+			'subtitle' => '',
+			'content' => '',
+			'cta_button' => '',
+		);
+	}
+	$data = array();
+	$data['image'] = get_field('grid_image', $post_id);
+	$data['title'] = get_field('overlay_title', $post_id);
+	$data['subtitle'] = get_field('overlay_subtitle', $post_id);
+	$data['content'] = get_field('overlay_description', $post_id);
+	$data['cta_button'] = get_field('overlay_cta', $post_id);
+	//var_dump($data);die();
+	return $data;
+}

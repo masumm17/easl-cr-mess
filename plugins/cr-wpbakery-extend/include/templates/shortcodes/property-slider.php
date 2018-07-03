@@ -29,7 +29,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $atts['el_id'] ) . '"';
 }
 
-if(CR_VcE_Sc_Property_Slider::$items_count >= 3):
+//if(CR_VcE_Sc_Property_Slider::$items_count >= 3 && CR_VcE_Sc_Property_Slider::$items_count <= 20):
 ?>
 <section class="cr-module-wrap property-slider-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<?php if($title || $subtitle): ?> 
@@ -74,4 +74,4 @@ if(CR_VcE_Sc_Property_Slider::$items_count >= 3):
 		</a>
 	</div>
 </section>
-<?php endif; ?>
+<?php //endif; ?>

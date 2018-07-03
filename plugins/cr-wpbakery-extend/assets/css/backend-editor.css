@@ -10,3 +10,6 @@
 [data-vc-shortcode-param-name="grid_size"] {
     padding-top: 15px !important;
 }
+.cr-padding-top-0 {
+    padding-top: 0 !important;
+}

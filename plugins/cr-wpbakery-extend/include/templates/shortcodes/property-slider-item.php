@@ -10,11 +10,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Property_Slider_Item
  */
 $el_class = $css = $css_animation = '';
-$image = $overlay_title = $overlay_subtitle = $cta_button = '';
+$data_source = $offer_id = $room_type_id = $image = $overlay_title = $overlay_subtitle = $cta_button = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$cta_button = $this->parse_url($cta_button);
+$custom_sourse_data = array();
+switch($data_source) {
+	case 'offers':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($offer_id);
+		break;
+	case 'room_types':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($room_type_id);
+		break;
+}
+
+if($custom_sourse_data) {
+	$image = $custom_sourse_data['image'];
+	$overlay_title = $custom_sourse_data['title'];
+	$overlay_subtitle = $custom_sourse_data['subtitle'];
+	$content = $custom_sourse_data['content'];
+	$cta_button = $custom_sourse_data['cta_button'];
+}else{
+	$cta_button = $this->parse_url($cta_button);
+}
 
 $image = preg_replace( '/[^\d]/', '', $image );
 $img_full_src = wp_get_attachment_image_src( $image, 'fw2-3_col2-3_x' );
@@ -23,7 +41,7 @@ $title_length = $this->get_module_global_item_setting('title_length');
 $subtitle_length = $this->get_module_global_item_setting('subtitle_length');
 $content_length = $this->get_module_global_item_setting('content_length');
 
-if($img_full_src) {
+if($img_full_src && $overlay_title &&  $cta_button && $content) {
 	CR_VcE_Sc_Property_Slider::$items_count++;
 	CR_VcE_Sc_Property_Slider::$items_data[] = $atts;
 	

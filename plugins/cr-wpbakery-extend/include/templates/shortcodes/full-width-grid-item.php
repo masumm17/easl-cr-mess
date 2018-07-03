@@ -10,14 +10,30 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Fixed_Width_Grid_Item
  */
 $el_class = $css = $css_animation = '';
-$grid_size = $display_option = $image = $title = $subtitle = $cta_button = $overlay_trans_disable = $text_align = $enable_video = $video_id = '';
+$grid_size = $display_option = $data_source = $offer_id = $room_type_id = $image = $title = $subtitle = $cta_button = $overlay_trans_disable = $text_align = $enable_video = $video_id = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$cta_button = $this->parse_url($cta_button);
+$custom_sourse_data = array();
+switch($data_source) {
+	case 'offers':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($offer_id);
+		break;
+	case 'room_types':
+		$custom_sourse_data = cr_vce_get_post_overlay_data($room_type_id);
+		break;
+}
 
-
+if($custom_sourse_data) {
+	$image = $custom_sourse_data['image'];
+	$title = $custom_sourse_data['title'];
+	$subtitle = $custom_sourse_data['subtitle'];
+	$content = $custom_sourse_data['content'];
+	$cta_button = $custom_sourse_data['cta_button'];
+}else{
+	$cta_button = $this->parse_url($cta_button);
+}
 
 $class_to_filter = '';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
