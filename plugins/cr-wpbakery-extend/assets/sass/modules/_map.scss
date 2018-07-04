@@ -19,11 +19,6 @@
             left: 0;
             top: 0;
             width: 100%;
-            transition: opacity .5s;
-            &.cr-map-hide {
-                opacity: 0;
-                visibility: hidden;
-            }
         }
         &s-list {
             display: inline-block;

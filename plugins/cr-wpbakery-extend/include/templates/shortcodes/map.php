@@ -43,7 +43,7 @@ $map_id = 'cr_map_' . $this->get_instance_count();
 	<div class="cr-map-inner cr-animate-when-visible">
 		<div class="cr-map-con">
 			<?php if(!empty($map_data['filters']) && count($map_data['filters']) > 0):?>
-			<div class="cr-map-filters cr-map-hide">
+			<div class="cr-map-filters">
 				<ul class="cr-map-filters-list">
 					<?php foreach($map_data['filters'] as $filter_icon): ?> 
 					<li class="cr-map-filter-icon" data-mapid="<?php echo $map_id; ?>" data-filtername="<?php echo esc_attr($filter_icon['name']); ?>">
