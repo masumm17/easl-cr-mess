@@ -26,6 +26,7 @@ if (!String.prototype.padStart) {
         }
     };
 }
+
 (function($){
     function escapeHtml(string) {
         var entityMap = {
@@ -74,6 +75,57 @@ if (!String.prototype.padStart) {
             }
         }
         return false;
+    }
+    function defineCRMapFilters() {
+        crMapFilters = function(content) {
+            content = $('<div style="background: #fff;width: 100px;height: 50px;">Content</div>');
+            this.anchor = document.createElement('div');
+            this.anchor.classList.add('crmap-filters-wrap_');
+            this.anchor.appendChild(content[0]);
+            this.stopEventPropagation();
+        };
+        crMapFilters.prototype = Object.create(google.maps.OverlayView.prototype);
+        crMapFilters.prototype.crSetDimentions = function() {
+            console.log("Seting Dimentison");
+            var mapContainer = $(this.getMap().getDiv());
+            this.width = mapContainer.outerWidth();
+            this.height = mapContainer.outerHeight();
+            this.left = - this.width / 2;
+            this.top = - this.height / 2;
+        };
+        crMapFilters.prototype.onAdd = function() {
+            console.log("Fitlers adding....");
+            this.getPanes().overlayMouseTarget.appendChild(this.anchor);
+            this.crSetDimentions();
+            //console.log(this.getPanes());
+        };
+        crMapFilters.prototype.onRemove = function() {
+            if (this.anchor.parentElement) {
+                this.anchor.parentElement.removeChild(this.anchor);
+            }
+        };
+        crMapFilters.prototype.draw = function() {
+            console.log("Drawing...");
+            $(this.anchor).css({
+                "position": "absolute",
+                "width": this.width,
+                "left" : this.left + "px",
+                "top" : this.top + "px",
+                "background": "#fff"
+            });
+        };
+        crMapFilters.prototype.stopEventPropagation = function() {
+            var anchor = this.anchor;
+            anchor.style.cursor = 'auto';
+
+            ['click', 'dblclick', 'contextmenu', 'wheel', 'mousedown', 'touchstart', 'pointerdown'].forEach(function(event) {
+                anchor.addEventListener(event, function(e) {
+                    e.stopPropagation();
+                });
+            });
+        };
+
+
     }
     function AccommodationFilter($el) {
         this.$el = $el;
@@ -673,6 +725,7 @@ if (!String.prototype.padStart) {
             if (typeof ChevRes.Storage.MapData === 'undefined'){
                 return;
             }
+            defineCRMapFilters();
             for(var mapID in ChevRes.Storage.MapData.maps) {
                 ChevRes.createMap(mapID);
             }
@@ -705,12 +758,6 @@ if (!String.prototype.padStart) {
                     
                 }
             });
-            setTimeout(function() {
-                for(var mapID in ChevRes.Storage.Maps) {
-                    console.log("panning");
-                    ChevRes.Storage.Maps[mapID].map.panBy(0, -55);
-                }
-            }, 250);
         },
         markerContent: function(marker) {
             var html = "";
@@ -766,7 +813,7 @@ if (!String.prototype.padStart) {
                 zoom: mapData.zoom,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 gestureHandling: "cooperative",
-                scrollwheel: false,
+                //scrollwheel: false,
                 styles: [
                     {
                       "featureType": "administrative",
@@ -885,10 +932,9 @@ if (!String.prototype.padStart) {
                     }
                 });
             }
+            filters = new crMapFilters("O");
+            filters.setMap(map);
             ChevRes.Storage.Maps[mapID].map = map;
-            map.addListener("domready", function() {
-                this.panBy(0, 110);
-            })
         },
         resizeEevents: function() {
             this.miniGalleryGridResize();
