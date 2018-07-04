@@ -140,6 +140,7 @@
             stroke: rgba($color-black, 1);
             stroke-dasharray: 215;
             transition: all .75s;
+            stroke-width: 2px;
         }
         &:hover .cr-ar-circle-hover {
             stroke-dashoffset: 0!important;
