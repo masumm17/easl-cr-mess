@@ -175,10 +175,6 @@
         &-text {
             padding: 2rem 4rem;
             z-index: 3;
-            
-            .fw-grid-item-noimage & {
-                
-            }
             p {
                 color: $color-white;
                 margin-bottom: 4rem;
@@ -186,6 +182,10 @@
                     color: $color-gray-1
                 }
             }
+        }
+        &-noimage &-text {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
         }
         &:not(&-noimage) &-text {
             position: absolute;

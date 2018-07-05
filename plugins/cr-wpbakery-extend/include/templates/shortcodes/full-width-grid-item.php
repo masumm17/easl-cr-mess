@@ -197,7 +197,7 @@ switch($text_align) {
 		$css_class .= ' cr-center-text';
 		break;
 }
-
+if($html):
 CR_VcE_Sc_Full_Width_Grid::$items_count++;
 CR_VcE_Sc_Full_Width_Grid::$items_data[] = $atts;
 
@@ -216,3 +216,4 @@ CR_VcE_Sc_Full_Width_Grid::$items_data[] = $atts;
 		<?php echo $html; ?>
 	</div>
 </div>
+<?php endif; ?>
