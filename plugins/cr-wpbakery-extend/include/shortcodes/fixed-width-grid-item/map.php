@@ -25,7 +25,7 @@ return array(
 				'value' => array(
 					__( 'Manual', 'crvc_extension' ) => 'manual',
 					__( 'Offers', 'crvc_extension' ) => 'offers',
-					__( 'Room Types', 'crvc_extension' ) => 'room_types',
+					__( 'Apartments', 'crvc_extension' ) => 'room_types',
 				),
 				'description' => __( 'Set data source for image, title, subtitle, description, CTA.', 'crvc_extension' ),
 				'admin_label' => true,
@@ -45,10 +45,10 @@ return array(
 			),
 			array(
 				'type' => 'dropdown',
-				'heading' => __( 'Select an Room Type', 'crvc_extension' ),
+				'heading' => __( 'Select an Apartment', 'crvc_extension' ),
 				'param_name' => 'room_type_id',
-				'value' => cr_vce_post_type_dropdown_data('room_type', __('Select an Room Type', 'crvc_extension')),
-				'description' => __( 'Select an Room Type.', 'crvc_extension' ),
+				'value' => cr_vce_post_type_dropdown_data('apartment', __('Select an apartment', 'crvc_extension')),
+				'description' => __( 'Select an Apartment.', 'crvc_extension' ),
 				'dependency' => array(
 					'element' => 'data_source',
 					'value' => array('room_types',),

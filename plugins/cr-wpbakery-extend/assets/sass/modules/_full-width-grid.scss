@@ -42,6 +42,11 @@
                 background-color: rgba($color-black, .65);
             }
         }
+        &:not(&-noimage) &-inner {
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
         &-borders {
             position: absolute;
             left: 0;
@@ -156,7 +161,9 @@
         &-image {
             display: block;
             width: 100%;
-            height: 100%;
+            height: auto;
+            opacity: 0;
+            visibility: hidden;
             //transition: 1.8s all ease;
             //backface-visibility: hidden;
             position: relative;
