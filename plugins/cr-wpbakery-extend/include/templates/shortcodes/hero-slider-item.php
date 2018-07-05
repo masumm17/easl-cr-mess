@@ -20,7 +20,7 @@ if($cta_button) {
 	$cta_button = $this->parse_url($cta_button);
 }
 if($tagline_image) {
-	$tagline_image = $this->get_image_src($tagline_image);
+	$tagline_image = $this->get_image_src($tagline_image, 'thumbnail');
 }
 $content = wpb_js_remove_wpautop( trim($content), true );
 if($cta_button) {
