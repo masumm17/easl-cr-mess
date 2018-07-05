@@ -149,6 +149,7 @@ class CR_VcE_Manager {
 		$this->load_registered_shortcodes();
 		// Allow to add shortcodes
 		do_action('cr_register_tags');
+		$this->load_custom_params();
 		// Get active shortcodes
 		$this->load_active_shortcodes();
 		// Map shortcodes
@@ -375,6 +376,10 @@ class CR_VcE_Manager {
 			}
 			require_once $settings['file'];
 		}
+	}
+	
+	public function load_custom_params() {
+		require $this->path('PARAMS_DIR', 'posts-dropdown.php');
 	}
 	/**
 	 * Display global footer modules

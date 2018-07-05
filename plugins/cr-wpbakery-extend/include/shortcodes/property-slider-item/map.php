@@ -32,28 +32,34 @@ return array(
 				'param_holder_class' => 'vc_col-sm-6',
 			),
 			array(
-				'type' => 'dropdown',
+				'type' => 'cr_posts_dropdown',
 				'heading' => __( 'Select an Offer', 'crvc_extension' ),
 				'param_name' => 'offer_id',
-				'value' => cr_vce_post_type_dropdown_data('offer', __('Select an offer', 'crvc_extension')),
+				'options' => array(
+					'post_type' => 'offer',
+					'empty_option' => __('Select an offer', 'crvc_extension')
+				),
 				'description' => __( 'Select an Offer.', 'crvc_extension' ),
 				'dependency' => array(
 					'element' => 'data_source',
 					'value' => array('offers',),
 				),
-				'param_holder_class' => 'vc_col-sm-6 cr-padding-top-0',
+				'param_holder_class' => 'vc_col-sm-6',
 			),
 			array(
-				'type' => 'dropdown',
+				'type' => 'cr_posts_dropdown',
 				'heading' => __( 'Select an Apartment', 'crvc_extension' ),
 				'param_name' => 'room_type_id',
-				'value' => cr_vce_post_type_dropdown_data('apartment', __('Select an apartment', 'crvc_extension')),
+				'options' => array(
+					'post_type' => 'apartment',
+					'empty_option' => __('Select an apartment', 'crvc_extension')
+				),
 				'description' => __( 'Select an Apartment.', 'crvc_extension' ),
 				'dependency' => array(
 					'element' => 'data_source',
 					'value' => array('room_types',),
 				),
-				'param_holder_class' => 'vc_col-sm-6 cr-padding-top-0',
+				'param_holder_class' => 'vc_col-sm-6',
 			),
 			array(
 				'type' => 'attach_image',
