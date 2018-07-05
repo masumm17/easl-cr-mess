@@ -74,6 +74,7 @@ switch($display_option) {
 
 $image = preg_replace( '/[^\d]/', '', $image );
 $img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fw-grid-item-image '. $image_size) );
+$img_full_src = wp_get_attachment_image_src( $image, $image_size );
 
 
 // Build item elements html
@@ -203,7 +204,7 @@ CR_VcE_Sc_Full_Width_Grid::$items_data[] = $atts;
 
 ?> 
 <div class="fw-grid-item cr-grid-col cr-animate-when-visible <?php echo $css_class; ?>">
-	<div class="fw-grid-item-inner cr-grid-col-inner <?php echo $css_inner_class; ?>">
+	<div class="fw-grid-item-inner cr-grid-col-inner <?php echo $css_inner_class; ?>" <?php if('no_image' != $display_option){ ?>style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>');" <?php } ?>>
 		<?php if($display_option == 'no_image'):?> 
 		<div class="fw-grid-item-borders">
 			<div class="fw-grid-item-borders-top"></div>
