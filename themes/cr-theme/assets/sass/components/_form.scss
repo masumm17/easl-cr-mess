@@ -15,7 +15,7 @@ textarea {
     padding: 1.3rem 1.2rem 1rem;
     border: 1px solid $color-base;
     color: $color-gray-1;
-    @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: false);
+    @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: base);
 }
 input[type="text"]::placeholder, 
 input[type="email"]::placeholder, 

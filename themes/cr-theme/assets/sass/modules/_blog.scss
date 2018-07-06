@@ -17,13 +17,13 @@
         padding-left: 4rem;
         padding-bottom: 6rem;
         margin-left: 6rem;
-        @include color-themes($color:false, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
     }
     &-hentry {
         margin: 0 0 3.5rem;
         padding: 0 0 3.5rem;
         border-bottom: 1px solid $color-base;
-        @include color-themes($color:false, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
         &:last-child {
             border-bottom: 0 none;
             margin-bottom: 0;
@@ -120,7 +120,7 @@
         margin-top: 3rem;
         margin-bottom: 5rem;
         font-style: italic;
-        @include color-themes($color:false, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
     }
     &-navigation {
         border-top: 1px solid $color-base;
@@ -128,7 +128,7 @@
         margin-top: 3rem;
         display: flex;
         flex-wrap: nowrap;
-        @include color-themes($color:false, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
         p {
             flex: 1;
             margin: 0;

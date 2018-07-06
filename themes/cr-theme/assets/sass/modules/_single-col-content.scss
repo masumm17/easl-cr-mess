@@ -9,7 +9,7 @@
                 background-color: $color-base;
                 color: $color-white;
             }
-            @include color-themes($color:false, $bgcolor:true, $secodary: false);
+            @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
             &:hover, &:active {
                 
             }

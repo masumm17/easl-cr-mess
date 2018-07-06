@@ -1,11 +1,11 @@
 .property-slider {
     &-text {
         &-subtitle {
-            @include color-themes($color:true, $bgcolor:false);
+            @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
         }
         &-cta {
             background-color: $color-base;
-            @include color-themes($color:false, $bgcolor:true);
+            @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
         }
     }
 }

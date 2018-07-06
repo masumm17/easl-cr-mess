@@ -3,7 +3,7 @@
         &-borders{
             > div {
                 &::after, &::before {
-                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $secodary: true);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                 }
             }
         }
@@ -18,15 +18,15 @@
     &-item {
         &-subtitle {
             color: $color-base-secondary;
-            @include color-themes($color:true, $bgcolor:false, $secodary: true);
+            @include color-themes($color:true, $bgcolor:false, $color-type: secondary);
         }
     }
     &-filter {
         &-location, &-roomtype {
-            @include color-themes($color:false, $bgcolor:false, $border-color:true, $secodary: false);
+            @include color-themes($color:false, $bgcolor:false, $border-color:true, $color-type: base);
         }
         &-selected {
-            @include color-themes($color:true, $bgcolor:false, $secodary: false);
+            @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
         }
         &-options {
             @each $theme-name, $theme-color in $themes-map-lightbg{
@@ -50,10 +50,10 @@
         }
         &-options {
             li {
-                @include color-themes($color:true, $bgcolor:false, $secodary: false);
+                @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
                 &.selected-option, &:hover {
                     color: $color-white;
-                    @include color-themes($color:false, $bgcolor:true, $secodary: false);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
                 }
             }
         }

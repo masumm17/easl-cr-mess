@@ -18,7 +18,7 @@ body.compensate-for-scrollbar {
         }
         &-subtitle {
             color: $color-base-secondary;
-            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
         }
     }
     &-share {

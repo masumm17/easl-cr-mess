@@ -23,7 +23,7 @@
             font-weight: 400;
             line-height: 1em;
             color: $color-base;
-            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
         }
         textarea, input[type="text"], input[type="email"] {
             display: block;

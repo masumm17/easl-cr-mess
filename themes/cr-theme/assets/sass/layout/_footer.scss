@@ -127,7 +127,7 @@
             a {
                 &, &:link, &:visited{
                     color: $color-base-secondary;
-                    @include color-themes($color:true, $bgcolor:false, $secodary: true);
+                    @include color-themes($color:true, $bgcolor:false, $color-type: secondary);
                     text-transform: none;
                 }
             }

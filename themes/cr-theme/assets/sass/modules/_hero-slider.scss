@@ -2,20 +2,20 @@
 .hero-slider-caption {
     &-1 &-subtitle {
         color: $color-base-secondary;
-         @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
     }
     &-2 &-subtitle {
         color: $color-base;
-        @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+        @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
     }
     &-3 &-text {
         border-top: 4px solid $color-base;
         border-bottom: 4px solid $color-base;
-        @include color-themes($color:false, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
     }
     &-4 &-subtitle {
         color: $color-base;
-        @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+        @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
     }
 }
 /*.hero-slider-scroll-down {

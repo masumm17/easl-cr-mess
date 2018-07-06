@@ -14,8 +14,14 @@
 }
 
 
-@mixin color-themes($color:false, $bgcolor:false, $border-color:false, $secodary: false) {
-    $themes : if($secodary, $themes-map-secondary, $themes-map-primary);
+@mixin color-themes($color:false, $bgcolor:false, $border-color:false, $color-type: base) {
+    $themes: $themes-map-primary;
+    @if $color-type == secondary {
+        $themes: $themes-map-secondary;
+    } @else if $color-type == tertiary {
+        $themes: $themes-map-tertiary;
+    }
+    
     @each $theme-name, $theme-color in $themes {
         .theme-#{$theme-name} & {
             @if $bgcolor {

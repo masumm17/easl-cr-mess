@@ -17,7 +17,7 @@
         border: none;
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:$color-white, $bgcolor:true);
+        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: base);
     }
     &::after {
         display: none!important;
@@ -69,7 +69,7 @@
         //Change for the <button> element
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: false);
+        @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: base);
     }
     
     &::after {
@@ -123,7 +123,7 @@
         border: none;
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:$color-white, $bgcolor:true, $secodary: true);
+        @include color-themes($color:$color-white, $bgcolor:true, $color-type: secondary);
     }
     &::after {
         display: none!important;
@@ -177,7 +177,7 @@
         //Change for the <button> element
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:true, $border-color: true, $bgcolor:false, $secodary: true);
+        @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: secondary);
     }
     
     &::after {

@@ -18,7 +18,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1.8px;
     margin-bottom: 3rem;
-    @include color-themes($color:true, $bgcolor:false);
+    @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
 }
 h3 {
     color: $color-base;
@@ -52,17 +52,17 @@ h6 {
     margin-bottom: 2rem;
 }
 h1, h2, h3, h4, h6 {
-    @include color-themes($color:true, $bgcolor:false);
+    @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
 }
 
 a {
     &, &:link, &:visited {
         color: $color-base;
-        @include color-themes($color:true, $bgcolor:false);
+        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
     }
     &:hover, &:active {
         color: $color-base;
-        @include color-themes($color:true, $bgcolor:false);
+        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
         text-decoration: none;
     }
     &:focus {
@@ -83,7 +83,7 @@ a {
         opacity: 0;
         transition: opacity 0.3s, transform 0.3s;
         transform: translateY(1rem);
-        @include color-themes($color:false, $bgcolor:true);
+        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
 }
     &:hover {
         &::after {

@@ -71,7 +71,7 @@
             font-size: 1.4rem;
             line-height: 1.4em;
             color: $color-base;
-            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
             .bp-color-white & {
                 border-bottom: 1px solid #515151;
             }
@@ -194,7 +194,7 @@
         line-height: 1em;
         position: relative;
         color: $color-base;
-        @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+        @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
     }
     &-monthyear {
         display: block;
@@ -430,7 +430,7 @@
         }
         &.cr-state-active, &:hover {
             color: $color-base;
-            @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: false);
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
         }
     }
     &-select-box {
@@ -475,7 +475,7 @@
                 &.cr-sb-selected ,&:hover {
                     color: $color-white;
                     background-color: $color-base;
-                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $secodary: false);
+                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: base);
                 }
                 &:last-child {
                     margin-bottom: 0;
@@ -593,7 +593,7 @@
                 &.ui-state-active {
                     background-color: $color-base;
                     color: $color-white;
-                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $secodary: false);
+                    @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: base);
                 }
             }
         }

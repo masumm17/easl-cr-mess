@@ -100,7 +100,7 @@
                 &, &:hover, &:active {
                     //color: $color-base-secondary;
                     color: #e7a615;
-                    @include color-themes($color:true, $border-color: false, $bgcolor:false, $secodary: true);
+                    @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
                 }
             }
             &:hover, &:active {

@@ -3,13 +3,13 @@
         &-borders{
             > div {
                 &::after, &::before {
-                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $secodary: true);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                 }
             }
         }
         &-subtitle {
             color: $color-base-secondary;
-            @include color-themes($color:true, $bgcolor:false, $border-color:false, $secodary: true);
+            @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: secondary);
         }
     } 
 }
