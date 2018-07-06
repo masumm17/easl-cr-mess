@@ -147,7 +147,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 				<div class="hero-slider-caption-subtitle"><?php echo esc_html($tagline_subtitle); ?></div>
 				<?php endif; ?>
 				<?php if($cta_button_attributes): ?>
-				<div class="hero-slider-caption-cta"><a class="cr-button-secondary-bordered" <?php echo $cta_button_attributes ?>><?php echo esc_html($cta_button['title']); ?></a></div>
+				<div class="hero-slider-caption-cta"><a class="cr-button-tertiary-bordered" <?php echo $cta_button_attributes ?>><?php echo esc_html($cta_button['title']); ?></a></div>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -169,7 +169,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 				<div class="hero-slider-caption-desc"><?php echo cr_truncate($content, 260, '', true); ?></div>
 				<?php endif; ?>
 				<?php if($cta_button_attributes): ?>
-				<div class="hero-slider-caption-cta"><a class="cr-button-secondary" <?php echo $cta_button_attributes ?>><?php echo esc_html($cta_button['title']); ?></a></div>
+				<div class="hero-slider-caption-cta"><a class="cr-button" <?php echo $cta_button_attributes ?>><?php echo esc_html($cta_button['title']); ?></a></div>
 				<?php endif; ?>
 			</div>
 		</div>

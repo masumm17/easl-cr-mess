@@ -1,0 +1,19 @@
+.cr-map {
+    
+    &-infobox {
+        &-cta-wrap {
+            a.cr-button-bordered {
+                
+                &::before {
+                    background-color: $color-base;
+                    @each $theme-name, $theme-color in $themes-map-primary {
+                        .theme-#{$theme-name} & {
+                            color: $color-white;
+                            background-color: $theme-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

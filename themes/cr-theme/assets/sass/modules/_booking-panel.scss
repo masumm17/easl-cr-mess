@@ -243,6 +243,7 @@
             display: inline-block;
             position: relative;
             padding-left: 3rem;
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             .bp-color-white & {
             }
             .bp-color-black & {
@@ -266,19 +267,19 @@
             bottom: -4px;
             &::after {
                 background-image: url('../images/theme-base/booking-panel/person.svg');
-            @include bgimage-themes("booking-panel/booking-panel/person.svg");
+                @include bgimage-themes("booking-panel/person.svg");
             }
         }
         &-rac {
             &::after {
-                background-image: url('../images/theme-base/booking-panel/callback-request.svg');
-            @include bgimage-themes("booking-panel/booking-panel/callback-request.svg");
+                background-image: url('../images/theme-base/callback-request.svg');
+            @include bgimage-themes("booking-panel/callback-request.svg");
             }
         }
         &-brg {
             &::after {
                 background-image: url('../images/theme-base/booking-panel/circle-tick.svg');
-            @include bgimage-themes("booking-panel/booking-panel/circle-tick.svg");
+            @include bgimage-themes("booking-panel/circle-tick.svg");
             }
         }
     }
@@ -465,7 +466,7 @@
                 line-height: 1em;
                 cursor: pointer;
                 margin: 0 0 1px;
-                transition: color .35s;
+                transition: all .35s;
                 .bp-color-white & {
                     color: $color-gray-1;
                 }
@@ -590,6 +591,8 @@
                 }
             }
             td a {
+                transition: all .5s;
+                &.ui-state-hover,
                 &.ui-state-active {
                     background-color: $color-base;
                     color: $color-white;

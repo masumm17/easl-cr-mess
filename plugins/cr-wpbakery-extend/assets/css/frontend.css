@@ -1325,7 +1325,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .cr-has-overlay .fxw-grid-item-inner::after {
 	content: "";
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1337,7 +1337,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .cr-has-overlay:hover .fxw-grid-item-inner::after {
-	background-color: rgba(0, 0, 0, 0.65);
+	background-color: rgba(0, 0, 0, 0.68);
 }
 
 .fxw-grid-item-image {
@@ -1518,11 +1518,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .cr-has-overlay .fw-grid-item-inner::after {
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 .cr-has-overlay-text:hover .fw-grid-item-inner::after {
-	background-color: rgba(0, 0, 0, 0.65);
+	background-color: rgba(0, 0, 0, 0.68);
 }
 
 .fw-grid-item:not(.fw-grid-item-noimage) .fw-grid-item-inner {

@@ -183,7 +183,7 @@
             font-weight: 300;
             a {
                 color: #fce0a2;
-                
+                @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             }
         }
     }

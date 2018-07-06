@@ -31,7 +31,7 @@
             overflow: hidden;
             .cr-has-overlay &::after {
                 content: "";
-                background-color: rgba($color-black, .5);
+                background-color: rgba($color-black, .6);
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -41,7 +41,7 @@
                 z-index: 2;
             }
             .cr-has-overlay:hover &::after {
-                background-color: rgba($color-black, .65);
+                background-color: rgba($color-black, .68);
             }
         }
         &-image {

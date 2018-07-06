@@ -206,10 +206,10 @@
                 height: 0;
                 background-color: darken($color-base, 7);//#cd8e01
                 transition: all .3s;
-                @each $theme-name, $theme-color in $themes-map-primary {
+                @each $theme-name, $theme-color in $themes-map-secondary {
                     .theme-#{$theme-name} & {
                         color: $color-white;
-                        background-color: darken($theme-color, 7);
+                        background-color: $theme-color;
                     }
                 }
             }

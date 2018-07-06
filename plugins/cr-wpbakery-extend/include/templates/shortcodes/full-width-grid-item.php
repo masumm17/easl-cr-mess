@@ -56,19 +56,19 @@ switch($grid_size) {
 
 switch($display_option) {
 	case 'no_text': 
-		$cta_class = 'cr-button-secondary';
+		$cta_class = 'cr-button';
 		break;
 	case 'no_image': 
 		$cta_class = 'cr-button';
 		break;
 	case 'title_only': 
-		$cta_class = 'cr-button-secondary';
+		$cta_class = 'cr-button';
 		break;
 	case 'text_hover': 
-		$cta_class = 'cr-button-secondary';
+		$cta_class = 'cr-button';
 		break;
 	case 'text_always': 
-		$cta_class = 'cr-button-secondary';
+		$cta_class = 'cr-button';
 		break;
 }
 

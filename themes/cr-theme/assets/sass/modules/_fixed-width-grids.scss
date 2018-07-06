@@ -2,7 +2,7 @@
     &-item {
         &-subtitle {
             color: $color-base-secondary;
-            @include color-themes($color:true, $bgcolor:false, $color-type: secondary);
+            @include color-themes($color:true, $bgcolor:false, $color-type: tertiary);
         }
     } 
 }

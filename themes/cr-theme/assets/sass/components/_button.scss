@@ -30,11 +30,11 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base, 7);//#cd8e01
+        background-color: $color-base;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-primary {
+        @each $theme-name, $theme-color in $themes-map-secondary {
             .theme-#{$theme-name} & {
-                background-color: darken($theme-color, 7);
+                background-color: $theme-color;
             }
         }
     }
@@ -83,12 +83,12 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base, 7);//#cd8e01
+        background-color: $color-base;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-primary {
+        @each $theme-name, $theme-color in $themes-map-secondary {
             .theme-#{$theme-name} & {
                 color: $color-white;
-                background-color: darken($theme-color, 7);
+                background-color: $theme-color;
             }
         }
     }
@@ -137,11 +137,11 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base-secondary, 7);//#cd8e01
+        background-color: $color-base-secondary;//#cd8e01
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
+        @each $theme-name, $theme-color in $themes-map-primary {
             .theme-#{$theme-name} & {
-                background-color: darken($theme-color, 7);
+                background-color: $theme-color;
             }
         }
     }
@@ -195,7 +195,115 @@
         transition: all .3s;
         @each $theme-name, $theme-color in $themes-map-secondary {
             .theme-#{$theme-name} & {
-                background-color: darken($theme-color, 7);
+                background-color: $theme-color;
+            }
+        }
+    }
+    
+    &:hover {
+        color: $color-white !important;
+        &::before {
+            height: 100%;
+        }
+    }
+    &-text {
+        
+    }
+}
+
+.cr-button-tertiary {
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-base-tertiary;
+        color: $color-white;
+        display: inline-block;
+        display: inline-block;
+        font-size: 1.4rem;
+        line-height: 1em;
+        font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 2rem 3.6rem;
+        position: relative;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+        z-index: 1;
+        @include color-themes($color:$color-white, $bgcolor:true, $color-type: tertiary);
+    }
+    &::after {
+        display: none!important;
+    }
+    
+    &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        background-color: $color-base-secondary;
+        transition: all .3s;
+        @each $theme-name, $theme-color in $themes-map-secondary {
+            .theme-#{$theme-name} & {
+                background-color: $theme-color;
+            }
+        }
+    }
+    
+    &:hover {
+        color: $color-white !important;
+        &::before {
+            height: 100%;
+        }
+    }
+    &-text {
+        
+    }
+}
+
+.cr-button-tertiary-bordered {
+    &,
+    &:link,
+    &:visited {
+        background-color: transparent;
+        border: 1px solid $color-base-tertiary;
+        color: $color-base-tertiary;
+        display: inline-block;
+        display: inline-block;
+        font-size: 1.4rem;
+        line-height: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 2rem 3.6rem;
+        position: relative;
+
+        //Change for the <button> element
+        cursor: pointer;
+        z-index: 1;
+        @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: tertiary);
+    }
+    
+    &::after {
+        display: none!important;
+    }
+    &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        background-color: $color-base-secondary;
+        transition: all .3s;
+        @each $theme-name, $theme-color in $themes-map-secondary {
+            .theme-#{$theme-name} & {
+                background-color: $theme-color;
             }
         }
     }

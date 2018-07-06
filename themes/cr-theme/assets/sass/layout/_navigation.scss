@@ -44,7 +44,7 @@
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;
                     transform: translateY(0);
-                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                 }
             }
         }
@@ -278,7 +278,7 @@
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;
                     transform: translateY(0);
-                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                 }
             }
             &:hover > span::after, &:active > span::after {

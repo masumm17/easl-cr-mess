@@ -71,7 +71,7 @@ if($img_full) {
 					<div class="fxw-grid-item-text-bottom">
 						<p><?php echo cr_vce_truncate($content, 186); ?></p>
 						<?php if($cta_button_attributes): ?>
-						<a class="fxw-grid-item-cta cr-button-secondary-bordered" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
+						<a class="fxw-grid-item-cta cr-button-tertiary-bordered" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 						<?php endif; ?>
 					</div>
 				</div>

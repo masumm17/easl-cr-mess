@@ -8,8 +8,12 @@
             }
         }
         &-subtitle {
-            color: $color-base-secondary;
-            @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: secondary);
+            color: $color-base-tertiary;
+            @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: tertiary);
+            .fw-grid-item-noimage & {
+                color: $color-base;
+                @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+            }
         }
     } 
 }
