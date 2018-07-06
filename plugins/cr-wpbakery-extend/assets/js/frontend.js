@@ -582,19 +582,41 @@ if (!String.prototype.padStart) {
         },
         createYTPlayer: function(playerID) {
             var $playerParent = $("#" + playerID).closest(".cr-iframe-video-parent");
-            var player = this.Storage.YTPlayers.playerID = new YT.Player(playerID, {
+            var player = this.Storage.YTPlayers[playerID] = new YT.Player(playerID, {
                 height: '390',
                 width: '640',
                 videoId: this.Storage.YTPlayersData[playerID],
                 playerVars: this.defaults.YT,
                 events: {
                     "onReady": function(e) {
-                        $(player.a).waypoint(function() {
-                            (window.innerWidth > 1024) && player.playVideo();
-                            player.mute();
+                        //if($playerParent.hasClass("cr-iframe-video-playalways"))
+                        $playerParent.waypoint(function(direction) {
+                            if(direction === "down") {
+                                console.log("Entered from Down");
+                                (window.innerWidth > 1024) && player.playVideo();
+                                player.mute();
+                            }
+                            if(direction === "up") {
+                                (window.innerWidth > 1024) && player.pauseVideo();
+                                player.mute();
+                            }
                         }, {
-                            offset: '75%',
-                            triggerOnce: !0
+                            offset: "100%"
+                        });
+                        $playerParent.waypoint(function(direction) {
+                            if(direction === "down") {
+                                console.log("Exited from Down");
+                                (window.innerWidth > 1024) && player.pauseVideo();
+                                player.mute();
+                            }
+                            if(direction === "up") {
+                                (window.innerWidth > 1024) && player.playVideo();
+                                player.mute();
+                            }
+                        }, {
+                            offset: function() {
+                                return -$(this).outerHeight() + 100
+                            }
                         });
                     },
                     "onStateChange": function(e){
@@ -614,7 +636,7 @@ if (!String.prototype.padStart) {
             });
         },
         rescaleYTPlayer: function(playerID) {
-            var player = this.Storage.YTPlayers.playerID;
+            var player = this.Storage.YTPlayers[playerID];
             var $playerParent = $(player.a).closest(".cr-iframe-video-parent");
             var $playerCon = $(player.a).closest('.cr-iframe-video');
             var w = $playerParent.width();
