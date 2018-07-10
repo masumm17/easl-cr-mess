@@ -178,10 +178,10 @@ switch($display_option) {
 }
 
 // Set overlay class
-if($overlay_trans_disable != 'yes' && $display_option != 'no_image' && !$html_video){
+if($overlay_trans_disable != 'yes' && $display_option != 'no_image'){
 	$css_class .= ' cr-has-overlay';
 }
-if(($overlay_trans_disable != 'yes' || $html_title || $html_subtitle || $html_description || $html_cta) && $display_option != 'no_image'){
+if(( $html_title || $html_subtitle || $html_description || $html_cta) && $display_option != 'no_image'){
 	$css_class .= ' cr-has-overlay-text';
 }
 
