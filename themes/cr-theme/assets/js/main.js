@@ -1,4 +1,71 @@
 (function($){
+    function CRCollapseBox($el, $tr) {
+        this.$el = $el;
+        this.$trigger = null;
+        this.collapsed = false;
+        this.collapsing = false;
+        this.className = {
+            COLLAPSE: "cr-collapse",
+            SHOW: "cr-collapse-show",
+            COLLAPSING:  "cr-collapsing",
+            COLLAPSED: "cr-collapsed"
+        };
+        this.EventsName = {
+            TRANSITION_END: "transitionEnd webkitTransitionEnd transitionend oTransitionEnd msTransitionEnd"
+        };
+        this.$el.removeClass(this.className.COLLAPSING).addClass(this.className.COLLAPSE);
+        this.setTrigger($tr);
+    };
+    CRCollapseBox.prototype.show = function() {
+        var ob = this;
+        if(this.collapsing || this.$el.hasClass(this.className.SHOW)){
+            return;
+        }
+        this.$el.removeClass(this.className.COLLAPSE).addClass(this.className.COLLAPSING);
+        this.$trigger && this.$trigger.addClass("mobile-nav-arrow-flip");
+        this.$el[0].style.height = 0;
+        this.collapsing = true;
+        this.$el.one(this.EventsName.TRANSITION_END, function(e) {
+            ob.$el.removeClass(ob.className.COLLAPSING).addClass(ob.className.COLLAPSED).addClass(ob.className.SHOW);
+            ob.$el[0].style.height = "";
+            ob.collapsing = false;
+        });
+        this.$el[0].style.height = this.$el[0].scrollHeight + "px";
+    };
+    CRCollapseBox.prototype.hide = function() {
+        var ob = this;
+        if(this.collapsing || !this.$el.hasClass(this.className.SHOW)){
+            return;
+        }
+        this.$el[0].style.height = this.$el[0].getBoundingClientRect().height + "px";
+        this.$el[0].offsetHeight;
+        this.$el.addClass(this.className.COLLAPSING).removeClass(this.className.COLLAPSE).removeClass(this.className.SHOW);
+        this.$trigger && this.$trigger.removeClass("mobile-nav-arrow-flip");
+        this.collapsing = true;
+        this.$el.one(this.EventsName.TRANSITION_END, function(e) {
+            ob.$el.removeClass(ob.className.COLLAPSING).addClass(ob.className.COLLAPSE);
+            ob.collapsing = false;
+        });
+        this.$el[0].style.height = "";
+    };
+    CRCollapseBox.prototype.toggle = function() {
+        if(this.$el.hasClass(this.className.SHOW)) {
+            this.hide();
+        }else{
+            this.show();
+        }
+    };
+    CRCollapseBox.prototype.setTrigger = function($tr) {
+        var ob = this;
+        if($tr && $tr.length){
+            this.$trigger = $tr;
+            this.$trigger.on("click", function(e) {
+                e.preventDefault();
+                ob.toggle();
+            });
+        }
+    };
+    
     function CRInstagramFeed($el) {
         this.$el = $el;
         this.accesstoken = this.getData("secretkey");
@@ -123,13 +190,13 @@
             this.vp.scrollTop = $(window).scrollTop();
         },
         isMobile: function() {
-            if(this.vp.width <= 767) {
+            if(this.vp.width <= 600) {
                 return true;
             }
             return false;
         },
         isTab: function() {
-            if(this.vp.width <= 1024 && this.vp.width >= 768) {
+            if(this.vp.width <= 1200 && this.vp.width > 600) {
                 return true;
             }
             return false;
@@ -174,6 +241,15 @@
                     
                 });
             }
+        },
+        mobileMenu: function() {
+            var ob = this;
+            $(".mobile-nav-arrow").each(function() {
+                var $tr = $(this), $ul = $tr.siblings('.sub-menu');
+                if($ul.length) {
+                    new CRCollapseBox($ul, $tr);
+                }
+            });
         },
         bookingPanel: function() {
             
@@ -451,6 +527,9 @@
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();
             }, 250));
+            $(".mobile-menu-humburger").on("click", function() {
+                ob.$body.toggleClass("cr-mobile-menu-active");
+            });
             $(".cr-menu-level-1 > li").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings("li").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
@@ -514,6 +593,7 @@
             this.$menu = $("#menu-header-primary");
             this.$footer = $("#site-footer");
             this.$footerLine = $("#footer-top-line");
+            this.mobileMenu();
             this.setMenuProp();
             this.resizeFooter();
             this.bookingPanel();

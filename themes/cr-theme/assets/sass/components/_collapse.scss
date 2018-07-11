@@ -1,0 +1,15 @@
+.cr-collapse {
+    &:not(.cr-collapse-show) {
+        display: none;
+    }
+    
+}
+.cr-collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	transition: height .35s ease;
+}
+.cr-collapsed {
+    display: block
+}

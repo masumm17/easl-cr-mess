@@ -68,7 +68,7 @@ if(!empty($items) && is_array($items) && count($items) > 0) {
 			</a>
 		</li>
 		<?php endforeach; ?>
-		<li class="sticky-side-nav-item sticky-side-nav-item-ls"><?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?> </li>
+		<li class="sticky-side-nav-item sticky-side-nav-item-ls"><?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?></li>
 	</ul>
 </div>
 <?php

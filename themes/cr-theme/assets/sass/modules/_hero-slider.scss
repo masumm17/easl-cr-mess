@@ -1,5 +1,9 @@
 
 .hero-slider-caption {
+    
+    @include respond(phone) {
+        display: none!important;
+    }
     &-1 &-subtitle {
         color: $color-base-tertiary;
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: tertiary);
@@ -22,3 +26,11 @@
     background-image: url('../images/theme-base/page-scroll-down-arrow/page-scroll-down-arrow.svg');
     @include bgimage-themes("page-scroll-down-arrow/page-scroll-down-arrow.svg");
 }*/
+@include respond(phone) {
+    .tp-revslider-slidesli[data-taglinetype="type2"]::after {
+        display: none;
+    }
+    .tp-revslider-slidesli[data-taglinetype="type4"]::after {
+        display: none;
+    }
+}
