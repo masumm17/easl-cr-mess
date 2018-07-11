@@ -50,6 +50,10 @@
 .cr-module-wrap  {
     margin-top: 0;
     margin-bottom: 2rem;
+    @include respond(tab-port) {
+        margin-left: $mobile-gutter;
+        margin-right: $mobile-gutter;
+    }
     &:last-child, & > *:last-child{
         margin-bottom: 0;
     }

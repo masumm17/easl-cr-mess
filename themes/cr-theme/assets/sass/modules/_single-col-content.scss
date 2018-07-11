@@ -1,10 +1,22 @@
 
-
+.cr-scc-text {
+    @include respond(tab-port) {
+        font-size: 14px;
+    }
+}
 .cr-scc-buttons {
     li {
+        @include respond(tab-port) {
+            margin: 0 6px 10px;
+        }
         a {
             background-color: $color-base;
             color: $color-white;
+            &, &:link, &:visited{
+                @include respond(tab-port) {
+                    padding: 20px 36px;
+                }
+            }
             &:link, &:visited{
                 background-color: $color-base;
                 color: $color-white;

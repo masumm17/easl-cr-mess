@@ -1,7 +1,79 @@
 .property-slider {
+    &-wrap {
+        @include respond(tab-port) {
+            margin-left: 0;
+            margin-right: 0;
+            background: transparent;
+        }
+    }
+    &-inner {
+        @include respond(tab-port) {
+            width: auto;
+            max-width: 100%;
+            margin: 0 36px;
+        }
+    }
+    &-stripe {
+        display: none;
+    }
     &-text {
+        @include respond(tab-port) {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            padding: 0;
+            width: auto;
+            &-title {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                right: 20px;
+                transform: translateY(-50%);
+                padding: 30px 20px;
+                background-color: rgba(#f1f1f1, .7);
+                font-size: 24px;
+                margin: 0;
+                text-align: center;
+            }
+            &-subtitle, p {
+                display: none;
+            }
+            & &-cta {
+               position: absolute;
+               top: 100%;
+               left: 0;
+               right: 0;
+               text-align: center;
+            }
+        }
+        @include respond(phone) {
+            &-title {
+                font-size: 20px;
+            } 
+        }
         &-subtitle {
             @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
         }
+        
     }
+    &-image {
+        @include respond(phone) {
+            padding: 94% 0 0;
+        }
+    }
+    &-arrow-left, &-arrow-right {
+    }
+    &-arrow-left {
+        @include respond(tab-port) {
+            transform: scale(.4) translateX(-65%);
+        }
+    }
+    &-arrow-right {
+        @include respond(tab-port) {
+            transform: scale(.4) translateX(65%);
+        }
+    }
+    
 }

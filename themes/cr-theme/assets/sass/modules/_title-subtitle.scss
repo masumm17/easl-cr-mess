@@ -1,4 +1,12 @@
+.cr-sc-title {
+    @include respond(tab-port) {
+        font-size: 24px;
+    }
+}
 .cr-sc-subtitle {
     color: $color-base;
     @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+    @include respond(phone) {
+        font-size: 18px;
+    }
 }
