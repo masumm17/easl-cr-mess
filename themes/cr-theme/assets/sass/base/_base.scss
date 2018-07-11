@@ -16,6 +16,9 @@ body {
     font-size: 1.6rem;
     line-height: 1.7em;
     padding: 0;
+    @include respond(tab-port) {
+        font-size: 14px;
+    }
 }
 
 a:link, a:visited {

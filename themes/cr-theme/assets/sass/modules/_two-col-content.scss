@@ -6,4 +6,60 @@
             }
         }
     }
+    @include respond(tab-port) {
+        &-inner {
+            display: block;
+            text-align: center;
+        }
+        &-amenities, &-floorplans {
+            width: auto;
+            margin: 0 0 20px;
+        }
+        &-title {
+            font-size: 18px;
+        }
+        &-amenities {
+            &-col-inner {
+                text-align: center;
+            }
+            &-list {
+                display: inline-block;
+                padding: 0 10px;
+                text-align: left;
+                li {
+                    font-size: 14px;
+                    min-height: 18px;
+                    margin-bottom: 15px;
+                    padding-left: 38px;
+                    img {
+                        max-width: 18px;
+                        top: 2px;
+                    }
+                }
+            }
+            & .cr-2col-content-note {
+                padding: 0 10px;
+            }
+        }
+    }
+    @include respond(phone) {
+        &-floorplans {
+            &-thumbs {
+                display: block;
+                padding: 0 10px;
+                margin: 0;
+                li {
+                    padding: 0;
+                    margin: 0 0 15px;
+                    text-align: center;
+                    width: auto !important;
+                    img {
+                        max-width: 100%;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+    
 }
