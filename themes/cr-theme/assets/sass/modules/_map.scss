@@ -16,4 +16,19 @@
             }
         }
     }
+    @include respond(tab-port) {
+        &-filter {
+            &s{
+                height: auto;
+                position: relative;
+                line-height: 1em;
+            }
+            &s-list {
+                margin: 0;
+            }
+            &-icon {
+                margin: 0 3px;
+            }
+        }
+    }
 }
