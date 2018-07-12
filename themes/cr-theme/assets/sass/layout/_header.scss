@@ -174,13 +174,13 @@
         background-color: rgba($color-black, .96);
         height: 210px;
     }
-    a {
+    a, a:link, a:visited {
         display: block;
         height: 50px;
         line-height: 50px;
         width: 100%;
         text-transform: uppercase;
-        color: #fff;
+        color: $color-white!important;
         font-size: 15px;
         text-align: center;
         text-decoration: none;
