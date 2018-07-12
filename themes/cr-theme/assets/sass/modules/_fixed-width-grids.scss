@@ -5,7 +5,7 @@
             @include color-themes($color:true, $bgcolor:false, $color-type: tertiary);
         }
     }
-    @include respond(phone) {
+    @include respond(tab-port) {
         &-con {
             display: block;
         }

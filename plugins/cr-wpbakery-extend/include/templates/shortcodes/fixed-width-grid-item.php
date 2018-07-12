@@ -36,7 +36,8 @@ if($custom_sourse_data) {
 
 $image = preg_replace( '/[^\d]/', '', $image );
 $image_size = 'fw2-3_col1-3_x';
-$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image') );
+$img_full_src = wp_get_attachment_image_src( $image, $image_size );
+$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fxw-grid-item-image', 'srcset' => $img_full_src[0] .' 640w', 'sizes' => '33vw') );
 
 if($img_full) {
 	CR_VcE_Sc_Fixed_Width_Grid::$items_count++;

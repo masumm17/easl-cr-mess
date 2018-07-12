@@ -39,17 +39,21 @@ $class_to_filter = '';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 // Set Grid Class
+$image_size_w = '';
 switch($grid_size) {
 	case '3_3':
 		$image_size = 'fw1-2_x';
+		$image_size_w = 1920;
 		$css_class .= ' cr-grid-col-full';
 		break;
 	case '2_3':
 		$image_size = 'fw1-2_col2-3_x';
+		$image_size_w = 1280;
 		$css_class .= ' cr-grid-col-2-of-3';
 		break;
 	default:
 		$image_size = 'fw1-2_col1-3_x';
+		$image_size_w = 640;
 		$css_class .= ' cr-grid-col-1-of-3';
 		break;
 }
@@ -73,14 +77,30 @@ switch($display_option) {
 }
 
 $image = preg_replace( '/[^\d]/', '', $image );
-$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fw-grid-item-image '. $image_size) );
 $img_full_src = wp_get_attachment_image_src( $image, $image_size );
 
+$img_full_src_mobile = wp_get_attachment_image_src( $image, 'fw2-3_col1-3_x' );
+$image_srcset = $image_sizes = array();
+if($img_full_src_mobile){
+	$image_srcset[] = "{$img_full_src_mobile[0]} 640w";
+	$image_sizes[] = "(max-width: 600px) 160px";
+}
+
+if($img_full_src){
+	$image_srcset[] = "{$img_full_src[0]} {$image_size_w}w";
+	$image_sizes[] = "{$image_size_w}px";
+}
+if( count($image_srcset)) {
+	$image_srcset = join(',', $image_srcset);
+	$image_sizes = join(',', $image_sizes);
+}
+
+$img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fw-grid-item-image '. $image_size, 'srcset' => $image_srcset, 'sizes' => $image_sizes) );
 
 // Build item elements html
 $html_image = $html_title = $html_subtitle = $html_description = $html_cta = $html_video = '';
 
-if($img_full) {
+if($img_full_src) {
 	$html_image = $img_full;
 }
 if($title) {

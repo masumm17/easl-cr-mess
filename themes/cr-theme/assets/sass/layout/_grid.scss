@@ -1,0 +1,23 @@
+@include respond(phone) {
+    .cr-grid {
+        &-row {
+            display: block;
+        }
+        &-col {
+            width: 100%!important;
+            padding: 0;
+            &-inner {
+                
+            }
+        }
+        &-col-1-of-3{
+
+        }
+        &-col-2-of-3{
+
+        }
+        &-col-full {
+
+        }
+    }
+}
