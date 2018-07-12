@@ -101,6 +101,7 @@
     CRInstagramFeed.prototype.displayFeed = function(html) {
         var $el = this.$el;
         $el.find(".cr-instagram-feed-con").html(html);
+        $el.trigger("instagramfeedloaded");
         $el.waitForImages(function() {
             $el.addClass("cr-instagram-feed-image-loaded");
         })
@@ -195,11 +196,20 @@
             }
             return false;
         },
+        isTabPort: function() {
+            if(this.vp.width <= 900 && this.vp.width > 600) {
+                return true;
+            }
+            return false;
+        },
         isTab: function() {
             if(this.vp.width <= 1200 && this.vp.width > 600) {
                 return true;
             }
             return false;
+        },
+        isMobileTabPort: function() {
+            return this.isMobile() || this.isTabPort();
         },
         isMobileTab: function() {
             return this.isMobile() || this.isTab();
@@ -571,11 +581,38 @@
                 $(".sticky-side-nav").addClass("sticky-side-nav-collasped");
             }, 5000);
         },
+        instagramMobSlider: function($con) {
+            if("undefined" === typeof $.fn.slick){
+                return;
+            }
+            if(!this.isMobileTabPort()){
+                $con.hasClass("cr-instagram-slider-activated") && $con.removeClass("cr-instagram-slider-activated").slick("unslick");
+                return;
+            }
+            !$con.hasClass("cr-instagram-slider-activated") && $con.addClass("cr-instagram-slider-activated").slick({
+                speed: 700,
+                infinite: true,
+                //centerMode: true,
+                //centerPadding: '10%',
+                //slidesToShow: 1,
+                slidesToScroll: 1
+                //prevArrow: $slider.closest(".property-slider-inner").find(".property-slider-arrow-left"),
+                //nextArrow: $slider.closest(".property-slider-inner").find(".property-slider-arrow-right"),
+            });
+        },
         instagramFeed: function() {
-            $(".cr-instagram-feed-wrap").each(function(){
+            var ob = this;
+            $(".cr-instagram-feed-wrap").on("instagramfeedloaded", function() {
+                var $con = $(this).find(".cr-instagram-feed-con");
+                ob.instagramMobSlider($con);
+                $(window).on("resize", CRT.debounce(function(){
+                    ob.instagramMobSlider($con);
+                }, 250));
+            }).each(function(){
                 if($(this).hasClass("cr-fetch-feed")){
                     new CRInstagramFeed($(this));
                 }else{
+                    $(this).trigger("instagramfeedloaded");
                     $(this).waitForImages(function() {
                         $(this).addClass("cr-instagram-feed-image-loaded");
                     })

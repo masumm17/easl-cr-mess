@@ -1,5 +1,9 @@
 .cr-instagram-feed {
     &-wrap {
+        @include respond(tab-port) {
+            margin-left: 0;
+            margin-right: 0;
+        }
         .cr-title-subtitle-wrapper {
             margin-bottom: 3.2rem;
         }
@@ -12,8 +16,49 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        @include respond(tab-port) {
+            display: block;
+        }
+        .slick-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            height: 34px;
+            width: 22px;
+            border: 0;
+            color: transparent;
+            background-color: $color-black;
+            cursor: pointer; 
+            &::after {
+                content: "";
+                position: absolute;
+                border-left: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                width: 10px;
+                height: 10px;
+                top: 12px;
+            }
+            &.slick-prev {
+                left: 0;
+                &::after {
+                    left: 8px;
+                    transform: rotate(45deg);
+                }
+            }
+            &.slick-next {
+                right: 0;
+                &::after {
+                    right: 8px;
+                    transform: rotate(-135deg);
+                }
+            }
+        }
     }
     &-item {
+        @include respond(tab-port) {
+            width: 100%;
+        }
         width: 20%;
         position: relative;
         margin: 0;
