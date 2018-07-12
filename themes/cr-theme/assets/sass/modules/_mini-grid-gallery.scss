@@ -1,0 +1,54 @@
+.mini-gallery {
+    @include respond(tab-port) {
+        &-wrap {
+
+        }
+        &-inner {
+            transition: all .75s;
+        }
+        &-con {
+            display: block;
+        }
+        &-col {
+            width: auto!important;
+            padding: 0;
+            margin: 0 0 15px;
+            display: block!important;
+            &1, &3 {
+            }
+            &2 {
+                &-title {
+                    font-size: 20px;
+                }
+                &-subtitle {
+                    font-size: 16px;
+                }
+                &-image {
+                } 
+            }
+        }
+        &-slider {
+            &-wrapper {
+                display: block
+            }
+            & {
+                display: block;
+                position: absolute;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            &-mobile-sizer {
+                display: block;
+                width: 100%;
+                opacity: 0;
+                visibility: hidden;
+                height: 0;
+                padding-top: 84.5%;
+            }
+        }
+    }
+        
+}
