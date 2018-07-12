@@ -1,0 +1,26 @@
+.cr-gallery {
+    @include respond(tab-port) {
+        &-item {
+            width: 50%;
+            padding: 0 5px;
+            margin-bottom: 10px;
+            &-inner {
+                .cr-has-overlay &::after {
+                    visibility: visible;
+                    opacity: 1;
+                } opacity: 1;
+            }
+            &-text {
+                visibility: visible;
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    @include respond(phone) {
+        &-item {
+            width: 100%;
+            padding: 0;
+        }
+    }
+}
