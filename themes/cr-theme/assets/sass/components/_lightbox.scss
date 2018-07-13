@@ -11,17 +11,59 @@ body.compensate-for-scrollbar {
             background-image: url('../images/lightbox-share.png');
         }
     }
+    &-navigation &-button {
+        @include respond(tab-port) {
+            width: 32px;
+            height: 64px;
+            span {
+                display: none;
+            }
+        }
+    }
+    &-infobar {
+        @include respond(tab-port) {
+            font-size: 18px;
+            width: 72px;
+        }
+    }
+    &-caption {
+        @include respond(tab-port) {
+            right: 0;
+            left: 72px;
+            padding: 0;
+            min-height: 75px;
+        }
+    }
 }
 .cr-lightbox {
     &-caption {
+        @include respond(tab-port) {
+            padding: 0 16px;
+            flex: 1 auto;
+        }
         &-title {
+            @include respond(tab-port) {
+                font-size: 14px;
+                line-height: 1.6em;
+            }
         }
         &-subtitle {
             color: $color-base-secondary;
             @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
+            @include respond(tab-port) {
+                display: none;
+            }
+        }
+        &-ctas {
+            @include respond(tab-port) {
+                display: none;
+            }
         }
     }
     &-share {
+        @include respond(tab-port) {
+            display: none;
+        }
         &-button {
             background-image: url('../images/theme-base/gallery-icons/connect.svg');
             @include bgimage-themes("gallery-icons/connect.svg");
