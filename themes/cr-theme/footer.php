@@ -109,6 +109,20 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 		</div>
 	</div>
 </footer>
+	
+<div class="mobile-fixed-menu-wrap">
+	<?php 
+	wp_nav_menu( array(
+		'theme_location' => 'mobile_fixed_menu',
+		'menu_class'     => 'mobile-fixed-menu',
+		'container'      => false,
+		'fallback_cb'    => false,
+		'link_before'    => '<span class="link-inner">',
+		'link_after'     => '</span>',
+		'depth'			 => 1,
+	) );
+	?>
+</div>
 <?php 
 $enquire_now_enabled = crt_get_theme_mode( 'enable_enquire_button', '');
 if(!$enquire_now_enabled) {

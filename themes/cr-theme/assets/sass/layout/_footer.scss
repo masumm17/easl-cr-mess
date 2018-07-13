@@ -403,7 +403,7 @@
     &-mobile-content {
         display: none;
         text-align: center;
-        padding-bottom: 25px;
+        padding-bottom: 60px;
         @include respond(tab-port) {
             display: block;
         }
@@ -450,6 +450,76 @@
             padding: 10px 30px;
             color: $color-base-secondary;
             @include color-themes($color:true, $bgcolor:false, $color-type: secondary);
+        }
+    }
+}
+.mobile-fixed-menu {
+    &-wrap {
+        display: none;
+        @include respond(tab-port) {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            z-index: 1;
+        }
+    }
+    & {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        list-style: none;
+        li {
+            width: 50%;
+            a{
+                border-left: 1px solid $color-white;
+                background-color: $color-base;
+                font-size: 14px;
+                line-height: 50px;
+                height: 50px;
+                white-space: nowrap;
+                position: relative;
+                z-index: 1;
+                display: block;
+                padding: 0 10px;
+                text-align: center;
+                text-transform: uppercase;
+                @include color-themes($color:false, $bgcolor:true, $color-type: base);
+                &, &:link, &:visited {
+                    color: $color-white;
+                    text-decoration: none;
+
+                }
+                &::before {
+                    content: "";
+                    z-index: -1;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 0;
+                    background-color: darken($color-base, 7);//#cd8e01
+                    transition: all .3s;
+                    @each $theme-name, $theme-color in $themes-map-secondary {
+                        .theme-#{$theme-name} & {
+                            background-color: $theme-color;
+                        }
+                    }
+                }
+                &:hover {
+                    &::before {
+                        height: 100%;
+                    }
+                }
+                .link-inner {
+                    white-space: nowrap;
+                }
+            }
+            &:first-child a{
+                border-left: 0 none;
+            }
         }
     }
 }

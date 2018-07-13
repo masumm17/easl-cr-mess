@@ -24,6 +24,7 @@ if ( ! function_exists( 'crt_setup' ) ) :
 		register_nav_menus( array(
 			'header_menu' => esc_html__( 'Header', 'crt' ),
 			'footer_menu' => esc_html__( 'Footer', 'crt' ),
+			'mobile_fixed_menu' => esc_html__( 'Mobile Fixed Menu', 'crt' ),
 		) );
 		add_theme_support( 'html5', array(
 			'search-form',
