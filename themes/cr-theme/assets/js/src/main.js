@@ -57,9 +57,13 @@
     };
     CRCollapseBox.prototype.setTrigger = function($tr) {
         var ob = this;
+        var clickEvent = "click";
+        if( window.Touch ) {
+            clickEvent = "touchstart";
+        }
         if($tr && $tr.length){
             this.$trigger = $tr;
-            this.$trigger.on("click", function(e) {
+            this.$trigger.on(clickEvent, function(e) {
                 e.preventDefault();
                 ob.toggle();
             });
@@ -542,7 +546,7 @@
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();
             }, 250));
-            $(".mobile-menu-humburger").on("click", function() {
+            $(".mobile-menu-humburger").on("touchstart", function() {
                 ob.$body.toggleClass("cr-mobile-menu-active");
             });
             $(".cr-menu-level-1 > li").on("mouseenter", function() {

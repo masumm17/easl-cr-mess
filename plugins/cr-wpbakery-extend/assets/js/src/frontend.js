@@ -860,7 +860,14 @@ if (!String.prototype.padStart) {
             }).on("mouseleave", function() {
                 $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
             });
-            $(".expanding-image-item").on("touchstart", function() {
+            $(".expanding-image-item-cta").on("click", function(e) {
+                if(!$(this).closest(".expanding-image-item").hasClass("on-hover")) {
+                    e.preventDefault();
+                }else{
+                    e.stopPropagation();
+                }
+            });
+            $(".expanding-image-item").on("click", function() {
                 $(this).toggleClass("on-hover");
             });
             $(".cr-scroll-down").on("click", function(e) {

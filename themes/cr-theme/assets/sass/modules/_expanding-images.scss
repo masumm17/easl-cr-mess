@@ -27,6 +27,9 @@
             }
             &:not(.on-hover) &-cta {
                 background-color: rgba($color-black, 0)!important;
+                &:before {
+                    visibility: hidden;
+                }
             }
         }
     }
