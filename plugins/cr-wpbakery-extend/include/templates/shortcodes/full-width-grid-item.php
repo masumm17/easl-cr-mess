@@ -79,10 +79,10 @@ switch($display_option) {
 $image = preg_replace( '/[^\d]/', '', $image );
 $img_full_src = wp_get_attachment_image_src( $image, $image_size );
 
-$img_full_src_mobile = wp_get_attachment_image_src( $image, 'fw2-3_col1-3_x' );
+$img_full_src_mobile = wp_get_attachment_image_src( $image, 'fw1-2_col1-4_x' );
 $image_srcset = $image_sizes = array();
 if($img_full_src_mobile){
-	$image_srcset[] = "{$img_full_src_mobile[0]} 640w";
+	$image_srcset[] = "{$img_full_src_mobile[0]} 480w";
 	$image_sizes[] = "(max-width: 600px) 160px";
 }
 
@@ -94,7 +94,7 @@ if( count($image_srcset)) {
 	$image_srcset = join(',', $image_srcset);
 	$image_sizes = join(',', $image_sizes);
 }
-
+//$image_srcset = $image_sizes = array();
 $img_full = wp_get_attachment_image( $image, $image_size, false, array('class' => 'fw-grid-item-image '. $image_size, 'srcset' => $image_srcset, 'sizes' => $image_sizes) );
 
 // Build item elements html

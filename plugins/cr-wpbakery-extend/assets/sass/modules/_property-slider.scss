@@ -46,9 +46,6 @@
             left: auto;
             right: 0;
         }
-        .slick-active {
-            width: 1%;
-        }
         .property-slider-start-animate .slick-active & {
             animation-name: propertySlideStripe;
             animation-fill-mode: forwards;
