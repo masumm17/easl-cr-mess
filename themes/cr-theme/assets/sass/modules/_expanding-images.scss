@@ -5,57 +5,29 @@
             max-height: unset;
             display: block;
             position: relative;
-            //overflow: hidden
         }
         &-item {
-            //position: absolute;
-            //left: 0;
-            //top: 0;
-            //height: 100%;
             width: 100%!important;
-            height: calc((100vh - 70px));
-            max-height: 600px;
+            height: calc((80vh - 70px));
+            max-height: 320px;
             &::before {
             }
             &:hover::before {
                 background-color: transparent;
             }
+            &.on-hover {
+                height: calc((100vh - 70px));
+                max-height: 480px;
+            }
             &-cta-wrap {
             }
             & &-cta.cr-button {
+                font-size: 16px;
+                padding: 18px 32px;
             }
             &:not(.on-hover) &-cta {
                 background-color: rgba($color-black, 0)!important;
             }
-/*            &-image {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-            &.on-hover {
-                z-index: 1!important;
-                transform: translateX(0)!important;
-            }
-            &:nth-child(1) {
-                z-index: 6;
-                transform: translateX(-95%)!important;
-            }
-            &:nth-child(2) {
-                z-index: 5;
-                transform: translateX(-90%)!important;
-            }
-            &:nth-child(3) {
-                z-index: 4;
-                transform: translateX(-85%)!important;
-            }
-            &:nth-child(4) {
-                z-index: 3;
-                transform: translateX(-80%)!important;
-            }
-            &:nth-child(5) {
-                z-index: 2;
-                transform: translateX(-75%)!important;
-            }*/
         }
     }
 }

@@ -860,6 +860,9 @@ if (!String.prototype.padStart) {
             }).on("mouseleave", function() {
                 $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
             });
+            $(".expanding-image-item").on("touchstart", function() {
+                $(this).toggleClass("on-hover");
+            });
             $(".cr-scroll-down").on("click", function(e) {
                 var $wrapp = $(this).closest(".cr-rev-slider-wrapper"), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
                 e.preventDefault();
