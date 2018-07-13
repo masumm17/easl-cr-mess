@@ -72,7 +72,15 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 	data-taglinetype="<?php echo esc_attr($tagline_type); ?>"
 	>
 	<?php 
-	if('video' == $type): 
+	if('video' == $type):
+		$img_id = preg_replace( '/[^\d]/', '', $image_large );
+		$img_id_mobile = false;
+		if(wp_is_mobile()){
+			$img_id_mobile = preg_replace( '/[^\d]/', '', $image_small );
+		}
+		if($img_id_mobile){
+			$img_id = $img_id_mobile;
+		}
 		$img_id = preg_replace( '/[^\d]/', '', $image_large );
 		$img_full_src = wp_get_attachment_image_src( $img_id, 'full' );
 		if($img_full_src){
@@ -106,7 +114,13 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 		></div>
 	<?php 
 	else: 
-		$img_id = preg_replace( '/[^\d]/', '', $image_large );
+		$img_id = preg_replace( '/[^\d]/', '', $image_large );$img_id_mobile = false;
+		if(wp_is_mobile()){
+			$img_id_mobile = preg_replace( '/[^\d]/', '', $image_small );
+		}
+		if($img_id_mobile){
+			$img_id = $img_id_mobile;
+		}
 		$img_full_src = wp_get_attachment_image_src( $img_id, 'full' );
 		if($img_full_src){
 			$img_full_src = $img_full_src[0];
