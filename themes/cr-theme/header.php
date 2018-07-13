@@ -160,8 +160,10 @@
 					<div class="cr-humburger-inner"></div>
 				</div>
 			</div>
+			<?php if(defined('ICL_SITEPRESS_VERSION')):?>
 			<div class="mobile-language-selector">
 				<?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?>
 			</div>
+			<?php endif; ?>
 		</header>
 		<div id="primary" class="content-area">

@@ -68,7 +68,9 @@ if(!empty($items) && is_array($items) && count($items) > 0) {
 			</a>
 		</li>
 		<?php endforeach; ?>
+		<?php if(defined('ICL_SITEPRESS_VERSION')):?>
 		<li class="sticky-side-nav-item sticky-side-nav-item-ls"><?php echo do_shortcode('[wpml_language_switcher][/wpml_language_switcher]'); ?></li>
+		<?php endif; ?>
 	</ul>
 </div>
 <?php
