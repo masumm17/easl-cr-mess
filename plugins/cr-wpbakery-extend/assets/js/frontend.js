@@ -275,18 +275,32 @@ if (!String.prototype.padStart) {
                         $el.addClass("cr_start_animation");
                     },{offset:"85%"});
                 }else{
+//                    $el.waypoint(function(direction) {
+//                        if(direction === "down") {
+//                            console.log("Entering");
+//                            // Entering from Bottom of the view port
+//                            $el.addClass("cr_start_animation");
+//                        }else{
+//                            console.log("Exiting");
+//                            $el.removeClass("cr_start_animation");
+//                        }
+//                    }, {
+//                        offset: "100%", triggerOnce: false
+//                    });
                     $el.waypoint(function(direction) {
-                        if( direction === "down" ) {
-                            $el.addClass("cr_start_animation");
-                        }
-
-                    },{offset:"75%", triggerOnce: false});
-                    $el.waypoint(function(direction) {
-                        if( direction === "up" ) {
+                        if(direction === "up") {
+                            console.log("Exiting");
+                            // Exiting from bottom of the window
                             $el.removeClass("cr_start_animation");
                         }
-
-                    },{offset:"75%", triggerOnce: false});
+                        if(direction === "down") {
+                            console.log("Entered");
+                            // Exiting from bottom of the window
+                            $el.addClass("cr_start_animation");
+                        }
+                    }, {
+                        offset: "bottom-in-view", triggerOnce: false
+                    });
                 }
                     
             });

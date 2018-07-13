@@ -61,6 +61,26 @@ $wp_customize->add_setting( 'footer_reservation', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
+
+$wp_customize->add_setting( 'footer_mobile_nl_title', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_mobile_nl_link', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_mobile_nl_nt', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+
 $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'footer_logo', array(
 	'label' => __( 'Footer Logo', 'crt' ),
 	'section' => 'crt_footer',
@@ -103,5 +123,22 @@ $wp_customize->add_control( 'footer_website_nt', array(
 $wp_customize->add_control( 'footer_reservation', array(
 	'type' => 'text',
 	'label' => __( 'Reservation', 'crt' ),
+	'section' => 'crt_footer',
+) );
+
+
+$wp_customize->add_control( 'footer_mobile_nl_title', array(
+	'type' => 'text',
+	'label' => __( 'Mobile Newsletter link Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_mobile_nl_link', array(
+	'type' => 'text',
+	'label' => __( 'Mobile Newsletter link url', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_mobile_nl_nt', array(
+	'type' => 'checkbox',
+	'label' => __( 'Open Mobile Newsletter link in new tab', 'crt' ),
 	'section' => 'crt_footer',
 ) );

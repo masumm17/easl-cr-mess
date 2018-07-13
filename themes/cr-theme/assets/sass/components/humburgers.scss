@@ -49,6 +49,7 @@
             transition-property: transform;
             transition-duration: 0.15s;
             transition-timing-function: ease;
+            @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: tertiary);
         }
 
         &::before,

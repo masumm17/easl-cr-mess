@@ -516,6 +516,11 @@
             this.scrollFooter();
         },
         resizeFooter: function() {
+            if(this.isTabPort()) {
+                this.$body.css({
+                "padding-bottom": "0px"
+            });
+            }
             var h = this.$footer.outerHeight(true);
             this.$body.css({
                 "padding-bottom": h + "px"

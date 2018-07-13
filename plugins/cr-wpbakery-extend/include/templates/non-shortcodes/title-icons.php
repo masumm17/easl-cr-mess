@@ -8,6 +8,10 @@ if(!empty($title_override)){
 }else{
 	$module_title = get_option('site_social_icons_title');
 }
+if(!isset($show_title)){
+	$show_title = true;
+}
+
 $social_icons = array(
 	'facebook' => array(
 		'label' => __( 'Facebook', 'crvc_extension' ),
@@ -41,7 +45,7 @@ foreach($social_icons as $icon_key => $icon_settings){
 	);
 }?> 
 <div class="cr-title-icons-module cr-animate-when-visible">
-<?php if($module_title):?>
+<?php if($show_title && $module_title):?>
 <h2 class="cr-title-icons-title"><span class="cr-title-inner"><?php echo esc_html($module_title); ?></span></h2>
 <?php endif; ?>
 

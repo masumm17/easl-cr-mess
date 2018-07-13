@@ -27,6 +27,10 @@ $footer_website = crt_get_theme_mode('footer_website');
 $footer_website_nt = crt_get_theme_mode('footer_website_nt');
 $footer_reservation = crt_get_theme_mode('footer_reservation');
 
+$footer_mobile_nl_title = crt_get_theme_mode('footer_mobile_nl_title');
+$footer_mobile_nl_link = crt_get_theme_mode('footer_mobile_nl_link');
+$footer_mobile_nl_nt = crt_get_theme_mode('footer_mobile_nl_nt');
+
 $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_addess));
 
 
@@ -35,15 +39,15 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 <footer id="site-footer" class="site-footer">
 	<div class="footer-top">
 		<div class="footer-widgets">
-			<div class="footer-container">
-				<div class="footer-left">
+			<div class="footer-container footer-cols">
+				<div class="footer-col footer-left">
 					<div class="footer-col-inner">
 						<?php if($footer_telephone): ?><p><?php _e('T', 'crt');?>: <a href="tel:<?php echo esc_attr($footer_telephone); ?>"><?php echo esc_html($footer_telephone); ?></a></p><?php endif;?> 
 						<?php if($footer_telephone): ?><p><?php _e('F', 'crt');?>: <a href="tel:<?php echo esc_attr($footer_telephone); ?>"><?php echo esc_html($footer_fax); ?></a></p><?php endif;?> 
 					</div>
 				</div>
-				<div class="footer-center">
-					<div class="footer-centerwrap">
+				<div class="footer-col footer-center cr-animate-when-visible cr-animate-bothway">
+					<div class="footer-center-wrap">
 						<div class="footer-col-inner">
 							<?php if($footer_logo): ?><p class="footer-logo"><img alt="Cheval Residences Logo" src="<?php echo esc_url($footer_logo); ?>"/></p><?php endif; ?> 
 							<?php if($footer_company_name): ?><h4 class="footer-company-name"><?php echo esc_html($footer_company_name); ?></h4><?php endif;?> 
@@ -60,13 +64,28 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 						<p class="footer-avvio"><a href="" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 					</div>
 				</div>
-				<div class="footer-right">
+				<div class="footer-col footer-right">
 					<div class="footer-col-inner">
 						<?php if($footer_reservation): ?><p><?php _e('Reservations', 'crt');?>: <a href="mailto:<?php echo esc_attr($footer_reservation); ?>"><?php echo esc_html($footer_reservation); ?></a></p><?php endif;?> 
 						<?php if($footer_email): ?><p><?php _e('E', 'crt');?>: <a href="mailto:<?php echo esc_attr($footer_email); ?>"><?php echo esc_html($footer_email); ?></a></p><?php endif;?> 
 						<?php if($footer_website): ?><p><?php _e('W', 'crt');?>: <a href="<?php echo esc_url($footer_website); ?>"<?php if($footer_website_nt){ echo ' target="_blank"';} ?>><?php echo esc_html($footer_website); ?></a></p><?php endif;?> 
 					</div>
 				</div>
+			</div>
+			<div class="footer-container footer-mobile-content">
+				<div class="footer-social-links">
+					<?php 
+					if( function_exists('get_title_icons_template')) {
+						get_title_icons_template(false, false);
+					}
+					?>
+				</div>
+				<?php if($footer_mobile_nl_title && $footer_mobile_nl_link): ?>
+				<div class="footer-newsletter-link">
+					<a class="cr-button-tertiary-bordered" href="<?php echo esc_url($footer_mobile_nl_link); ?>"<?php if($footer_mobile_nl_nt){ echo ' target="_blank"';} ?>><?php echo $footer_mobile_nl_title; ?></a>
+				</div>
+				<?php  endif; ?>
+				<p class="footer-avvio"><a href="" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 			</div>
 		</div>
 		<div class="footer-menu-wrap">
