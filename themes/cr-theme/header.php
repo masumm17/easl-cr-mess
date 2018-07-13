@@ -130,6 +130,15 @@
 						'link_before'    => '<span class="link-inner">',
 						'link_after'     => '</span>',
 					) );
+					wp_nav_menu( array(
+						'theme_location' => 'footer_menu',
+						'menu_class'     => 'header-mobile-menu',
+						'container'      => false,
+						'fallback_cb'    => false,
+						'before'		 => '<span class="mobile-nav-arrow"></span>',
+						'link_before'    => '<span class="link-inner">',
+						'link_after'     => '</span>',
+					) );
 					?>
 				</div>
 			</nav>
