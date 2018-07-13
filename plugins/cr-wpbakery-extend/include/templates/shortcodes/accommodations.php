@@ -98,7 +98,7 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 						</ul>
 					</div>
 					<div class="accommodations-filter accommodations-filter-button-wrap">
-						<a class="accommodations-filter-button cr-button" href="#"><?php _e('View Resutls', 'crvc_extension'); ?></a>
+						<a class="accommodations-filter-button cr-button" href="#"><?php _e('View Results', 'crvc_extension'); ?></a>
 						<div class="accommodations-filter-loader">
 						<svg class="accommodations-bar-loader" version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 52 12" xml:space="preserve">
 							<circle stroke="none" cx="6" cy="6" r="6">

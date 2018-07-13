@@ -112,7 +112,7 @@
             .find(".cr-instagram-feed-item")
             .waypoint(function() {
                 $(this).addClass("cr_start_animation");
-            },{offset:"85%"});
+            },{offset:"96%"});
     };
     CRInstagramFeed.prototype.updateFeeds = function() {
         var ob = this;
@@ -628,7 +628,7 @@
                         .find(".cr-instagram-feed-item")
                         .waypoint(function() {
                             $(this).addClass("cr_start_animation");
-                        },{offset:"85%"});
+                        },{offset:"96%"});
                 }
             });
         },

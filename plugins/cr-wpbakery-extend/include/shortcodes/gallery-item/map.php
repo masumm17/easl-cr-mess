@@ -63,7 +63,7 @@ return array(
 			),
 			array(
 				'type' => 'param_group',
-				'heading' => __( 'ightbox Buttons', 'crvc_extension' ),
+				'heading' => __( 'Lightbox Buttons', 'crvc_extension' ),
 				'param_name' => 'lightbox_ctas',
 				'value' => urlencode( json_encode( array(
 					array(

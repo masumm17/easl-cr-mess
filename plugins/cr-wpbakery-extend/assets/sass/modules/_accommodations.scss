@@ -266,19 +266,20 @@
         width: 33.33%;
         padding: 0 .8rem 0;
         margin-bottom: 1.6rem;
-        transition: all .75s;
-        transform: translateY(12rem);
-        opacity: 0;
-        .page-loaded &.cr_start_animation {
-            transform: translateY(0);
-            opacity: 1;
-        }
         &-inner {
             display: block;
             position: relative;
             z-index: 1;
             overflow: hidden;
             text-decoration: none;
+            transition: all .75s;
+            transform: translateY(6rem);
+            opacity: 0;
+            
+            .page-loaded .cr_start_animation & {
+                transform: translateY(0);
+                opacity: 1;
+            }
             &::after {
                 content: "";
                 background-color: rgba($color-black, .5);

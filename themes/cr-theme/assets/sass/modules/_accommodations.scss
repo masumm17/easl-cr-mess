@@ -18,6 +18,7 @@
             }
             @include respond(tab-port) {
                 display: block;
+                padding: 14px 0;
             }
         }
     }
@@ -42,6 +43,7 @@
             max-width: 320px;
             border: 0 none!important;
             margin: 0 auto;
+            padding: 18px 20px;
         }
         &-location, &-roomtype {
             @include color-themes($color:false, $bgcolor:false, $border-color:true, $color-type: base);

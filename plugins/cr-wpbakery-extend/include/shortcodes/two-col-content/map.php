@@ -42,7 +42,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
 				'admin_label' => true,
-				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
+				'group' => __( 'Column 1 Options', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'textfield',
@@ -51,7 +51,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 1 note.', 'crvc_extension' ),
 				'admin_label' => false,
-				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
+				'group' => __( 'Column 1 Options', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'autocomplete',
@@ -70,14 +70,14 @@ return array(
 					'sortable' => true,
 				),
 				'admin_label' => false,
-				'group' => __( 'Collumn 1 Options', 'crvc_extension' ),
+				'group' => __( 'Column 1 Options', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'dropdown',
 				'heading' => __( 'Disable Column 2', 'crvc_extension' ),
 				'param_name' => 'disable_col2',
 				'std' => 'no',
-				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'group' => __( 'Column 2 Options', 'crvc_extension' ),
 				'value' => array(
 					__( 'No', 'crvc_extension' ) => 'no',
 					__( 'Yes', 'crvc_extension' ) => 'yes',
@@ -91,7 +91,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
 				'admin_label' => true,
-				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'group' => __( 'Column 2 Options', 'crvc_extension' ),
 				'dependency' => array(
 					'element' => 'disable_col2',
 					'value' => array('no'),
@@ -112,7 +112,7 @@ return array(
 						'url' => '',
 					),
 				) ) ),
-				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'group' => __( 'Column 2 Options', 'crvc_extension' ),
 				'params' => array(
 						array(
 							'type' => 'attach_image',
@@ -138,7 +138,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 2 note.', 'crvc_extension' ),
 				'admin_label' => false,
-				'group' => __( 'Collumn 2 Options', 'crvc_extension' ),
+				'group' => __( 'Column 2 Options', 'crvc_extension' ),
 				'dependency' => array(
 					'element' => 'disable_col2',
 					'value' => array('no'),

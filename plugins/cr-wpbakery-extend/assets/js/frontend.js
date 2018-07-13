@@ -151,7 +151,15 @@ if (!String.prototype.padStart) {
     AccommodationFilter.prototype.events = function() {
         var ob = this;
         $(".accommodations-filter-selected", this.$el).on("click", function(e) {
-            var $filter = $(this).closest(".accommodations-filter");
+            var $filter = $(this).closest(".accommodations-filter"), 
+                optionsHeight = $filter.find(".accommodations-filter-options").outerHeight(),
+                vpTop = $filter.offset().top - $(window).scrollTop() + $filter.outerHeight();
+                console.log(vpTop, optionsHeight, $(window).height());
+                if(!$filter.hasClass("show-options") && (vpTop + optionsHeight > $(window).height()) ) {
+                    $('html, body').animate({ 
+                        scrollTop: $filter.offset().top + $filter.outerHeight() - 70
+                    }, 750, 'linear');
+                }
             $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options");
         });
         $(".accommodations-filter-options li", this.$el).on("click", function(e) {
@@ -217,10 +225,14 @@ if (!String.prototype.padStart) {
                     ob.$el.removeClass("cr-ajax-loading");
                     ob.$list
                         .html(response.html)
-                        .find(".cr-animate-when-visible")
-                        .waypoint(function(direction) {
-                            $(this).addClass("cr_start_animation");
-                        },{offset:"85%"});
+                        .waitForImages(function() {
+                            ob.$list
+                                .find(".cr-animate-when-visible")
+                                .waypoint(function(direction) {
+                                    $(this).addClass("cr_start_animation");
+                                },{offset: "98%"});
+                        });
+                            
                 }
             }).fail(function() {
                 ob.requesting = false;
@@ -273,7 +285,7 @@ if (!String.prototype.padStart) {
                 if(!reversible) {
                     $el.waypoint(function(direction) {
                         $el.addClass("cr_start_animation");
-                    },{offset:"85%"});
+                    },{offset:"96%"});
                 }else{
 //                    $el.waypoint(function(direction) {
 //                        if(direction === "down") {
@@ -551,9 +563,9 @@ if (!String.prototype.padStart) {
                 $gallery.waitForImages(function(){
                     $gallery.on("layoutComplete", function(e) {
                         $(".cr-gallery-item", $(this)).waypoint(function() {
-                                $(this).addClass("cr_start_animation");
-                            }, {
-                                offset: '75%',
+                            $(this).addClass("cr_start_animation");
+                        }, {
+                                offset: '96%',
                                 triggerOnce: true
                         });
                     }).masonry({

@@ -36,7 +36,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Select image from media library. Maximum 10 images will be shown.', 'crvc_extension' ),
 				'admin_label' => true,
-				'group' => __( 'Collumn 1', 'crvc_extension' ),
+				'group' => __( 'Column 1', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'attach_image',
@@ -46,7 +46,7 @@ return array(
 				'param_holder_class' => 'vc_col-sm-6',
 				'description' => __( 'Select image from media library.', 'crvc_extension' ),
 				'admin_label' => false,
-				'group' => __( 'Collumn 2', 'crvc_extension' ),
+				'group' => __( 'Column 2', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'textfield',
@@ -56,7 +56,7 @@ return array(
 				'param_holder_class' => 'vc_col-sm-6',
 				'description' => __( 'Set column 2 Image blur amount in px. Default 5.', 'crvc_extension' ),
 				'admin_label' => false,
-				'group' => __( 'Collumn 2', 'crvc_extension' ),
+				'group' => __( 'Column 2', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'textfield',
@@ -65,7 +65,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 2 title.', 'crvc_extension' ),
 				'admin_label' => true,
-				'group' => __( 'Collumn 2', 'crvc_extension' ),
+				'group' => __( 'Column 2', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'textfield',
@@ -74,7 +74,7 @@ return array(
 				'value' => '',
 				'description' => __( 'Enter column 2 subtitle.', 'crvc_extension' ),
 				'admin_label' => false,
-				'group' => __( 'Collumn 2', 'crvc_extension' ),
+				'group' => __( 'Column 2', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'vc_link',
@@ -83,16 +83,16 @@ return array(
 				'value' => '',
 				'admin_label' => false,
 				'description' => __( 'Set column 2 call to action button link.', 'crvc_extension' ),
-				'group' => __( 'Collumn 2', 'crvc_extension' ),
+				'group' => __( 'Column 2', 'crvc_extension' ),
 			),
 			array(
 				'type' => 'attach_images',
-				'heading' => __( 'Collumn 2 Images', 'crvc_extension' ),
+				'heading' => __( 'Column 2 Images', 'crvc_extension' ),
 				'param_name' => 'column3_images',
 				'value' => '',
 				'description' => __( 'Select image from media library. Maximum 10 images will be shown.', 'crvc_extension' ),
 				'admin_label' => true,
-				'group' => __( 'Collumn 3', 'crvc_extension' ),
+				'group' => __( 'Column 3', 'crvc_extension' ),
 			),
 		),
 		cr_vce_paramps_common_group()
