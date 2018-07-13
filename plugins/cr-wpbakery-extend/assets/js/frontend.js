@@ -289,12 +289,10 @@ if (!String.prototype.padStart) {
 //                    });
                     $el.waypoint(function(direction) {
                         if(direction === "up") {
-                            console.log("Exiting");
                             // Exiting from bottom of the window
                             $el.removeClass("cr_start_animation");
                         }
                         if(direction === "down") {
-                            console.log("Entered");
                             // Exiting from bottom of the window
                             $el.addClass("cr_start_animation");
                         }

@@ -8,6 +8,11 @@
     .cr-container:not(:last-child) {
         margin-bottom: 2rem;
     }
+    @include respond(tab-port) {
+        .cr-title-icons-scwrapper{
+            display: none;
+        }
+    }
 }
 .cr-scroll-up-wrap {
     height: 5.2rem;
