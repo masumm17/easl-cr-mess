@@ -82,6 +82,13 @@
             flex-direction: column;
             justify-content: center;
         }
+        
+        @include respond(desk-large) {
+            width: 16.6667%;
+            &-custom {
+                width: 33.3334%;
+            }
+        }
         &:not(.cr-instagram-feed-item-custom) &-inner{
             &::after {
                 content: "";
