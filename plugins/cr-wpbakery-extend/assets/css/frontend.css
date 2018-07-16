@@ -277,7 +277,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .cr-lightbox-caption-subtitle {
-	color: #cd8e01;
+	color: #f4b72e;
 	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1em;
@@ -475,7 +475,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	font-size: 2.2rem;
 	line-height: 1.4em;
 	font-weight: 300;
-	color: #cd8e01;
+	color: #f4b72e;
 	margin-top: 2rem;
 }
 
@@ -574,7 +574,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	line-height: 1.4em;
 	font-weight: 400;
 	letter-spacing: 2px;
-	color: #e5a514;
+	color: #e7a615;
 	text-transform: uppercase;
 }
 
@@ -605,8 +605,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	display: inline-block;
 	text-align: center;
 	padding: 5rem 7.5rem;
-	border-top: 4px solid #e5a514;
-	border-bottom: 4px solid #e5a514;
+	border-top: 4px solid #e7a615;
+	border-bottom: 4px solid #e7a615;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -657,7 +657,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	font-size: 3rem;
 	line-height: 1.4em;
 	font-weight: 400;
-	color: #e5a514;
+	color: #e7a615;
 	text-transform: uppercase;
 	margin-top: 2.6rem;
 }
@@ -707,7 +707,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .cr-sc-subtitle {
-	color: #e5a514;
+	color: #e7a615;
 	font-size: 2rem;
 	font-weight: 400;
 	line-height: 1.6;
@@ -1177,7 +1177,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .property-slider-text-subtitle {
-	color: #e5a514;
+	color: #e7a615;
 	font-size: 2rem;
 	font-weight: 400;
 	line-height: 1.6;
@@ -1459,7 +1459,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .fxw-grid-item-subtitle {
-	color: #cd8e01;
+	color: #f4b72e;
 	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 1.4em;
@@ -1545,7 +1545,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .fw-grid-item-borders > div::before {
 	content: "";
 	position: absolute;
-	background-color: #e5a514;
+	background-color: #e7a615;
 	z-index: 1;
 	-webkit-transition: all .75s;
 	transition: all .75s;
@@ -1806,7 +1806,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .fw-grid-item-subtitle {
-	color: #cd8e01;
+	color: #f4b72e;
 	font-size: 1.8rem;
 	font-weight: 400;
 	line-height: 1.4em;
@@ -1822,13 +1822,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	text-decoration: none;
 	text-transform: uppercase;
 	color: #fff;
-	background-color: #cd8e01;
+	background-color: #f4b72e;
 }
 
 .fw-grid-item-noimage .fw-grid-item-cta {
 	background-color: transparent;
-	color: #e5a514;
-	border: 1px solid #e5a514;
+	color: #e7a615;
+	border: 1px solid #e7a615;
 }
 
 .fw-grid-item .cr-iframe-video {
@@ -2432,7 +2432,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .accommodations-filters-borders > div::before {
 	content: "";
 	position: absolute;
-	background-color: #e5a514;
+	background-color: #e7a615;
 	z-index: 1;
 	-webkit-transition: all .75s;
 	transition: all .75s;
@@ -2579,7 +2579,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .accommodations-filter-location,
 .accommodations-filter-roomtype {
-	border-right: 1px solid #e5a514;
+	border-right: 1px solid #e7a615;
 }
 
 .accommodations-filter-button-wrap {
@@ -2606,7 +2606,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 	font-size: 1.4rem;
 	line-height: 1em;
 	cursor: pointer;
-	color: #e5a514;
+	color: #e7a615;
 }
 
 .accommodations-filter-arrow {
@@ -2628,7 +2628,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .accommodations-filter-arrow svg .cr-path-darrow {
-	fill: #e5a514;
+	fill: #e7a615;
 }
 
 .accommodations-filter.show-options .accommodations-filter-arrow svg {
@@ -2654,7 +2654,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .accommodations-filter-options li {
 	cursor: pointer;
-	color: #e5a514;
+	color: #e7a615;
 	padding: 1.4rem 0;
 	font-size: 1.4rem;
 	line-height: 1em;
@@ -2668,7 +2668,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .accommodations-filter-options li.selected-option,
 .accommodations-filter-options li:hover {
-	background-color: #e5a514;
+	background-color: #e7a615;
 	color: #fff;
 }
 
@@ -2702,7 +2702,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .accommodations-filter-loader svg circle {
-	fill: #e5a514;
+	fill: #e7a615;
 }
 
 .accommodations-list {
@@ -2801,7 +2801,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 .accommodations-item-subtitle {
-	color: #cd8e01;
+	color: #f4b72e;
 	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 1.4em;

@@ -245,6 +245,7 @@
             padding-left: 3rem;
             @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             .bp-color-white & {
+                color: $color-base-secondary;
             }
             .bp-color-black & {
                 color: #000;

@@ -234,7 +234,7 @@
             font-size: 2.6rem;
             font-weight: 300;
             a {
-                color: #fce0a2;
+                color: $color-base-secondary;
                 @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             }
         }

@@ -9,16 +9,16 @@
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: tertiary);
     }
     &-2 &-subtitle {
-        color: $color-base;
+        color: $color-base-secondary;
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
     }
     &-3 &-text {
-        border-top: 4px solid $color-base;
-        border-bottom: 4px solid $color-base;
+        border-top: 4px solid $color-base-secondary;
+        border-bottom: 4px solid $color-base-secondary;
         @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: secondary);
     }
     &-4 &-subtitle {
-        color: $color-base;
+        color: $color-base-secondary;
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
     }
 }

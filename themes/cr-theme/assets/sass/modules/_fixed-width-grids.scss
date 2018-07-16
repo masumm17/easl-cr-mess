@@ -1,7 +1,7 @@
 .fxw-grid {
     &-item {
         &-subtitle {
-            color: $color-base-secondary;
+            color: $color-base-tertiary;
             @include color-themes($color:true, $bgcolor:false, $color-type: tertiary);
         }
     }

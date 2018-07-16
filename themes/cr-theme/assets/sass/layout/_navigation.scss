@@ -39,7 +39,7 @@
                     left: 0;
                     width: 100%;
                     height: 1px;
-                    background-color: $color-base;
+                    background-color: $color-base-secondary;
                     content: '';
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;
@@ -273,7 +273,7 @@
                     left: 0;
                     width: 100%;
                     height: 1px;
-                    background-color: $color-base;
+                    background-color: $color-base-secondary;
                     content: '';
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;

@@ -34,13 +34,9 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base, 7);//#cd8e01
+        background-color: $color-base-secondary;//#cd8e01
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
-            .theme-#{$theme-name} & {
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
     }
     
     &:hover {
@@ -87,14 +83,9 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base, 7);//#cd8e01
+        background-color: $color-base-secondary;//#cd8e01
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
-            .theme-#{$theme-name} & {
-                color: $color-white;
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: secondary);
     }
     
     &:hover {
@@ -141,13 +132,9 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base-secondary, 7);//#cd8e01
+        background-color: $color-base;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-primary {
-            .theme-#{$theme-name} & {
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: base);
     }
     
     &:hover {
@@ -195,13 +182,9 @@
         bottom: 0;
         width: 100%;
         height: 0;
-        background-color: darken($color-base-secondary, 7);//#cd8e01
+        background-color: $color-base-secondary;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
-            .theme-#{$theme-name} & {
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
     }
     
     &:hover {
@@ -251,11 +234,7 @@
         height: 0;
         background-color: $color-base-secondary;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
-            .theme-#{$theme-name} & {
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
     }
     
     &:hover {
@@ -305,11 +284,7 @@
         height: 0;
         background-color: $color-base-secondary;
         transition: all .3s;
-        @each $theme-name, $theme-color in $themes-map-secondary {
-            .theme-#{$theme-name} & {
-                background-color: $theme-color;
-            }
-        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
     }
     
     &:hover {
