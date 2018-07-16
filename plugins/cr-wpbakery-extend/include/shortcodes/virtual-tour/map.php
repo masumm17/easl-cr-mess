@@ -51,7 +51,7 @@ return array(
 				'param_name' => 'content',
 				'value' => '',
 				'description' => __( 'Enter raw iframe embed code. It supports any html code. So be carefull.', 'crvc_extension' ),
-				'admin_label' => true,
+				'admin_label' => false,
 			),
 		),
 		cr_vce_paramps_common_group()
