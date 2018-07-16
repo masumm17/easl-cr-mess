@@ -61,7 +61,7 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 								</form>
 							</div>
 						</div>
-						<p class="footer-avvio"><a href="" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
+						<p class="footer-avvio"><a href="https://www.avvio.com/" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 					</div>
 				</div>
 				<div class="footer-col footer-right">
@@ -85,7 +85,7 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 					<a class="cr-button-tertiary-bordered" href="<?php echo esc_url($footer_mobile_nl_link); ?>"<?php if($footer_mobile_nl_nt){ echo ' target="_blank"';} ?>><?php echo $footer_mobile_nl_title; ?></a>
 				</div>
 				<?php  endif; ?>
-				<p class="footer-avvio"><a href="" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
+				<p class="footer-avvio"><a href="https://www.avvio.com/" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 			</div>
 		</div>
 		<div class="footer-menu-wrap">
