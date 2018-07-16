@@ -17,7 +17,7 @@ function cr_vce_param_posts_dropdown( $settings, $value ) {
 		'show_option_none' => $empty_option,
 		'option_none_value' => '',
 		'sort_order' => 'ASC',
-		'sort_column'  => 'post_title',
+		'sort_column'  => 'modified',
 		'hierarchical' => 1,
 		'post_type' => $post_type,
 	));
