@@ -1,0 +1,15 @@
+.virtual-tour {
+    &-wrap {
+        
+    }
+    &-inner {
+        
+    }
+    &-con {
+        @include respond(tab-port) {
+            height: calc((100vh - 60px))!important;
+        }
+        iframe {
+        }
+    }
+}

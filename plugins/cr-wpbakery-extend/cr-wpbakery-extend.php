@@ -337,6 +337,10 @@ class CR_VcE_Manager {
 			'name' => __('Instagram Feed', 'crvc_extension'),
 			'file' => $sc_dir . '/instagram-feed/class-instagram-feed.php',
 		);
+		$this->registered_shortcodes['cr_virtual_tour'] = array(
+			'name' => __('Embed Virtual Tour', 'crvc_extension'),
+			'file' => $sc_dir . '/virtual-tour/class-virtual-tour.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -366,6 +370,7 @@ class CR_VcE_Manager {
 			'cr_enquiry_form',
 			'cr_sitemap',
 			'cr_instagram_feed',
+			'cr_virtual_tour',
 		);
 	}
 	
@@ -374,7 +379,9 @@ class CR_VcE_Manager {
 			if(!in_array( $tag, $this->active_shortcodes )) {
 				continue;
 			}
-			require_once $settings['file'];
+			if( file_exists($settings['file'])){
+				require_once $settings['file'];
+			}
 		}
 	}
 	
