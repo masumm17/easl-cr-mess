@@ -225,7 +225,8 @@ class CR_VcE_Manager {
 		wp_register_style('cr-wpb', $this->asset_url( 'css/frontend.min.css' ), array('fancybox', 'slider-revolution', 'slick'), NULL);
 		
 		$script_data = array(
-			'ajaxURL' => admin_url( '/admin-ajax.php' )
+			'ajaxURL' => admin_url( '/admin-ajax.php' ),
+			'siteURL' => get_site_url(),
 		);
 		
 		wp_localize_script('cr-wpb', 'crSettings', $script_data);

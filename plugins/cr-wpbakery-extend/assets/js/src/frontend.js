@@ -253,9 +253,11 @@ if (!String.prototype.padStart) {
                 showinfo: 0,
                 controls: 0,
                 disablekb: 1,
-                enablejsapi: 0,
+                enablejsapi: 1,
                 iv_load_policy: 3,
-                loop: 1
+                loop: 1,
+                playsinline: 1,
+                origin: crSettings.siteURL
             }
         },
         Storage: {
@@ -313,7 +315,7 @@ if (!String.prototype.padStart) {
                 $slider.show().revolution({
                     //delay: delay,
                     sliderLayout: "fullscreen",
-                    lazyType: "all",
+                    lazyType: "smart",
                     spinner: "spinner2"
                 });
             });
@@ -571,11 +573,23 @@ if (!String.prototype.padStart) {
                new AccommodationFilter($(this));
            });
         },
+        YTAPILoad: function() {
+            loadit = true;
+            $('head').find('*').each(function(){
+				if (jQuery(this).attr('src') == "https://www.youtube.com/iframe_api")
+				   loadit = false;
+			});
+            if($(".rs-background-video-layer").length > 0){
+                loadit = false;
+            }
+            return loadit;
+        },
         YoutubeVideosFrames: function() {
             var video_count = 0;
             
             ChevRes.Storage.YTPlayersData = {};
             ChevRes.Storage.YTPlayers = {};
+            ChevRes.Storage.YTApiCheckTimer = null;
             
             $(".cr-iframe-video").each(function() {
                 var playerID;
@@ -584,11 +598,25 @@ if (!String.prototype.padStart) {
                 $(this).data("playerid", playerID).append("<div id='"+ playerID +"'></div><span class='cr-yt-play-icon' id='play-"+ playerID +"'></span>");
                 ChevRes.Storage.YTPlayersData[playerID] = $(this).data("videoid");
             });
-            if(video_count && typeof YT === "undefined"){
+            if(!video_count) {
+                return;
+            }
+            if(typeof YT !== "undefined") {
+               this.initYTVideos();
+               return;
+            }
+            if(this.YTAPILoad() ){
                 var tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
                 var firstScriptTag = document.getElementsByTagName('script')[0];
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                window.onYouTubeIframeAPIReady = function() {
+                    ChevRes.initYTVideos();
+                };
+            }else{
+                ChevRes.Storage.YTApiCheckTimer = setInterval(function(){
+                    ChevRes.initYTVideos();
+                }, 1000);
             }
         },
         createYTPlayer: function(playerID) {
@@ -669,6 +697,19 @@ if (!String.prototype.padStart) {
             for(var playerID in ChevRes.Storage.YTPlayers) {
                 ChevRes.rescaleYTPlayer(playerID);
             }
+        },
+        initYTVideos: function() {
+            if(typeof YT === "undefined" || typeof YT.Player === "undefined"){
+                return;
+            }
+            clearInterval(ChevRes.Storage.YTApiCheckTimer);
+            if (typeof ChevRes.Storage.YTPlayersData === 'undefined'){
+                return;
+            }
+            for(var playerID in ChevRes.Storage.YTPlayersData) {
+                ChevRes.createYTPlayer(playerID);
+            }
+            ChevRes.rescaleYTVideos();
         },
         maps: function() {
             if(typeof crMapData === "undefined" ||  !crMapData.KEY){
@@ -887,15 +928,6 @@ if (!String.prototype.padStart) {
             this.accommodationFilter();
             this.events();
         }
-    };
-    window.onYouTubeIframeAPIReady = function() {
-        if (typeof ChevRes.Storage.YTPlayersData === 'undefined'){
-            return;
-        }
-        for(var playerID in ChevRes.Storage.YTPlayersData) {
-            ChevRes.createYTPlayer(playerID);
-        }
-        ChevRes.rescaleYTVideos();
     };
     window.crInitMaps = function() {
         ChevRes.initMaps();
