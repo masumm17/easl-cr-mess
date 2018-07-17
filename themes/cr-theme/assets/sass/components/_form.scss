@@ -28,3 +28,26 @@ textarea::placeholder {
     color: lighten($color-gray-1, 25%);
     text-transform: uppercase;
 }
+
+input[type="submit"], form button {
+    background-color: $color-base;
+    color: $color-white;
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1em;
+    font-weight: 300;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 2rem 3.6rem;
+    position: relative;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: base);
+    @include respond(tab-port) {
+        font-size: 14px;
+        padding: 20px 36px;
+    }
+}
