@@ -579,11 +579,6 @@
                 }, 750, 'linear');
             });
             
-            $(window).on("load", $.proxy(function(){
-                this.$body.addClass("page-loaded");
-                this.hidePreloader();
-                this.resizeFooter();
-            }, this));
         },
         timeLine: function() {
             $(".sticky-side-nav").length && setTimeout(function(){
@@ -651,5 +646,10 @@
     };
     $(document).ready(function(){
         CRT.init();
+        $("body").waitForImages(function() {
+            CRT.init();
+            CRT.$body.addClass("page-loaded");
+            CRT.hidePreloader();
+        });
     });
 })(jQuery);
