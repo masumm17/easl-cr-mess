@@ -154,7 +154,6 @@ if (!String.prototype.padStart) {
             var $filter = $(this).closest(".accommodations-filter"), 
                 optionsHeight = $filter.find(".accommodations-filter-options").outerHeight(),
                 vpTop = $filter.offset().top - $(window).scrollTop() + $filter.outerHeight();
-                console.log(vpTop, optionsHeight, $(window).height());
                 if(!$filter.hasClass("show-options") && (vpTop + optionsHeight > $(window).height()) ) {
                     $('html, body').animate({ 
                         scrollTop: $filter.offset().top + $filter.outerHeight() - 70
@@ -287,18 +286,6 @@ if (!String.prototype.padStart) {
                         $el.addClass("cr_start_animation");
                     },{offset:"96%"});
                 }else{
-//                    $el.waypoint(function(direction) {
-//                        if(direction === "down") {
-//                            console.log("Entering");
-//                            // Entering from Bottom of the view port
-//                            $el.addClass("cr_start_animation");
-//                        }else{
-//                            console.log("Exiting");
-//                            $el.removeClass("cr_start_animation");
-//                        }
-//                    }, {
-//                        offset: "100%", triggerOnce: false
-//                    });
                     $el.waypoint(function(direction) {
                         if(direction === "up") {
                             // Exiting from bottom of the window
@@ -616,7 +603,6 @@ if (!String.prototype.padStart) {
                         //if($playerParent.hasClass("cr-iframe-video-playalways"))
                         $playerParent.waypoint(function(direction) {
                             if(direction === "down") {
-                                console.log("Entered from Down");
                                 (window.innerWidth > 1024) && player.playVideo();
                                 player.mute();
                             }
@@ -629,7 +615,6 @@ if (!String.prototype.padStart) {
                         });
                         $playerParent.waypoint(function(direction) {
                             if(direction === "down") {
-                                console.log("Exited from Down");
                                 (window.innerWidth > 1024) && player.pauseVideo();
                                 player.mute();
                             }
