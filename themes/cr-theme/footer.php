@@ -82,7 +82,7 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 				</div>
 				<?php if($footer_mobile_nl_title && $footer_mobile_nl_link): ?>
 				<div class="footer-newsletter-link">
-					<a class="cr-button-tertiary-bordered" href="<?php echo esc_url($footer_mobile_nl_link); ?>"<?php if($footer_mobile_nl_nt){ echo ' target="_blank"';} ?>><?php echo $footer_mobile_nl_title; ?></a>
+					<a class="cr-button-secondary-bordered" href="<?php echo esc_url($footer_mobile_nl_link); ?>"<?php if($footer_mobile_nl_nt){ echo ' target="_blank"';} ?>><?php echo $footer_mobile_nl_title; ?></a>
 				</div>
 				<?php  endif; ?>
 				<p class="footer-avvio"><a href="https://www.avvio.com/" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>

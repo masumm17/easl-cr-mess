@@ -6,8 +6,34 @@
         
     }
     &-con {
-        max-width: 99rem;
+        max-width: 64rem;
         margin-left: auto;
         margin-right: auto;
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        textarea, select{
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+    &-con table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        text-align: left;
+        th, td {
+            font-weight: 400;
+            vertical-align: top;
+            padding: 0 0 1.4rem;
+        }
+        th {
+            padding-right: 2rem;
+        }
+        td {
+            width: 24.4rem;
+        }
     }
 }

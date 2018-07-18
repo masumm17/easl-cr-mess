@@ -11,11 +11,16 @@ input[type="url"],
 input[type="tel"],
 input[type="num"],
 input[type="search"],
-textarea {
+textarea,
+select {
     padding: 1.3rem 1.2rem 1rem;
     border: 1px solid $color-base;
     color: $color-gray-1;
     @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: base);
+}
+select[multiple="multiple"] {
+    padding-top: .7rem;
+    padding-bottom: .5rem;
 }
 input[type="text"]::placeholder, 
 input[type="email"]::placeholder, 
