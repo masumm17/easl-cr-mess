@@ -95,7 +95,7 @@ if($column_1_enabled || $column_2_enabled):
 					<?php endforeach; ?>
 				</ul>
 				<?php if( $col_1_note ): ?>
-				<p class="cr-2col-content-note"><?php echo esc_html($col_1_note); ?></p>
+				<div class="cr-2col-content-note"><?php echo wpautop($col_1_note); ?></div>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -135,7 +135,7 @@ if($column_1_enabled || $column_2_enabled):
 				<?php endforeach; ?>
 				</ul>
 				<?php if( $col_2_note ): ?>
-				<p class="cr-2col-content-note"><?php echo esc_html($col_2_note); ?></p>
+				<div class="cr-2col-content-note"><?php echo wpautop($col_2_note); ?></div>
 				<?php endif; ?>
 			</div>
 		</div>

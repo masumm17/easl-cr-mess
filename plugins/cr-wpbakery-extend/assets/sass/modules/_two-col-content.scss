@@ -117,6 +117,12 @@
         & .cr-2col-content-note {
             margin-top: 3rem;
             padding: 0 6rem;
+            p {
+                margin: 0 0 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
     &-floorplans {
@@ -150,6 +156,12 @@
         & .cr-2col-content-note {
             margin-top: 3rem;
             text-align: center;
+            p {
+                margin: 0 0 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
     &-button-wrap {

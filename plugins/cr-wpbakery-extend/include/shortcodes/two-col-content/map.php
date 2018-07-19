@@ -45,7 +45,7 @@ return array(
 				'group' => __( 'Column 1 Options', 'crvc_extension' ),
 			),
 			array(
-				'type' => 'textfield',
+				'type' => 'textarea',
 				'heading' => __( 'Column 1 Note', 'crvc_extension' ),
 				'param_name' => 'col_1_note',
 				'value' => '',
@@ -132,7 +132,7 @@ return array(
 				),
 			),
 			array(
-				'type' => 'textfield',
+				'type' => 'textarea',
 				'heading' => __( 'Column 2 Note', 'crvc_extension' ),
 				'param_name' => 'col_2_note',
 				'value' => '',
