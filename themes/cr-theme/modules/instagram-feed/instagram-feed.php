@@ -11,7 +11,7 @@ $cc_link_url = crt_get_theme_mode( 'instagram_feed_cc_link_url', '');
 $cc_link_nt = crt_get_theme_mode( 'instagram_feed_cc_link_nt', '');
 
 $number = absint($number);
-if($number) {
+if(!$number) {
 	$number = 13;
 }
 $cc_position = absint($cc_position);
@@ -22,7 +22,11 @@ if(!$cc_position) {
 $fetch_feed = 'yes';
 
 $cached_feeds = get_transient('cr_instagram_feed');
+
 $has_feed = (false !== $cached_feeds) && count($cached_feeds) >= $number;
+if(!$has_feed) {
+	delete_transient('cr_instagram_feed');
+}
 
 if($secret_key):
 	$cc_enabled = $cc_enabled && ($cc_text ||  $cc_link_title);

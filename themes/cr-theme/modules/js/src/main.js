@@ -137,6 +137,7 @@
     CRInstagramFeed.prototype.fetchMedia = function() {
         var ob = this;
         var baseUrl = "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + this.accesstoken + "&count=" + parseInt(this.number);
+        console.log(baseUrl);
         $.ajax({
             type: 'POST',
             dataType: 'jsonp',

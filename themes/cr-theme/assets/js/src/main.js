@@ -134,10 +134,10 @@
             }
         });
     };
-    CRInstagramFeed.prototype.fetchMedia = function(key) {
+    CRInstagramFeed.prototype.fetchMedia = function() {
         var ob = this;
         var baseUrl = "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + this.accesstoken + "&count=" + parseInt(this.number);
-        jQuery.ajax({
+        $.ajax({
             type: 'POST',
             dataType: 'jsonp',
             url: baseUrl,
@@ -151,7 +151,7 @@
                     return;
                 }
                 for (var i = 0; i < response.data.length; i++) {
-                    if (response.data[i].type === "image") {
+                    if ( (ob.feeds.length <= ob.number) &&  (response.data[i].type === "image") ) {
                         ob.feeds.push(ob.parseItem(response.data[i]));
                     }
                 }

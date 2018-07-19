@@ -243,7 +243,7 @@ final class CR_Core {
 		$cc_link_nt = crt_get_theme_mode( 'instagram_feed_cc_link_nt', '');
 
 		$number = absint($number);
-		if($number) {
+		if(!$number) {
 			$number = 13;
 		}
 		$cc_position = absint($cc_position);
