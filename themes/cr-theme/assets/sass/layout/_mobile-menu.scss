@@ -9,6 +9,7 @@
     }
     & {
         margin: 0 0 0 16px;
+        list-style: none;
     }
     a {
         & {
@@ -25,12 +26,14 @@
     }
     .sub-menu {
         margin: 0 0 0 16px;
+        list-style: none;
     }
     .menu-item-has-children {
         position: relative;
         > .mobile-nav-arrow {
             display: block;
             position: absolute;
+            top: 3px;
             right: 20px;
             width: 16px;
             height: 16px;
@@ -69,6 +72,9 @@
 .mobile-sticky-item {
 	float: left;
 	margin: 0 0 0 20px;
+    &.cr-hide-mobile {
+        display: none!important;
+    }
     &:first-child {
         margin-left: 0;
     }

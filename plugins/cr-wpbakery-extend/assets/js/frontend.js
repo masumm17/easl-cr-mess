@@ -754,14 +754,16 @@ if (!String.prototype.padStart) {
                 if(!mapID || !filterID){
                     return;
                 }
+                if(ChevRes.Storage.Maps[mapID] === "undefined"){
+                    return;
+                }
+                ChevRes.Storage.Maps[mapID].map.setCenter(ChevRes.Storage.MapData.maps[mapID].center);
+                ChevRes.Storage.Maps[mapID].map.setZoom(ChevRes.Storage.MapData.maps[mapID].zoom);
                 if(show){
                     return;
                 }
                 $t.addClass("cr-map-marker-hidden");
                 $t.siblings().not($t).removeClass("cr-map-marker-hidden");
-                if(ChevRes.Storage.Maps[mapID] === "undefined"){
-                    return;
-                }
                 for(var i=0; i < ChevRes.Storage.Maps[mapID].markers.length; i++) {
                     var fid = ChevRes.Storage.Maps[mapID].markers[i].crFilterID;
                     ChevRes.Storage.Maps[mapID].markers[i].crInfoWindow.close();

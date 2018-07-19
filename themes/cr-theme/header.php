@@ -65,14 +65,19 @@
 							'icon' => '',
 							'type' => 'link',
 							'link' => '',
-							'newtab' => 'no'
+							'newtab' => 'no',
+							'class' => '',
 
 						));
 						if(!$item['title']) {
 							continue;
 						}
 						$attributes = array();
-						$classes = [];
+						if($item['class']) {
+							$classes = explode(' ', $item['class']);
+						}else{
+							$classes = [];
+						}
 						switch($item['type']) {
 							case 'tel':
 								if($item['link']){

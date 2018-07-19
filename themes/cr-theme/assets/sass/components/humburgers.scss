@@ -43,13 +43,13 @@
         &::after {
             width: 18px;
             height: 2px;
-            background-color: $color-base;
+            background-color: $color-base-secondary;
             border-radius: 2px;
             position: absolute;
             transition-property: transform;
             transition-duration: 0.15s;
             transition-timing-function: ease;
-            @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: tertiary);
+            @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: secondary);
         }
 
         &::before,

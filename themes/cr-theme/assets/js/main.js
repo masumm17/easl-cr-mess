@@ -542,11 +542,16 @@
         },
         events: function() {
             var ob = this;
+            
+            var clickEvent = "click";
+            if( window.Touch ) {
+                clickEvent = "touchstart";
+            }
             $(window).scroll($.proxy(this.scrollEvents, this));
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();
             }, 250));
-            $(".mobile-menu-humburger").on("touchstart", function() {
+            $(".mobile-menu-humburger").on(clickEvent, function() {
                 ob.$body.toggleClass("cr-mobile-menu-active");
             });
             $(".cr-menu-level-1 > li").on("mouseenter", function() {
@@ -645,7 +650,6 @@
         }
     };
     $(document).ready(function(){
-        CRT.init();
         $("body").waitForImages(function() {
             CRT.init();
             CRT.$body.addClass("page-loaded");

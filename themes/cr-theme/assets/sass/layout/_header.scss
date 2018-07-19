@@ -87,7 +87,7 @@
     display: none;
     @include respond(tab-port) {
         display: block;
-        background: rgba($color-black, .95);
+        background: rgba($color-black, .9);
         position: fixed;
         display: box;
         left: 0;
@@ -138,7 +138,7 @@
     width: 18px;
     position: absolute;
     left: 16px;
-    top: 18px;
+    top: 21px;
     z-index: 17;
     @include respond(tab-port) {
         display: block;
