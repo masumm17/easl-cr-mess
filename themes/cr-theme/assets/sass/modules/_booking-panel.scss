@@ -177,6 +177,7 @@
         margin: 0 0 2rem;
         font-size: 1.6rem;
         font-weight: 400;
+        text-transform: none;
         .bp-color-white & {
             color: $color-gray-2!important;
         }
@@ -195,6 +196,9 @@
         position: relative;
         color: $color-base;
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: base);
+        strong {
+            font-weight: inherit;
+        }
     }
     &-monthyear {
         display: block;
@@ -243,10 +247,10 @@
             display: inline-block;
             position: relative;
             padding-left: 3rem;
-            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             .bp-color-white & {
                 color: $color-base-secondary;
             }
+            @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             .bp-color-black & {
                 color: #000;
             }
@@ -273,7 +277,7 @@
         }
         &-rac {
             &::after {
-                background-image: url('../images/theme-base/callback-request.svg');
+                background-image: url('../images/theme-base/booking-panel/callback-request.svg');
             @include bgimage-themes("booking-panel/callback-request.svg");
             }
         }

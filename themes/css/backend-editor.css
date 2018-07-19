@@ -1,0 +1,15 @@
+.wpb_cr_full_width_grid .wpb_column_container.vc_container_for_children {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.wpb_cr_full_width_grid_item > .wpb_element_wrapper {
+	background-color: #fafafa;
+    min-height: 72px;
+}
+
+[data-vc-shortcode-param-name="grid_size"] {
+    padding-top: 15px !important;
+}
+.cr-padding-top-0 {
+    padding-top: 0 !important;
+}

@@ -227,7 +227,7 @@ if(count($dropdown_columns) == 0) {
 					<?php if($panel_rac_title): ?>
 					<div class="booking-panel-col booking-panel-col2">
 						<div class="booking-panel-col-inner">
-							<a class="booking-panel-link booking-panel-link-rac" href="<?php echo esc_url($panel_rac_url); ?>" <?php if($panel_rac_title){echo 'target="_blank"';} ?> title=""><?php echo esc_html($panel_rac_title); ?></a>
+							<a class="booking-panel-link booking-panel-link-rac" href="<?php echo esc_url($panel_rac_url); ?>" <?php if($panel_rac_nt){echo 'target="_blank"';} ?> title=""><?php echo esc_html($panel_rac_title); ?></a>
 						</div>
 					</div>
 					<?php endif; ?>

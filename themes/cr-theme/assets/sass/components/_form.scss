@@ -31,7 +31,6 @@ input[type="num"]::placeholder,
 input[type="search"]::placeholder, 
 textarea::placeholder {
     color: lighten($color-gray-1, 25%);
-    text-transform: uppercase;
 }
 
 input[type="submit"], form button {
