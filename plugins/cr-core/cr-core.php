@@ -71,6 +71,16 @@ final class CR_Core {
 			$this,
 			'update_instagram_feed_cache'
 		));
+		if(!defined('ICL_SITEPRESS_VERSION')){
+			add_filter('posts_join', array(
+				$this,
+				'hide_wpml_translations_join'
+			), 10, 2);
+			add_filter('posts_where', array(
+				$this,
+				'hide_wpml_translations_where'
+			), 10, 2);
+		}
 		
 	}
 	/**
@@ -270,6 +280,18 @@ final class CR_Core {
 			'status' => 'OK',
 			'html' => $output,
 		));
+	}
+	
+	public function hide_wpml_translations_join($join, $query) {
+		global $wpdb;
+		$join .= " LEFT JOIN {$wpdb->postmeta} AS cr_wpml_meta ON ( cr_wpml_meta.post_id = {$wpdb->posts}.ID AND cr_wpml_meta.meta_key = 'wpml_media_processed' )";
+		return $join;
+	}
+	
+	public function hide_wpml_translations_where($where, $query) {
+		global $wpdb;
+		$where .= " AND (cr_wpml_meta.post_id IS NULL) ";
+		return $where;
 	}
 
 	/**
