@@ -46,10 +46,6 @@ return array(
 				'value' => '',
 				'param_holder_class' => 'vc_col-sm-6',
 				'description' => __( 'Select image from media library for desktop version.', 'crvc_extension' ),
-				'dependency' => array(
-					'element' => 'type',
-					'value' => array('image'),
-				),
 				'admin_label' => false,
 			),
 			array(
@@ -59,10 +55,6 @@ return array(
 				'value' => '',
 				'param_holder_class' => 'vc_col-sm-6',
 				'description' => __( 'Select image from media library for smaller version.', 'crvc_extension' ),
-				'dependency' => array(
-					'element' => 'type',
-					'value' => array('image'),
-				),
 				'admin_label' => false,
 			),
 			// Tagline fields

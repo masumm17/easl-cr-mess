@@ -87,7 +87,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 			$img_full_src = $img_full_src[0];
 		}
 		if(!$img_full_src) {
-			$img_full_src = cr_get_asset_url('images/hero-video-bg.png');
+			$img_full_src = 'https://img.youtube.com/vi/' . $yt_video_id . '/maxresdefault.jpg';
 		}
 	?> 
 	<img src="<?php echo esc_url( $img_full_src); ?>" 
@@ -99,10 +99,10 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 		<div class="rs-background-video-layer" 
 				data-forcerewind="on" 
 				data-nextslideatend="true" 
-				data-videoloop="loopandnoslidestop" 
+				data-videoloop="loop" 
 				data-volume="mute" 
 				data-ytid="<?php echo esc_attr($yt_video_id); ?>" 
-				data-videoattributes="version=3&enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&rel=0&ref=0&origin=<?php echo untrailingslashit( get_home_url() );?>" 
+				data-videoattributes="version=3&enablejsapi=1&html5=1&hd=1&vq=highres&wmode=opaque&showinfo=0&rel=0&ref=0&origin=<?php echo untrailingslashit( get_home_url() );?>" 
 				data-videorate="1" 
 				data-videowidth="100%" 
 				data-videoheight="100%" 

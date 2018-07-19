@@ -314,6 +314,7 @@ if (!String.prototype.padStart) {
                 $slider.closest('.wpb_row').addClass('cr-row-has-hero-slider');
                 $slider.show().revolution({
                     //delay: delay,
+                    //debugMode: true,
                     sliderLayout: "fullscreen",
                     lazyType: "smart",
                     spinner: "spinner2"
