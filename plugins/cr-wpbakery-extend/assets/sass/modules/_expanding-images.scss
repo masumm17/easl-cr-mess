@@ -33,7 +33,7 @@
             transition: background-color .5s;
             z-index: 1;
         }
-        &:hover::before {
+        &.on-hover::before {
             background-color: transparent;
         }
         &-cta-wrap {

@@ -12,9 +12,6 @@
             max-height: 320px;
             &::before {
             }
-            &:hover::before {
-                background-color: transparent;
-            }
             &.on-hover {
                 height: calc((100vh - 70px));
                 max-height: 480px;

@@ -891,6 +891,10 @@ if (!String.prototype.padStart) {
             this.rescaleYTVideos();
         },
         events: function() {
+            var clickEvent = "click";
+            if( window.Touch ) {
+                clickEvent = "touchstart";
+            }
             // Resize events
             $(window).on("resize", ChevRes.debounce(function(){
                 ChevRes.resizeEevents();
@@ -901,14 +905,18 @@ if (!String.prototype.padStart) {
             }).on("mouseleave", function() {
                 $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
             });
-            $(".expanding-image-item-cta").on("click", function(e) {
-                if(!$(this).closest(".expanding-image-item").hasClass("on-hover")) {
-                    e.preventDefault();
-                }else{
-                    e.stopPropagation();
+            window.Touch && $(".expanding-image-item-cta").on("click", function(e) {
+                var $item = $(this).closest(".expanding-image-item");
+                if(!$item.hasClass("on-hover")) {
+                   e.preventDefault();
+                   $item.addClass("on-hover");
                 }
+                e.stopPropagation();
             });
-            $(".expanding-image-item").on("click", function() {
+            window.Touch && $(".expanding-image-item-cta").on("touchstart", function(e) {
+                e.stopPropagation();
+            });
+            window.Touch && $(".expanding-image-item").on("touchstart", function() {
                 $(this).toggleClass("on-hover");
             });
             $(".cr-scroll-down").on("click", function(e) {
