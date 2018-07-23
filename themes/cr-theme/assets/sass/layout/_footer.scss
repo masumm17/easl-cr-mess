@@ -301,7 +301,7 @@
         font-weight: 400;
         @each $theme-name, $theme-color in $themes-map-secondary {
             .theme-#{$theme-name} & {
-                color: $theme-color;
+                color: $color-white;
                 border-color: $theme-color;
             }
         }

@@ -33,6 +33,9 @@
             }
             &s-list {
                 margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             &-icon {
                 margin: 0 3px;

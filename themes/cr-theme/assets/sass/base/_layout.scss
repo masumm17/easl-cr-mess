@@ -44,6 +44,9 @@
         .wpb_row:last-child & {
             padding-bottom: 2rem;
         }
+        .wpb_row:not(.cr-row-has-hero-slider):first-child &:first-child {
+            padding-top: 15px;
+        }
         @include clearfix;
     }
 }
