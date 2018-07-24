@@ -1,7 +1,7 @@
 .cr-gallery {
     @include respond(tab-port) {
         &-item {
-            width: 50%;
+            width: 33.333%;
             padding: 0 5px;
             margin-bottom: 10px;
             &-inner {
