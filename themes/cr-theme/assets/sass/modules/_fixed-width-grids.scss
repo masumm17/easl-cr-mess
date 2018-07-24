@@ -10,41 +10,42 @@
             display: block;
         }
         &-item {
+            cursor: pointer;
             width: auto;
             padding: 0;
             margin-bottom: 13px;
             &-inner {
                 .cr-has-overlay &::after {
-                    transition: unset!important;
-                    background-color: rgba($color-black, .68);
+                    //transition: unset!important;
+                    //background-color: rgba($color-black, .68);
                 }
             }
             &:hover &-image {
-                transform: unset;
+                //transform: unset;
             }
             &-text {
                 &-inner {
-                    transform: unset!important;
-                    transition: unset!important;
+                    //transform: unset!important;
+                    //transition: unset!important;
                 }
             }
             &-text-top {
-                transform: unset!important;
-                transition: unset!important;
+                //transform: unset!important;
+                //transition: unset!important;
                 &::after {
-                    opacity: 1;
-                    transform: unset!important;
-                    transition: unset!important;
+                   // opacity: 1;
+                    //transform: unset!important;
+                    //transition: unset!important;
                 }
             }
             &-text-bottom {
-                transform: unset!important;
-                transition: unset!important;
-                opacity: 1;
+                //transform: unset!important;
+                //transition: unset!important;
+                //opacity: 1;
             }
             &-title {
-                transform: unset!important;
-                transition: unset!important;
+                //transform: unset!important;
+                //transition: unset!important;
             }
         }
         

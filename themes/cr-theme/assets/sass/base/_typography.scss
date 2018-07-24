@@ -62,9 +62,11 @@ a {
         @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
     }
     &:hover, &:active {
-        color: $color-base;
-        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
-        text-decoration: none;
+        .no-touchevents & {
+            color: $color-base;
+            text-decoration: none;
+        }
+        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base, $prefix: '.no-touchevents');
     }
     &:focus {
         outline: 0 none;
@@ -74,19 +76,21 @@ a {
     display: inline-block;
     position: relative;
     &::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: $color-base;
-        opacity: 0;
-        transition: opacity 0.3s, transform 0.3s;
-        transform: translateY(1rem);
-        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base);
-}
-    &:hover {
+        .no-touchevents & {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: $color-base;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(1rem);
+        }
+        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base, $prefix: '.no-touchevents');
+    }
+    .no-touchevents &:hover {
         &::after {
             opacity: 1;
             transform: translateY(0);

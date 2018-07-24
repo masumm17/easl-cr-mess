@@ -27,19 +27,21 @@
         display: none!important;
     }
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base-secondary;//#cd8e01
-        transition: all .3s;
-        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
+        .no-touchevents & {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base-secondary;//#cd8e01
+            transition: all .3s;
+        }
+        @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;
@@ -77,19 +79,21 @@
         display: none!important;
     }
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base-secondary;//#cd8e01
-        transition: all .3s;
-        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: secondary);
+        .no-touchevents {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base-secondary;//#cd8e01
+            transition: all .3s;
+        }
+        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: secondary, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;
@@ -126,19 +130,21 @@
     }
     
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base;
-        transition: all .3s;
-        @include color-themes($color:false, $bgcolor:true, $color-type: base);
+        .no-touchevents & {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base;
+            transition: all .3s;
+        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: base, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;
@@ -176,19 +182,21 @@
         display: none!important;
     }
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base-secondary;
-        transition: all .3s;
-        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
+        .no-touchevents & {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base-secondary;
+            transition: all .3s;
+        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;
@@ -226,19 +234,21 @@
     }
     
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base-secondary;
-        transition: all .3s;
-        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
+        .no-touchevents {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base-secondary;
+            transition: all .3s;
+        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;
@@ -276,19 +286,21 @@
         display: none!important;
     }
     &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        background-color: $color-base-secondary;
-        transition: all .3s;
-        @include color-themes($color:false, $bgcolor:true, $color-type: secondary);
+        .no-touchevents & {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background-color: $color-base-secondary;
+            transition: all .3s;
+        }
+        @include color-themes($color:false, $bgcolor:true, $color-type: secondary, $prefix: '.no-touchevents');
     }
     
-    &:hover {
+    .no-touchevents &:hover {
         color: $color-white !important;
         &::before {
             height: 100%;

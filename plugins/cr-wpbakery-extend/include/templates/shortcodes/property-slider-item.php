@@ -71,9 +71,9 @@ if($img_full_src && $overlay_title &&  $cta_button && $content) {
 				<h3 class="property-slider-text-subtitle <?php if($subtitle_length > 0) {echo 'cr-lenght-limited-text';}?>"><?php echo cr_vce_truncate($overlay_subtitle, $subtitle_length, '', false); ?></h3>
 				<?php endif; ?>
 			</div>
-			<p <?php if($content_length > 0) {echo ' class="cr-lenght-limited-text" ';}?>><?php echo cr_vce_truncate($content, $content_length); ?></p>
+			<p><?php echo cr_vce_truncate($content, $content_length); ?></p>
 			<?php if($cta_button_attributes): ?>
-			<a class="property-slider-text-cta cr-button <?php if($title_length < 1) {echo 'cr-lenght-limited-text';}?>" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
+			<a class="property-slider-text-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 			<?php endif; ?>
 		</div>
 		<div class="property-slider-image" style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>');"><img src="<?php echo $img_full_src[0]; ?>" width="1280" height="720"/></div>

@@ -109,7 +109,112 @@ $footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_
 		</div>
 	</div>
 </footer>
-	
+
+<div class="mobile-menu-humburger cr-humburger">
+	<div class="cr-humburger-box">
+		<div class="cr-humburger-inner"></div>
+	</div>
+</div>
+<nav class="site-mobile-navigation">
+	<?php 
+	$items = crt_get_theme_mode( 'stikcy_side_navigation_items', '');
+	if($items){
+		$items = json_decode($items);
+	}
+	if(!empty($items) && is_array($items) && count($items) > 0):
+	?>
+
+	<div class="site-mobile-navigation-sticky">
+		<ul class="mobile-sticky-items">
+		<?php
+		foreach($items as $item): 
+			$item = wp_parse_args($item, array(
+				'title' => '',
+				'icon' => '',
+				'type' => 'link',
+				'link' => '',
+				'newtab' => 'no',
+				'class' => '',
+
+			));
+			if(!$item['title']) {
+				continue;
+			}
+			$attributes = array();
+			if($item['class']) {
+				$classes = explode(' ', $item['class']);
+			}else{
+				$classes = [];
+			}
+			switch($item['type']) {
+				case 'tel':
+					if($item['link']){
+						$attributes[] = 'href="tel:'. esc_attr($item['link']) .'"';
+						$classes[] = 'mobile-sticky-item-tel';
+					}
+					break;
+				case 'email':
+					if($item['link']){
+						$attributes[] = 'href="mailto:'. esc_attr($item['link']) .'"';
+						$classes[] = 'mobile-sticky-item-email';
+					}
+					break;
+				case 'livechat':
+					$attributes[] = 'href="#livechat"';
+					$classes[] = 'mobile-sticky-item-livechat';
+					break;
+				case 'link':
+				default:
+					if($item['link']){
+						$attributes[] = 'href="'. esc_url($item['link']) .'"';
+						$classes[] = 'mobile-sticky-item-link';
+					}
+					break;
+			}
+			if(count($classes) > 0) {
+				$classes = join( ' ', $classes );
+			} else {
+				$classes = '';
+			}
+			if(count($attributes) > 0) {
+				$attributes = ' ' . join( ' ', $attributes );
+			} else {
+				$attributes = '';
+			}
+
+		?> 
+			<li class="mobile-sticky-item <?php echo $classes; ?>">
+				<a<?php echo $attributes; ?>>
+					<?php if($item['icon']): ?><img alt="" src="<?php echo esc_url($item['icon']); ?>"/></span><?php endif; ?>
+				</a>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<?php endif; ?>
+	<div class="header-mobile-menu-wrap">
+		<?php 
+		wp_nav_menu( array(
+			'theme_location' => 'header_menu',
+			'menu_class'     => 'header-mobile-menu',
+			'container'      => false,
+			'fallback_cb'    => false,
+			'before'		 => '<span class="mobile-nav-arrow"></span>',
+			'link_before'    => '<span class="link-inner">',
+			'link_after'     => '</span>',
+		) );
+		wp_nav_menu( array(
+			'theme_location' => 'footer_menu',
+			'menu_class'     => 'header-mobile-menu',
+			'container'      => false,
+			'fallback_cb'    => false,
+			'before'		 => '<span class="mobile-nav-arrow"></span>',
+			'link_before'    => '<span class="link-inner">',
+			'link_after'     => '</span>',
+		) );
+		?>
+	</div>
+</nav>
 <div class="mobile-fixed-menu-wrap">
 	<?php 
 	wp_nav_menu( array(

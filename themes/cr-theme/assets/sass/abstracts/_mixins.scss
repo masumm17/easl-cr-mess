@@ -14,7 +14,7 @@
 }
 
 
-@mixin color-themes($color:false, $bgcolor:false, $border-color:false, $color-type: base) {
+@mixin color-themes($color:false, $bgcolor:false, $border-color:false, $color-type: base, $prefix: false) {
     $themes: $themes-map-primary;
     @if $color-type == secondary {
         $themes: $themes-map-secondary;
@@ -23,17 +23,33 @@
     }
     
     @each $theme-name, $theme-color in $themes {
-        .theme-#{$theme-name} & {
-            @if $bgcolor {
-                background-color: $theme-color;
+        @if $prefix {
+            #{$prefix} .theme-#{$theme-name} & {
+                @if $bgcolor {
+                    background-color: $theme-color;
+                }
+                @if $color == true {
+                    color: $theme-color;
+                } @else if $color != false {
+                    color: $color;
+                }
+                @if $border-color {
+                    border-color: $theme-color;
+                }
             }
-            @if $color == true {
-                color: $theme-color;
-            } @else if $color != false {
-                color: $color;
-            }
-            @if $border-color {
-                border-color: $theme-color;
+        } @else {
+            .theme-#{$theme-name} & {
+                @if $bgcolor {
+                    background-color: $theme-color;
+                }
+                @if $color == true {
+                    color: $theme-color;
+                } @else if $color != false {
+                    color: $color;
+                }
+                @if $border-color {
+                    border-color: $theme-color;
+                }
             }
         }
     }
@@ -75,7 +91,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         @media only screen and (max-width: 56.25em) { @content };     //900px
     }
     @if $breakpoint == tab-land {
-        @media only screen and (max-width: 75em) { @content };    //1200px
+        @media only screen and (max-width: 85.3125em) { @content };    //1200px
     }
     @if $breakpoint == desk-large {
         @media only screen and (min-width: 100em) { @content };    //1600

@@ -456,7 +456,7 @@
 .mobile-fixed-menu {
     &-wrap {
         display: none;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: block;
             position: fixed;
             bottom: 0;
@@ -493,22 +493,24 @@
 
                 }
                 &::before {
-                    content: "";
-                    z-index: -1;
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 0;
-                    background-color: darken($color-base, 7);//#cd8e01
-                    transition: all .3s;
+                    .no-touchevents & {
+                        content: "";
+                        z-index: -1;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 0;
+                        background-color: darken($color-base, 7);//#cd8e01
+                        transition: all .3s;
+                    }
                     @each $theme-name, $theme-color in $themes-map-secondary {
-                        .theme-#{$theme-name} & {
+                        .no-touchevents  .theme-#{$theme-name} & {
                             background-color: $theme-color;
                         }
                     }
                 }
-                &:hover {
+                .no-touchevents &:hover {
                     &::before {
                         height: 100%;
                     }
