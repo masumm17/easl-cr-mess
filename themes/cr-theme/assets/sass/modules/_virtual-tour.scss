@@ -6,8 +6,11 @@
         
     }
     &-con {
+        @include respond(tab-land) {
+            height: calc((80vh - 100px))!important;
+        }
         @include respond(tab-port) {
-            height: calc((100vh - 60px))!important;
+            height: calc((85vh - 100px))!important;
         }
         iframe {
         }
