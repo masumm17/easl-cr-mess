@@ -17,6 +17,26 @@
         }
     } 
 }
+@include respond(tab-land) {
+    .fw-grid {
+        &-item {
+            &-text-top {
+                margin-bottom: 1.5rem!important;
+            }
+            &-title {
+                font-size: 20px;
+                margin-bottom: 0!important;
+            }
+            &-subtitle {
+                font-size: 16px;
+                margin-bottom: 1.5rem!important;
+            }
+            &-text p {
+                margin-bottom: 2rem!important;
+            }
+        }
+    }
+}
 @include respond(tab-port) {
     .fw-grid {
         &-item {

@@ -5,6 +5,21 @@
             @include color-themes($color:true, $bgcolor:false, $color-type: tertiary);
         }
     }
+    @include respond(tab-land) {
+        &-item {
+            &-title {
+                font-size: 20px;
+                margin-bottom: 1.5rem!important;
+            }
+            &-subtitle {
+                font-size: 16px;
+                margin-bottom: 1.5rem!important;
+            }
+            &-text p {
+                margin-bottom: 2rem!important;
+            }
+        }
+    }
     @include respond(tab-port) {
         &-con {
             display: block;
