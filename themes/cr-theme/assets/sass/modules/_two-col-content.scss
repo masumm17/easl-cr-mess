@@ -41,13 +41,17 @@
                 padding: 0 10px;
             }
         }
+        &-floorplans {
+            &-thumbs {
+                padding: 0 10px;
+                margin: 0;
+            }
+        }
     }
     @include respond(phone) {
         &-floorplans {
             &-thumbs {
                 display: block;
-                padding: 0 10px;
-                margin: 0;
                 li {
                     padding: 0;
                     margin: 0 0 15px;
