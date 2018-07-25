@@ -34,52 +34,40 @@
             &-text p {
                 margin-bottom: 2rem!important;
             }
+            &-cta {
+                padding: 14px 36px!important;
+            }
         }
     }
 }
 @include respond(tab-port) {
     .fw-grid {
+        &-con {
+            display: block!important;
+        }
         &-item {
             cursor: pointer;
-            &-inner {
-                .cr-has-overlay &::after {
-                    //background-color: rgba($color-black, .68);
-                    //transition: unset!important;
-                }
-            }
-            &:not(&-noimage) &-inner {
-                background-image: none!important;
-            }
-            &-image {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            &-notext &-text {
-                //opacity: 1!important;
-                //transform: translateY(-50%)!important;
-                //transition: unset!important;
-
-            }
-            &-text-hover:not(&-noimage) &-text {
-                &-inner {
-                    //transform: translateY(0)!important;
-                    //tranistion: unset!important;
-                }
-            }
-            &-text-hover:not(&-noimage) &-text-top {
-                //transform: translateY(0);
-                //tranistion: unset!important;
-            }
-            &-text-hover:not(&-noimage) &-text-bottom {
-                //opacity: 1!important;
-                //tranistion: unset;
-            }
+            width: auto!important;
+            padding: 0;
+            margin-bottom: 13px;
             &-title {
                 font-size: 20px;
             }
             &-subtitle {
                 font-size: 16px;
+            }
+            &-sizer {
+                padding-top: 420px;
+            }
+        } 
+    }
+}
+
+@include respond(phone) {
+    .fw-grid {
+        &-item {
+            &-sizer {
+                padding-top: 104%;
             }
         } 
     }

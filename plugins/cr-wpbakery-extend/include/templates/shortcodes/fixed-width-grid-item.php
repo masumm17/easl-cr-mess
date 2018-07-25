@@ -77,6 +77,7 @@ if($img_full) {
 					</div>
 				</div>
 			</div>
+			<div class="fxw-grid-item-imagebg" style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>');"></div>
 			<?php echo $img_full; ?>
 		</div>
 	</div>

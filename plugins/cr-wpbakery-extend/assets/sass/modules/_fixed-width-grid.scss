@@ -44,8 +44,25 @@
                 background-color: rgba($color-black, .68);
             }
         }
+        &-imagebg {
+            width: 100%;
+            height: 0;
+            padding-top: 104%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: 1.8s all ease;
+            backface-visibility: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        &:hover &-imagebg{
+            transform: scale(1.3);
+        }
         &-image {
-            display: block;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
             width: 100%;
             height: auto;
             transition: 1.8s all ease;
@@ -54,7 +71,7 @@
             z-index: 1;
         }
         &:hover &-image{
-            transform: scale(1.3);
+            //transform: scale(1.3);
         }
         &-text {
             position: absolute;

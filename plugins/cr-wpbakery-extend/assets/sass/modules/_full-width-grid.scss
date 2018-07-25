@@ -18,12 +18,6 @@
             position: relative;
             z-index: 1;
             overflow: hidden;
-            .fw-grid-item-noimage & {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                position: relative;
-            }
             .cr-has-overlay-text &::after {
                 content: "";
                 background-color: rgba($color-black, 0);
@@ -158,8 +152,15 @@
                 }
             }
         }
+        &-sizer {
+            width: 100%;
+            height: 0;
+            padding-top: 400px;
+            position: relative;
+            z-index: 0;
+        }
         &-image {
-            display: block;
+            display: none;
             width: 100%;
             height: auto;
             opacity: 0;
@@ -186,6 +187,14 @@
         &-noimage &-text {
             padding-top: 5rem;
             padding-bottom: 5rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         &:not(&-noimage) &-text {
             position: absolute;

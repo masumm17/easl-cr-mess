@@ -103,6 +103,9 @@ $html_image = $html_title = $html_subtitle = $html_description = $html_cta = $ht
 if($img_full_src) {
 	$html_image = $img_full;
 }
+if('no_image' != $display_option && $html_image){
+	$html_image = '<div class="fw-grid-item-sizer"></div>' . $html_image;
+}
 if($title) {
 	$html_title = '<h3 class="fw-grid-item-title">'. cr_vce_truncate($title, 52) .'</h3>';
 }
@@ -164,6 +167,7 @@ switch($display_option) {
 		$html  = '<div class="fw-grid-item-text">';
 			$html .= "{$html_title}{$html_subtitle}{$html_description}{$html_cta}";
 		$html .= '</div>';
+		$html .= '<div class="fw-grid-item-sizer"></div>';
 		break;
 	case 'title_only': 
 		$css_class .= ' fw-grid-item-titleonly';

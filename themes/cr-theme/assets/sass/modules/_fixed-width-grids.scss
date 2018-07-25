@@ -31,38 +31,19 @@
             margin-bottom: 13px;
             &-inner {
                 .cr-has-overlay &::after {
-                    //transition: unset!important;
-                    //background-color: rgba($color-black, .68);
                 }
             }
-            &:hover &-image {
-                //transform: unset;
-            }
-            &-text {
-                &-inner {
-                    //transform: unset!important;
-                    //transition: unset!important;
-                }
-            }
-            &-text-top {
-                //transform: unset!important;
-                //transition: unset!important;
-                &::after {
-                   // opacity: 1;
-                    //transform: unset!important;
-                    //transition: unset!important;
-                }
-            }
-            &-text-bottom {
-                //transform: unset!important;
-                //transition: unset!important;
-                //opacity: 1;
-            }
-            &-title {
-                //transform: unset!important;
-                //transition: unset!important;
+            &-imagebg {
+                padding-top: 400px;
             }
         }
         
+    }
+    @include respond(phone) {
+        &-item {
+            &-imagebg {
+                padding-top: 104%;
+            }
+        }
     }
 }
