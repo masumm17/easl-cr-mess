@@ -381,54 +381,32 @@
                         // use ._close() instead of .close() so we don't cancel future searches
                         //this._close();
                     }
-                }
-            });
-            $residence.bookingpanel({
-                minLength: 0,
-                source:BookingPanelData.source,
-                position: {
-                    my: "left top",
-                    at: "left top",
-                    of: $(".booking-panel-dd-position", $el)
                 },
-                select: function( event, ui ) {
-                    $dummy.html(ui.item.label);
-                    $keywordSelect.val(ui.item.value);
+                _appendTo: function() {
+                    var element = this.options.appendTo;
+
+                    if ( element ) {
+                        element = element.jquery || element.nodeType ?
+                            $( element ) :
+                            this.document.find( element ).eq( 0 );
+                    }
+                    if ( !element || !element[ 0 ] ) {
+                        element = $( ".booking-panel-dd-position" );
+                    }
+                    
+                    if ( !element || !element[ 0 ] ) {
+                        element = this.element.closest( ".ui-front, dialog" );
+                    }
+
+                    if ( !element.length ) {
+                        element = this.document[ 0 ].body;
+                    }
+
+                    return element;
                 },
-                source: function( request, response ) {
-                    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
-                    var groupMatcher = new RegExp( '^' + $.ui.autocomplete.escapeRegex(request.term), "i" );
-                    var suggestions = [];
-                    $.each(BookingPanelData.column, function(colIndex, column) {
-                        var col = [];
-                        $.each(column, function(groupName, items) {
-                            var cgroup = {}, gitems = [];
-                            if( !request.term ||  groupMatcher.test(groupName) ) {
-                                cgroup = {groupName: groupName, items: items};
-                            }else{
-                                $.each(items, function(itemIndex, item) {
-                                    if( matcher.test(item.label) || matcher.test(item.value) ) {
-                                        gitems.push(item);
-                                    }
-                                });
-                                if(gitems.length > 0) {
-                                    cgroup.groupName = groupName;
-                                    cgroup.items = gitems;
-                                }
-                            }
-                            if(typeof cgroup.items !== "undefined" && cgroup.items.length > 0) {
-                                col.push(cgroup);
-                            }
-                        });
-                        col.length > 0 && suggestions.push(col);
-                    });
-                    response(suggestions);
-                  },
             });
-            $el.find("#booking-panel-dd-keywords").on("click", function(e) {
-                e.preventDefault();
-                !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
-            });
+            
+            
             
             var $checkout = $("#booking-panel-departure-dummy").datepicker({
                 dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
@@ -471,14 +449,21 @@
             $("#bp-arrival-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkin.datepicker("getDate") ));
             
             $("#bp-arrival-date").on("click", function(e) {
+                $checkout.removeClass("bp-date-picker-shown");
+                $(".booking-panel-select-box").removeClass("cr-show-selectbox");
                 $checkin.toggleClass("bp-date-picker-shown");
             });
             $("#bp-departure-date").on("click", function(e) {
+                $checkin.removeClass("bp-date-picker-shown");
+                $(".booking-panel-select-box").removeClass("cr-show-selectbox");
                 $checkout.toggleClass("bp-date-picker-shown");
             });
             $(".booking-panel-sb-trigger").on("click", function(e) {
                 e.preventDefault();
                 var $sb = $(this).closest(".booking-panel-col").find(".booking-panel-select-box");
+                $checkin.removeClass("bp-date-picker-shown");
+                $checkout.removeClass("bp-date-picker-shown");
+                $(".booking-panel-select-box").not($sb).removeClass("cr-show-selectbox");
                 $sb.toggleClass("cr-show-selectbox");
             });
             $(".booking-panel-select-box li").on("click", function(e) {
@@ -493,6 +478,58 @@
                             .end()
                         .find("select").val($li.data('value'));
                 $li.closest(".booking-panel-select-box").removeClass("cr-show-selectbox");
+            });
+            
+            $residence.bookingpanel({
+                minLength: 0,
+                source:BookingPanelData.source,
+                position: {
+                    my: "left top",
+                    at: "left top",
+                    of: $(".booking-panel-dd-position", $el)
+                },
+                open: function(event, ui) {
+                    $checkin.removeClass("bp-date-picker-shown");
+                    $checkout.removeClass("bp-date-picker-shown");
+                    $(".booking-panel-select-box").removeClass("cr-show-selectbox");
+                },
+                select: function( event, ui ) {
+                    $dummy.html(ui.item.label);
+                    $keywordSelect.val(ui.item.value);
+                },
+                source: function( request, response ) {
+                    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                    var groupMatcher = new RegExp( '^' + $.ui.autocomplete.escapeRegex(request.term), "i" );
+                    var suggestions = [];
+                    $.each(BookingPanelData.column, function(colIndex, column) {
+                        var col = [];
+                        $.each(column, function(groupName, items) {
+                            var cgroup = {}, gitems = [];
+                            if( !request.term ||  groupMatcher.test(groupName) ) {
+                                cgroup = {groupName: groupName, items: items};
+                            }else{
+                                $.each(items, function(itemIndex, item) {
+                                    if( matcher.test(item.label) || matcher.test(item.value) ) {
+                                        gitems.push(item);
+                                    }
+                                });
+                                if(gitems.length > 0) {
+                                    cgroup.groupName = groupName;
+                                    cgroup.items = gitems;
+                                }
+                            }
+                            if(typeof cgroup.items !== "undefined" && cgroup.items.length > 0) {
+                                col.push(cgroup);
+                            }
+                        });
+                        col.length > 0 && suggestions.push(col);
+                    });
+                    response(suggestions);
+                  },
+            });
+            $el.find("#booking-panel-dd-keywords").on("click", function(e) {
+                e.preventDefault();
+                !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
             });
             
         },
