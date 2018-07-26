@@ -86,13 +86,17 @@
             bottom: 0;
             z-index: 2;
             font-weight: 300;
-            
             font-size: 2.6rem;
-            &:placeholder-shown,
-            &:placeholder-shown + .booking-panel-residences-dummy {
-                font-size: 1.4rem;
-                line-height: 1.4em;
-            }
+        }
+        .cr-booking-no-keyword #residences-keyword,
+        .cr-booking-no-keyword .booking-panel-residences-dummy {
+            font-size: 1.4rem;
+            line-height: 1.4em;
+        }
+        #residences-keyword:placeholder-shown,
+        #residences-keyword::placeholder-shown + .booking-panel-residences-dummy {
+            font-size: 1.4rem;
+            line-height: 1.4em;
         }
         #booking-panel-promo {
             max-width: 16rem;
@@ -107,6 +111,10 @@
             .bp-color-black & {
                 color: #6c6c6c;
             }
+        }
+        #booking-panel-residences :-ms-input-placeholder{
+            font-size: 1.4rem;
+            line-height: 1.4em;
         }
     }
     &-title {
