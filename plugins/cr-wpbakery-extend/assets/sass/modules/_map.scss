@@ -73,6 +73,9 @@
             display: flex;
             flex-direction: column;
             flex: 1 auto;
+            .cr-ie11 & {
+                display: block;
+            }
             p {
                 flex: 1 auto;
                 font-size: 1.1rem;
