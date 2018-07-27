@@ -79,7 +79,7 @@
         display: none!important;
     }
     &::before {
-        .no-touchevents {
+        .no-touchevents & {
             content: "";
             z-index: -1;
             position: absolute;
@@ -234,7 +234,7 @@
     }
     
     &::before {
-        .no-touchevents {
+        .no-touchevents &{
             content: "";
             z-index: -1;
             position: absolute;
