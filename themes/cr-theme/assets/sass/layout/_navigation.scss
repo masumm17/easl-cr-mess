@@ -13,15 +13,20 @@
             
         }
         > a{
-            &:link, &:visited {
+            & {
                 display: inline-block;
-                color: $color-white;
                 font-size: 1.4rem;
                 height: 7rem;
                 text-transform: uppercase;
                 padding: 0 2.2rem;
                 overflow: hidden;
+                .cr-ie11 & {
+                    overflow: visible;
                 }
+            }
+            &, &:link, &:visited {
+                color: $color-white!important;
+            }
             > span {
                 display: inline-block;
                 position: relative;
@@ -136,14 +141,14 @@
                     }
                 }
                 a {
-                   color: $color-white;
+                   color: $color-white!important;
                    font-size: 1.4rem;
                    text-transform: uppercase;
                    text-decoration: none;
                    display: inline-block;
                    padding: 0 0 4px;
                    position: relative;
-                   }
+                }
                 
                 .cr-menu-level-2 {
                     opacity: 0;

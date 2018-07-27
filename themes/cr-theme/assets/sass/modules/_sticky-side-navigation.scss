@@ -39,19 +39,21 @@
             }
                 
             > a , > a:link, > a:visted{
-                color: $color-white;
+                color: $color-white!important;
             }
         }
         > a {
-            &, &:link, &:visited {
+            & {
                 display: block;
                 padding: 0 2rem 0 5.4rem;
                 height: 4.4rem;
                 font-size: 1.2rem;
                 line-height: 4.4rem;
-                color: $color-white;
                 text-transform: uppercase;
                 text-decoration: none;
+            }
+            &, &:link, &:visited {
+                color: $color-white!important;
             }
         }
         &-icon {

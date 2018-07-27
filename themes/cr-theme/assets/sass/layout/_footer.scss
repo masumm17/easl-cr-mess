@@ -60,7 +60,7 @@
             display: inline-block;
             position: relative;
             &:link, &:visited {
-                color: $color-white;
+                color: $color-white!important;
                 text-decoration: none;
             }
             
@@ -359,7 +359,7 @@
                 line-height: 1em;
                 text-transform: uppercase;
                 &:link, &:visited {
-                    color: $color-white;
+                    color: $color-white!important;
                     text-decoration: none;
                 }
                 &::after {
@@ -475,7 +475,7 @@
             width: 50%;
             a{
                 border-left: 1px solid $color-white;
-                background-color: $color-base;
+                background-color: $color-base!important;
                 font-size: 14px;
                 line-height: 50px;
                 height: 50px;

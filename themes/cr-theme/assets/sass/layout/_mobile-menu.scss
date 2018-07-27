@@ -19,7 +19,7 @@
             margin-bottom: 25px;
         }
         &, &:link, &:visited {
-            color: $color-white;
+            color: $color-white!important;
             text-decoration: none;
             text-transform: uppercase;
         }
