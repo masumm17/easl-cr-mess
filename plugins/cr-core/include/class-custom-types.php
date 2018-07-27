@@ -117,7 +117,7 @@ class CR_Custom_types {
 			'query_var'				 => false,
 			'rewrite'				 => false,
 			'capability_type'		 => 'post',
-			'has_archive'			 => falase,
+			'has_archive'			 => false,
 			'show_in_nav_menus'		 => false,
 			'hierarchical'			 => false,
 			'menu_position'			 => 25.2,
