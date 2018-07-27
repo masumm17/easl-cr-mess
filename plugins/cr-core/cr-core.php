@@ -104,7 +104,7 @@ final class CR_Core {
 	 */
 	public function plugins_loaded() {
 		// Setup locale
-		load_plugin_textdomain( 'crt', false, $this->path( 'APP_DIR', 'locale' ) );
+		load_plugin_textdomain( 'crt', false, $this->path( 'ROOT', 'locale' ) );
 		// Set up Customizer
 		$this->customizer = new CRT_Customizer($this->path('INC_DIR', 'customizer/'));
 	}

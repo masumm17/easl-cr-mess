@@ -129,7 +129,7 @@ class CR_VcE_Manager {
 	 */
 	public function plugins_loaded() {
 		// Setup locale
-		load_plugin_textdomain( 'crvc_extension', false, $this->path( 'APP_DIR', 'locale' ) );
+		load_plugin_textdomain( 'crvc_extension', false, $this->path( 'APP_ROOT', 'locale' ) );
 		// Set up Customizer
 		$this->customizer = new CR_VcE_Customizer($this->path('APP_ROOT', 'include/customizer/'));
 	}
