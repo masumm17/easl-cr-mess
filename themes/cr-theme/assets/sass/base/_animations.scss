@@ -59,12 +59,12 @@
 @keyframes preloaderFlash {
     0% {
         opacity: 0.5;
-        transform: translate(-50%,-50%) scale(.75);
+        transform: scale(.75);
     }
 
     100% {
         opacity: 1;
-        transform: translate(-50%,-50%) scale(1);
+        transform: scale(1);
     }
 }
 @keyframes cr-flash {

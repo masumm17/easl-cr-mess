@@ -23,7 +23,7 @@
 	?>
 	<?php if($preloaer_eanbled && $preloaer_image): ?>
 	<div class="loading-animation">
-		<img src="<?php echo esc_url($preloaer_image); ?>" alt="<?php _e('Loading...', 'crt'); ?>"/>
+		<div class="loading-image-con"><img src="<?php echo esc_url($preloaer_image); ?>" alt="<?php _e('Loading...', 'crt'); ?>"/></div>
 	</div>
 	<?php endif; ?>
 	

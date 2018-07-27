@@ -8,15 +8,20 @@
     background: #303030;
     color: $color-white;
 }
-.loading-animation img {
+.loading-image-con {
     position: absolute;
     left: 50%;
     top: 50%;
-    opacity: 0.5;
     transform: translate(-50%,-50%);
-    max-width: 200px;
+    width: 120px;
+}
+.loading-animation img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.5;
     animation-name: preloaderFlash;
-    //animation-delay: .5s;
+    animation-delay: .2s;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
