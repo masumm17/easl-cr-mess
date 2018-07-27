@@ -158,6 +158,15 @@
             padding-top: 400px;
             position: relative;
             z-index: 0;
+            .cr-grid-col-1-of-3 & {
+                padding-top: 85.2%;
+            }
+            .cr-grid-col-2-of-3 & {
+                padding-top: 42.1875%;
+            }
+            .cr-grid-col-full & {
+                padding-top: 28.125%;
+            }
         }
         &-image {
             display: none;
