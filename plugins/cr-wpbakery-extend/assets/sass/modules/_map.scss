@@ -58,6 +58,8 @@
                 flex-direction: row;
                 align-items: stretch;
                 flex-wrap: nowrap;
+                max-height: 176px;
+                overflow: hidden;
             }
         }
         &-image {
@@ -77,15 +79,21 @@
                 display: block;
             }
             p {
-                flex: 1 auto;
                 font-size: 1.1rem;
                 line-height: 1.6em;
                 color: $color-gray-1!important;
                 margin: 0 0 2rem;
+                max-height: 125px;
+                overflow: hidden;
             }
         }
         &-cta-wrap {
             text-align: right;
+            flex: 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
             a.cr-button-bordered {
                 font-size: 1rem;
                 padding: 1.1rem 1.6rem 1rem;
