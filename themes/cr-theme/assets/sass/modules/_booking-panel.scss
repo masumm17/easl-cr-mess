@@ -238,12 +238,15 @@
         font-size: 2.6rem;
         font-weight: 300;
         line-height:1.4em;
+        max-width: 90%;
+        white-space: nowrap;
     }
     &-input {
         &-wrap {
             margin: 0;
             display: inline-block;
             position: relative;
+            max-width: 100%;
         }
         &-keword-select {
             display: none;

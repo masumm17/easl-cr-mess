@@ -25,37 +25,63 @@ $panel_brg_nt = crt_get_theme_mode( 'booking_panel_brg_nt', '');
 $panel_errro_message = crt_get_theme_mode( 'booking_panel_filter_error', '');
 
 
-$panel_kewords = crt_get_theme_mode( 'booking_panel_kewords', '');
-$panel_default_keword = crt_get_theme_mode( 'booking_panel_default_keyword', '');
+$panel_kewords = trim(crt_get_theme_mode( 'booking_panel_kewords', ''));
 $panel_residences_column = crt_get_theme_mode( 'booking_panel_dropdown_cols', '');
 
-$panel_kewords = explode( "\n", trim($panel_kewords) );
+$panel_kewords = json_decode($panel_kewords, true);
 $residences_data = array();
 $residences_data_flat = array();
-foreach($panel_kewords as $pwline){
-	$pwline = trim($pwline);
-	if(!$pwline) {
+$default_keword_args = array(
+	'label' => '',
+	'group' => '',
+	'keyword' => '',
+	'search' => array(),
+	'action' => '',
+	'status' => 'active',
+	'default' => 'no',
+);
+$panel_default_keword = '';
+$form_action = 'https://secure.chevalresidences.com/portal/site/www.chevalresidences.com/index.php';
+foreach($panel_kewords as $kw_item){
+	$kw_item = wp_parse_args($kw_item, $default_keword_args);
+	$kw_item['label'] = trim($kw_item['label']);
+	$kw_item['group'] = trim($kw_item['group']);
+	$kw_item['keyword'] = trim($kw_item['keyword']);
+	$kw_item['action'] = trim($kw_item['action']);
+	$kw_item['status'] = trim($kw_item['status']);
+	
+	if(!$kw_item['label'] || !$kw_item['group'] || !$kw_item['keyword'] || !$kw_item['action']) {
 		continue;
 	}
-	$line_data = explode('::', $pwline);
-	if(!$line_data || count($line_data) < 3) {
+	if($kw_item['status'] == 'hide') {
 		continue;
 	}
-	if(!isset($residences_data[$line_data[0]])){
-		$residences_data[$line_data[0]] = array();
+	if(!is_array($kw_item['search'])) {
+		$kw_item['search'] = array();
 	}
-	$residences_data[$line_data[0]][] = array(
-		'category' => $line_data[0],
-		'value' => $line_data[2],
-		'label' => $line_data[2],
-		'disable' => !empty($line_data[3]) && ($line_data[3] == 'disable') ? true : false,
+	$kw_item['search'] = array_merge($kw_item['search'], array($kw_item['label'], $kw_item['keyword']));
+	if(!isset($residences_data[$kw_item['group']])){
+		$residences_data[$kw_item['group']] = array();
+	}
+	$residences_data[trim($kw_item['group'])][] = array(
+		'category' => $kw_item['group'],
+		'keyword' => $kw_item['keyword'],
+		'search' => $kw_item['search'],
+		'value' => $kw_item['label'],
+		'action' => $kw_item['action'],
+		'disable' => $kw_item['status'] == 'inactive' ? true : false,
 	);
 	$residences_data_flat[] = array(
-		'category' => $line_data[0],
-		'value' => $line_data[2],
-		'label' => $line_data[2],
-		'disable' => !empty($line_data[3]) && ($line_data[3] == 'disable') ? true : false,
+		'category' => $kw_item['group'],
+		'keyword' => $kw_item['keyword'],
+		'search' => $kw_item['search'],
+		'value' => $kw_item['label'],
+		'disable' => $kw_item['status'] == 'inactive' ? true : false,
 	);
+	if($kw_item['default'] == 'yes') {
+		$form_action = $kw_item['action'];
+		$panel_default_keword = $kw_item['label'];
+	}
 }
 
 $panel_residences_column = trim($panel_residences_column);
@@ -94,7 +120,7 @@ if(count($dropdown_columns) == 0) {
 	<a class="booking-panel-close" href="#"></a>
 	<div class="booking-panel-inner">
 		<div class="booking-panel-container">
-			<form class="booking-panel-form" action="" method="post">
+			<form class="booking-panel-form" action="<?php echo esc_url($form_action) ?>" method="post">
 				<?php if($panel_title): ?>
 				<h2 class="booking-panel-title"><?php echo esc_html($panel_title); ?></h2>
 				<?php endif; ?>
@@ -105,14 +131,14 @@ if(count($dropdown_columns) == 0) {
 								<h5 class="booking-panel-label"><?php _e('Choose your residence', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
 									<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
-										<option value="*"><?php _e('-- All Residences --', 'crt') ?></option>
+										<option value="*" data-actionurl="<?php echo esc_url($form_action) ?>"><?php _e('-- All Residences --', 'crt') ?></option>
 										<?php
 										foreach($dropdown_columns as $dd_col):
 											foreach($dd_col as $group_label => $col_group):
 											?>
 											<optgroup label="<?php echo esc_attr($group_label); ?>">
 												<?php foreach($col_group as $group_item): ?>
-												<option value="<?php echo esc_attr($group_item['value']); ?>" <?php selected($group_item['value'], $panel_default_keword) ?>><?php echo esc_html($group_item['label']) ?></option>
+												<option value="<?php echo esc_attr($group_item['keyword']); ?>" <?php selected($group_item['value'], $panel_default_keword) ?> data-actionurl="<?php echo esc_url($group_item['action']); ?>"><?php echo esc_html($group_item['keyword']) ?></option>
 												<?php endforeach;?>
 											</optgroup>
 											<?php endforeach;?>
@@ -131,7 +157,6 @@ if(count($dropdown_columns) == 0) {
 							<div class="booking-panel-col-inner" id="bp-arrival-date">
 								<h5 class="booking-panel-label"><?php _e('Arrival Date', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
-									<input type="text" value="" id="booking-panel-checkin" class="u-hide"/>
 									<span class="booking-panel-value booking-panel-day"><strong></strong><span class="booking-panel-dd-icon"></span></span>
 									<span class="booking-panel-monthyear"></span>
 								</p>
@@ -142,7 +167,6 @@ if(count($dropdown_columns) == 0) {
 							<div class="booking-panel-col-inner bp-date-picker-div2" id="bp-departure-date">
 								<h5 class="booking-panel-label"><?php _e('Departure Date', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
-									<input type="text" value="" id="booking-panel-departure" class="u-hide"/>
 									<span class="booking-panel-value booking-panel-day"><strong></strong><span class="booking-panel-dd-icon"></span></span>
 									<span class="booking-panel-monthyear"></span>
 								</p>
@@ -203,6 +227,7 @@ if(count($dropdown_columns) == 0) {
 								<h5 class="booking-panel-label"><?php _e('Promo Code', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
 									<input name="promotionCode" type="text" value="" id="booking-panel-promo" placeholder="<?php echo _e('Enter promo code', 'crt') ?>" autocomplete="off"/>
+									<input type="hidden" id="promo_preserve_dates" name="promo_preserve_dates" value="1"/>
 								</p>
 							</div>
 						</div>
@@ -218,6 +243,11 @@ if(count($dropdown_columns) == 0) {
 					<?php endif; ?>
 					<div class="booking-panel-col booking-panel-col2 booking-panel-col-button">
 						<div class="booking-panel-col-inner">
+							<input type="hidden" value="" id="booking-panel-day" name="day"/>
+							<input type="hidden" value="" id="booking-panel-ym" name="yearMonth"/>
+							<input type="hidden" value="" id="booking-panel-checkin" name="checkin"/>
+							<input type="hidden" value="" id="booking-panel-nights" name="nights"/>
+							<input type="hidden" value="false" id="booking-panel-multiroom" name="multiRoom"/>
 							<button class="booking-panel-button cr-button"><span cr-button-text><?php _e('Search', 'crt'); ?></span></button>
 						</div>
 					</div>

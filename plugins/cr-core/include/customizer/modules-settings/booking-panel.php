@@ -89,12 +89,6 @@ $wp_customize->add_setting( 'booking_panel_kewords', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
-$wp_customize->add_setting( 'booking_panel_default_keyword', array(
-	'type' => 'theme_mod',
-	'capability' => 'edit_theme_options',
-	'default' => '',
-	'transport' => 'refresh',
-) );
 $wp_customize->add_setting( 'booking_panel_dropdown_cols', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
@@ -177,19 +171,13 @@ $wp_customize->add_control( 'booking_panel_brg_nt', array(
 $wp_customize->add_control( 'booking_panel_kewords', array(
 	'type' => 'textarea',
 	'label' => __( 'Kewords', 'crt' ),
-	'description' => __('Add each keyword on a line in this format: group_name::keyword::label', 'crt'),
+	'description' => __('Add keywords in a JSON format', 'crt'),
 	'section' => 'crt_booking_panel',
 ) );
 $wp_customize->add_control( 'booking_panel_dropdown_cols', array(
 	'type' => 'text',
 	'label' => __( 'Residences Dropdown Columns', 'crt' ),
 	'description' => __('Add columns in this format: group1,group2|group3,group4', 'crt'),
-	'section' => 'crt_booking_panel',
-) );
-$wp_customize->add_control( 'booking_panel_default_keyword', array(
-	'type' => 'text',
-	'label' => __( 'Default Keyword', 'crt' ),
-	'description' => __('Enter default keyword. This wil be prpolated on booking panel.', 'crt'),
 	'section' => 'crt_booking_panel',
 ) );
 

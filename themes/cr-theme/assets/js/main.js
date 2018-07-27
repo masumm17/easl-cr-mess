@@ -1,4 +1,27 @@
 (function($){
+    function crRegexTestArray(regex, search) {
+        for(var i = 0; i < search.length; i++) {
+            if(regex.test(search[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function crDaysBetween( date1, date2 ){
+
+        // The number of milliseconds in one day
+        var ONE_DAY = 1000 * 60 * 60 * 24;
+
+        // Convert both dates to milliseconds
+        var date1_ms = date1.getTime();
+        var date2_ms = date2.getTime();
+
+        // Calculate the difference in milliseconds
+        var difference_ms = Math.abs( date1_ms - date2_ms );
+
+        // Convert back to days and return
+        return Math.round( difference_ms / ONE_DAY );
+    }
     function detectIE() {
         var ua = window.navigator.userAgent;
 
@@ -312,16 +335,23 @@
         },
         bookingPanel: function() {
             
-            var $el = $("#booking-panel"), 
+            var $el = $("#booking-panel"),
+                $form = $('form', $el);
                 $dummy = $("#residences-keyword-dummy", $el),
                 $keywordWrap = $("#booking-panel-residences"),
                 $residence = $("#residences-keyword", $el),
                 $fieldsWrap = $(".booking-panel-fields", $el),
-                $keywordSelect = $("#keyword", $el);
+                $checkout = $("#booking-panel-departure-dummy", $el),
+                $checkin = $("#booking-panel-checkin-dummy", $el), 
+                $fieldDay = $("#booking-panel-day", $el),
+                $fieldYM = $("#booking-panel-ym", $el),
+                $fieldCI = $("#booking-panel-checkin", $el),
+                $fieldNights = $("#booking-panel-nights", $el),
+                $fieldPromo = $("#booking-panel-promo", $el),
+                $fieldKeyword = $("#keyword", $el);
             if(!$el.length || typeof BookingPanelData === "undefined") {
                 return;
             }
-            
             
             $.widget( "custom.bookingpanel", $.ui.autocomplete, {
                 _create: function() {
@@ -350,6 +380,8 @@
                     if(typeof columns.error !== "undefined" && columns.error) {
                         this.errorMessage && $("<li>").addClass("bookig-panel-dd-error").html(this.errorMessage.replace("%search_term%", "<strong>" + this._value() + "</strong>")).appendTo(ul2);
                         ul2.appendTo(ul);
+                        $fieldKeyword.val('*');
+                        $form.addClass("booking-panel-keyword-error");
                     }else{
                         $.each(columns, function(i, column) {
                             self._renderColumn(ul2, column);
@@ -360,6 +392,7 @@
                         }else{
                             this.errorMessage && $("<li>").addClass("bookig-panel-dd-error").html(this.errorMessage).appendTo(ul);
                         }
+                        $form.removeClass("booking-panel-keyword-error");
                     }
                     
                 },
@@ -381,14 +414,14 @@
                 },
                 _renderItem: function(ul, item) {
                     var $li = $("<li>");
-                    if(this.currentResidene === item.label) {
+                    if(this.currentResidene === item.value) {
                         $li.addClass("cr-state-active");
                     }
                     if(item.disable) {
                         $li.addClass("ui-state-disabled");
                     }
                     $li
-                        .html(item.label)
+                        .html(item.value)
                         .addClass("booking-panel-dd-item")
                         .data( "ui-autocomplete-item", item )
                         .appendTo(ul);
@@ -452,29 +485,40 @@
                 },
             });
             
+            function crUpdateCalenderFields() {
+                var d, m, y, n, dpCheckin, dpCheckout;
+                dpCheckin = $checkin.datepicker("getDate");
+                dpCheckout = $checkout.datepicker("getDate");
+                d = dpCheckin.getDate();
+                m = dpCheckin.getMonth() + 1;
+                y = dpCheckin.getFullYear();
+                $fieldDay.val(d);
+                $fieldYM.val(y + '-' + m);
+                $fieldCI.val(y + '-' + m + '-' + d);
+                n = Math.max(1, crDaysBetween(dpCheckin, dpCheckout))
+                $fieldNights.val(n);
+            }
             
-            
-            var $checkout = $("#booking-panel-departure-dummy").datepicker({
+            $checkout.datepicker({
                 dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
                 firstDay: 1,
-                altField: "#booking-panel-departure",
-                altFormat: "dd MM yy",
+                dateFormat: "dd MM yy",
                 minDate: +1,
                 onSelect: function(date, inst){
                     $checkout.removeClass("bp-date-picker-shown");
                     $("#bp-departure-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", new Date(date) ));
                     $("#bp-departure-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", new Date(date) ));
+                    crUpdateCalenderFields();
                 }
             });
             $checkout.datepicker("setDate", 1 );
             $("#bp-departure-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", $checkout.datepicker("getDate") ));
             $("#bp-departure-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkout.datepicker("getDate") ));
             
-            var $checkin = $("#booking-panel-checkin-dummy").datepicker({
+            $checkin.datepicker({
                 dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ],
                 firstDay: 1,
-                altField: "#booking-panel-checkin",
-                altFormat: "dd MM yy",
+                dateFormat: "dd MM yy",
                 minDate: 0,
                 onSelect: function(date, inst){
                     if(date){
@@ -488,8 +532,10 @@
                     }
                     $("#bp-arrival-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", new Date(date) ));
                     $("#bp-arrival-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", new Date(date) ));
+                    crUpdateCalenderFields();
                 }
             });
+            crUpdateCalenderFields();
             //$checkin.datepicker("setDate", 0 );
             $("#bp-arrival-date .booking-panel-day strong").html($.datepicker.formatDate( "dd", $checkin.datepicker("getDate") ));
             $("#bp-arrival-date .booking-panel-monthyear").html($.datepicker.formatDate( "MM yy", $checkin.datepicker("getDate") ));
@@ -536,6 +582,7 @@
                 }else{
                     $keywordWrap.removeClass("cr-booking-no-keyword");
                 }
+                $dummy.html($residence.val());
             }).bookingpanel({
                 minLength: 0,
                 source:BookingPanelData.source,
@@ -550,8 +597,9 @@
                     $(".booking-panel-select-box").removeClass("cr-show-selectbox");
                 },
                 select: function( event, ui ) {
-                    $dummy.html(ui.item.label);
-                    $keywordSelect.val(ui.item.value);
+                    $dummy.html(ui.item.value);
+                    $fieldKeyword.val(ui.item.keyword);
+                    $keywordWrap.removeClass("cr-booking-no-keyword");
                 },
                 source: function( request, response ) {
                     var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
@@ -565,7 +613,7 @@
                                 cgroup = {groupName: groupName, items: items};
                             }else{
                                 $.each(items, function(itemIndex, item) {
-                                    if( matcher.test(item.label) || matcher.test(item.value) ) {
+                                    if( crRegexTestArray(matcher, item.search) ) {
                                         gitems.push(item);
                                     }
                                 });
@@ -586,6 +634,46 @@
             $el.find("#booking-panel-dd-keywords").on("click", function(e) {
                 e.preventDefault();
                 !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
+            });
+            
+            $form.on("submit", function(e) {
+                var keyword = $fieldKeyword.val(), action = $fieldKeyword.find("option:selected").data("actionurl");
+                $form.removeClass("booking-panel-action-error");
+                if($form.hasClass("booking-panel-keyword-error")) {
+                    console.log("No keyword found");
+                    e.preventDefault();
+                    return false;
+                }
+                
+                if(!action) {
+                   $form.addClass("booking-panel-action-error");
+                    e.preventDefault();
+                    return false;
+                }
+                
+                $form.attr( 'action', action);
+                
+                if ( keyword === '*' ) {
+                    $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );
+                }else if ( keyword === 'KNIGHTSBRIDGE' || keyword === 'KENSINGTON' || keyword === 'SLOANE' || keyword === 'CITY' ) {
+                    $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );
+                }
+                if ( 
+                    ( action.match( '/portal/' ) || [ ] ).length === 1 ||
+                    ( action.match( '/sda.php' ) || [ ] ).length === 1 ||
+                    ( action.match( '/mda.php' ) || [ ] ).length === 1 
+                ){
+
+                } else if ( $fieldPromo.val() ) {
+                    $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );
+                    $form.append( '<input type="hidden" name="av" id="av" value="promo" />' );
+                } else
+                {
+                    $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );
+                    $form.append( '<input type="hidden" name="av" id="av" value="search" />' );
+                }
+                window._gaq = window._gaq || [ ];
+                window._gaq.push( [ '_linkByPost', $form.get( 0 ) ] );
             });
             
         },
