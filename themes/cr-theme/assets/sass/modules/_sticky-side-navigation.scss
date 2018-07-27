@@ -7,7 +7,7 @@
     transition: all .75s;
     transition-delay: 1s;
     z-index: 100;
-    @include respond(tab-port) {
+    @include respond(tab-land) {
         display: none;
     }
     .page-loaded & {
