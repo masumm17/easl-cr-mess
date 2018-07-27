@@ -834,10 +834,39 @@
         }
     };
     $(document).ready(function(){
+        var imagesLoaded = false, heroSliderLoaded = false, heroVideoLoaded = false;
+        
+        function crLoadPage() {
+            if(imagesLoaded && heroSliderLoaded && heroVideoLoaded) {
+                CRT.init();
+                CRT.$body.addClass("page-loaded");
+                CRT.hidePreloader();
+            }
+        }
+        if("undefined" === typeof $.fn.revolution){
+            heroSliderLoaded = true;
+            heroVideoLoaded = true;
+        }
+        if($(".cr-rev-slider").length > 0) {
+            $(".cr-rev-slider").one("revolution.slide.onloaded", function(e) {
+                heroSliderLoaded = true;
+                crLoadPage();
+            });
+        }else{
+            heroSliderLoaded = true;
+            heroVideoLoaded = true; 
+        }
+        if($(".cr-background-video-layer").length > 0) {
+            $(".cr-background-video-layer").closest(".cr-rev-slider").one("revolution.slide.onvideoplay", function(e) {
+                heroVideoLoaded = true;
+                crLoadPage();
+            });
+        }else{
+            heroVideoLoaded = true; 
+        }
         $("body").waitForImages(function() {
-            CRT.init();
-            CRT.$body.addClass("page-loaded");
-            CRT.hidePreloader();
+            imagesLoaded = true;
+            crLoadPage();
         });
     });
 })(jQuery);

@@ -58,10 +58,13 @@
 
 @keyframes preloaderFlash {
     0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
         opacity: 0.5;
         transform: scale(.75);
     }
-
     100% {
         opacity: 1;
         transform: scale(1);
