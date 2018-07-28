@@ -834,7 +834,7 @@
         }
     };
     $(document).ready(function(){
-        var imagesLoaded = false, heroSliderLoaded = false, heroVideoLoaded = false;
+        var imagesLoaded = false, heroSliderLoaded = false, heroVideoLoaded = true;
         
         function crLoadPage() {
             if(imagesLoaded && heroSliderLoaded && heroVideoLoaded) {
@@ -856,14 +856,14 @@
             heroSliderLoaded = true;
             heroVideoLoaded = true; 
         }
-        if($(".cr-background-video-layer").length > 0) {
-            $(".cr-background-video-layer").closest(".cr-rev-slider").one("revolution.slide.onvideoplay", function(e) {
-                heroVideoLoaded = true;
-                crLoadPage();
-            });
-        }else{
-            heroVideoLoaded = true; 
-        }
+//        if($(".cr-background-video-layer").length > 0) {
+//            $(".cr-background-video-layer").closest(".cr-rev-slider").one("revolution.slide.onvideoplay", function(e) {
+//                heroVideoLoaded = true;
+//                crLoadPage();
+//            });
+//        }else{
+//            heroVideoLoaded = true; 
+//        }
         $("body").waitForImages(function() {
             imagesLoaded = true;
             crLoadPage();
