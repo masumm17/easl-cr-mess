@@ -37,6 +37,9 @@ body.compensate-for-scrollbar {
 }
 .cr-lightbox {
     &-caption {
+        @include respond(tab-land) {
+            padding: 0 1.5rem;
+        }
         @include respond(tab-port) {
             padding: 0 16px;
             flex: 1 auto;
@@ -55,9 +58,19 @@ body.compensate-for-scrollbar {
             }
         }
         &-ctas {
+            @include respond(tab-land) {
+                li {
+                    margin-right: 1rem;
+                    a {
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                    }
+                }
+            }
             @include respond(tab-port) {
                 display: none;
             }
+            
         }
     }
     &-share {

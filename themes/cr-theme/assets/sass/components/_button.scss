@@ -1,14 +1,9 @@
 .cr-button {
-    &,
-    &:link,
-    &:visited {
-        background-color: $color-base;
-        color: $color-white;
+    &{
         display: inline-block;
         font-size: 1.6rem;
         line-height: 1em;
         font-weight: 300;
-        text-decoration: none;
         text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
@@ -17,11 +12,18 @@
         border: none;
         cursor: pointer;
         z-index: 1;
-        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: base);
         @include respond(tab-port) {
             font-size: 14px;
             padding: 20px 36px;
-        }
+        } 
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-base;
+        color: $color-white;
+        text-decoration: none;
+        @include color-themes($color:$color-white, $bgcolor:true, $border-color:false, $color-type: base);
     }
     &::after {
         display: none!important;
@@ -53,18 +55,12 @@
 }
 
 .cr-button-bordered {
-    &,
-    &:link,
-    &:visited {
-        background-color: transparent;
-        border: 1px solid $color-base;
-        color: $color-base;
+    &{
         display: inline-block;
         display: inline-block;
         font-size: 1.4rem;
         line-height: 1em;
         font-weight: 400;
-        text-decoration: none;
         text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
@@ -72,6 +68,14 @@
         //Change for the <button> element
         cursor: pointer;
         z-index: 1;
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: transparent;
+        border: 1px solid $color-base;
+        color: $color-base;
+        text-decoration: none;
         @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: base);
     }
     
@@ -104,17 +108,12 @@
     }
 }
 .cr-button-secondary {
-    &,
-    &:link,
-    &:visited {
-        background-color: $color-base-secondary;
-        color: $color-white;
+    & {
         display: inline-block;
         display: inline-block;
         font-size: 1.4rem;
         line-height: 1em;
         font-weight: 400;
-        text-decoration: none;
         text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
@@ -123,6 +122,13 @@
         border: none;
         cursor: pointer;
         z-index: 1;
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-base-secondary;
+        color: $color-white;
+        text-decoration: none;
         @include color-themes($color:$color-white, $bgcolor:true, $color-type: secondary);
     }
     &::after {
@@ -156,18 +162,12 @@
 }
 
 .cr-button-secondary-bordered {
-    &,
-    &:link,
-    &:visited {
-        background-color: transparent;
-        border: 1px solid $color-base-secondary;
-        color: $color-base-secondary;
+    & {
         display: inline-block;
         display: inline-block;
         font-size: 1.4rem;
         line-height: 1rem;
         font-weight: 400;
-        text-decoration: none;
         text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
@@ -175,6 +175,14 @@
         //Change for the <button> element
         cursor: pointer;
         z-index: 1;
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: transparent;
+        border: 1px solid $color-base-secondary;
+        color: $color-base-secondary;
+        text-decoration: none;
         @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: secondary);
     }
     
@@ -208,18 +216,13 @@
 }
 
 .cr-button-tertiary {
-    &,
-    &:link,
-    &:visited {
-        background-color: $color-base-tertiary;
-        color: $color-white;
+    & {
         display: inline-block;
         display: inline-block;
         font-size: 1.4rem;
         line-height: 1em;
         font-weight: 400;
         text-decoration: none;
-        text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
 
@@ -227,6 +230,13 @@
         border: none;
         cursor: pointer;
         z-index: 1;
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: $color-base-tertiary;
+        color: $color-white;
+        text-decoration: none;
         @include color-themes($color:$color-white, $bgcolor:true, $color-type: tertiary);
     }
     &::after {
@@ -260,18 +270,12 @@
 }
 
 .cr-button-tertiary-bordered {
-    &,
-    &:link,
-    &:visited {
-        background-color: transparent;
-        border: 1px solid $color-base-tertiary;
-        color: $color-base-tertiary;
+    & {
         display: inline-block;
         display: inline-block;
         font-size: 1.4rem;
         line-height: 1rem;
         font-weight: 400;
-        text-decoration: none;
         text-transform: uppercase;
         padding: 2rem 3.6rem;
         position: relative;
@@ -279,6 +283,14 @@
         //Change for the <button> element
         cursor: pointer;
         z-index: 1;
+    }
+    &,
+    &:link,
+    &:visited {
+        background-color: transparent;
+        border: 1px solid $color-base-tertiary;
+        color: $color-base-tertiary;
+        text-decoration: none;
         @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: tertiary);
     }
     

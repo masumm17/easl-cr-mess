@@ -175,12 +175,10 @@
                 display: inline-block;
                 margin-right: 1.5rem;
                 a {
-                    &, &:link, &:visited {
-                        padding: 0 3.6rem;
-                        height: 4.5rem;
-                        line-height: 4.3rem;
-                        white-space: nowrap;
-                    }
+                    padding: 0 3.6rem;
+                    height: 4.5rem;
+                    line-height: 4.3rem;
+                    white-space: nowrap;
                         
                     &:hover, &:active {
                         text-decoration: none;
