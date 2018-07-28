@@ -10,7 +10,11 @@
             height: calc((80vh - 100px))!important;
         }
         @include respond(tab-port) {
-            height: calc((85vh - 100px))!important;
+            height: calc((100vh - 130px))!important;
+            max-height: 420px;
+            width: auto!important;
+            margin-left: 20px;
+            margin-right: 20px;
         }
         iframe {
         }
