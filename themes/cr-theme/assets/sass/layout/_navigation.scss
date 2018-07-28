@@ -50,9 +50,17 @@
                     transition: opacity 0.3s, transform 0.3s;
                     transform: translateY(0);
                     @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
-                    }
                 }
             }
+        }
+        &.cr-portal-menu-item > a{
+            &, &:link, &:visited {
+                color: $color-base!important;
+            }
+            > span::after {
+                background-color: $color-base-secondary!important;
+            }
+        }
         &:hover > a {
             > span::after {
                 opacity: 1;
