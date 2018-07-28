@@ -17,11 +17,13 @@
 
 
 .cr-scroll-down {
+    background-color: rgba($color-black, .68);
+    border-radius: 12px;
     position: absolute;
     bottom: 2rem;
     left: 50%;
-    width: 3.5rem;
-    height: 6.6rem;
+    width: 5.4rem;
+    height: 8.8rem;
     z-index: 100;
     cursor: pointer;
     transform: translateX(-50%);
@@ -30,12 +32,10 @@
     }
     > span {
         position: absolute;
-        top: 0;
+        top: 1rem;
         left: 50%;
         width: 24px;
         height: 24px;
-        top: 0;
-        left: 50%;
         margin-left: -12px;
         animation: scrolDownAnim 2s infinite;
         transform: rotate(-45deg);
@@ -53,29 +53,15 @@
             box-sizing: border-box;
             z-index: 2;
         }
-        &:after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -1px;
-            width: 25px;
-            height: 25px;
-            border-left: 6px solid #000;
-            border-bottom: 6px solid #000;
-            filter: blur(3px);
-            box-sizing: border-box;
-            z-index: 1;
-            opacity: .4;
-        }
         &:nth-of-type(1) {
             animation-delay: 0s;
         }
         &:nth-of-type(2) {
-            top: 1.6rem;
+            top: 2.6rem;
             animation-delay: .15s;
         }
         &:nth-of-type(3) {
-            top: 3.2rem;
+            top: 4.2rem;
             animation-delay: .3s;
         }
     }

@@ -1,4 +1,8 @@
-
+@include respond(tab-land) {
+    .cr-scroll-down {
+        bottom: 60px;
+    }
+}
 .hero-slider-caption {
     
     @include respond(phone) {
