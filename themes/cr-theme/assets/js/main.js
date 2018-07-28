@@ -275,7 +275,7 @@
             return false;
         },
         isTab: function() {
-            if(this.vp.width <= 1200 && this.vp.width > 600) {
+            if(this.vp.width <= 1365 && this.vp.width > 600) {
                 return true;
             }
             return false;
