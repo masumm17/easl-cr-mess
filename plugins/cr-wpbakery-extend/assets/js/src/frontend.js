@@ -594,25 +594,14 @@ if (!String.prototype.padStart) {
             if("undefined" === typeof $.fn.masonry){
                 return;
             }
-            $('.cr-gallery-isotope').each(function() {
-                var $gallery = $(this);
-                $gallery.waitForImages(function(){
-                    $gallery.on("layoutComplete", function(e) {
-                        $(".cr-gallery-item", $(this)).waypoint(function() {
-                            $(this).addClass("cr_start_animation");
-                        }, {
-                                offset: '96%',
-                                triggerOnce: true
-                        });
-                    }).masonry({
-                        columnWidth: ".cr-gallery-item",
-                        percentPosition: true,
-                        itemSelector: ".cr-gallery-item",
-                        //horizontalOrder: true,
-                        resize: true
-                    });
-                });
-                    
+            $(".cr-gallery-isotope").each(function() {
+                $(this).masonry({
+                    columnWidth: ".cr-gallery-item",
+                    percentPosition: true,
+                    itemSelector: ".cr-gallery-item",
+                    //horizontalOrder: true,
+                    resize: true
+                });  
             });
         },
         accommodationFilter: function() {

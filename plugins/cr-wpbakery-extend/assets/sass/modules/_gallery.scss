@@ -15,15 +15,6 @@
         padding: 0 8px;
         margin-bottom: 15px;
         
-        opacity: 0;
-        transform: translateY(10rem);
-        transition: all .75s;
-        
-        .page-loaded &.cr_start_animation {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
         &-inner {
             position: relative;
             z-index: 1;
