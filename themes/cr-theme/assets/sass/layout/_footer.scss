@@ -302,6 +302,7 @@
         @each $theme-name, $theme-color in $themes-map-secondary {
             .theme-#{$theme-name} & {
                 color: $color-white;
+                background: transparent;
                 border-color: $theme-color;
             }
         }
