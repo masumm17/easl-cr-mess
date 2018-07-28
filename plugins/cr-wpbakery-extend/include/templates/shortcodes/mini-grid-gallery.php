@@ -24,8 +24,12 @@ $column2_image = preg_replace( '/[^\d]/', '', $column2_image );
 
 
 $col2_blur = !empty($col2_blur) ? $col2_blur . 'px': false; 
+
+$column2_image_src = wp_get_attachment_image_src( $column2_image, 'fw1-2_col1-3_x' );
 $column2_image_attributes = array(
 	'class' => 'mini-gallery-col2-image',
+	'srcset' => $column2_image_src[0] .' 640w', 
+	'sizes' => '100vw',
 );
 if($col2_blur) {
 	$column2_image_attributes['style'] = "-webkit-filter: blur({$col2_blur});filter: blur({$col2_blur});";
@@ -113,7 +117,7 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 						</a>
 						<?php endforeach; ?>
 					</div>
-					<div class="mini-gallery-slider-mobile-sizer"></div>
+					<div class="mini-gallery-grid-sizer"></div>
 					<?php if($slider_pagination == 'yes'): ?>
 					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crvc_extension') ?> <span class="mg-all"><?php echo count($column1_images); ?></span></div>
 					<?php endif;?>
@@ -139,9 +143,8 @@ CR_VcE_Sc_Mini_Grid_Gallery::$count_instance++;
 							<img alt="" src="<?php echo esc_url($img_data['src']); ?>"/>
 						</a>
 						<?php endforeach; ?>
-						<div class="mini-gallery-slider-mobile-sizer"></div>
 					</div>
-					<div class="mini-gallery-slider-mobile-sizer"></div>
+					<div class="mini-gallery-grid-sizer"></div>
 					<div class="mini-gallery-slider-pagination cr-hide"><span class="mg-current"></span> <?php _e('of', 'crvc_extension') ?> <span class="mg-all"><?php echo count($column3_images); ?></span></div>
 				</div>
 			</div>

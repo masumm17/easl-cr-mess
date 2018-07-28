@@ -204,6 +204,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
         &:not(&-noimage) &-text {
             position: absolute;

@@ -384,7 +384,6 @@ if (!String.prototype.padStart) {
         },
         miniGridGallery: function() {
             var o = this;
-            o.Storage.MiniGridGalleries = {};
             $(".mini-gallery-slider").each(function(){
                 var $gallery = $(this),
                     $pagination = $gallery.siblings(".mini-gallery-slider-pagination"),
@@ -427,12 +426,28 @@ if (!String.prototype.padStart) {
                         };
                     }
                     imageSlider = new mcImgSlider(options);
-                    o.Storage.MiniGridGalleries[galleryId] = imageSlider;
+                    $gallery.data("slider", imageSlider);
                     if(galleryPagination === "yes" && $pagination.length){
                         $current.html(1);
                         $pagination.removeClass("cr-hide");
                     }
                 }
+            });
+            this.miniGalleryGridResize();
+        },
+        miniGalleryGridResize: function() {
+            $(".mini-gallery-slider").each(function(){
+                var $slider = $(this),
+                    $container = $slider.closest(".mini-gallery-slider-wrapper"),
+                    conWidth = $container.outerWidth(),
+                    scale = conWidth / 640,
+                    left = (conWidth - 640) / 2,
+                    top = (conWidth * .84375 - 540) / 2;
+                   $slider.css({
+                       "transform": "scale(" + scale + ")",
+                       "top": top + "px",
+                       "left": left + "px"
+                   });
             });
         },
         lightbox: function() {
@@ -574,14 +589,6 @@ if (!String.prototype.padStart) {
                     $nextButton.find("span").css("background-image", "url('" + nextImgSrc + "')");
                 }
             });
-        },
-        miniGalleryGridResize: function() {
-            if (typeof this.Storage.MiniGridGalleries === 'undefined'){
-                return;
-            }
-            for(var sliderID in ChevRes.Storage.MiniGridGalleries) {
-                ChevRes.Storage.MiniGridGalleries[sliderID].reload();
-            }
         },
         gallery: function() {
             if("undefined" === typeof $.fn.masonry){

@@ -27,6 +27,9 @@
                 font-size: 20px;
                 margin-bottom: 0!important;
             }
+            &-noimage &-title {
+                margin-bottom: 1.5rem!important;
+            }
             &-subtitle {
                 font-size: 16px;
                 margin-bottom: 1.5rem!important;
@@ -57,7 +60,7 @@
                 font-size: 16px;
             }
             &-sizer {
-                padding-top: 420px;
+                padding-top: 420px!important;
             }
         } 
     }
@@ -67,7 +70,14 @@
     .fw-grid {
         &-item {
             &-sizer {
-                padding-top: 104%;
+                padding-top: 104%!important;
+            }
+            &-noimage &-sizer {
+                display: none;
+            }
+            &-noimage &-text {
+                position: relative;
+                min-height: 356px;
             }
         } 
     }
