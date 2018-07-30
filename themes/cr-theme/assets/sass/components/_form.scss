@@ -33,6 +33,17 @@ textarea::placeholder {
     color: lighten($color-gray-1, 25%);
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="num"],
+input[type="search"]{
+    &::-ms-clear {
+        display: none;
+    }
+}
 input[type="submit"], form button {
     background-color: $color-base;
     color: $color-white;

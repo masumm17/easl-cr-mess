@@ -13,6 +13,8 @@
     visibility: hidden;
     z-index: -10;
     transition: all .75s;
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
     &-shown & {
         opacity: 1;
         visibility: visible;

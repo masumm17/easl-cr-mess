@@ -49,6 +49,8 @@
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;
                     transform: translateY(0);
+                    -webkit-transform-style: preserve-3d;
+                    -webkit-backface-visibility: hidden;
                     @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                 }
             }
@@ -143,8 +145,8 @@
                         top: 2rem;
                         transform: translate(-50%, 0);
                         .cr-ie11 & {
-                            top: 3rem;
-                            transform: translate(-50%, -50%);
+                            top: 1%;
+                            transform: translate(-50%, 16px);
                         }
                     }
                 }
@@ -295,6 +297,9 @@
                     opacity: 0;
                     transition: opacity 0.3s, transform 0.3s;
                     transform: translateY(0);
+                    
+                    -webkit-transform-style: preserve-3d;
+                    -webkit-backface-visibility: hidden;
                     @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: secondary);
                     }
                 }
