@@ -81,6 +81,13 @@
                 border-bottom: 1px solid #cbcbcb;
             }
         }
+        .booking-panel-kw-wraper {
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
         #residences-keyword {
             position: absolute;
             left: 0;
@@ -566,12 +573,12 @@
             }
             .ui-datepicker-prev {
                 background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-left-arrow.svg');
-                @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg");
+                //@include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg");
                 left: 4rem;
             }
             .ui-datepicker-next {
                 background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-right-arrow.svg');
-                @include bgimage-themes("booking-panel/inner-panel/calendar-right-arrow.svg");
+                //@include bgimage-themes("booking-panel/inner-panel/calendar-right-arrow.svg");
                 right: 4rem;
             }
             

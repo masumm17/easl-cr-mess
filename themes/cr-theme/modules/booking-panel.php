@@ -129,25 +129,27 @@ if(count($dropdown_columns) == 0) {
 						<div id="booking-panel-residences" class="booking-panel-col booking-panel-col1 cr-has-bg">
 							<div class="booking-panel-col-inner">
 								<h5 class="booking-panel-label"><?php _e('Choose your residence', 'crt') ?></h5>
-								<p class="booking-panel-input-wrap">
-									<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
-										<option value="*" data-actionurl="<?php echo esc_url($form_action) ?>"><?php _e('-- All Residences --', 'crt') ?></option>
-										<?php
-										foreach($dropdown_columns as $dd_col):
-											foreach($dd_col as $group_label => $col_group):
-											?>
-											<optgroup label="<?php echo esc_attr($group_label); ?>">
-												<?php foreach($col_group as $group_item): ?>
-												<option value="<?php echo esc_attr($group_item['keyword']); ?>" <?php selected($group_item['value'], $panel_default_keword) ?> data-actionurl="<?php echo esc_url($group_item['action']); ?>"><?php echo esc_html($group_item['keyword']) ?></option>
+								<div class="booking-panel-kw-wraper">
+									<p class="booking-panel-input-wrap">
+										<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
+											<option value="*" data-actionurl="<?php echo esc_url($form_action) ?>"><?php _e('-- All Residences --', 'crt') ?></option>
+											<?php
+											foreach($dropdown_columns as $dd_col):
+												foreach($dd_col as $group_label => $col_group):
+												?>
+												<optgroup label="<?php echo esc_attr($group_label); ?>">
+													<?php foreach($col_group as $group_item): ?>
+													<option value="<?php echo esc_attr($group_item['keyword']); ?>" <?php selected($group_item['value'], $panel_default_keword) ?> data-actionurl="<?php echo esc_url($group_item['action']); ?>"><?php echo esc_html($group_item['keyword']) ?></option>
+													<?php endforeach;?>
+												</optgroup>
 												<?php endforeach;?>
-											</optgroup>
 											<?php endforeach;?>
-										<?php endforeach;?>
-									</select>
-									<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_keword)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
-									<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_keword)); ?></span>
-									<span id="booking-panel-dd-keywords" class="booking-panel-dd-icon"></span>
-								</p>
+										</select>
+										<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_keword)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
+										<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_keword)); ?></span>
+										<span id="booking-panel-dd-keywords" class="booking-panel-dd-icon"></span>
+									</p>
+								</div>
 								<div class="booking-panel-dd-position"></div>
 							</div>
 						</div>

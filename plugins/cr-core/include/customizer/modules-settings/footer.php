@@ -49,6 +49,12 @@ $wp_customize->add_setting( 'footer_website', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
+$wp_customize->add_setting( 'footer_website_url', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
 $wp_customize->add_setting( 'footer_website_nt', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
@@ -112,13 +118,20 @@ $wp_customize->add_control( 'footer_email', array(
 ) );
 $wp_customize->add_control( 'footer_website', array(
 	'type' => 'text',
-	'label' => __( 'website', 'crt' ),
+	'label' => __( 'Website Title', 'crt' ),
 	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_website_url', array(
+	'type' => 'text',
+	'label' => __( 'Website URL', 'crt' ),
+	'section' => 'crt_footer',
+	'description' => __('Please leave empty to use home page url.', 'crt'),
 ) );
 $wp_customize->add_control( 'footer_website_nt', array(
 	'type' => 'checkbox',
 	'label' => __( 'Open website in new tab', 'crt' ),
 	'section' => 'crt_footer',
+	'description' => __('If Website URL is empty it will have no effect.', 'crt'),
 ) );
 $wp_customize->add_control( 'footer_reservation', array(
 	'type' => 'text',

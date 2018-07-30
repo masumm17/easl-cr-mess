@@ -50,6 +50,15 @@
         background-image: linear-gradient(to top, rgba($color-black, 1) 10%, transparent 50%);
         font-size: 1.2rem;
         line-height: 1.6rem;
+    }
+    &-cols {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @include respond(tab-port) {
+            width: 300px;
+            margin: 0 auto;
+        }
         
         a {
             position: relative;
@@ -67,15 +76,6 @@
             @include respond(tab-port) {
                 text-transform: none;
             }
-        }
-    }
-    &-cols {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        @include respond(tab-port) {
-            width: 300px;
-            margin: 0 auto;
         }
     }
     
