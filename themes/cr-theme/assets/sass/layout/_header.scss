@@ -125,6 +125,7 @@
         overflow: hidden;
         span {
             display: inline-block;
+            white-space: nowrap;
             transform: translateY(100%);
             transition: all .5s;
             .page-loaded & {

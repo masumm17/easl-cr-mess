@@ -56,9 +56,6 @@
         }
     }
     &-item {
-        @include respond(tab-port) {
-            width: 100%;
-        }
         width: 20%;
         position: relative;
         margin: 0;
@@ -88,6 +85,9 @@
             &-custom {
                 width: 33.3334%;
             }
+        }
+        @include respond(tab-port) {
+            width: 100%;
         }
         &:not(.cr-instagram-feed-item-custom) &-inner{
             &::after {

@@ -272,7 +272,7 @@
             content: "";
             width: 2rem;
             height: 2rem;
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
             position: absolute;
@@ -508,7 +508,7 @@
     left: 0;
     right: 0;
     height: 0px;
-    bottom: 0px;
+    bottom: 10px;
     visibility: hidden;
     opacity: 0;
     transform: translateY(8rem);
@@ -529,7 +529,7 @@
         border: 0 none;
         border-radius: 0;
         margin: 0;
-        padding: 0 2rem 2.8rem;
+        padding: 0 0 2.8rem;
         .bp-color-white & {
             background: $color-white;
         }
@@ -545,12 +545,10 @@
             font-weight: 400;
             position: relative;
             margin: 0 0 1.8rem;
-            .bp-color-white & {
-                color: $color-gray-1;
-            }
-            .bp-color-black & {
-                color: #c8c8c8;
-            }
+            padding: 5px 0;
+            background-color: $color-base;
+            color: $color-white;
+            @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: base);
             .ui-datepicker-prev, .ui-datepicker-next  {
                 display: inline-block;
                 width: 1rem;
@@ -568,18 +566,19 @@
             }
             .ui-datepicker-prev {
                 background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-left-arrow.svg');
-            @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg");
-                left: 2rem;
+                @include bgimage-themes("booking-panel/inner-panel/calendar-left-arrow.svg");
+                left: 4rem;
             }
             .ui-datepicker-next {
                 background-image: url('../images/theme-base/booking-panel/inner-panel/calendar-right-arrow.svg');
-            @include bgimage-themes("booking-panel/inner-panel/calendar-right-arrow.svg");
-                right: 2rem;
+                @include bgimage-themes("booking-panel/inner-panel/calendar-right-arrow.svg");
+                right: 4rem;
             }
             
         }
         table {
-            margin: 0;
+            margin: 0 20px;
+            width: calc(100% - 40px);
             th, td {
                 font-weight: 400;
                 font-size: 1.4rem;

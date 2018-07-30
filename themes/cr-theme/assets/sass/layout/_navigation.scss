@@ -56,6 +56,10 @@
             }
         }
         &.cr-portal-menu-item > a{
+            & {
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
             &, &:link, &:visited {
                 color: $color-base!important;
             }

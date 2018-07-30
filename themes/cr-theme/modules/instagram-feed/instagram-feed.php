@@ -27,6 +27,11 @@ $has_feed = (false !== $cached_feeds) && count($cached_feeds) >= $number;
 if(!$has_feed) {
 	delete_transient('cr_instagram_feed');
 }
+if(isset($_GET['cr_clear_instafeed'])) {
+	$has_feed = false;
+	$cached_feeds = false;
+	delete_transient('cr_instagram_feed');
+}
 
 if($secret_key):
 	$cc_enabled = $cc_enabled && ($cc_text ||  $cc_link_title);
