@@ -198,7 +198,7 @@ if (!String.prototype.padStart) {
                         scrollTop: $filter.offset().top + $filter.outerHeight() - 70
                     }, 750, 'linear');
                 }
-            $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options");
+            $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options"), $(".accommodations-filter", ob.$el).not($filter).removeClass("show-options");
         });
         $(".accommodations-filter-options li", this.$el).on("click", function(e) {
             var $li = $(this), 
