@@ -251,17 +251,15 @@
     }
     &-custom-text {
         padding: 2rem 5rem;
-        @include respond(tab-port) {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
         p {
            color: $color-white;
            margin: 0 0 2rem;
@@ -281,11 +279,13 @@
         }
     }
     &-grid-sizer {
-        display: none;
+        padding-top: 50%;
+        width: 100%;
+        height: 0;
         position: relative;
         z-index: 0;
         @include respond(tab-port) {
-            display: block;
+            padding-top: 0;
             height: 420px;
             max-height: calc((100vh - 110px));
         }
