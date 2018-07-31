@@ -26,6 +26,16 @@
         @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
     }
 }
+.cr-rev-slider .hades .tp-bullet {
+    width: 16px;
+    height: 16px;
+    border: 0 none;
+    background: #fff;
+    &:hover, &.selected {
+        background: $color-base;
+        @include color-themes($color:false, $border-color: false, $bgcolor:true, $color-type: base);
+    }
+}
 /*.hero-slider-scroll-down {
     background-image: url('../images/theme-base/page-scroll-down-arrow/page-scroll-down-arrow.svg');
     @include bgimage-themes("page-scroll-down-arrow/page-scroll-down-arrow.svg");

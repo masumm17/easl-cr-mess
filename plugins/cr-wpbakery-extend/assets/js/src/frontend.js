@@ -352,11 +352,31 @@ if (!String.prototype.padStart) {
                 delay = delay || 4000;
                 $slider.closest('.wpb_row').addClass('cr-row-has-hero-slider');
                 $slider.show().revolution({
-                    //delay: delay,
+                    delay: delay,
                     //debugMode: true,
                     sliderLayout: "fullscreen",
                     lazyType: "smart",
-                    spinner: "spinner2"
+                    spinner: "spinner2",
+                    navigation: {
+                        arrows: {
+                            enable: true,
+                            style: 'uranus',
+                            hide_over: 1365,
+                            hide_onleave: false
+                        },
+                        bullets: {
+                            enable: true,
+                            style: 'hades',
+                            h_align: "left",
+                            v_align: "bottom",
+                            h_offset: 40,
+                            v_offset: 40,
+                            space: 10,
+                            hide_under: 1366,
+                            hide_onleave: false,
+                            tmp: '<span class="tp-bullet-image"></span>'
+                        }
+                    }
                 });
             });
         },
