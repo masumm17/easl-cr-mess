@@ -14,7 +14,7 @@ if(!$url) {
 
 ?>
 
-<li class="accommodations-item cr-animate-when-visible">
+<li class="accommodations-item cr-animate-when-visible" onClick="return true">
 	<a class="accommodations-item-inner" href="<?php esc_url($url); ?>">
 		<div class="accommodations-item-text">
 			<h3 class="accommodations-item-title"><?php echo cr_vce_truncate( get_the_title(), 80); ?></h3>

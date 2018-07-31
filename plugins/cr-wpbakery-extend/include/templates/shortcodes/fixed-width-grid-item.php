@@ -63,7 +63,7 @@ if($img_full) {
 		$read_more_truncate = ' <a class="fxw-grid-item-readmore" '. $cta_button_attributes .'>'. __('...read more', 'crvc_extension') .'</a>';
 	}
 	?> 
-	<div class="fxw-grid-item <?php if($overlay_trans_disable != 'yes'){echo 'cr-has-overlay';} ?>">
+	<div class="fxw-grid-item <?php if($overlay_trans_disable != 'yes'){echo 'cr-has-overlay';} ?>" onClick="return true">
 		<div class="fxw-grid-item-inner">
 			<div class="fxw-grid-item-text">
 				<div class="fxw-grid-item-text-inner">

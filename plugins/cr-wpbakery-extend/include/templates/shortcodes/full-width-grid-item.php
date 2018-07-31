@@ -230,7 +230,7 @@ CR_VcE_Sc_Full_Width_Grid::$items_data[] = $atts;
 
 
 ?> 
-<div class="fw-grid-item cr-grid-col cr-animate-when-visible <?php echo $css_class; ?>">
+<div class="fw-grid-item cr-grid-col cr-animate-when-visible <?php echo $css_class; ?>" onClick="return true">
 	<div class="fw-grid-item-inner cr-grid-col-inner <?php echo $css_inner_class; ?>" <?php if('no_image' != $display_option){ ?>style="background-image: url('<?php echo esc_url($img_full_src[0]); ?>');" <?php } ?>>
 		<?php if($display_option == 'no_image'):?> 
 		<div class="fw-grid-item-borders">

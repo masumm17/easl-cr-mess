@@ -44,7 +44,7 @@ if($thumb_image_src) {
 	CR_VcE_Sc_Gallery::$items_count++;
 	CR_VcE_Sc_Gallery::$items_data[] = $atts;
 	?> 
-	<div class="cr-gallery-item cr-has-overlay cr-animate-when-visible">
+	<div class="cr-gallery-item cr-has-overlay cr-animate-when-visible" onClick="return true">
 		<div class="cr-gallery-item-inner">
 			<div class="cr-gallery-item-text">
 				<h3 class="cr-gallery-item-title"><?php echo cr_vce_truncate($overlay_title, 60); ?></h3>
