@@ -253,6 +253,11 @@
             if(!scroll) {
                 this.vp.width = $(window).width();
                 this.vp.height = $(window).height();
+                if(this.vp.height < 768) {
+                    this.$body.addClass("vp-lt-768");
+                }else{
+                    this.$body.removeClass("vp-lt-768");
+                }
             }
             this.vp.scrollTop = $(window).scrollTop();
         },
@@ -728,7 +733,6 @@
             if( $("html").hasClass("touchevents") ) {
                 clickEvent = "touchstart";
             }
-            console.log(clickEvent);
             $(window).scroll($.proxy(this.scrollEvents, this));
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();
@@ -815,7 +819,6 @@
             });
         },
         init: function() {
-            this.setViewPort();
             this.$body = $("body");
             this.$wrap = $("#cr-wrap");
             this.$menu = $("#menu-header-primary");
@@ -824,6 +827,7 @@
             if(this.isIE()) {
                 this.$body.addClass("cr-ie " + "cr-ie" + this.ieVersion());
             }
+            this.setViewPort();
             this.mobileMenu();
             this.setMenuProp();
             this.resizeFooter();

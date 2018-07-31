@@ -22,6 +22,12 @@ if(!$url) {
 			<h4 class="accommodations-item-subtitle"><?php echo cr_vce_truncate($subtitle, 80); ?></h4>
 			<?php endif; ?>
 		</div>
-		<?php if(has_post_thumbnail()) {the_post_thumbnail('fw2-3_col1-3_x', array('class' => 'accommodations-item-image'));} ?>
+		<?php 
+		if(has_post_thumbnail()) :
+			$item_thumb_src = get_the_post_thumbnail_url(get_the_ID(), 'fw2-3_col1-3_x');
+			?>
+			<div class="accommodations-item-imagebg" style="background-image: url('<?php echo esc_url($item_thumb_src); ?>');"></div>
+			<?php the_post_thumbnail('fw2-3_col1-3_x', array('class' => 'accommodations-item-image')); ?>
+		<?php endif; ?>
 	</a>
 </li>

@@ -141,6 +141,9 @@
     }
     &-fields {
         margin-bottom: 4.8rem;
+        .vp-lt-768 & {
+            margin-bottom: 0;
+        }
     }
     &-row {
         display: flex;
@@ -185,6 +188,9 @@
         padding: 3rem 2rem;
         text-align: center;
         justify-content: flex-start;
+        .vp-lt-768 & {
+            padding: 2rem 2rem;
+        }
     }
     
     &-row-acp &-col{
