@@ -155,6 +155,11 @@
             line-height: 1.4em;
             margin: 0 0 1.2rem;
         }
+        &-readmore {
+            &, &:link, &:visited {
+                color: $color-base-secondary;
+            }
+        }
         &-cta {
         }
     } 

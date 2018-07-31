@@ -58,6 +58,10 @@ if($img_full) {
 	}else{
 		$cta_button_attributes = '';
 	}
+	$read_more_truncate = '';
+	if($cta_button_attributes) {
+		$read_more_truncate = ' <a class="fxw-grid-item-readmore" '. $cta_button_attributes .'>'. __('...read more', 'crvc_extension') .'</a>';
+	}
 	?> 
 	<div class="fxw-grid-item <?php if($overlay_trans_disable != 'yes'){echo 'cr-has-overlay';} ?>">
 		<div class="fxw-grid-item-inner">
@@ -70,7 +74,7 @@ if($img_full) {
 						<?php endif; ?>
 					</div>
 					<div class="fxw-grid-item-text-bottom">
-						<p><?php echo cr_vce_truncate($content, 186); ?></p>
+						<p><?php echo cr_vce_truncate($content, 186, $read_more_truncate); ?></p>
 						<?php if($cta_button_attributes): ?>
 						<a class="fxw-grid-item-cta cr-button-tertiary-bordered" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 						<?php endif; ?>

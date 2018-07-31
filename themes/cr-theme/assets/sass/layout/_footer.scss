@@ -59,24 +59,6 @@
             width: 300px;
             margin: 0 auto;
         }
-        
-        a {
-            position: relative;
-            font-size: 1.2rem;
-            line-height: 1em;
-            text-transform: uppercase;
-            padding: 3px 0;
-            display: inline-block;
-            position: relative;
-            &:link, &:visited {
-                color: $color-white!important;
-                text-decoration: none;
-            }
-            
-            @include respond(tab-port) {
-                text-transform: none;
-            }
-        }
     }
     
     &-col {
@@ -251,7 +233,24 @@
             display: none;
         }
     }
+    
+    &-left a, &-right a {
+        position: relative;
+        font-size: 1.2rem;
+        line-height: 1em;
+        text-transform: uppercase;
+        padding: 3px 0;
+        display: inline-block;
+        position: relative;
+        &:link, &:visited {
+            color: $color-white!important;
+            text-decoration: none;
+        }
 
+        @include respond(tab-port) {
+            text-transform: none;
+        }
+    }
     &-newsletter {
 
         @include respond(tab-port) {

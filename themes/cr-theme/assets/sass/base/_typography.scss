@@ -56,22 +56,7 @@ h1, h2, h3, h4, h5 {
     @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
 }
 
-a {
-    &, &:link, &:visited {
-        color: $color-base;
-        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
-    }
-    &:hover, &:active {
-        .no-touchevents & {
-            color: $color-base;
-            text-decoration: none;
-        }
-        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base, $prefix: '.no-touchevents');
-    }
-    &:focus {
-        outline: 0 none;
-    }
-}
+
 .cr-scc-text a {
     display: inline-block;
     position: relative;

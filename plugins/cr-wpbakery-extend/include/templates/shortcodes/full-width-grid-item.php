@@ -103,18 +103,7 @@ $html_image = $html_title = $html_subtitle = $html_description = $html_cta = $ht
 if($img_full_src) {
 	$html_image = $img_full;
 }
-if('no_image' != $display_option && $html_image){
-	$html_image = '<div class="fw-grid-item-sizer"></div>' . $html_image;
-}
-if($title) {
-	$html_title = '<h3 class="fw-grid-item-title">'. cr_vce_truncate($title, 52) .'</h3>';
-}
-if($subtitle) {
-	$html_subtitle = '<h4 class="fw-grid-item-subtitle">'. cr_vce_truncate($subtitle, 52) .'</h4>';
-}
-if($content){
-	$html_description = '<p>' . cr_vce_truncate($content, 186) . '</p>';
-}
+
 
 $cta_button_attributes = array();
 if ( ! empty( $cta_button['url'] ) ) {
@@ -131,8 +120,22 @@ if(count($cta_button_attributes) > 0){
 }else{
 	$cta_button_attributes = '';
 }
+$read_more_truncate = '';
 if($cta_button_attributes) {
 	$html_cta = '<a class="fw-grid-item-cta '. $cta_class .'" '. $cta_button_attributes . '><span>' . esc_html($cta_button['title']) . '</span></a>';
+	$read_more_truncate = ' <a class="fw-grid-item-readmore" '. $cta_button_attributes .'>'. __('...read more', 'crvc_extension') .'</a>';
+}
+if('no_image' != $display_option && $html_image){
+	$html_image = '<div class="fw-grid-item-sizer"></div>' . $html_image;
+}
+if($title) {
+	$html_title = '<h3 class="fw-grid-item-title">'. cr_vce_truncate($title, 52) .'</h3>';
+}
+if($subtitle) {
+	$html_subtitle = '<h4 class="fw-grid-item-subtitle">'. cr_vce_truncate($subtitle, 52) .'</h4>';
+}
+if($content){
+	$html_description = '<p>' . cr_vce_truncate($content, 186, $read_more_truncate) . '</p>';
 }
 $css_inner_class = '';
 if($enable_video == 'yes' && $video_id) {

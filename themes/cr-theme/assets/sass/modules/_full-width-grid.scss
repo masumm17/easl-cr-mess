@@ -15,6 +15,16 @@
                 @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
             }
         }
+        &-readmore {
+            &, &:link, &:visited, &:hover, &:active {
+                color: $color-base-tertiary;
+                @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: tertiary);
+                .fw-grid-item-noimage & {
+                    color: $color-base;
+                    @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+                }
+            }
+        }
     } 
 }
 @include respond(tab-land) {

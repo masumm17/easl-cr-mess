@@ -4,6 +4,12 @@
             color: $color-base-tertiary;
             @include color-themes($color:true, $bgcolor:false, $color-type: tertiary);
         }
+        &-readmore {
+            &, &:link, &:visited, &:hover, &:active {
+                color: $color-base-tertiary;
+                @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: tertiary);
+            }
+        }
     }
     @include respond(tab-land) {
         &-item {
