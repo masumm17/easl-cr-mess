@@ -61,6 +61,9 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
+        &.items-on-larger-screen {
+            display: none;
+        }
         &-inner{
             opacity: 0.5;
             transform-origin: 50% 50%;
@@ -99,9 +102,16 @@
                 width: 33.3334%;
                 order: 3;
             }
+            
+            &.items-on-larger-screen {
+                display: block;
+            }
         }
         @include respond(tab-port) {
             width: 100%;
+            &.items-on-larger-screen {
+                display: block;
+            }
         }
         &:not(.cr-instagram-feed-item-custom) &-inner{
             &::after {

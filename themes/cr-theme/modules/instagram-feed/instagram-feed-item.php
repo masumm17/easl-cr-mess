@@ -10,6 +10,10 @@ if($count == $cc_position - 1) {
 }elseif($count > $cc_position) {
 	$position_class = 'item-after-cc'; 
 }
+
+if($count > $number - 3) {
+	$position_class .= ' items-on-larger-screen'; 
+}
 ?>
 <div class="cr-instagram-feed-item <?php echo $position_class; ?>">
 	<div class="cr-instagram-feed-item-inner">
