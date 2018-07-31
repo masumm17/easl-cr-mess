@@ -1,7 +1,17 @@
 <?php
 if (!defined('ABSPATH')) die('-1');
+$position_class = '';
+if($count == $cc_position - 1) {
+	$position_class = 'item-before-cc item-prev-cc';
+}elseif($count == $cc_position) {
+	$position_class = 'item-after-cc item-next-cc';
+}elseif($count < $cc_position){
+	$position_class = 'item-before-cc'; 
+}elseif($count > $cc_position) {
+	$position_class = 'item-after-cc'; 
+}
 ?>
-<div class="cr-instagram-feed-item">
+<div class="cr-instagram-feed-item <?php echo $position_class; ?>">
 	<div class="cr-instagram-feed-item-inner">
 		<div class="cr-instagram-feed-image" style="background-image: url('<?php echo esc_url($item['url']); ?>');">
 			<img style="display: none;" src="<?php echo esc_url($item['url']); ?>"/>

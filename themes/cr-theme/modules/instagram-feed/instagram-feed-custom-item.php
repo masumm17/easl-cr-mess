@@ -15,5 +15,6 @@ if (!defined('ABSPATH')) die('-1');
 		</h5>
 		<?php endif; ?>
 	</div>
+	<div class="cr-instagram-feed-grid-sizer"></div>
 </div>
 

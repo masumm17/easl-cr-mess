@@ -190,9 +190,7 @@ if(!$footer_website_url) {
 
 		?> 
 			<li class="mobile-sticky-item <?php echo $classes; ?>">
-				<a<?php echo $attributes; ?>>
-					<?php if($item['icon']): ?><img alt="" src="<?php echo esc_url($item['icon']); ?>"/></span><?php endif; ?>
-				</a>
+				<a<?php echo $attributes; ?>><?php if($item['icon']): ?><img alt="" src="<?php echo esc_url($item['icon']); ?>"/><?php endif; ?></a>
 			</li>
 			<?php endforeach; ?>
 		</ul>

@@ -70,6 +70,10 @@
                 transform: translateX(0);
                 opacity: 1;
             }
+            @include respond(tab-port) {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
         
         &-custom {
@@ -82,8 +86,18 @@
         
         @include respond(desk-large) {
             width: 16.6667%;
+            &.item-before-cc {
+                order: 0;
+            }
+            &.item-after-cc {
+                order: 4;
+            }
+            &.item-next-cc {
+                order: 2;
+            }
             &-custom {
                 width: 33.3334%;
+                order: 3;
             }
         }
         @include respond(tab-port) {
@@ -237,6 +251,17 @@
     }
     &-custom-text {
         padding: 2rem 5rem;
+        @include respond(tab-port) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
         p {
            color: $color-white;
            margin: 0 0 2rem;
@@ -253,6 +278,21 @@
                 color: $color-base-secondary;
                 @include color-themes($color:true, $border-color: false, $bgcolor:false, $color-type: secondary);
             }
+        }
+    }
+    &-grid-sizer {
+        display: none;
+        position: relative;
+        z-index: 0;
+        @include respond(tab-port) {
+            display: block;
+            height: 420px;
+            max-height: calc((100vh - 110px));
+        }
+        @include respond(phone) {
+            padding-top: 100%;
+            height: 0;
+            max-height: 0;
         }
     }
 }
