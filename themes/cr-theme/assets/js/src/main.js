@@ -120,7 +120,7 @@
     CRCollapseBox.prototype.setTrigger = function($tr) {
         var ob = this;
         var clickEvent = "click";
-        if( window.Touch ) {
+        if( $("html").hasClass("touchevents") ) {
             clickEvent = "touchstart";
         }
         if($tr && $tr.length){
@@ -725,9 +725,10 @@
             var ob = this;
             
             var clickEvent = "click";
-            if( window.Touch ) {
+            if( $("html").hasClass("touchevents") ) {
                 clickEvent = "touchstart";
             }
+            console.log(clickEvent);
             $(window).scroll($.proxy(this.scrollEvents, this));
             $(window).on("resize", CRT.debounce(function(){
                 CRT.resizeEevents();

@@ -931,7 +931,7 @@ if (!String.prototype.padStart) {
         },
         events: function() {
             var clickEvent = "click";
-            if( window.Touch ) {
+            if( $("html").hasClass("touchevents") ) {
                 clickEvent = "touchstart";
             }
             // Resize events
