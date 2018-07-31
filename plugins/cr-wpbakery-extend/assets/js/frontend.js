@@ -615,13 +615,17 @@ if (!String.prototype.padStart) {
                 return;
             }
             $(".cr-gallery-isotope").each(function() {
-                $(this).masonry({
-                    columnWidth: ".cr-gallery-item",
-                    percentPosition: true,
-                    itemSelector: ".cr-gallery-item",
-                    //horizontalOrder: true,
-                    resize: true
-                });  
+                var $gallery = $(this);
+                $gallery.waitForImages(function() {
+                    $(this).masonry({
+                        columnWidth: ".cr-gallery-item",
+                        percentPosition: true,
+                        itemSelector: ".cr-gallery-item",
+                        horizontalOrder: false,
+                        originLeft: true,
+                        resize: true
+                    });
+                });
             });
         },
         accommodationFilter: function() {
