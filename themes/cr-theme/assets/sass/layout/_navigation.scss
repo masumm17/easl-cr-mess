@@ -200,8 +200,10 @@
                 }
                 &.cr-menu-child-twocol .cr-menu-level-2 {
                     column-count: 2;
-                    @include respond(desktop-med-only) {
-                        column-count: unset;
+                    body:not(.theme-base) & {
+                        @include respond(desktop-med-only) {
+                            column-count: unset;
+                        }
                     }
                 }
                 &.on-hover .cr-menu-level-2 {
