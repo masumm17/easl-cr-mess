@@ -20,6 +20,35 @@
             a {
                 display: inline-block;
                 margin: 0 0 .8rem;
+                position: relative;
+                &, &:link, &:visited {
+                    color: $color-base;
+                    @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+                }
+                &:focus {
+                    outline: 0 none;
+                }
+                &::after {
+                    .no-touchevents & {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: $color-base;
+                        opacity: 0;
+                        transition: opacity 0.3s, transform 0.3s;
+                        transform: translateY(1rem);
+                    }
+                    @include color-themes($color:false, $bgcolor:true, $border-color:false, $color-type: base, $prefix: '.no-touchevents');
+                }
+                .no-touchevents &:hover {
+                    &::after {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
             }
         }
     }

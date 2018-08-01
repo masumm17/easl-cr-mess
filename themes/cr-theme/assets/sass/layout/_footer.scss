@@ -395,10 +395,14 @@
         }
     }
     &-bottom {
+        height: 50px;
+        @include respond(tab-land) {
+            height: 100px;
+            background: $color-black;
+        }
         @include respond(tab-port) {
             display: none;
         }
-        height: 50px;
     }
     &-mobile-content {
         display: none;
