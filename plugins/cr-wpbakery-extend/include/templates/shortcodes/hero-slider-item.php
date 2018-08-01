@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Hero_Slider_Item
  */
 $el_class = $css = $css_animation = '';
-$type = $yt_video_id = $image_large = $image_small = $tagline_type = $tagline_title = $tagline_subtitle = $cta_button = $tagline_image = '';
+$type = $yt_video_id = $yt_video_ar = $image_large = $image_small = $tagline_type = $tagline_title = $tagline_subtitle = $cta_button = $tagline_image = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -89,6 +89,9 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 		if(!$img_full_src) {
 			$img_full_src = 'https://img.youtube.com/vi/' . $yt_video_id . '/maxresdefault.jpg';
 		}
+		if(!$yt_video_ar) {
+			$yt_video_ar = '16:9';
+		}
 	?> 
 	<img src="<?php echo esc_url( $img_full_src); ?>" 
          alt="Ocean" 
@@ -108,7 +111,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 				data-videoheight="100%" 
 				data-videocontrols="none"  
 				data-forcecover="1" 
-				data-aspectratio="4:3" 
+				data-aspectratio="<?php echo $yt_video_ar; ?>" 
 				data-autoplay="true" 
 				data-autoplayonlyfirsttime="false" 
 		></div>

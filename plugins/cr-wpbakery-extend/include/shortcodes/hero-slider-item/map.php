@@ -40,6 +40,17 @@ return array(
 				),
 			),
 			array(
+				'type' => 'textfield',
+				'heading' => __( 'Youtube Video Aspect Ratio', 'crvc_extension' ),
+				'param_name' => 'yt_video_ar',
+				'value' => '16:9',
+				'description' => __( 'Set youtube video aspect ratio.', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'type',
+					'value' => array('video')
+				),
+			),
+			array(
 				'type' => 'attach_image',
 				'heading' => __( 'Image Large', 'crvc_extension' ),
 				'param_name' => 'image_large',
