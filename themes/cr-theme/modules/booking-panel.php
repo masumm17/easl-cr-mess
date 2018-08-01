@@ -29,6 +29,9 @@ $panel_kewords = trim(crt_get_theme_mode( 'booking_panel_kewords', ''));
 $panel_residences_column = crt_get_theme_mode( 'booking_panel_dropdown_cols', '');
 
 $panel_kewords = json_decode($panel_kewords, true);
+if(!is_array( $panel_kewords)) {
+	$panel_kewords = array();
+}
 $residences_data = array();
 $residences_data_flat = array();
 $default_keword_args = array(
