@@ -1,4 +1,54 @@
 (function($){
+    /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license */
+
+    window.matchMedia || (window.matchMedia = function() {
+        "use strict";
+
+        // For browsers that support matchMedium api such as IE 9 and webkit
+        var styleMedia = (window.styleMedia || window.media);
+
+        // For those that don't support matchMedium
+        if (!styleMedia) {
+            var style       = document.createElement('style'),
+                script      = document.getElementsByTagName('script')[0],
+                info        = null;
+
+            style.type  = 'text/css';
+            style.id    = 'matchmediajs-test';
+
+            if (!script) {
+              document.head.appendChild(style);
+            } else {
+              script.parentNode.insertBefore(style, script);
+            }
+
+            // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+            info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+
+            styleMedia = {
+                matchMedium: function(media) {
+                    var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+                    // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = text;
+                    } else {
+                        style.textContent = text;
+                    }
+
+                    // Test if media query is true or false
+                    return info.width === '1px';
+                }
+            };
+        }
+
+        return function(media) {
+            return {
+                matches: styleMedia.matchMedium(media || 'all'),
+                media: media || 'all'
+            };
+        };
+    }());
     function crRegexTestArray(regex, search) {
         for(var i = 0; i < search.length; i++) {
             if(regex.test(search[i])) {
@@ -268,19 +318,19 @@
             return detectIE();
         },
         isMobile: function() {
-            if(this.vp.width <= 600) {
+            if(matchMedia && matchMedia('only screen and (max-width: 600px)').matches){
                 return true;
             }
             return false;
         },
         isTabPort: function() {
-            if(this.vp.width <= 900 && this.vp.width > 600) {
+            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 900px))').matches){
                 return true;
             }
             return false;
         },
         isTab: function() {
-            if(this.vp.width <= 1365 && this.vp.width > 600) {
+            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 1365px))').matches){
                 return true;
             }
             return false;
