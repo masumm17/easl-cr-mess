@@ -1252,25 +1252,32 @@ if (!String.prototype.padStart) {
             $(window).on("resize", ChevRes.debounce(function(){
                 ChevRes.resizeEevents();
             }, 250));
-            // Expanding Images
-            $(".expanding-image-item").on("mouseenter", function() {
+            // Expanding Images  dfg
+            $(".no-touchevents .expanding-image-item").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
             }).on("mouseleave", function() {
                 $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
             });
-            window.Touch && $(".expanding-image-item-cta").on("click", function(e) {
+            $(".touchevents  .expanding-image-item-cta").on("click", function(e) {
                 var $item = $(this).closest(".expanding-image-item");
                 if(!$item.hasClass("on-hover")) {
                    e.preventDefault();
-                   $item.addClass("on-hover");
+                   $item.addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
+                }else{
+                    $item.removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
                 }
                 e.stopPropagation();
             });
-            window.Touch && $(".expanding-image-item-cta").on("touchstart", function(e) {
+            $(".touchevents .expanding-image-item-cta").on("touchstart", function(e) {
                 e.stopPropagation();
             });
-            window.Touch && $(".expanding-image-item").on("touchstart", function() {
-                $(this).toggleClass("on-hover");
+            $(".touchevents .expanding-image-item").on("touchstart", function() {
+                console.log("Item touchstart");
+                if(!$(this).hasClass("on-hover")){
+                    $(this).addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
+                }else{
+                   $(this).removeClass("on-hover").siblings(".expanding-image-item").removeClass("not-hover");
+                }
             });
             $(".cr-scroll-down").on("click", function(e) {
                 var $wrapp = $(this).closest(".cr-rev-slider-wrapper"), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
