@@ -45,6 +45,7 @@ class CR_VcE_Customizer {
 		$this->add_section_settings('map', $wp_customize);
 		$this->add_section_settings('property_slider', $wp_customize);
 		$this->add_section_settings('enquiry_form', $wp_customize);
+		$this->add_section_settings('allora_integration', $wp_customize);
    }
    public function add_section_settings($sectiono_id, $wp_customize) {
 	   require_once  $this->settings_path . str_replace( '_', '-', $sectiono_id ).'.php';

@@ -1,0 +1,17 @@
+.cr-allora {
+    &-wrap {
+        opacity: 0;
+        transition: opacity, .5s;
+        &.cr-allora-loaded {
+            opacity: 1;
+        }
+    }
+    &-con {
+        
+    }
+    &-con .fxw-grid-item {
+    }
+    &-item-template {
+        display: none;
+    }
+}

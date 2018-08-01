@@ -282,6 +282,289 @@ if (!String.prototype.padStart) {
         this.loadData();
         this.events();
     };
+    
+    crAllora = function($el) {
+        this.$el = $el;
+        this.url = this.$el.data('alloraurl');
+        this.$itemsCon = this.$el.find(".cr-allora-con");
+        this.localised = false;
+        this.template = false;
+        this.setCookie();
+        this.fetchItems();
+    };
+    crAllora.prototype.readCookie = function(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(";");
+        for(var i=0; i < ca.length; i++){
+            var c = ca[i];
+            while (c.charAt(0) == " "){
+                c = c.substring(1,c.length);
+            }
+            if(c.indexOf(nameEQ) == 0){
+                return c.substring(nameEQ.length,c.length);
+            }
+        }
+        return null;
+    };
+    crAllora.prototype.setCookie = function() {
+        this.url += "&avvioID=" + this.readCookie("avvio_persp");
+    };
+    crAllora.prototype.setTitleSubtitles = function(tokens) {
+        var welcomeMsg = 'Welcome back',
+            subtitleMsg = 'Nice to see you';
+        if (tokens.firstName) {
+            welcomeMsg = 'Welcome back ' + tokens.firstName;
+        }
+        if (tokens.searchDate) {
+            subtitleMsg = 'Still looking for a room on ' + tokens.searchDate;
+        }
+        if (this.localised && (typeof this.localised.messages.greetingText !== "undefined") ) {
+            welcomeMsg = this.localised.messages.greetingText;
+        }
+        if (this.localised && (typeof this.localised.messages['subtitleText'+this.localised.stage] !== "undefined") ) {
+            subtitleMsg = this.localised.messages['subtitleText'+this.localised.stage];
+        }
+        $.each(tokens, function(k,v){
+            welcomeMsg = welcomeMsg.replace('%' + k + '%', v);
+            subtitleMsg = subtitleMsg.replace('%' + k + '%', v);
+        });
+        this.$el.find(".cr-title-inner").html(welcomeMsg);
+        this.$el.find(".cr-subtitle-inner").html(subtitleMsg);
+    };
+    crAllora.prototype.getCurrencyChar = function(name) {
+        var char = name;
+        switch (name) {
+            case 'EUR':
+                char = 'â‚¬';
+                break;
+
+            case 'USD':
+                char = '$';
+               break;
+
+           case 'GBP':
+                char = 'Â£';
+               break;
+
+           case 'AUD':
+                char = '$';
+               break;
+
+           case 'CAD':
+                char = '$';
+               break;
+
+           case 'CNY':
+                char = 'Â¥';
+               break;
+
+           case 'HKD':
+                char = '$';
+               break;
+
+           case 'JPY':
+                char = 'Â¥';
+               break;
+
+           case 'KRW':
+                char = 'â‚©';
+               break;
+
+           case 'PLN':
+                char = 'zÅ‚';
+               break;
+
+           case 'SAR':
+                char = 'ï·¼';
+               break;
+
+           case 'NZD':
+                char = '$';
+               break;
+
+           case 'THB':
+                char = 'à¸¿';
+               break;
+
+           case 'ZAR':
+                char = 'R';
+               break;
+
+           case 'PHP':
+                char = 'â‚±';
+               break;
+
+           case 'CHF':
+                char = 'CHF';
+               break;
+
+           case 'OMR':
+                char = 'ï·¼';
+               break;
+
+           case 'QAR':
+                char = 'ï·¼';
+               break;
+
+           case 'SEK':
+                char = 'kr';
+               break;
+
+           case 'AED':
+                char = 'Ø¯.Ø¥';
+               break;
+
+           case 'AMD':
+                char = 'Õ¤Ö€';
+               break;
+
+           case 'BHD':
+                char = 'Ø¨.Ø¯';
+               break;
+
+           case 'DKK':
+                char = 'kr';
+               break;
+
+           case 'HUF':
+                char = 'Ft';
+               break;
+
+           case 'INR':
+                char = 'â‚¨';
+               break;
+
+           case 'JOD':
+                char = 'Ø¯.Ø§';
+               break;
+
+           case 'LKR':
+                char = 'à®°à¯‚ ';
+               break;
+
+           case 'LVL':
+                char = 'Ls';
+               break;
+
+           case 'MAD':
+                char = '.Ù….';
+               break;
+
+           case 'RON' :
+                char =  'Lei';
+               break;
+
+           case 'ARS':
+                char = '$';
+               break;
+
+           case 'ILS' :
+                char =  'â‚ª';
+               break;
+
+           case 'BGN' :
+                char =  'Ð›Ð².';
+               break;
+
+           case 'MDL' :
+                char =  'L';
+               break;
+
+           case 'UAH' :
+                char =  'â‚´';
+               break;
+
+           case 'MXN' :
+                char =  '&#36;';
+               break;
+
+           case 'BRL' :
+                char =  'R&#36;'
+                break;
+
+            default:
+                break;
+        }
+
+        return char;
+    };
+    crAllora.prototype.wrapWithSpan = function(cssClass, value) {
+        return '<span class="' + cssClass + '">' + value + '</span>';
+    };
+    crAllora.prototype.getSingleSlide = function(data) {
+        var $sliteItem = this.template.clone();
+        var image = data.image;
+        image.replace('400x300', '800x600'); //get best possible image for rates etc
+        var text = data.text;
+        var char = this.getCurrencyChar(data.currency);
+        if (data.strikePrice !== false) {
+            var option1 = char + data.strikePrice;
+            text = text.replace(option1, this.wrapWithSpan('personalisation-strike-price', option1));
+            var option2 = data.strikePrice+char;
+            text = text.replace(option2, this.wrapWithSpan('personalisation-strike-price', option2));
+        }
+        if (data.price !== false) {
+            var option3 = char+data.price;
+            text = text.replace(option3, this.wrapWithSpan('personalisation-price', option3));
+            var option4 = data.price+char;
+            text = text.replace(option4, this.wrapWithSpan('personalisation-price', option4));
+        }
+        var primaryName = '';
+        if (data.primaryName) {
+            primaryName = data.primaryName;
+        }
+        $sliteItem.find(".fxw-grid-item-title").html(data.title);
+        if(primaryName){ 
+            $sliteItem.find(".fxw-grid-item-subtitle").html(primaryName);
+        }else{
+            $sliteItem.find(".fxw-grid-item-subtitle").remove();
+            $sliteItem.find(".fxw-grid-item-title").removeClass("cr-title-has-subtitle");
+        }
+        if(data.url) {
+            $sliteItem
+                .find(".fxw-grid-item-cta")
+                .attr("src", data.url)
+                .html("<span>" + data.ctaLabel + "</span>"); 
+        }else{
+            $sliteItem.find(".fxw-grid-item-cta").remove();
+        }
+        if(image){
+            $sliteItem.find(".fxw-grid-item-imagebg").attr("style", "background-image: url('" + image + "');");
+            $sliteItem.find(".fxw-grid-item-inner").append('<img width="640" height="720" src="' + image + '" class="fxw-grid-item-image" alt="">');
+        }
+        return $sliteItem;
+    };
+    crAllora.prototype.setSlides = function(content) {
+        var ob = this;
+        this.template = this.$el.find(".cr-allora-item-template").clone().removeClass("cr-allora-item-template");
+        this.$itemsCon.html();
+        $.each(content, function(k, v){
+            ob.$itemsCon.append(ob.getSingleSlide(v));
+        });
+        this.$itemsCon.waitForImages(function() {
+            ob.$el.addClass("cr-allora-loaded");
+        });
+    };
+    crAllora.prototype.prepareHTML = function(data) {
+        if ( typeof data.raw.localised !== "undefined" ){
+            this.localised = data.raw.localised;
+        }
+        this.setTitleSubtitles(data.raw.tokens);
+        this.setSlides(data.content);
+    };
+    crAllora.prototype.fetchItems = function() {
+        var ob = this;
+        ob.$el.addClass("cr-ajax-loading");
+        $.getJSON(this.url, function(data) {
+            if(!data || !data.content || (data.content.length < 0) ){
+                console.log("Failed!");
+                return;
+            }
+            ob.$el.removeClass("cr-ajax-loading");
+            ob.prepareHTML(data);
+        });
+    };
+    
     window.ChevRes = {
         defaults: {
             YT: {
@@ -949,6 +1232,11 @@ if (!String.prototype.padStart) {
             }
             ChevRes.Storage.Maps[mapID].map = map;
         },
+        loadAllora: function() {
+            $(".cr-allora-wrap").each(function() {
+               new crAllora($(this));
+           });
+        },
         resizeEevents: function() {
             this.miniGalleryGridResize();
             this.rescaleYTVideos();
@@ -1000,6 +1288,7 @@ if (!String.prototype.padStart) {
             this.YoutubeVideosFrames();
             this.maps();
             this.accommodationFilter();
+            this.loadAllora();
             this.events();
         }
     };

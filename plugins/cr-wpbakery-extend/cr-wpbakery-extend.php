@@ -342,6 +342,10 @@ class CR_VcE_Manager {
 			'name' => __('Embed Virtual Tour', 'crvc_extension'),
 			'file' => $sc_dir . '/virtual-tour/class-virtual-tour.php',
 		);
+		$this->registered_shortcodes['cr_allora_integration'] = array(
+			'name' => __('Allora Integration', 'crvc_extension'),
+			'file' => $sc_dir . '/allora-integration/class-allora-integration.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -372,6 +376,7 @@ class CR_VcE_Manager {
 			'cr_sitemap',
 			'cr_instagram_feed',
 			'cr_virtual_tour',
+			'cr_allora_integration',
 		);
 	}
 	
