@@ -631,9 +631,13 @@ if (!String.prototype.padStart) {
                 return;
             }
             $(".cr-rev-slider").each(function() {
-                var $slider = $(this), delay = $slider.data("crdelay");
+                var $slider = $(this), delay = $slider.data("crdelay"), enableNavigation = true;
                 delay = delay || 4000;
                 $slider.closest('.wpb_row').addClass('cr-row-has-hero-slider');
+                if($slider.find("ul li").length < 2) {
+                    enableNavigation = false;
+                }
+                
                 $slider.show().revolution({
                     delay: delay,
                     //debugMode: true,
@@ -642,13 +646,13 @@ if (!String.prototype.padStart) {
                     spinner: "spinner2",
                     navigation: {
                         arrows: {
-                            enable: true,
+                            enable: enableNavigation,
                             style: 'uranus',
                             hide_over: 1365,
                             hide_onleave: false
                         },
                         bullets: {
-                            enable: true,
+                            enable: enableNavigation,
                             style: 'hades',
                             h_align: "left",
                             v_align: "bottom",
