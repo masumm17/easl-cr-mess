@@ -385,7 +385,7 @@
                     if(typeof columns.error !== "undefined" && columns.error) {
                         this.errorMessage && $("<li>").addClass("bookig-panel-dd-error").html(this.errorMessage.replace("%search_term%", "<strong>" + this._value() + "</strong>")).appendTo(ul2);
                         ul2.appendTo(ul);
-                        $fieldKeyword.val('*');
+                        $fieldKeyword.val("*");
                         $form.addClass("booking-panel-keyword-error");
                     }else{
                         $.each(columns, function(i, column) {
@@ -656,9 +656,9 @@
                     return false;
                 }
                 
-                $form.attr( 'action', action);
+                $form.attr( "action", action);
                 
-                if ( keyword === '*' ) {
+                if ( keyword === "*" ) {
                     $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );
                 }else if ( keyword === 'KNIGHTSBRIDGE' || keyword === 'KENSINGTON' || keyword === 'SLOANE' || keyword === 'CITY' ) {
                     $form.append( '<input type="hidden" name="fw_submitted" id="fw_submitted" value="1" />' );

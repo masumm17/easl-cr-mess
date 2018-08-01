@@ -89,18 +89,26 @@ if($panel_residences_column) {
 	$panel_residences_column = explode('|', $panel_residences_column);
 }
 $dropdown_columns = array();
+$first_group = '';
 if(count($panel_residences_column) > 0) {
+	$column_count = 0;
 	foreach($panel_residences_column as $prcol) {
 		$prcol = trim($prcol);
 		if(!$prcol) {
 			continue;
 		}
+		$column_count++;
 		$pr_col_groups = explode(',', $prcol);
 		if(count($pr_col_groups) > 0) {
 			$column_groups = array();
+			$column_group_count = 0;
 			foreach($pr_col_groups as $col_group) {
 				if(!isset($residences_data[$col_group])){
 					continue;
+				}
+				$column_group_count++;
+				if($column_count == 1 && $column_group_count == 1){
+					$first_group = $col_group;
 				}
 				$column_groups[$col_group] = $residences_data[$col_group];
 			}
@@ -132,14 +140,14 @@ if(count($dropdown_columns) == 0) {
 								<div class="booking-panel-kw-wraper">
 									<p class="booking-panel-input-wrap">
 										<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
-											<option value="*" data-actionurl="<?php echo esc_url($form_action) ?>"><?php _e('-- All Residences --', 'crt') ?></option>
+											<option value="*" data-actionurl="https://secure.chevalresidences.com/portal/site/www.chevalresidences.com/index.php"><?php _e('-- All Residences --', 'crt') ?></option>
 											<?php
 											foreach($dropdown_columns as $dd_col):
 												foreach($dd_col as $group_label => $col_group):
 												?>
 												<optgroup label="<?php echo esc_attr($group_label); ?>">
 													<?php foreach($col_group as $group_item): ?>
-													<option value="<?php echo esc_attr($group_item['keyword']); ?>" <?php selected($group_item['value'], $panel_default_keword) ?> data-actionurl="<?php echo esc_url($group_item['action']); ?>"><?php echo esc_html($group_item['keyword']) ?></option>
+													<option value="<?php echo esc_attr($group_item['keyword']); ?>" <?php selected($group_item['keyword'], $panel_default_keword) ?> data-actionurl="<?php echo esc_url($group_item['action']); ?>"><?php echo esc_html($group_item['value']) ?></option>
 													<?php endforeach;?>
 												</optgroup>
 												<?php endforeach;?>
@@ -277,5 +285,22 @@ if(count($dropdown_columns) == 0) {
 	</div>
 </div>
 <script type="text/javascript">
+	<?php
+	$residences_data_flat[] = array(
+		'category' => $first_group,
+		'keyword' => "*",
+		'search' => array(__('All Residences', 'crt')),
+		'value' => __('All Residences', 'crt'),
+		'disable' => false,
+	);
+	$dropdown_columns[0][$first_group][] = array(
+		'category' => $first_group,
+		'keyword' => "*",
+		'search' => array(__('All Residences', 'crt')),
+		'value' => __('All Residences', 'crt'),
+		'disable' => false,
+	);
+	//var_dump( $first_group);die();
+	?>
 	var BookingPanelData = {source: <?php echo wp_json_encode($residences_data_flat); ?>, column: <?php echo wp_json_encode($dropdown_columns); ?>};
 </script>
