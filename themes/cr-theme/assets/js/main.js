@@ -815,9 +815,7 @@
             
             $(".cr-scroll-up").on("click", function(e) {
                 e.preventDefault();
-                $('html, body').animate({ 
-                    scrollTop: 0
-                }, 750, 'linear');
+                window.scroll ? window.scroll({ top: 0, left: 0, behavior: 'smooth' }) : $('html, body').animate({ scrollTop: 0}, 750, 'linear');
             });
             
         },
