@@ -60,6 +60,10 @@ if($img_full_src && $overlay_title &&  $cta_button && $content) {
 	}else{
 		$cta_button_attributes = '';
 	}
+	$read_more_truncate = '';
+	if($content_length && $cta_button_attributes) {
+		$read_more_truncate = ' <a class="property-slider-text-readmore" '. $cta_button_attributes .'>'. __('...read more', 'crvc_extension') .'</a>';
+	}
 	?> 
 	<div class="property-slider-item">
 		<div class="property-slider-stripe"></div>
@@ -71,7 +75,7 @@ if($img_full_src && $overlay_title &&  $cta_button && $content) {
 				<h3 class="property-slider-text-subtitle <?php if($subtitle_length > 0) {echo 'cr-lenght-limited-text';}?>"><?php echo cr_vce_truncate($overlay_subtitle, $subtitle_length, '', false); ?></h3>
 				<?php endif; ?>
 			</div>
-			<p><?php echo cr_vce_truncate($content, $content_length); ?></p>
+			<p><?php echo cr_vce_truncate($content, $content_length, $read_more_truncate); ?></p>
 			<?php if($cta_button_attributes): ?>
 			<a class="property-slider-text-cta cr-button" <?php echo $cta_button_attributes ?>><span><?php echo esc_html($cta_button['title']); ?></span></a>
 			<?php endif; ?>

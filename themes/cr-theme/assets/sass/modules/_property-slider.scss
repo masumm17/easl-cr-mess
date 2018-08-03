@@ -79,6 +79,11 @@
         &-subtitle {
             @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
         }
+        &-readmore {
+            &, &:link, &:visited, &:hover, &:active {
+                @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+            }
+        }
         
     }
     &-image {
