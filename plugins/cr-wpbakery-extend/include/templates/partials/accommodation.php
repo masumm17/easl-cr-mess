@@ -7,6 +7,7 @@
  */
 
 $url = function_exists('get_field') ? get_field('link') : get_post_meta( get_the_ID(), 'link', true);
+$link_nt = function_exists('get_field') ? get_field('link_nt') : get_post_meta( get_the_ID(), 'link_nt', true);
 $subtitle = function_exists('get_field') ? get_field('subtitle') : get_post_meta( get_the_ID(), 'subtitle', true);
 if(!$url) {
 	$url = get_permalink();
@@ -15,7 +16,7 @@ if(!$url) {
 ?>
 
 <li class="accommodations-item cr-animate-when-visible" onClick="return true">
-	<a class="accommodations-item-inner" href="<?php esc_url($url); ?>">
+	<a class="accommodations-item-inner" href="<?php echo esc_url($url); ?>"<?php if($link_nt){echo ' target="_blank"';} ?>>
 		<div class="accommodations-item-text">
 			<h3 class="accommodations-item-title"><?php echo cr_vce_truncate( get_the_title(), 80); ?></h3>
 			<?php if($subtitle): ?>
