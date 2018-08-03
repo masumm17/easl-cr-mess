@@ -57,7 +57,7 @@
         a {
             color: $color-gray-1!important;
             &::after {
-                background-color: $color-gray-1!important;
+                display: none;
             }
         }
     }
