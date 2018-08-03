@@ -60,6 +60,18 @@ h1, h2, h3, h4, h5 {
 .cr-scc-text a {
     display: inline-block;
     position: relative;
+    &, &:link, &:visited {
+        color: $color-base;
+        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+    }
+    &:hover, &:active {
+        color: $color-base;
+        @include color-themes($color:true, $bgcolor:false, $border-color:false, $color-type: base);
+        text-decoration: none;
+    }
+    &:focus {
+        outline: 0 none;
+    }
     &::after {
         .no-touchevents & {
             content: "";

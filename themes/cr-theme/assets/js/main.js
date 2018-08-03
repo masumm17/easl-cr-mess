@@ -753,7 +753,7 @@
         scrollEvents: function() {
             this.setViewPort(true);
             this.scrollHeader();
-            this.scrollFooter();
+            //this.scrollFooter();
         },
         resizeFooter: function() {
             if(this.isTabPort()) {

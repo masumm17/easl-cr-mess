@@ -1,20 +1,43 @@
 .cr-gallery {
+    @include respond(tab-land) {
+        &-item {
+            &-inner {
+                .cr-has-overlay &::after {
+                    display: none;
+                }
+            }
+            &-text {
+                visibility: visible;
+                opacity: 1;
+                transform: unset!important;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+            }
+            &-title {
+                display: none;
+            }
+            &-text &-view-image {
+                display: block;
+                position: absolute;
+                border: 0 none;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                padding: 0;
+            }
+        }
+    }
     @include respond(tab-port) {
         &-item {
             width: 33.333%;
             padding: 0 5px;
             margin-bottom: 10px;
-            &-inner {
-                .cr-has-overlay &::after {
-                    visibility: visible;
-                    opacity: 1;
-                } opacity: 1;
-            }
-            &-text {
-                visibility: visible;
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
         }
     }
     @include respond(phone) {

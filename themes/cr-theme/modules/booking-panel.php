@@ -44,6 +44,7 @@ $default_keword_args = array(
 	'default' => 'no',
 );
 $panel_default_keword = '';
+$panel_default_label = '';
 $form_action = 'https://secure.chevalresidences.com/portal/site/www.chevalresidences.com/index.php';
 foreach($panel_kewords as $kw_item){
 	$kw_item = wp_parse_args($kw_item, $default_keword_args);
@@ -83,7 +84,8 @@ foreach($panel_kewords as $kw_item){
 	);
 	if($kw_item['default'] == 'yes') {
 		$form_action = $kw_item['action'];
-		$panel_default_keword = $kw_item['label'];
+		$panel_default_keword = $kw_item['keyword'];
+		$panel_default_label = $kw_item['label'];
 	}
 }
 
@@ -156,8 +158,8 @@ if(count($dropdown_columns) == 0) {
 												<?php endforeach;?>
 											<?php endforeach;?>
 										</select>
-										<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_keword)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
-										<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_keword)); ?></span>
+										<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_label)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
+										<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_label)); ?></span>
 										<span id="booking-panel-dd-keywords" class="booking-panel-dd-icon"></span>
 									</p>
 								</div>

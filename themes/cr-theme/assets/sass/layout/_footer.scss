@@ -161,8 +161,6 @@
             position: relative;
             text-align: center;
             color: $color-white;
-            transform: translateY(120%);
-            transition: all .8s;
             @include respond(tab-port) {
                 padding: 0 0 30px;
                 transform: unset!important;
@@ -186,11 +184,6 @@
                 @include respond(tab-port) {
                     top: -30px;
                     bottom: 0;
-                    transform: translateY(30px);
-                    transition: all .7s;
-                    .page-loaded .cr_start_animation & {
-                        transform: translateY(0);
-                    }
                 }
             }
             &::after {
@@ -206,9 +199,6 @@
                 @include respond(tab-port) {
                     display: none;
                 }
-            }
-            .page-loaded.cr-animate-footer & {
-                transform: translateY(0);
             }
         }
     }
@@ -236,7 +226,7 @@
     
     &-left a, &-right a {
         position: relative;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         line-height: 1em;
         text-transform: uppercase;
         padding: 3px 0;
@@ -396,9 +386,9 @@
     }
     &-bottom {
         height: 50px;
+        background: $color-black;
         @include respond(tab-land) {
             height: 100px;
-            background: $color-black;
         }
         @include respond(tab-port) {
             display: none;
