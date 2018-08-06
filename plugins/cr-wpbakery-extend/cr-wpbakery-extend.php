@@ -346,6 +346,10 @@ class CR_VcE_Manager {
 			'name' => __('Allora Integration', 'crvc_extension'),
 			'file' => $sc_dir . '/allora-integration/class-allora-integration.php',
 		);
+		$this->registered_shortcodes['cr_gravity_form'] = array(
+			'name' => __('Gravity Form', 'crvc_extension'),
+			'file' => $sc_dir . '/gravity-form/class-gravity-form.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -377,6 +381,7 @@ class CR_VcE_Manager {
 			'cr_instagram_feed',
 			'cr_virtual_tour',
 			'cr_allora_integration',
+			'cr_gravity_form',
 		);
 	}
 	
