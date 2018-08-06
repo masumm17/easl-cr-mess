@@ -80,16 +80,38 @@
 }
 @include respond(tab-land) {
     body.cr-mobile-menu-active {
+        position: relative;
         overflow: hidden;
+    }
+}
+.site-mobile-navigation-bg {
+    display: none;
+    @include respond(tab-land) {
+        display: block;
+        background: rgba($color-black, .9);
+        position: absolute;
+        display: box;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        transition: all .6s cubic-bezier(.645,.045,.355,1); 
+        .cr-mobile-menu-active & {
+            opacity: 1;
+            visibility: visible;
+            z-index: 15;
+        }
     }
 }
 .site-mobile-navigation {
     display: none;
     @include respond(tab-land) {
         display: block;
-        background: rgba($color-black, .9);
+        background: transparent;
         position: fixed;
-        display: box;
         left: 0;
         top: 0;
         width: 100%;

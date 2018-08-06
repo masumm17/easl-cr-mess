@@ -121,6 +121,7 @@ if(!$footer_website_url) {
 		<div class="cr-humburger-inner"></div>
 	</div>
 </div>
+<div class="site-mobile-navigation-bg"></div>
 <nav class="site-mobile-navigation">
 	<?php 
 	$items = crt_get_theme_mode( 'stikcy_side_navigation_items', '');
