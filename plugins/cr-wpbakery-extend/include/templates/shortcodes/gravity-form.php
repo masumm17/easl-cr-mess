@@ -26,7 +26,7 @@ if ( ! empty( $atts['el_id'] ) ) {
 ?> 
 
 <section class="cr-module-wrap cr-gravity-form-wrapper cr-single-col-content-wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
-	<?php if($id): ?>
+	<?php if($id && function_exists('gravity_form')): ?>
 	<div class="cr-scc-text cr-gravity-form cr-animate-when-visible">
 		<?php 
 		gravity_form_enqueue_scripts( $id, $ajax );
