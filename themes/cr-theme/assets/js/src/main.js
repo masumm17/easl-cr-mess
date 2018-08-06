@@ -821,7 +821,10 @@
         },
         timeLine: function() {
             $(".sticky-side-nav").length && setTimeout(function(){
-                $(".sticky-side-nav").addClass("sticky-side-nav-collasped");
+                $(".sticky-side-nav").addClass("sticky-side-nav-collasped sticky-side-nav-collasped-started");
+                $(".sticky-side-nav").length && setTimeout(function(){
+                    $(".sticky-side-nav").removeClass("sticky-side-nav-collasped-started");
+                }, 2000);
             }, 5000);
         },
         instagramMobSlider: function($con) {
