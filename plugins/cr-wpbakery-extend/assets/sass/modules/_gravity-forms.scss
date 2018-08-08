@@ -1,0 +1,56 @@
+.top_label div.ginput_complex.ginput_container.ginput_container_cr_phone {
+    width: calc(100% + 15px);
+
+}
+div.ginput_container_cr_phone span {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 16px;
+	margin-right: -4px;
+}
+
+.cr_phone_country {
+    width: 33.3%;
+}
+.cr_phone_number {
+    width: 66.7%;
+}
+.gform_wrapper .top_label .gfield_label {
+    color: $color-gray-1;
+}
+.gform_wrapper input[type="text"],
+.gform_wrapper input[type="email"],
+.gform_wrapper input[type="password"],
+.gform_wrapper input[type="url"],
+.gform_wrapper input[type="tel"],
+.gform_wrapper input[type="num"],
+.gform_wrapper input[type="search"],
+.gform_wrapper textarea,
+.gform_wrapper select {
+    
+}
+body .gform_wrapper input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]) {
+    padding: 1.3rem 1.2rem 1rem;
+    min-height: 48px;
+}
+body .gform_wrapper.gf_browser_gecko select, body .gform_wrapper select,
+body .gform_wrapper.gf_browser_chrome select{
+    height: 48px;
+    padding: 1.3rem 1.2rem 1rem;
+}
+body .gform_wrapper.gf_browser_chrome .ginput_complex .ginput_right select, 
+body .gform_wrapper.gf_browser_chrome .ginput_complex select {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");
+    background-position: 100% 50%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+body .gform_wrapper.gf_browser_chrome .ginput_complex.ginput_container_cr_phone select{
+    margin-top: 0;
+}
+body .gform_wrapper textarea {
+    padding: 1.3rem 1.2rem 1rem;
+}

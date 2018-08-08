@@ -16,7 +16,7 @@ select {
     padding: 1.3rem 1.2rem 1rem;
     border: 1px solid $color-base;
     color: $color-gray-1;
-    @include color-themes($color:true, $border-color: true, $bgcolor:false, $color-type: base);
+    @include color-themes($color:false, $border-color: true, $bgcolor:false, $color-type: base);
 }
 select[multiple="multiple"] {
     padding-top: .7rem;

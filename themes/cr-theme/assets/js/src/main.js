@@ -56,7 +56,7 @@
             }
         }
         return false;
-    }
+    };
     function crDaysBetween( date1, date2 ){
 
         // The number of milliseconds in one day
@@ -71,7 +71,7 @@
 
         // Convert back to days and return
         return Math.round( difference_ms / ONE_DAY );
-    }
+    };
     function detectIE() {
         var ua = window.navigator.userAgent;
 
@@ -110,7 +110,10 @@
 
         // other browser
         return false;
-    }
+    };
+    function detectSafariDesktop() {
+        return window.safari !== undefined;
+    };
     function CRCollapseBox($el, $tr) {
         this.$el = $el;
         this.$trigger = null;
@@ -317,6 +320,9 @@
         ieVersion: function() {
             return detectIE();
         },
+        isSafariDesktop: function() {
+            return detectSafariDesktop();
+        },
         isMobile: function() {
             if(matchMedia && matchMedia('only screen and (max-width: 600px)').matches){
                 return true;
@@ -324,13 +330,13 @@
             return false;
         },
         isTabPort: function() {
-            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 900px))').matches){
+            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 900px)').matches){
                 return true;
             }
             return false;
         },
         isTab: function() {
-            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 1365px))').matches){
+            if(matchMedia && matchMedia('only screen and (min-width: 600px) and (max-width: 1365px)').matches){
                 return true;
             }
             return false;
@@ -390,7 +396,8 @@
         },
         bookingPanel: function() {
             
-            var $el = $("#booking-panel"),
+            var ob = this,
+                $el = $("#booking-panel"),
                 $form = $('form', $el);
                 $dummy = $("#residences-keyword-dummy", $el),
                 $keywordWrap = $("#booking-panel-residences"),
@@ -688,6 +695,7 @@
             });
             $el.find("#booking-panel-dd-keywords").on("click", function(e) {
                 e.preventDefault();
+                ob.$body.hasClass("cr-ie11") && $residence.focus();
                 !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
             });
             
@@ -815,7 +823,7 @@
             
             $(".cr-scroll-up").on("click", function(e) {
                 e.preventDefault();
-                window.scroll ? window.scroll({ top: 0, left: 0, behavior: 'smooth' }) : $('html, body').animate({ scrollTop: 0}, 750, 'linear');
+                window.scroll && !ob.$body.hasClass("cr-ie11") ? window.scroll({ top: 0, left: 0, behavior: 'smooth' }) : $('html, body').animate({ scrollTop: 0}, 750, 'linear');
             });
             
         },
@@ -877,6 +885,9 @@
             this.$footerLine = $("#footer-top-line");
             if(this.isIE()) {
                 this.$body.addClass("cr-ie " + "cr-ie" + this.ieVersion());
+            }
+            if(this.isSafariDesktop()) {
+                this.$body.addClass("cr-safari");
             }
             this.setViewPort();
             this.mobileMenu();

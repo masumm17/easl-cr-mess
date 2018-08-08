@@ -69,3 +69,13 @@ function cr_truncate($str, $len = 200, $trail = '', $word_wrap = true) {
     return $str . $trail;
 }
 endif;
+
+function cr_settings_section_custom_scripts($args) {
+	echo '<p id="'. esc_attr( $args['id'] ) .'">Add custom scripts.</p>';
+}
+
+function cr_setting_field_textarea($args) {
+	$settings = get_option( 'cr_settings' );
+	$field_setting = isset($settings[$args['label_for']]) ? $settings[$args['label_for']] : '';
+	echo '<textarea id="'. esc_attr($args['label_for']) .'" name="cr_settings['. $args['label_for'] .']">'. esc_textarea($field_setting) .'</textarea>';
+}

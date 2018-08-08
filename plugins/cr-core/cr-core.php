@@ -54,6 +54,30 @@ final class CR_Core {
 			$this,
 			'init',
 		), 8 );
+		add_action( 'admin_menu', array(
+			$this,
+			'admin_menus',
+		));
+		add_action( 'admin_init', array(
+			$this,
+			'regsiter_settings',
+		));
+		add_action( 'init', array(
+			$this,
+			'init',
+		), 8 );
+		add_action( 'admin_enqueue_scripts', array(
+			$this,
+			'admin_scripts',
+		) );
+		add_action( 'wp_head', array(
+			$this,
+			'head_custom_scripts',
+		), 20 );
+		add_action( 'wp_footer', array(
+			$this,
+			'footer_custom_scripts',
+		), 20 );
 		add_filter( 'body_class', array(
 			$this,
 			'body_class',
@@ -124,7 +148,63 @@ final class CR_Core {
 	public function custom_types() {
 		
 	}
-	
+	public function regsiter_settings() {
+		register_setting( 'crsettings', 'cr_settings' );
+		add_settings_section(
+			'cr_custom_scripts',
+			__( 'Custom Scripts', 'crt' ),
+			'cr_settings_section_custom_scripts',
+			'crsettings'
+		);
+		add_settings_field(
+			'cr_header_script',
+			__( 'Header Script', 'crt' ),
+			'cr_setting_field_textarea',
+			'crsettings',
+			'cr_custom_scripts',
+			array(
+				'label_for' => 'cr_header_script',
+				'class' => 'cr-script-field',
+			)
+		);
+		add_settings_field(
+			'cr_footer_script',
+			__( 'Footer Script', 'crt' ),
+			'cr_setting_field_textarea',
+			'crsettings',
+			'cr_custom_scripts',
+			array(
+				'label_for' => 'cr_footer_script',
+				'class' => 'cr-script-field',
+			)
+		);
+	}
+	public function admin_menus() {
+		add_theme_page( 'CR Settings', 'CR Settings', 'edit_theme_options', 'crsettings', array($this, 'menu_page_custm_scripts') );
+	}
+	public function menu_page_custm_scripts() {
+		if ( isset( $_GET['settings-updated'] ) ) {
+			add_settings_error( 'cr_settings_messages', 'cr_settings_messages', __( 'Settings Saved', 'crt' ), 'updated' );
+		}
+		include $this->path('INC_DIR', 'admin-templates/menu-custom-scripts.php');
+	}
+	public function admin_scripts() {
+		wp_enqueue_style('crt-admin-css', plugin_dir_url(__FILE__) . 'assets/crt-admin.css');
+	}
+	public function head_custom_scripts() {
+		$settings = get_option( 'cr_settings' );
+		$header_script= isset($settings['cr_header_script']) ? trim($settings['cr_header_script']) : '';
+		if($header_script){
+			echo "\r\n" . $header_script . "\r\n";
+		}
+	}
+	public function footer_custom_scripts() {
+		$settings = get_option( 'cr_settings' );
+		$footer_script= isset($settings['cr_footer_script']) ? trim($settings['cr_footer_script']) : '';
+		if($footer_script){
+			echo "\r\n" . $footer_script . "\r\n";
+		}
+	}
 	public function body_class($classes) {
 		if('with_hero_slider' == $this->get_page_type()){
 			$classes[] = 'fixed-header';

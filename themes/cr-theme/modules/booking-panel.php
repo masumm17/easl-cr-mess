@@ -158,7 +158,7 @@ if(count($dropdown_columns) == 0) {
 												<?php endforeach;?>
 											<?php endforeach;?>
 										</select>
-										<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_label)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>"/>
+										<input type="text" id="residences-keyword" value="<?php echo esc_attr(trim($panel_default_label)); ?>" placeholder="<?php _e('City, Airport, Attraction or Hotel Name', 'crt');?>" data-errormessage="<?php echo esc_attr($panel_errro_message); ?>" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-gramm="false"/>
 										<span id="residences-keyword-dummy" class="booking-panel-residences-dummy"><?php echo esc_attr(trim($panel_default_label)); ?></span>
 										<span id="booking-panel-dd-keywords" class="booking-panel-dd-icon"></span>
 									</p>

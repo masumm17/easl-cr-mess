@@ -194,7 +194,7 @@ if (!String.prototype.padStart) {
                 optionsHeight = $filter.find(".accommodations-filter-options").outerHeight(),
                 vpTop = $filter.offset().top - $(window).scrollTop() + $filter.outerHeight();
                 if(!$filter.hasClass("show-options") && (vpTop + optionsHeight > $(window).height()) ) {
-                    window.scroll ? window.scroll({ top: $filter.offset().top + $filter.outerHeight() - 70, left: 0, behavior: 'smooth' }) :$('html, body').animate({scrollTop: $filter.offset().top + $filter.outerHeight() - 70}, 750, 'linear');
+                    window.scroll && !$("body").hasClass("cr-ie11") ? window.scroll({ top: $filter.offset().top + $filter.outerHeight() - 70, left: 0, behavior: 'smooth' }) :$('html, body').animate({scrollTop: $filter.offset().top + $filter.outerHeight() - 70}, 750, 'linear');
                 }
             $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options"), $(".accommodations-filter", ob.$el).not($filter).removeClass("show-options");
         });
@@ -1282,7 +1282,7 @@ if (!String.prototype.padStart) {
             $(".cr-scroll-down").on("click", function(e) {
                 var $wrapp = $(this).closest(".cr-rev-slider-wrapper"), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
                 e.preventDefault();
-                window.scroll? window.scroll({ top: sh, left: 0, behavior: 'smooth' }) : $('html, body').animate({scrollTop: sh}, 500, 'linear');});
+                window.scroll && !$("body").hasClass("cr-ie11") ? window.scroll({ top: sh, left: 0, behavior: 'smooth' }) : $('html, body').animate({scrollTop: sh}, 500, 'linear');});
         },
         init: function() {
             this.heroSlider();

@@ -1,0 +1,14 @@
+div.ginput_container_cr_phone span {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 16px;
+	margin-right: -4px;
+}
+
+.cr_phone_country {
+    width: 33.3%;
+}
+.cr_phone_number {
+    width: 66.7%;
+}

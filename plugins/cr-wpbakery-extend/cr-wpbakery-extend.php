@@ -72,6 +72,7 @@ class CR_VcE_Manager {
 			'SHORTCODES_DIR' => $dir . '/include/shortcodes',
 			'HELPERS_DIR' => $dir . '/include/helpers',
 			'TEMPLATES_DIR' => $dir . '/include/templates',
+			'THIRD_PARTY' => $dir . '/include/third-party',
 			'ASSETS_DIR' => $dir . '/assets',
 			'ASSETS_DIR_NAME' => 'assets',
 		) );
@@ -79,6 +80,7 @@ class CR_VcE_Manager {
 		require $this->path('HELPERS_DIR', 'helper.php');
 		require $this->path('APP_ROOT', 'include/customizer/customizer.php');
 		require $this->path('APP_ROOT', 'include/map-builder/map-builder.php');
+		require $this->path('THIRD_PARTY', 'gravity-form/gravity-form.php');
 		// Add hooks
 		add_action( 'plugins_loaded', array(
 			$this,

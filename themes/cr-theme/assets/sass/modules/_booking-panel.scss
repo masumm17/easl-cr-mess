@@ -96,7 +96,24 @@
             z-index: 2;
             font-weight: 300;
             font-size: 2.6rem;
+            padding-left: 0;
+            padding-right: 0;
         }
+        .cr-ie11 & {
+            .booking-panel-kw-wraper {
+                height: 50px;
+                .booking-panel-input-wrap {
+                    height: 50px;
+                }
+            }
+            
+            .cr-booking-no-keyword .booking-panel-kw-wraper {
+                height: 50px;
+                .booking-panel-input-wrap {
+                    margin-top: 23px;
+                }
+            }
+        } 
         .cr-booking-no-keyword #residences-keyword,
         .cr-booking-no-keyword .booking-panel-residences-dummy {
             font-size: 1.4rem;
@@ -315,7 +332,7 @@
         }
     }
     &-dd-icon {
-        background-size: 14px auto;
+        background-size: 15px 8px;
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;

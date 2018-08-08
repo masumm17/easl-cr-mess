@@ -1,4 +1,4 @@
-@include respond(tab-port) {
+@include respond(tab-land) {
     body {
         padding-bottom: 0 !important;
     }
@@ -8,7 +8,7 @@
     .cr-container:not(:last-child) {
         margin-bottom: 2rem;
     }
-    @include respond(tab-port) {
+    @include respond(tab-land) {
         .cr-title-icons-scwrapper{
             display: none;
         }
@@ -31,11 +31,11 @@
     z-index: 0;
     padding-top: 2.2rem;
     overflow: hidden;
-    @include respond(tab-port) {
+    @include respond(tab-land) {
         padding-top: 30px;
         overflow: visible;
     }
-    @include respond(tab-port) {
+    @include respond(tab-land) {
         position: relative;
     }
 }
@@ -55,7 +55,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             width: 300px;
             margin: 0 auto;
         }
@@ -64,7 +64,7 @@
     &-col {
         width: 33.333%;
         padding: 0 4.8rem 11.5rem;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             width: 100%;
             padding: 0 20px!important;
             text-align: center !important;
@@ -73,20 +73,20 @@
     &-col-inner {
         position: relative;
         z-index: 1;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             padding: 0 20px !important;
         }
     }
     &-logo {
         margin-bottom: 2.5rem;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             margin-bottom: 10px;
             
         }
         img {
             max-width: 220px;
             height: auto;
-            @include respond(tab-port) {
+            @include respond(tab-land) {
                 width: 64px;
             }
         }
@@ -97,7 +97,7 @@
         line-height: 1.4em;
         text-transform: uppercase;
         color: $color-white!important;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             font-size: 16px;
             margin: 0;
             line-height: 1.6em;
@@ -110,7 +110,7 @@
         line-height: 1.8em;
         text-transform: uppercase;
         color: $color-white!important;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             font-size: 16px;
             margin: 0;
             line-height: 1.6em;
@@ -120,7 +120,7 @@
         padding-top: 13.5rem;
         padding-bottom: 2.2rem;
         text-align: left;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             order: 3;
             margin-bottom: 30px;
         }
@@ -135,7 +135,7 @@
         padding-top: 13.5rem;
         padding-bottom: 3rem;
         text-align: right;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             order: 2;
             margin-bottom: 15px;
         }
@@ -150,7 +150,7 @@
         display: flex;
         flex-direction: column;
         padding: 0;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             order: 1;
             display: block;
             margin-bottom: 20px;
@@ -161,7 +161,7 @@
             position: relative;
             text-align: center;
             color: $color-white;
-            @include respond(tab-port) {
+            @include respond(tab-land) {
                 padding: 0 0 30px;
                 transform: unset!important;
                 .footer-col-inner {
@@ -181,7 +181,7 @@
                 bottom: -3.2rem;
                 background: #070606;
                 z-index: 0;
-                @include respond(tab-port) {
+                @include respond(tab-land) {
                     top: -30px;
                     bottom: 0;
                 }
@@ -196,7 +196,7 @@
                 padding: 0;
                 background: linear-gradient(to top, rgba($color-black, 1), transparent 50%);
                 z-index: 0;
-                @include respond(tab-port) {
+                @include respond(tab-land) {
                     display: none;
                 }
             }
@@ -219,7 +219,7 @@
         bottom: -3.2rem;
         padding-top: .5rem;
         left: 0;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: none;
         }
     }
@@ -237,13 +237,13 @@
             text-decoration: none;
         }
 
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             text-transform: none;
         }
     }
     &-newsletter {
 
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: none;
         }
         margin-top: 5.5rem;
@@ -323,7 +323,7 @@
     }
 
     &-menu-wrap {
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: none;
         }
         position: absolute;
@@ -388,9 +388,6 @@
         height: 50px;
         background: $color-black;
         @include respond(tab-land) {
-            height: 100px;
-        }
-        @include respond(tab-port) {
             display: none;
         }
     }
@@ -398,12 +395,12 @@
         display: none;
         text-align: center;
         padding-bottom: 60px;
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: block;
         }
     }
     &-social-links {
-        @include respond(tab-port) {
+        @include respond(tab-land) {
             display: block;
             margin-bottom: 10px;
             .cr-title-icons-list-wrap {
@@ -471,6 +468,7 @@
                 border-left: 1px solid $color-white;
                 background-color: $color-base;
                 font-size: 14px;
+                font-weight: 300;
                 line-height: 50px;
                 height: 50px;
                 white-space: nowrap;
