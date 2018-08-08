@@ -777,7 +777,7 @@
         resizeEevents: function() {
             this.setViewPort();
             this.setMenuProp();
-            this.resizeFooter();
+            //this.resizeFooter();
         },
         hidePreloader: function() {
             $(".loading-animation").length && $(".loading-animation").fadeOut(250, function() {
@@ -892,7 +892,7 @@
             this.setViewPort();
             this.mobileMenu();
             this.setMenuProp();
-            this.resizeFooter();
+            //this.resizeFooter();
             this.bookingPanel();
             this.scrollHeader();
             this.events();

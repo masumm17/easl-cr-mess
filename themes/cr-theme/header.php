@@ -65,5 +65,6 @@
 		</div>
 		<?php endif; ?>
 	</header>
-	<div id="cr-wrap">
-		<div id="primary" class="content-area">
+	<div id="cr-page-wrap">
+		<div id="cr-wrap">
+			<div id="primary" class="content-area">

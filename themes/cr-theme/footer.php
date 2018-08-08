@@ -41,7 +41,6 @@ if(!$footer_website_url) {
 
 
 ?>
-	<div id="footer-top-line"></div>
 <footer id="site-footer" class="site-footer">
 	<div class="footer-top">
 		<div class="footer-widgets">
@@ -114,8 +113,8 @@ if(!$footer_website_url) {
 			
 		</div>
 	</div>
-</footer>
-
+</footer>	
+</div>
 <div class="mobile-menu-humburger cr-humburger">
 	<div class="cr-humburger-box">
 		<div class="cr-humburger-inner"></div>

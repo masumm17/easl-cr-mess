@@ -1,8 +1,3 @@
-@include respond(tab-land) {
-    body {
-        padding-bottom: 0 !important;
-    }
-}
 #footer-before-content {
     padding-bottom: 3rem;
     .cr-container:not(:last-child) {
@@ -24,19 +19,13 @@
     height: 1px;
 }
 .site-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    position: relative;
     width: 100%;
     z-index: 0;
     padding-top: 2.2rem;
-    overflow: hidden;
     @include respond(tab-land) {
         padding-top: 30px;
         overflow: visible;
-    }
-    @include respond(tab-land) {
-        position: relative;
     }
 }
 .footer{

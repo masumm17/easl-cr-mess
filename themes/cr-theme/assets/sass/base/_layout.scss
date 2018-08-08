@@ -1,8 +1,13 @@
+#cr-page-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 #cr-wrap {
     background-color: $color-white;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    flex: 1 0 auto;
     overflow: hidden;
     position: relative;
     z-index: 1;
