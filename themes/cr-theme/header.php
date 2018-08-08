@@ -31,7 +31,6 @@
 		<div class="site-branding">
 			<a class="site-logo" href="<?php echo home_url( '/' ); ?>" title="">
 				<img class="site-main-logo" alt="" src="<?php echo crt_header_logo_img(); ?>"/>
-				<img class="scroll-header-logo" alt="" src="<?php echo crt_scroll_header_logo_img(); ?>"/>
 			</a>
 		</div>
 		<nav class="site-primary-navigation">

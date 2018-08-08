@@ -13,12 +13,12 @@ $wp_customize->add_setting( 'site_main_logo', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
-$wp_customize->add_setting( 'fixed_header_logo', array(
-	'type' => 'theme_mod',
-	'capability' => 'edit_theme_options',
-	'default' => '',
-	'transport' => 'refresh',
-) );
+//$wp_customize->add_setting( 'fixed_header_logo', array(
+//	'type' => 'theme_mod',
+//	'capability' => 'edit_theme_options',
+//	'default' => '',
+//	'transport' => 'refresh',
+//) );
 $wp_customize->add_setting( 'search_availabilty_link', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
@@ -53,10 +53,10 @@ $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'site
 	'label' => __( 'Site Main Logo', 'crt' ),
 	'section' => 'crt_header',
 ) ) );
-$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fixed_header_logo', array(
-	'label' => __( 'Fixed Header Logo', 'crt' ),
-	'section' => 'crt_header',
-) ) );
+//$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fixed_header_logo', array(
+//	'label' => __( 'Fixed Header Logo', 'crt' ),
+//	'section' => 'crt_header',
+//) ) );
  
 $wp_customize->add_control( 'enable_enquire_button', array(
 	'type' => 'checkbox',

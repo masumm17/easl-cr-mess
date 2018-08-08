@@ -24,57 +24,183 @@
 }
 .site-branding {
 	position: relative;
-	width: 20rem;
-    .site-logo {
-        img {
-            position: absolute;
-            top: 13px;
-            @include respond(tab-land) {
-                top: 9px;
-            }
+	width: 187px;
+    overflow: hidden;
+    transition: transform .5s ease-in-out, height .5s ease-in-out;
+    //Group site
+    .theme-base & {
+        height: 117px;
+        @include respond(tab-land) {
+            height: 113px;
         }
-        .site-main-logo {
-            //width: 135px;
-            //height: auto;
-            left: 50%;
-            transform: translateX(-50%);
+    }
+    .scroll-header.theme-base &,
+    .fixed-header.header-scrolled.theme-base &{
+        transform: translateY(-6px) scale(.68);
+        height: 67px;
+    }
+    // CTQ
+    .theme-ctq & {
+        height: 117px;
+        @include respond(tab-land) {
+            height: 113px;
         }
-        .scroll-header-logo {
-            //width: 42px;
-            //height: auto;
-            
-            left: 50%;
-            transform: translateX(-50%);
+    }
+    .scroll-header.theme-ctq &,
+    .fixed-header.header-scrolled.theme-ctq &{
+        transform: translateY(-6px) scale(.68);
+        height: 67px;
+    }
+    // CTC
+    .theme-ctc & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
         }
-        .scroll-header & {
-            .site-main-logo {
-                opacity: 0;
-                visibility: hidden;
-            }
-            .scroll-header-logo {
-                opacity: 1;
-                visibility: visible;
-            }
+    }
+    .scroll-header.theme-ctc &,
+    .fixed-header.header-scrolled.theme-ctc &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
         }
-        .fixed-header & {
-            .site-main-logo {
-                opacity: 1;
-                visibility: visible;
-            }
-            .scroll-header-logo {
-                opacity: 0;
-                visibility: hidden;
-            }
+    }
+    // CHC
+    .theme-chc & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
         }
-        .fixed-header.header-scrolled & {
-            .site-main-logo {
-                opacity: 0;
-                visibility: hidden;
-            }
-            .scroll-header-logo {
-                opacity: 1;
-                visibility: visible;
-            }
+    }
+    .scroll-header.theme-chc &,
+    .fixed-header.header-scrolled.theme-chc &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    // CKB
+    .theme-ckb & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
+        }
+    }
+    .scroll-header.theme-ckb &,
+    .fixed-header.header-scrolled.theme-ckb &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    // CPH
+    .theme-cph & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
+        }
+    }
+    .scroll-header.theme-cph &,
+    .fixed-header.header-scrolled.theme-cph &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    // CCH
+    .theme-cch & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
+        }
+    }
+    .scroll-header.theme-cch &,
+    .fixed-header.header-scrolled.theme-cch &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    // CHPG
+    .theme-chpg & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
+        }
+    }
+    .scroll-header.theme-chpg &,
+    .fixed-header.header-scrolled.theme-chpg &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    // CGP
+    .theme-cgp & {
+        height: 104px;
+        @include respond(tab-land) {
+            height: 100px;
+        }
+    }
+    .scroll-header.theme-cgp &,
+    .fixed-header.header-scrolled.theme-cgp &{
+        transform: translateY(-3px) scale(.80);
+        height: 64px;
+        @include respond(tab-land) {
+            height: 60px;
+        }
+    }
+    
+    
+    .site-main-logo {
+        position: absolute;
+        top: 13px;
+        left: 50%;
+        transform: translateX(-50%);
+        .theme-base & {
+            width: 187px;
+            height: 104px;
+        }
+        .theme-ctq & {
+            width: 187px;
+            height: 104px;
+        }
+        .theme-ctc & {
+            width: 121px;
+            height: 91px;
+        }
+        .theme-chc & {
+            width: 161px;
+            height: 91px;
+        }
+        .theme-ckb & {
+            width: 161px;
+            height: 91px;
+        }
+        .theme-cph & {
+            width: 98px;
+            height: 91px;
+        }
+        .theme-cch & {
+            width: 102px;
+            height: 91px;
+        }
+        .theme-chpg & {
+            width: 110px;
+            height: 91px;
+        }
+        .theme-cgp & {
+            width: 122px;
+            height: 91px;
+        }
+        @include respond(tab-land) {
+            top: 9px;
         }
     }
 }
