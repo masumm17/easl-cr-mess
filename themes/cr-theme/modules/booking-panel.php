@@ -256,7 +256,7 @@ if(count($dropdown_columns) == 0) {
 						</div>
 					</div>
 					<?php endif; ?>
-					<div class="booking-panel-col booking-panel-col2 booking-panel-col-button">
+					<div class="booking-panel-col booking-panel-col-button <?php if(!$panel_cl_title){echo 'booking-panel-col1';}else{echo 'booking-panel-col2';} ?>">
 						<div class="booking-panel-col-inner">
 							<input type="hidden" value="" id="booking-panel-day" name="day"/>
 							<input type="hidden" value="" id="booking-panel-ym" name="yearMonth"/>

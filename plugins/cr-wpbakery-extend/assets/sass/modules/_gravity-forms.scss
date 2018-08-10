@@ -54,3 +54,16 @@ body .gform_wrapper.gf_browser_chrome .ginput_complex.ginput_container_cr_phone 
 body .gform_wrapper textarea {
     padding: 1.3rem 1.2rem 1rem;
 }
+body .gform_wrapper .top_label .crgf-hide-label .gfield_label,
+body .gform_wrapper .top_label .crgf-hide-sublabel .ginput_complex label {
+	display: none;
+}
+body .gform_wrapper li.gfield.field_description_below + li.gsection {
+    margin-top: 16px!important;
+    margin-bottom: 20px!important;
+}
+body .gform_wrapper ul.gform_fields li.gfield.field_sublabel_below .ginput_complex label {
+    margin-bottom: 0;
+    margin-top: 8px;
+    line-height: 1.4em;
+}

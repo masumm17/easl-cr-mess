@@ -31,13 +31,55 @@ $wp_customize->add_setting( 'footer_telephone', array(
 	'default' => '',
 	'transport' => 'refresh',
 ) );
+$wp_customize->add_setting( 'footer_telephone_label', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_telephone_title', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
 $wp_customize->add_setting( 'footer_fax', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
 	'default' => '',
 	'transport' => 'refresh',
 ) );
+$wp_customize->add_setting( 'footer_fax_label', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_fax_title', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
 $wp_customize->add_setting( 'footer_email', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_email_label', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_email_title', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_website_label', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
 	'default' => '',
@@ -62,6 +104,18 @@ $wp_customize->add_setting( 'footer_website_nt', array(
 	'transport' => 'refresh',
 ) );
 $wp_customize->add_setting( 'footer_reservation', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_reservation_label', array(
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'default' => '',
+	'transport' => 'refresh',
+) );
+$wp_customize->add_setting( 'footer_reservation_title', array(
 	'type' => 'theme_mod',
 	'capability' => 'edit_theme_options',
 	'default' => '',
@@ -103,22 +157,47 @@ $wp_customize->add_control( 'footer_company_addess', array(
 ) );
 $wp_customize->add_control( 'footer_telephone', array(
 	'type' => 'text',
-	'label' => __( 'Telephone', 'crt' ),
+	'label' => __( 'Telephone Number', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_telephone_title', array(
+	'type' => 'text',
+	'label' => __( 'Telephone Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_telephone_label', array(
+	'type' => 'text',
+	'label' => __( 'Telephone Label', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_fax', array(
 	'type' => 'text',
-	'label' => __( 'Fax', 'crt' ),
+	'label' => __( 'Fax Number', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_fax_title', array(
+	'type' => 'text',
+	'label' => __( 'Fax Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_fax_label', array(
+	'type' => 'text',
+	'label' => __( 'Fax Label', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_email', array(
 	'type' => 'text',
-	'label' => __( 'Email', 'crt' ),
+	'label' => __( 'Email Address', 'crt' ),
 	'section' => 'crt_footer',
 ) );
-$wp_customize->add_control( 'footer_website', array(
+$wp_customize->add_control( 'footer_email_title', array(
 	'type' => 'text',
-	'label' => __( 'Website Title', 'crt' ),
+	'label' => __( 'Email Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_email_label', array(
+	'type' => 'text',
+	'label' => __( 'Email Label', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_website_url', array(
@@ -126,6 +205,16 @@ $wp_customize->add_control( 'footer_website_url', array(
 	'label' => __( 'Website URL', 'crt' ),
 	'section' => 'crt_footer',
 	'description' => __('Please leave empty to use home page url.', 'crt'),
+) );
+$wp_customize->add_control( 'footer_website', array(
+	'type' => 'text',
+	'label' => __( 'Website Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_website_label', array(
+	'type' => 'text',
+	'label' => __( 'Website Label', 'crt' ),
+	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_website_nt', array(
 	'type' => 'checkbox',
@@ -135,7 +224,17 @@ $wp_customize->add_control( 'footer_website_nt', array(
 ) );
 $wp_customize->add_control( 'footer_reservation', array(
 	'type' => 'text',
-	'label' => __( 'Reservation', 'crt' ),
+	'label' => __( 'Reservation Email', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_reservation_title', array(
+	'type' => 'text',
+	'label' => __( 'Reservation Title', 'crt' ),
+	'section' => 'crt_footer',
+) );
+$wp_customize->add_control( 'footer_reservation_label', array(
+	'type' => 'text',
+	'label' => __( 'Reservation Label', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 

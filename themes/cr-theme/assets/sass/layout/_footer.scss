@@ -45,7 +45,8 @@
         flex-direction: row;
         flex-wrap: wrap;
         @include respond(tab-land) {
-            width: 300px;
+            width: 420px;
+            max-width: 100%;
             margin: 0 auto;
         }
     }
@@ -63,7 +64,7 @@
         position: relative;
         z-index: 1;
         @include respond(tab-land) {
-            padding: 0 20px !important;
+            padding: 0!important;
         }
     }
     &-logo {
@@ -115,6 +116,7 @@
         }
         p {
             margin-bottom: 1.2rem;
+            white-space: nowrap;
             &:last-child {
                 margin-bottom: 0;
             }
@@ -130,6 +132,7 @@
         }
         p {
             margin-bottom: 1.2rem;
+            white-space: nowrap;
             &:last-child {
                 margin-bottom: 0;
             }
@@ -229,6 +232,16 @@
         @include respond(tab-land) {
             text-transform: none;
         }
+    }
+    &-left .footer-links-label, &-right  .footer-links-label{
+        font-size: 1.4rem;
+        line-height: 1em;
+        text-transform: uppercase;
+        padding: 3px 0;
+        display: inline-block;
+        color: $color-base-secondary;
+        margin-right: 5px;
+        @include color-themes($color:true, $bgcolor:false, $color-type: secondary);
     }
     &-newsletter {
 

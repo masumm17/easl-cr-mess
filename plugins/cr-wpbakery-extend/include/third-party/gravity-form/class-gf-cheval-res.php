@@ -53,11 +53,11 @@ class GFChevalRes extends GFAddOn {
 	 * Initialize the admin specific hooks.
 	 */
 	public function init_admin() {
-		
 		// form editor
 		add_action( 'gform_field_standard_settings', array( $this, 'field_settings' ), 10, 2 );
 		add_filter( 'gform_tooltips', array( $this, 'tooltips' ) );
 		add_filter( 'gform_entries_column_filter', array( $this, 'list_field_value'), 20, 4  );
+		add_filter( 'gform_disable_address_map_link', '__return_true'  );
 		add_action( 'gform_editor_js_set_default_values', array( $this, 'default_js_values' ) );
 		
 

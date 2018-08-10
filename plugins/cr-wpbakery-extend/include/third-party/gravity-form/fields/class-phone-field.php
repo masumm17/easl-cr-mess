@@ -38,11 +38,16 @@ class CR_GF_Phone_Field extends GF_Field {
 	function validate( $value, $form ) {
 
 		if ( $this->isRequired ) {
-			$phone_number = rgpost( 'input_' . $this->id . '_2' );
-			if (   ( empty( $phone_number ) ) ) {
+			$phone_number = trim(rgpost( 'input_' . $this->id . '_2' ));
+			$phone_number_val = str_replace( ' ', '', $phone_number );
+			if ( empty( $phone_number ) ) {
 				$this->failed_validation  = true;
 				$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'This field is required. Please enter a valid phone number.', 'crvc_extension' ) : $this->errorMessage;
+			}elseif ( empty($phone_number_val) || !preg_match('/^\d+$/',$phone_number_val) ) {
+				$this->failed_validation  = true;
+				$this->validation_message = empty( $this->errorMessage ) ? esc_html__( 'Invalid phone number. Please enter a valid phone number.', 'crvc_extension' ) : $this->errorMessage;
 			}
+			
 		}
 	}
 	
@@ -58,7 +63,6 @@ class CR_GF_Phone_Field extends GF_Field {
 		$id          = (int) $this->id;
 		$field_id    = $is_entry_detail || $is_form_editor || $form_id == 0 ? "input_$id" : 'input_' . $form_id . "_$id";
 
-		$value        = esc_attr( $value );
 		$size         = $this->size;
 		$class_suffix = $is_entry_detail ? '_admin' : '';
 

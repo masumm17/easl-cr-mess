@@ -53,6 +53,15 @@
         }
     }
 }
+@include respond(tab-land-only) {
+    .fw-grid {
+        &-item {
+            &-text p {
+                display: none;
+            }
+        }
+    }
+}
 @include respond(tab-port) {
     .fw-grid {
         &-con {
@@ -88,6 +97,9 @@
             &-noimage &-text {
                 position: relative;
                 min-height: 356px;
+            }
+            &-text p {
+                display: none;
             }
         } 
     }
