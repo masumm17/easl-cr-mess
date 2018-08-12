@@ -396,6 +396,7 @@ class CR_VcE_Manager {
 				require_once $settings['file'];
 			}
 		}
+		vc_remove_element( 'gravityform' );
 	}
 	
 	public function load_custom_params() {
