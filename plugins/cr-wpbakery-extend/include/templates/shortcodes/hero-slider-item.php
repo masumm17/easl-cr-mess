@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Hero_Slider_Item
  */
 $el_class = $css = $css_animation = '';
-$type = $yt_video_id = $yt_video_ar = $image_large = $image_small = $tagline_type = $tagline_title = $tagline_subtitle = $cta_button = $tagline_image = '';
+$type = $yt_video_id = $yt_video_ar = $yt_video_start = $image_large = $image_small = $tagline_type = $tagline_title = $tagline_subtitle = $cta_button = $tagline_image = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -92,6 +92,9 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 		if(!$yt_video_ar) {
 			$yt_video_ar = '16:9';
 		}
+		if(!$yt_video_start) {
+			$yt_video_start = '00:00';
+		}
 	?> 
 	<img src="<?php echo esc_url( $img_full_src); ?>" 
          alt="Ocean" 
@@ -109,6 +112,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 				data-videorate="1" 
 				data-videowidth="100%" 
 				data-videoheight="100%" 
+				data-videostartat="<?php echo esc_attr($yt_video_start); ?>" 
 				data-videocontrols="none"  
 				data-forcecover="1" 
 				data-aspectratio="<?php echo $yt_video_ar; ?>" 

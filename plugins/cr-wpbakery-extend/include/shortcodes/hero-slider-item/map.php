@@ -51,6 +51,17 @@ return array(
 				),
 			),
 			array(
+				'type' => 'textfield',
+				'heading' => __( 'Youtube Video Start Time', 'crvc_extension' ),
+				'param_name' => 'yt_video_start',
+				'value' => '00:00',
+				'description' => __( 'Set youtube video start time in this format mm:ss.', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'type',
+					'value' => array('video')
+				),
+			),
+			array(
 				'type' => 'attach_image',
 				'heading' => __( 'Image Large', 'crvc_extension' ),
 				'param_name' => 'image_large',
