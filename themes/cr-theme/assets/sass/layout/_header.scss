@@ -284,11 +284,12 @@
 }
 .mobile-menu-humburger {
     display: none;
-    width: 50px;
+    width: 60px;
     position: fixed;
     left: 0;
     top: 0;
     height: 60px;
+    cursor: pointer;
     z-index: 17;
     @include respond(tab-land) {
         display: block;

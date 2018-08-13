@@ -125,7 +125,7 @@ if(!$footer_website_url) {
 	</div>
 </footer>	
 </div>
-<div class="mobile-menu-humburger cr-humburger">
+<div class="mobile-menu-humburger cr-humburger" onclick="return true;">
 	<div class="cr-humburger-box">
 		<div class="cr-humburger-inner"></div>
 	</div>
@@ -213,7 +213,7 @@ if(!$footer_website_url) {
 			'menu_class'     => 'header-mobile-menu',
 			'container'      => false,
 			'fallback_cb'    => false,
-			'before'		 => '<span class="mobile-nav-arrow"></span>',
+			'before'		 => '<span class="mobile-nav-arrow" onclick="return true;"></span>',
 			'link_before'    => '<span class="link-inner">',
 			'link_after'     => '</span>',
 		) );
