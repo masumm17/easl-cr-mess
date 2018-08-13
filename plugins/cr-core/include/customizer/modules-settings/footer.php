@@ -241,16 +241,16 @@ $wp_customize->add_control( 'footer_reservation_label', array(
 
 $wp_customize->add_control( 'footer_mobile_nl_title', array(
 	'type' => 'text',
-	'label' => __( 'Mobile Newsletter link Title', 'crt' ),
+	'label' => __( 'Newsletter link Title', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_mobile_nl_link', array(
 	'type' => 'text',
-	'label' => __( 'Mobile Newsletter link url', 'crt' ),
+	'label' => __( 'Newsletter link url', 'crt' ),
 	'section' => 'crt_footer',
 ) );
 $wp_customize->add_control( 'footer_mobile_nl_nt', array(
 	'type' => 'checkbox',
-	'label' => __( 'Open Mobile Newsletter link in new tab', 'crt' ),
+	'label' => __( 'Open Newsletter link in new tab', 'crt' ),
 	'section' => 'crt_footer',
 ) );

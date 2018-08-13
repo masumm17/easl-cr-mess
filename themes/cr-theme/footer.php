@@ -70,14 +70,11 @@ if(!$footer_website_url) {
 							<?php if($footer_logo): ?><p class="footer-logo"><img alt="Cheval Residences Logo" src="<?php echo esc_url($footer_logo); ?>"/></p><?php endif; ?> 
 							<?php if($footer_company_name): ?><h4 class="footer-company-name"><?php echo esc_html($footer_company_name); ?></h4><?php endif;?> 
 							<?php if($footer_company_addess): ?><h4 class="footer-company-address"><?php echo $footer_company_addess; ?></h4><?php endif;?> 
+							<?php if($footer_mobile_nl_title && $footer_mobile_nl_link): ?>
 							<div class="footer-newsletter">
-								<form action="" method="get">
-									<p class="footer-nl-field">
-										<input type="email" name="footer_nl_email" id="footer_nl_email" placeholder="Enter your email"/>
-										<button class="footer-nl-submit">sign up &gt;</button>
-									</p>
-								</form>
+								<a class="cr-button-secondary-bordered" href="<?php echo esc_url($footer_mobile_nl_link); ?>"<?php if($footer_mobile_nl_nt){ echo ' target="_blank"';} ?>><?php echo $footer_mobile_nl_title; ?></a>
 							</div>
+							<?php  endif; ?>
 						</div>
 						<p class="footer-avvio"><a href="https://www.avvio.com/" target="_blank"><?php _e('an avvio solution', 'crt') ?></a></p>
 					</div>
