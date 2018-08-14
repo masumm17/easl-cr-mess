@@ -23,13 +23,6 @@ return array(
 				'value' => '4000',
 				'description' => __( 'Set slide duration in ms.', 'crvc_extension' ),
 			),
-			array(
-				'type' => 'colorpicker',
-				'heading' => __( 'Background Color', 'crvc_extension' ),
-				'param_name' => 'bg_color',
-				'value' => '',
-				'description' => __( 'Set slider container background color.', 'crvc_extension' ),
-			),
 		),
 		cr_vce_paramps_common_group()
 	),

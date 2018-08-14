@@ -50,6 +50,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 //$duration = $duration + 1200;
 ?> 
 <li data-transition="fade" 
+	data-fstransition="notransition" 
 	data-hideafterloop="0" 
 	data-hideslideonmobile="off"  
 	data-easein="default" 
@@ -87,7 +88,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 			$img_full_src = $img_full_src[0];
 		}
 		if(!$img_full_src) {
-			$img_full_src = cr_get_asset_url('images/hero-video-bg.png');
+			$img_full_src = 'https://img.youtube.com/vi/' . $yt_video_id . '/maxresdefault.jpg';
 		}
 		if(!$yt_video_ar) {
 			$yt_video_ar = '16:9';
@@ -101,7 +102,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
          class="rev-slidebg" 
          data-bgposition="center center" 
          data-bgfit="cover" 
-         data-bgrepeat="no-repeat" data-bgcolor="#000000" style="background: #000000;">
+         data-bgrepeat="no-repeat">
 		<div class="rs-background-video-layer cr-background-video-layer" 
 				data-forcerewind="on" 
 				data-nextslideatend="true" 
