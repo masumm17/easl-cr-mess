@@ -82,15 +82,13 @@
     }
     &-amenities {
         .cr-2col-content-nofloorpans & .cr-2col-content-col-inner {
-            text-align: center;
+            
         }
         &-list{
             list-style: none;
             padding-left: 6rem;
             .cr-2col-content-nofloorpans & {
-                display: inline-block;
-                text-align: left;
-                padding: 0;
+                
             }
             li {
                 color: $color-gray-1!important;
@@ -105,9 +103,9 @@
                 img {
                     position: absolute;
                     left: 0;
-                    top: 3px;
-                    max-width: 26px;
-                    height: auto;
+                    top: 0;
+                    width: 22px;
+                    height: 22px;
                 }
                 span {
 
