@@ -10,11 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $this CR_VcE_Sc_Hero_Slider
  */
-$el_class = $css = $css_animation = '';
+$el_class = $css = $css_animation = $bg_color = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 $this->reset_items_data();
 CR_VcE_Sc_Hero_Slider::$data = $atts;
 extract( $atts );
+$bg_color = trim($bg_color);
 
 // It is required to be before to get slide items data
 $prepareContent = wpb_js_remove_wpautop( $content, false );
@@ -31,7 +32,7 @@ if(CR_VcE_Sc_Hero_Slider::$items_count > 0):
 ?>
 <section class="cr-rev-slider-wrapper  rev_slider_wrapper <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<div class="cr-rev-slider rev_slider" data-version="5.4.8" style="display:none" data-crdelay="<?php echo esc_attr($duration); ?>">
-		<ul>
+		<ul <?php if($bg_color):?>style="background: <?php echo $bg_color; ?>;"<?php endif;?>>
 			<?php echo $prepareContent; ?>
 		</ul>
 	</div>
