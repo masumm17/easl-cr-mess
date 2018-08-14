@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Two_Col_Content
  */
 $el_class = $css = $css_animation = '';
-$enable_button = $button = $col_1_title = $col_1_note = $col_2_title = $col_2_note = $disable_col2 = '';
+$enable_button = $button = $col_1_title = $col_1_note = $col_2_title = $col_2_note = $disable_col1 = $disable_col2 = '';
 $amenity_ids = array();
 $floorplans = array();
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -41,13 +41,13 @@ $class_to_filter = '';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 
-$column_1_enabled = false;
+$column_1_enabled = 'yes' != $disable_col1 ? true : false;
 $column_2_enabled = 'yes' != $disable_col2 ? true : false;
-if(count($amenities) > 0) {
-	$column_1_enabled = true;
+if($column_1_enabled && count($amenities) < 1) {
+	$column_1_enabled = false;
 }
-if(count($parsed_floorplans) > 0) {
-	$column_2_enabled = true;
+if($column_2_enabled && count($parsed_floorplans) < 1) {
+	$column_2_enabled = false;
 }
 
 if('yes' == $enable_button && $button) {

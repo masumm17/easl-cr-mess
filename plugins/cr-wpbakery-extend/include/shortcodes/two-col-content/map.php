@@ -36,6 +36,18 @@ return array(
 				),
 			),
 			array(
+				'type' => 'dropdown',
+				'heading' => __( 'Disable Column 1', 'crvc_extension' ),
+				'param_name' => 'disable_col1',
+				'std' => 'no',
+				'group' => __( 'Column 1 Options', 'crvc_extension' ),
+				'value' => array(
+					__( 'No', 'crvc_extension' ) => 'no',
+					__( 'Yes', 'crvc_extension' ) => 'yes',
+				),
+				'description' => __( 'Disable column one.', 'crvc_extension' ),
+			),
+			array(
 				'type' => 'textfield',
 				'heading' => __( 'Column 1 Title', 'crvc_extension' ),
 				'param_name' => 'col_1_title',
@@ -43,6 +55,10 @@ return array(
 				'description' => __( 'Enter column 1 title.', 'crvc_extension' ),
 				'admin_label' => true,
 				'group' => __( 'Column 1 Options', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col1',
+					'value' => array('no'),
+				),
 			),
 			array(
 				'type' => 'textarea',
@@ -52,6 +68,10 @@ return array(
 				'description' => __( 'Enter column 1 note.', 'crvc_extension' ),
 				'admin_label' => false,
 				'group' => __( 'Column 1 Options', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col1',
+					'value' => array('no'),
+				),
 			),
 			array(
 				'type' => 'autocomplete',
@@ -71,6 +91,10 @@ return array(
 				),
 				'admin_label' => false,
 				'group' => __( 'Column 1 Options', 'crvc_extension' ),
+				'dependency' => array(
+					'element' => 'disable_col1',
+					'value' => array('no'),
+				),
 			),
 			array(
 				'type' => 'dropdown',
