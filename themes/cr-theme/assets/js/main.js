@@ -629,6 +629,10 @@
                         .find("select").val($li.data('value'));
                 $li.closest(".booking-panel-select-box").removeClass("cr-show-selectbox");
             });
+            $('.booking-panel-message-close a', $form).on("click", function(e) {
+                e.preventDefault();
+                $form.removeClass("booking-panel-action-error");
+            });
             if(!$residence.val()) {
                 $keywordWrap.addClass("cr-booking-no-keyword");
             }else{
@@ -653,6 +657,11 @@
                     $checkin.removeClass("bp-date-picker-shown");
                     $checkout.removeClass("bp-date-picker-shown");
                     $(".booking-panel-select-box").removeClass("cr-show-selectbox");
+                    console.log($form.data("triggeredbyarrow"));
+                    if(!$form.data("triggeredbyarrow")) {
+                        $fieldKeyword.val("");
+                    }
+                    $form.data("triggeredbyarrow", false);
                 },
                 select: function( event, ui ) {
                     $dummy.html(ui.item.value);
@@ -691,21 +700,22 @@
             });
             $el.find("#booking-panel-dd-keywords").on("click", function(e) {
                 e.preventDefault();
+                $form.data("triggeredbyarrow", true);
                 ob.$body.hasClass("cr-ie11") && $residence.focus();
                 !$residence.bookingpanel( "widget" ).is( ":visible" ) ? $residence.bookingpanel( "search", "" ) : $residence.bookingpanel( "close" );
             });
             
             $form.on("submit", function(e) {
                 var keyword = $fieldKeyword.val(), action = $fieldKeyword.find("option:selected").data("actionurl");
-                $form.removeClass("booking-panel-action-error");
+                //$form.removeClass("booking-panel-action-error");
                 if($form.hasClass("booking-panel-keyword-error")) {
-                    console.log("No keyword found");
                     e.preventDefault();
                     return false;
                 }
                 
                 if(!action) {
-                   $form.addClass("booking-panel-action-error");
+                    $form.addClass("booking-panel-action-error");
+                    $form.find(".booking-panel-message-text").html("Please select a Residence");
                     e.preventDefault();
                     return false;
                 }

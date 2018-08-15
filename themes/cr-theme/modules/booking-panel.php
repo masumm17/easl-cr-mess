@@ -145,6 +145,7 @@ if(count($dropdown_columns) == 0) {
 								<div class="booking-panel-kw-wraper">
 									<p class="booking-panel-input-wrap">
 										<select name="keyword" id="keyword" class="booking-panel-input-keword-select u-hide">
+											<option value="" data-actionurl=""><?php _e('-- Select a Residence --', 'crt') ?></option>
 											<option value="*" data-actionurl="https://secure.chevalresidences.com/portal/site/www.chevalresidences.com/index.php"><?php _e('-- All Residences --', 'crt') ?></option>
 											<?php
 											foreach($dropdown_columns as $dd_col):
@@ -285,6 +286,14 @@ if(count($dropdown_columns) == 0) {
 					<?php endif; ?>
 				</div>
 				<?php endif; ?>
+				<div class="booking-panel-message">
+					<div class="booking-panel-message-inner">
+						<div class="booking-panel-message-text"></div>
+						<div class="booking-panel-message-close">
+							<a class="cr-button" href="#"><?php _e('OK', 'crt') ;?></a>
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
