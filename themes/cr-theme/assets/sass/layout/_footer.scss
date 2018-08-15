@@ -216,7 +216,7 @@
         }
     }
     
-    &-left a, &-right a {
+    &-left .footer-link-title, &-right .footer-link-title {
         position: relative;
         font-size: 1.4rem;
         line-height: 1em;
@@ -224,7 +224,7 @@
         padding: 3px 0;
         display: inline-block;
         position: relative;
-        &:link, &:visited {
+        &, &:link, &:visited {
             color: $color-white!important;
             text-decoration: none;
         }

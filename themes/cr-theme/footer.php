@@ -60,8 +60,8 @@ if(!$footer_website_url) {
 			<div class="footer-container footer-cols">
 				<div class="footer-col footer-left">
 					<div class="footer-col-inner">
-						<?php if($footer_telephone): ?><p><?php if($footer_telephone_label): ?><span class="footer-links-label"><?php echo $footer_telephone_label; ?></span><?php endif; ?><a href="tel:<?php echo esc_attr($footer_telephone); ?>"><?php echo esc_html($footer_telephone_title); ?></a></p><?php endif;?> 
-						<?php if($footer_fax): ?><p><?php if($footer_fax_label): ?><span class="footer-links-label"><?php echo $footer_fax_label; ?></span><?php endif; ?><a href="tel:<?php echo esc_attr($footer_fax); ?>"><?php echo esc_html($footer_fax_title); ?></a></p><?php endif;?> 
+						<?php if($footer_telephone): ?><p><?php if($footer_telephone_label): ?><span class="footer-links-label"><?php echo $footer_telephone_label; ?></span><?php endif; ?><a class="footer-link-title" href="tel:<?php echo esc_attr($footer_telephone); ?>"><?php echo esc_html($footer_telephone_title); ?></a></p><?php endif;?> 
+						<?php if($footer_fax): ?><p><?php if($footer_fax_label): ?><span class="footer-links-label"><?php echo $footer_fax_label; ?></span><?php endif; ?><span class="footer-link-title"><?php echo esc_html($footer_fax_title); ?></span></p><?php endif;?> 
 					</div>
 				</div>
 				<div class="footer-col footer-center cr-animate-when-visible cr-animate-bothway">
@@ -81,9 +81,9 @@ if(!$footer_website_url) {
 				</div>
 				<div class="footer-col footer-right">
 					<div class="footer-col-inner">
-						<?php if($footer_reservation): ?><p><?php if($footer_reservation_label): ?><span class="footer-links-label"><?php echo $footer_reservation_label; ?></span><?php endif; ?><a href="mailto:<?php echo esc_attr($footer_reservation); ?>"><?php echo esc_html($footer_reservation_title); ?></a></p><?php endif;?> 
-						<?php if($footer_email): ?><p><?php if($footer_email_label): ?><span class="footer-links-label"><?php echo $footer_email_label; ?></span><?php endif; ?><a href="mailto:<?php echo esc_attr($footer_email); ?>"><?php echo esc_html($footer_email_title); ?></a></p><?php endif;?> 
-						<?php if($footer_website_url): ?><p><?php if($footer_website_label): ?><span class="footer-links-label"><?php echo $footer_website_label; ?></span><?php endif; ?><a href="<?php echo esc_url($footer_website_url); ?>"<?php if($footer_website_nt){ echo ' target="_blank"';} ?>><?php echo esc_html($footer_website_title); ?></a></p><?php endif;?> 
+						<?php if($footer_reservation): ?><p><?php if($footer_reservation_label): ?><span class="footer-links-label"><?php echo $footer_reservation_label; ?></span><?php endif; ?><a class="footer-link-title" href="mailto:<?php echo esc_attr($footer_reservation); ?>"><?php echo esc_html($footer_reservation_title); ?></a></p><?php endif;?> 
+						<?php if($footer_email): ?><p><?php if($footer_email_label): ?><span class="footer-links-label"><?php echo $footer_email_label; ?></span><?php endif; ?><a class="footer-link-title" href="mailto:<?php echo esc_attr($footer_email); ?>"><?php echo esc_html($footer_email_title); ?></a></p><?php endif;?> 
+						<?php if($footer_website_url): ?><p><?php if($footer_website_label): ?><span class="footer-links-label"><?php echo $footer_website_label; ?></span><?php endif; ?><a class="footer-link-title" href="<?php echo esc_url($footer_website_url); ?>"<?php if($footer_website_nt){ echo ' target="_blank"';} ?>><?php echo esc_html($footer_website_title); ?></a></p><?php endif;?> 
 					</div>
 				</div>
 			</div>

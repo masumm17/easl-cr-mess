@@ -27,6 +27,22 @@
         }
     } 
 }
+
+@include respond(desktop-small-only) {
+    .fw-grid {
+        &-item {
+            &-noimage &-title {
+                margin-bottom: 1.5rem!important;
+            }
+            &-noimage  &-subtitle {
+                margin-bottom: 1.5rem!important;
+            }
+            &-noimage  &-text p {
+                margin-bottom: 2rem!important;
+            }
+        }
+    }
+}
 @include respond(tab-land) {
     .fw-grid {
         &-item {

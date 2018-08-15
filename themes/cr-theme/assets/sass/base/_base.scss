@@ -9,6 +9,7 @@
 html {
     // This defines what 1rem is
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {

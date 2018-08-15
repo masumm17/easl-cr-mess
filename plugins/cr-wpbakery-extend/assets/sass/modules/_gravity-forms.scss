@@ -67,3 +67,7 @@ body .gform_wrapper ul.gform_fields li.gfield.field_sublabel_below .ginput_compl
     margin-top: 8px;
     line-height: 1.4em;
 }
+.gform_wrapper .gfield_radio li label .gfield_required {
+    display: inline;
+    margin-top: 0;
+}
