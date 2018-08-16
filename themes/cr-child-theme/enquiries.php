@@ -1,15 +1,36 @@
-	<!--
-	USE this code to insert in text editor:
+<?php /* 
+<!-- use this code in text editor-->
+<!--
+<iframe id="enquiry-form" src="https://chevalres.wpengine.com/wp-content/themes/cr-child-theme/enquiries.php" seamless="seamless" scrolling="no" frameborder="0" style=""></iframe>
+<style>
+#enquiry-form{width: 100% !important; }
+</style>
+<script>	
+// Add event listener for messages being massed from the iframe
+var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+var eventer = window[eventMethod];
+var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+eventer(messageEvent,function(e) {	
+	// Check that message being passed is the documentHeight
+	if (  (typeof e.data === 'string') && (e.data.indexOf('documentHeight') > -1) ) {
+		var height = e.data.split('documentHeight:')[1],
+		height = parseInt(height) + 50; // add a bit of extra space
+		// Change height of iframe
+		document.getElementById('enquiry-form').height = height + 'px';
+	} 
+},false);</script>
 
-	<iframe id="enquiry-form" src="https://chevalres.wpengine.com/wp-content/themes/cr-child-theme/enquiries.php" seamless="seamless" scrolling="no" frameborder="0" style=""></iframe>
-	<style>#enquiry-form{width: 100% !important; height:2400px;}
-	@media only screen and (max-width: 320px){#enquiry-form {height: 2400px;}}
-	@media only screen and (min-width: 334px){#enquiry-form {height: 1850px;}}
-	@media only screen and (min-width: 481px){#enquiry-form {height: 1650px;}}
-	@media only screen and (min-width: 481px){#enquiry-form {height: 2000px;}}
-	@media only screen and (min-width: 504px){#enquiry-form {height: 1600px;}}</style>
-
-	-->
+[vc_row][vc_column][vc_column_text]
+<iframe id="enquiry-form" src="https://chevalres.wpengine.com/wp-content/themes/cr-child-theme/enquiries.php" seamless="seamless" scrolling="no" frameborder="0" style=""></iframe>
+<style>#enquiry-form{width: 100% !important; height:2400px;}
+@media only screen and (max-width: 320px){#enquiry-form {height: 2400px;}}
+@media only screen and (min-width: 334px){#enquiry-form {height: 1850px;}}
+@media only screen and (min-width: 481px){#enquiry-form {height: 1650px;}}
+@media only screen and (min-width: 481px){#enquiry-form {height: 2000px;}}
+@media only screen and (min-width: 504px){#enquiry-form {height: 1600px;}}</style>
+[/vc_column_text][/vc_column][/vc_row]
+-->
+*/ ?>
 
 <?php if( $_SERVER['REQUEST_METHOD'] == 'POST' ) : ?>
 
@@ -26,11 +47,12 @@
 		$cust_type = $_POST['cust_type1'];
 		$source = $_POST['source1'];
 		$email_updates = $_POST['email_updates1'];
+		$privacy_policy = $_POST['privacy_policy1'];
 		$room_selections = $_POST['room_selections1'];
 		$prop_array =  $_POST['prop_array1'];
 			
 		//$to = 'jaspreet.singh@avvio.com, reservations@chevalresidences.com';
-		$to = 'barry.flanagan@avvio.com';//'reservations@chevalresidences.com';
+		$to = 'reservations@chevalresidences.com';
 		
 		foreach ($prop_array as $key => $value) {
 			switch($value)
@@ -62,6 +84,12 @@
 	        		break;
 			}
 		}
+		//test
+		//$to = 'manpreet.kaur@avvio.com';
+
+		$replytoemail = 'reservations@chevalresidences.com';
+
+		$nameAndEmail = $name . ' < ' . $email . ' > ';
 		
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL); // Sanitizing E-mail.
 		// After sanitization Validation is performed
@@ -70,7 +98,16 @@
 			// To send HTML mail, the Content-type header must be set.
 			$headers = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-			$headers .= 'From:' . $email. "\r\n"; // Sender's Email
+			//$headers .= 'From:' . $email . "\r\n"; // Sender's Email
+
+			$headers .= "From: " . $nameAndEmail . "\r\n";
+			$headers .= "Reply-To: ". strip_tags($_POST['replytoemail']) . "\r\n";
+			//$headers .= "CC: igor.yushchenko@avvio.com\r\n";
+
+
+			//$headers .= "From: " . $name . "\r\n";
+			//$headers .= "Reply-To: ". $replytoemail . "\r\n";
+
 			$template = '<div>Query from ' . $name . ',<br/>'
 			. 'Details:<br/>'
 			. 'Name: ' . $name . '<br/>'
@@ -83,7 +120,8 @@
 			. 'Enquiry Details: ' . $details . '<br/>'
 			. 'Customer Type: ' . $cust_type . '<br/>'
 			. 'How did you hear about us : ' . $source . '<br/>'
-			. 'Agree to receive emails: ' . $email_updates . '<br/>'		
+			. 'Agree to receive emails: ' . $email_updates . '<br/>'
+			. 'Agree to privacy policy: ' . $privacy_policy . '<br/>'
 			. '<br/>'
 			. 'Please reply to customer as soon as possible .</div>';
 			$sendmessage = "<div>" . $template . "</div>";
@@ -109,46 +147,219 @@
 
 			<style>
 				@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-				body {background-color: white !important;}
-				form.contact_form{margin: 10px; padding: 10px;}
-				form.contact_form .inputfield {max-width: 500px !important; padding: 15px 10px;}
-				form.contact_form span {display: block; overflow: hidden;}
-				form.contact_form .inputfield input {width: 200px !important;}
-				form.contact_form .inputfield input#email_updates { width: 13px !important; }
-				form.contact_form .inputfield select {width: 200px !important;} 
-				form.contact_form .inputfield textarea {width: 200px !important;} 
-				form.contact_form label#acc-choices-label{padding-right:170px;}
-				form.contact_form .inputfield.privacy_policy a {color: #E7A615;}
-				body {
-					    color: #2e2e2e !important;
+				body.contact_form_body {
+						background-color: white !important;
+					 	color: #2e2e2e !important;
 					    font-family: Open-Sans, sans-serif; !important;
-					    font-size:  13px !important;
+					    font-size:  14px !important;
 					    font-weight: 400 !important;
 				}
+				body.contact_form_body form.contact_form{margin: 10px; padding: 10px;}
+				body.contact_form_body form.contact_form .inputfield {max-width: 500px !important; min-width: 240px; padding: 15px 10px;}
+				body.contact_form_body form.contact_form .fa.fa-info-circle {display: inline-block;}
+				body.contact_form_body form.contact_form .inputfield input {width: 200px !important;}
+				body.contact_form_body form.contact_form .inputfield input#email_updates { width: 13px !important; float: left;}
+				body.contact_form_body form.contact_form .inputfield input#privacy_policy { width: 13px !important; float: left;}
+				body.contact_form_body form.contact_form .inputfield select {width: 200px !important;} 
+				body.contact_form_body form.contact_form .inputfield textarea {width: 200px !important; min-height: 80px;} 
+				body.contact_form_body form.contact_form label#acc-choices-label{padding-right:170px;}
+				body.contact_form_body form.contact_form .chk {padding-top: 1px;}
 					    
-				form.contact_form .inputfield input {color:#ded1b7; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
-				form.contact_form .inputfield select {color:#ded1b7; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
-				form.contact_form .inputfield input#submit{color:#2e2e2e;}
+				body.contact_form_body form.contact_form .inputfield input {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
+				body.contact_form_body form.contact_form .inputfield select {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
+				body.contact_form_body form.contact_form .inputfield input#submit{color:#ffffff; height: 54px; margin-left: -10px;font-size: 16px !important; font-weight: 300 !important; text-transform: uppercase;}
+				body.contact_form_body form.contact_form .inputfield.submit{background-color: transparent !important;}
+				body.contact_form_body form.contact_form #valid_choices .element, .all_elements{color: black;}			   		
+				body.contact_form_body form.contact_form #mcq .element:hover, .element.interim:hover{color: #4B4B4B;}
+			   	body.contact_form_body form.contact_form #mcq .element.on, .all_rooms.on{color: white;}			   		
+			   	body.contact_form_body form.contact_form #valid_choices .element.disabled{opacity: 0.2;}
+			   	body.contact_form_body form.contact_form #valid_choices .element.interim.finalised{color: white;} 
+			   	body.contact_form_body form.contact_form #make_sel a.tooltip {text-decoration: none;}
+
+			   	/*-- Booking Calendar Customise Colours --*/
+				.ui-widget-header a {color: #000000 /*{fcHeader}*/;}
+				.ui-widget-content a {color: #000000 /*{fcContent}*/;}
+				.ui-widget-header {border-color: #E7A615/*{borderColorHeader}*/; background: #E7A615 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				.ui-widget-content {border-color: #E7A615 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #E7A615 /*{fcContent}*/;}				
+				.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #E7A615 /*{borderColorHighlight}*/;}
+
+				/*
+				1.	CR - #f6eeda , #e7a615
+				2.	CK – #fde9eb , #9e3039
+				3.	CTQ - #dbf2fc , #00436a
+				4.	CTC - #f6e7e3 , #631d07
+				5.	CHC - #fbece5 , #ea4d00
+				6.	CGP - #eedee6 , #6a1a41
+				7.	CPH - #eeeecf , #9c9a00
+				8.	CHPG - #e2eecb , #53682b
+				9.	CCH - #daf0f0 , #004f50
+				*/ 
+
+				body.contact_form_body.CR form.contact_form .inputfield {background-color: #f6eeda;}
+				body.contact_form_body.CR form.contact_form .inputfield.submit input.bookbutton{background-color: #e7a615;}
+				body.contact_form_body.CR form.contact_form .fa.fa-info-circle {color: #e7a615;}
+				body.contact_form_body.CR form.contact_form .element,
+				body.contact_form_body.CR form.contact_form .all_rooms{border: 1px solid #e7a615;}
+				body.contact_form_body.CR form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #e7a615;}
+				body.contact_form_body.CR form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #e7a615; }
+				body.contact_form_body.CR form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #e7a615; }
+			   	body.contact_form_body.CR form.contact_form .element.on,
+			   	body.contact_form_body.CR form.contact_form .all_rooms.on{background-color: #e7a615; }
+			   	body.contact_form_body.CR form.contact_form .element.disabled{border: 1px solid #e7a615; color: #e7a615;}
+			   	body.contact_form_body.CR form.contact_form .element.interim.finalised{border: 1px solid #e7a615; background: #e7a615;}  
+				body.contact_form_body.CR form.contact_form .inputfield.privacy_policy a {color: #E7A615;}
+				body.contact_form_body.CR .ui-widget-header {border-color: #E7A615/*{borderColorHeader}*/; background: #E7A615 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CR .ui-widget-content {border-color: #E7A615 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #E7A615 /*{fcContent}*/;}				
+				body.contact_form_body.CR .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #E7A615 /*{borderColorHighlight}*/;}
+
+				body.contact_form_body.CK form.contact_form .inputfield {background-color: #fde9eb;}
+				body.contact_form_body.CK form.contact_form .inputfield.submit input.bookbutton{background-color: #9e3039;}
+				body.contact_form_body.CK form.contact_form .fa.fa-info-circle {color: #9e3039;}
+				body.contact_form_body.CK form.contact_form .element,
+				body.contact_form_body.CK form.contact_form .all_rooms{border: 1px solid #9e3039;}
+				body.contact_form_body.CK form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #9e3039;}
+				body.contact_form_body.CK form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #9e3039; }
+				body.contact_form_body.CK form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #9e3039; }
+			   	body.contact_form_body.CK form.contact_form .element.on,
+			   	body.contact_form_body.CK form.contact_form .all_rooms.on{background-color: #9e3039; }
+			   	body.contact_form_body.CK form.contact_form .element.disabled{border: 1px solid #9e3039; color: #9e3039;}
+			   	body.contact_form_body.CK form.contact_form .element.interim.finalised{border: 1px solid #9e3039; background: #9e3039;}  
+			   	body.contact_form_body.CK .ui-widget-header {border-color: #9e3039/*{borderColorHeader}*/; background: #9e3039 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CK .ui-widget-content {border-color: #9e3039 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #9e3039 /*{fcContent}*/;}				
+				body.contact_form_body.CK .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #9e3039 /*{borderColorHighlight}*/;}
+
+				body.contact_form_body.CTQ form.contact_form .inputfield {background-color: #dbf2fc;}
+				body.contact_form_body.CTQ form.contact_form .inputfield.submit input.bookbutton{background-color: #00436a;}
+				body.contact_form_body.CTQ form.contact_form .fa.fa-info-circle {color: #00436a;}
+				body.contact_form_body.CTQ form.contact_form .element,
+				body.contact_form_body.CTQ form.contact_form .all_rooms{border: 1px solid #00436a;}
+				body.contact_form_body.CTQ form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #00436a;}
+				body.contact_form_body.CTQ form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #00436a; }
+				body.contact_form_body.CTQ form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #00436a; }
+			   	body.contact_form_body.CTQ form.contact_form .element.on,
+			   	body.contact_form_body.CTQ form.contact_form .all_rooms.on{background-color: #00436a; }
+			   	body.contact_form_body.CTQ form.contact_form .element.disabled{border: 1px solid #00436a; color: #00436a;}
+			   	body.contact_form_body.CTQ form.contact_form .element.interim.finalised{border: 1px solid #00436a; background: #00436a;}
+			   	body.contact_form_body.CTQ .ui-widget-header {border-color: #00436a/*{borderColorHeader}*/; background: #00436a /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CTQ .ui-widget-content {border-color: #00436a /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #00436a /*{fcContent}*/;}				
+				body.contact_form_body.CTQ .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #00436a /*{borderColorHighlight}*/;}
+
+				body.contact_form_body.CTC form.contact_form .inputfield {background-color: #f6e7e3;}
+				body.contact_form_body.CTC form.contact_form .inputfield.submit input.bookbutton{background-color: #631d07;}
+				body.contact_form_body.CTC form.contact_form .fa.fa-info-circle {color: #631d07;}
+				body.contact_form_body.CTC form.contact_form .element,
+				body.contact_form_body.CTC form.contact_form .all_rooms{border: 1px solid #631d07;}
+				body.contact_form_body.CTC form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #631d07;}
+				body.contact_form_body.CTC form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #631d07; }
+				body.contact_form_body.CTC form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #631d07; }
+			   	body.contact_form_body.CTC form.contact_form .element.on,
+			   	body.contact_form_body.CTC form.contact_form .all_rooms.on{background-color: #631d07; }
+			   	body.contact_form_body.CTC form.contact_form .element.disabled{border: 1px solid #631d07; color: #631d07;}
+			   	body.contact_form_body.CTC form.contact_form .element.interim.finalised{border: 1px solid #631d07; background: #631d07;}
+			   	body.contact_form_body.CTC .ui-widget-header {border-color: #631d07/*{borderColorHeader}*/; background: #631d07 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CTC .ui-widget-content {border-color: #631d07 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #631d07 /*{fcContent}*/;}				
+				body.contact_form_body.CTC .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #631d07 /*{borderColorHighlight}*/;}
+
+				body.contact_form_body.CHC form.contact_form .inputfield {background-color: #fbece5;}
+				body.contact_form_body.CHC form.contact_form .inputfield.submit input.bookbutton{background-color: #ea4d00;}
+				body.contact_form_body.CHC form.contact_form .fa.fa-info-circle {color: #ea4d00;}
+				body.contact_form_body.CHC form.contact_form .element,
+				body.contact_form_body.CHC form.contact_form .all_rooms{border: 1px solid #ea4d00;}
+				body.contact_form_body.CHC form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #ea4d00;}
+				body.contact_form_body.CHC form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #ea4d00; }
+				body.contact_form_body.CHC form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #ea4d00; }
+			   	body.contact_form_body.CHC form.contact_form .element.on,
+			   	body.contact_form_body.CHC form.contact_form .all_rooms.on{background-color: #ea4d00; }
+			   	body.contact_form_body.CHC form.contact_form .element.disabled{border: 1px solid #ea4d00; color: #ea4d00;}
+			   	body.contact_form_body.CHC form.contact_form .element.interim.finalised{border: 1px solid #ea4d00; background: #ea4d00;}
+			   	body.contact_form_body.CHC .ui-widget-header {border-color: #ea4d00/*{borderColorHeader}*/; background: #ea4d00 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CHC .ui-widget-content {border-color: #ea4d00 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #ea4d00 /*{fcContent}*/;}				
+				body.contact_form_body.CHC .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #ea4d00 /*{borderColorHighlight}*/;} 
+
+				body.contact_form_body.CGP form.contact_form .inputfield {background-color: #eedee6;}
+				body.contact_form_body.CGP form.contact_form .inputfield.submit input.bookbutton{background-color: #6a1a41;}
+				body.contact_form_body.CGP form.contact_form .fa.fa-info-circle {color: #6a1a41;}
+				body.contact_form_body.CGP form.contact_form .element,
+				body.contact_form_body.CGP form.contact_form .all_rooms{border: 1px solid #6a1a41;}
+				body.contact_form_body.CGP form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #6a1a41;}
+				body.contact_form_body.CGP form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #6a1a41; }
+				body.contact_form_body.CGP form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #6a1a41; }
+			   	body.contact_form_body.CGP form.contact_form .element.on,
+			   	body.contact_form_body.CGP form.contact_form .all_rooms.on{background-color: #6a1a41; }
+			   	body.contact_form_body.CGP form.contact_form .element.disabled{border: 1px solid #6a1a41; color: #6a1a41;}
+			   	body.contact_form_body.CGP form.contact_form .element.interim.finalised{border: 1px solid #6a1a41; background: #6a1a41;}
+			   	body.contact_form_body.CGP .ui-widget-header {border-color: #6a1a41/*{borderColorHeader}*/; background: #6a1a41 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CGP .ui-widget-content {border-color: #6a1a41 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #6a1a41 /*{fcContent}*/;}				
+				body.contact_form_body.CGP .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #6a1a41 /*{borderColorHighlight}*/;}  
+
+				body.contact_form_body.CPH form.contact_form .inputfield {background-color: #eeeecf;}
+				body.contact_form_body.CPH form.contact_form .inputfield.submit input.bookbutton{background-color: #9c9a00;}				
+				body.contact_form_body.CPH form.contact_form .fa.fa-info-circle {color: #9c9a00;}
+				body.contact_form_body.CPH form.contact_form .element,
+				body.contact_form_body.CPH form.contact_form .all_rooms{border: 1px solid #9c9a00;}
+				body.contact_form_body.CPH form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #9c9a00;}
+				body.contact_form_body.CPH form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #9c9a00; }
+				body.contact_form_body.CPH form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #9c9a00; }
+			   	body.contact_form_body.CPH form.contact_form .element.on,
+			   	body.contact_form_body.CPH form.contact_form .all_rooms.on{background-color: #9c9a00; }
+			   	body.contact_form_body.CPH form.contact_form .element.disabled{border: 1px solid #9c9a00; color: #9c9a00;}
+			   	body.contact_form_body.CPH form.contact_form .element.interim.finalised{border: 1px solid #9c9a00; background: #9c9a00;}
+			   	body.contact_form_body.CPH .ui-widget-header {border-color: #9c9a00/*{borderColorHeader}*/; background: #9c9a00 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CPH .ui-widget-content {border-color: #9c9a00 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #9c9a00 /*{fcContent}*/;}				
+				body.contact_form_body.CPH .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #9c9a00 /*{borderColorHighlight}*/;}  
+
+				body.contact_form_body.CHPG form.contact_form .inputfield {background-color: #e2eecb;}
+				body.contact_form_body.CHPG form.contact_form .inputfield.submit input.bookbutton{background-color: #53682b;}
+				body.contact_form_body.CHPG form.contact_form .fa.fa-info-circle {color: #53682b;}
+				body.contact_form_body.CHPG form.contact_form .element,
+				body.contact_form_body.CHPG form.contact_form .all_rooms{border: 1px solid #53682b;}
+				body.contact_form_body.CHPG form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #53682b;}
+				body.contact_form_body.CHPG form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #53682b; }
+				body.contact_form_body.CHPG form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #53682b; }
+			   	body.contact_form_body.CHPG form.contact_form .element.on,
+			   	body.contact_form_body.CHPG form.contact_form .all_rooms.on{background-color: #53682b; }
+			   	body.contact_form_body.CHPG form.contact_form .element.disabled{border: 1px solid #53682b; color: #53682b;}
+			   	body.contact_form_body.CHPG form.contact_form .element.interim.finalised{border: 1px solid #53682b; background: #53682b;}
+			   	body.contact_form_body.CHPG .ui-widget-header {border-color: #53682b/*{borderColorHeader}*/; background: #53682b /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CHPG .ui-widget-content {border-color: #53682b /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #53682b /*{fcContent}*/;}				
+				body.contact_form_body.CHPG .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #53682b /*{borderColorHighlight}*/;}  
+
+				body.contact_form_body.CCH form.contact_form .inputfield {background-color: #daf0f0;}
+				body.contact_form_body.CCH form.contact_form .inputfield.submit input.bookbutton{background-color: #004f50;}
+				body.contact_form_body.CCH form.contact_form .fa.fa-info-circle {color: #004f50;}
+				body.contact_form_body.CCH form.contact_form .element,
+				body.contact_form_body.CCH form.contact_form .all_rooms{border: 1px solid #004f50;}
+				body.contact_form_body.CCH form.contact_form #valid_choices .element, .all_rooms{ border: 1px solid #004f50;}
+				body.contact_form_body.CCH form.contact_form .element:hover, .element.interim:hover{ color:white !important; background-color: #004f50; }
+				body.contact_form_body.CCH form.contact_form .all_rooms:hover, .all_rooms:hover{ color:white !important; background-color: #004f50; }
+			   	body.contact_form_body.CCH form.contact_form .element.on,
+			   	body.contact_form_body.CCH form.contact_form .all_rooms.on{background-color: #004f50; }
+			   	body.contact_form_body.CCH form.contact_form .element.disabled{border: 1px solid #004f50; color: #004f50;}
+			   	body.contact_form_body.CCH form.contact_form .element.interim.finalised{border: 1px solid #004f50; background: #004f50;}
+			   	body.contact_form_body.CCH .ui-widget-header {border-color: #004f50/*{borderColorHeader}*/; background: #004f50 /*{bgColorHeader}*/; color: #FFF /*{fcHeader}*/;}
+				body.contact_form_body.CCH .ui-widget-content {border-color: #004f50 /*{borderColorContent}*/; background: #FFF /*{bgColorContent}*/; color: #004f50 /*{fcContent}*/;}				
+				body.contact_form_body.CCH .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {border-color: #004f50 /*{borderColorHighlight}*/;}  
 			</style>
 			<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 			<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 			<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 			<!--
 			<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/i18n/jquery-ui-i18n.min.js"></script>
 			-->
 		</head>
 
-		<body>
-			<form class="ym-form contact_form test" id="form">
-				<p id="returnmessage"></p>
+
+		<body class="contact_form_body <?= (!empty($_GET['site_id'])) ? $_GET['site_id'] : ''; ?>">
+			<form class="ym-form contact_form main-element" id="form">
 				<div class="inputfield"><label for="name">Name *</label><span><input id="name"/></span></div>
 			    <div class="inputfield"><label for="email">Email *</label><span><input id="email"/></span></div>
 			    <div class="inputfield"><label for="tel">Contact No *</label><span><input id="tel"/></span></div>	   
 			    
 			    <div class="inputfield choices"><label id="acc-choices-label">Accommodation * </label>				
-			    	<div id="acc-choices"><div id="text-choices">Click here for choices  <i class="fa fa-caret-down 2x" style="display: block;"></i> <i style="display: none;" class="fa fa-caret-up 2x"></i></div></div></div>
+			    	<div id="acc-choices"><div id="text-choices"><div id="text-choices-label">Click here for choices</div> <i class="fa fa-caret-down 2x" style="display: block;"></i> <i style="display: none;" class="fa fa-caret-up 2x"></i></div></div></div>
 
 			    <div class="inputfield selection" id="make_sel">
 					<a href="#" class="tooltip"><i class="fa fa-info-circle"></i>
@@ -213,37 +424,77 @@
 					</select>
 					</span>
 				</div>
-			 	<div class="inputfield"><input type="checkbox" id="email_updates" checked="checked"> I would like to receive email updates from Cheval Residences<br></div>
-			    <div class="inputfield"><input class="bookbutton" type="button" id="submit" value="Enquire Now"/></div>	
-				<div class="inputfield privacy_policy"><a href="http://www.chevalresidences.com/cookies" target="_blank">Read our privacy policy</a></div> 	
+			 	<div class="inputfield"><input type="checkbox" id="email_updates"><div class="chk">I would like to receive email updates from Cheval Residences</div></div>
+				<div class="inputfield privacy_policy"><input type="checkbox" id="privacy_policy"><div class="chk">I have read and accept the <a href="https://www.chevalresidences.com/terms-and-conditions/" target="_blank">privacy policy</a></div></div>
+				<div id="returnmessage"></div>
+			    <div class="inputfield submit"><input class="bookbutton" type="button" id="submit" value="Enquire Now"/></div>	
 			</form>
 			<div class="selections"></div>
 		</body>
 
 		<script>
+
 		/*Date Validation*/
 		(function ($) {
-			$("#datepicker_one").datepicker({
-				onSelect: function(selected) {
-				$("#datepicker_two").datepicker("option","minDate", selected)
 
-				}
+			var media_query_indicator = $( '.media-query-indicator' ).first();	
+			$.datepicker.setDefaults($.datepicker.regional['']);
+
+			$( "#datepicker_one" ).datepicker( {
+							 dateFormat: "d MM, yy",
+							 minDate: 0,
+							 onSelect: function(){
+  			console.log('sel');
+            // Getter
+						var minDate1 = $( "#datepicker_one" ).datepicker( "option", "minDate" );
+						var currentDate = $( "#datepicker_one" ).datepicker( "getDate" );
+
+						var minDate2 = moment(currentDate);
+						minDate2.add(1, 'days');
+						//alert(currentDate);
+						//alert(minDate2);
+						minDate2 = moment(minDate2).format('D MMMM, YYYY');
+						//alert('parse');	
+						//alert(minDate2);	
+
+						$( "#datepicker_two" ).datepicker( "option", "minDate", minDate2 );
+						$( "#datepicker_two" ).datepicker( "setDate", minDate2 );
+				 }
+
 			});
 
-			$("#datepicker_two").datepicker({
-				onSelect: function(selected) {
-				$("#datepicker_one").datepicker("option","maxDate", selected)
-
-				}
+			$( "#datepicker_two" ).datepicker( {
+							 dateFormat: "d MM, yy",
+							 minDate: 1
 			});
+
+
+
 		}(jQuery));
+
+		jQuery( document ).ready(function() {
+			// Setter
+$( "#datepicker_one" ).datepicker( "setDate", "today" );
+var s1 = $( "#datepicker_one" ).datepicker( "getDate" );
+var s2 = moment(s1);
+s2.add(1, 'days');						
+s2 = moment(s2).format('D MMMM, YYYY');
+$( "#datepicker_two" ).datepicker( "setDate", s2 );
+
+
+  
+});
+		
 
 		//head.ready( function( $ ) {
 
 		(function ( $ ) {
-
+/*
 			var media_query_indicator = $( '.media-query-indicator' ).first();	
 			$.datepicker.setDefaults($.datepicker.regional['']);
+
+		
+
 			$( "#datepicker_one, #datepicker_two" ).datepicker( {
 				 dateFormat: "d MM, yy",
 				 minDate: 0,
@@ -255,21 +506,45 @@
 				 }
 			});
 
+			
+						
+
+				 	 }
+			});
+		*/
+
+			function triggerWindowResize(){
+								if (typeof(Event) === 'function') {
+								  // modern browsers
+								  window.dispatchEvent(new Event('resize'));
+								} else {
+								  // for IE and other old browsers
+								  // causes deprecation warning on modern browsers
+								  var evt = window.document.createEvent('UIEvents'); 
+								  evt.initUIEvent('resize', true, false, window, 0); 
+								  window.dispatchEvent(evt);
+								}
+			}
+
 			$('.choices').toggle(
 				function(){
 					$('.fa-caret-down').hide();	
 					$('.fa-caret-up').show();	
-					$('.selection').slideDown(500);
+					//$('.selection').slideDown(500);
+					
+					$('.selection').slideDown(500, function(){ triggerWindowResize() });
 					/*
 					if(media_query_indicator.css( 'z-index' ) > 0 )
 						$('html, body').animate({
 							scrollTop: $("#make_sel").offset().top - 95
 						}, 2000);
 
-					*/
+					*/				
 				},
 				function(){
-					$('.selection').slideUp(500);
+					$('.selection').slideUp(500, function(){ triggerWindowResize() });
+					
+					//$('.selection').slideUp(500);
 					$('.fa-caret-up').hide();
 					$('.fa-caret-down').show();
 				});
@@ -298,7 +573,7 @@
 			$('#mcq .element').click(function (e)
 			{
 				e.preventDefault();
-				$('#valid_choices').slideDown(250);
+				$('#valid_choices').slideDown(250, function(){ triggerWindowResize() });
 				var selected = [];
 				var this_id = $(this).attr('id');
 				if ($(this).hasClass('on'))
@@ -386,6 +661,17 @@
 				}
 			);	
 
+		    $('#privacy_policy').change(function() {
+		        if($(this).is(":checked")) {
+		           // $( "#privacy_policy" ).prop( "checked", true );
+		            $(".bookbutton").prop('disabled', false);
+		        }
+		        else{
+		          //  $( "#privacy_policy" ).prop( "checked", false );
+		        	$(".bookbutton").prop('disabled', true);
+		        }
+		    });
+	    
 			$( ".contact_form #submit" ).click(function() {
 				
 				function_get_selections();
@@ -404,25 +690,56 @@
 				var cust_type = $("#cust_type").val();
 				var source = $("#source").val();
 				var email_updates = $("#email_updates").attr("checked") ? 'Yes' : 'No';
+				var privacy_policy = $("#privacy_policy").attr("checked") ? 'Yes' : 'No';
 				var room_selections = $('.selections').text();
 				var prop_array = selected_props2;
 				$("#returnmessage").empty(); // To empty previous error/success message.
-				// Checking for blank fields.		
+				// Checking for blank fields.	
+
+				function resizeWindow() {
+
+					/*
+						      setTimeout(function() {
+						         triggerWindowResize();        
+						      }, 100);
+						      */
+						    }
+
 				if (name == ''){
-					alert("Please fill in the Name");
-				}		
-				else if (email == ''){
-					alert("Please fill in a valid email address");
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please fill in the Name</div>");
+					 	resizeWindow();
 				}
+
+				else if (email == ''){
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please fill in a valid email address</div>");
+					 	resizeWindow();
+				}						
+				else if (contact == ''){
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please fill in a contact telephone number</div>");
+					 	resizeWindow();
+				}
+				/*
+				else if(true){
+					if($('#mcq .element.on').length > 0){}					
+					else{ 
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please select Accommodation</div>");
+					 	resizeWindow();
+					}
+				}
+				*/
 				else if (date1 == ''){
-					alert("Please fill in the arrival date");
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please fill in the arrival date</div>"); 
+					 	resizeWindow();
 				}
 				else if (date2 == ''){
-					alert("Please fill in the departing date");
-				}			
-				else if (contact == ''){
-					alert("Please fill in a contact telephone number");
-				}		
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please fill in the departing date</div>"); 
+					 	resizeWindow();
+				}	
+				else if($('#privacy_policy').is(":checked") != true) {
+						$("#returnmessage").append("<div class='inputfield returnmessage-item' style='color:red; !important'>Please accept the privacy policy</div>");
+					 	resizeWindow();
+				}	
+
 				else {
 					// Returns successful data submission message when the entered information is stored in database.
 					$.post("https://chevalres.wpengine.com/wp-content/themes/cr-child-theme/enquiries.php", {
@@ -436,18 +753,20 @@
 						cust_type1: cust_type,
 						source1: source,
 						email_updates1: email_updates,
+						privacy_policy1: privacy_policy,
 						room_selections1: room_selections,
 						prop_array1 : prop_array
 					}, function(data) {
 						$("#returnmessage").append(data); // Append returned message to message paragraph.
 						//window.location.replace("http://www.google.com");				
-						window.location.href = "http://chevalresidences.com/thank-you.html";
+						window.top.location.href = "http://chevalresidences.ismysite.co.uk/thank-you-general-enquiries/";
 						if (data == "Your Query has been received, We will contact you soon.") {
 							$("#form")[0].reset(); // To reset form fields on success.
 							$('.contact_form input').prop('disabled', true);
 						}
 					});
 				}
+				
 			});
 
 
@@ -484,61 +803,6 @@
 				background: linear-gradient( to bottom,  #EDEAEA 0%,#EDEAEA 100% ); /* W3C */
 				-ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EDEAEA', endColorstr='#EDEAEA',GradientType=0 ); /* IE6-9 */
 				color: #000000;
-			}
-
-		/*------ Page Title H1 ------*/
-			.content_title
-			{
-				color: #000000;
-			}
-
-			.page_layout_Flexible .images-and-texts .image-text .text span.title {
-				color: #5F523C;
-			}
-			.page_layout_Flexible .images-and-texts .image-text .text span.description-text
-			{
-				color: #5F523C;
-			}
-			.page_layout_Flexible.page_layout_Widget h1.section_title{
-				color: #000000;
-			}
-
-
-		/*------ Page Subtitle H2 ------*/
-			.content_subtitle {
-				border-color: #3D3D3D;
-				color: #E7A615;
-			}
-
-		/*------ Content Area Header Rules ------*/
-			h1 {
-				border-color: #3D3D3D;
-				color: #5F523C;
-			}
-
-			h2 {
-				border-color: #3D3D3D;
-				color: #5F523C;
-			}
-
-			h3 {
-				border-color: #3D3D3D;
-				color: #E7A615;
-			}
-
-			.blog_post > hr {
-				border-top-color: #FFF;
-			}
-
-
-
-			.page_layout_Flexible .section_subtitle
-			{
-				color: #E7A615;
-			}
-			.page_layout_Flexible .images-and-texts .image-text .text span.subtitle
-			{
-				color: #E7A615;
 			}
 
 
@@ -724,30 +988,7 @@
 				border-color: #B42F34;
 			}
 
-		/*-- Booking Calendar Customise Colours --*/
-			.ui-widget-content {
-				border-color: #E7A615 /*{borderColorContent}*/;
-				background: #FFF /*{bgColorContent}*/;
-				color: #E7A615 /*{fcContent}*/;
-			}
 
-			.ui-widget-content a {
-				color: #000 /*{fcContent}*/;
-			}
-
-			.ui-widget-header {
-				border-color: #E7A615/*{borderColorHeader}*/;
-				background: #E7A615 /*{bgColorHeader}*/;
-				color: #FFF /*{fcHeader}*/;
-			}
-
-			.ui-widget-header a {
-				color: #000000 /*{fcHeader}*/;
-			}
-
-			.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-				border-color: #E7A615 /*{borderColorHighlight}*/;
-			}
 
 		/*------ Arrows ------*/
 			.arrow-up {
@@ -782,43 +1023,7 @@
 			}
 
 		/*-- Call to Action - Booking Button --*/
-			.bookbutton, .booknow, .promote {
-				background-color: #E7A615;
-				background-image: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, #E7A615 ), color-stop( 100%, #E7A615 ) );
-				background-image: -webkit-linear-gradient( top, #E7A615, #E7A615 );
-				background-image: -moz-linear-gradient( top, #E7A615, #E7A615 );
-				background-image: -ms-linear-gradient( top, #E7A615, #E7A615 );
-				background-image: -o-linear-gradient( top, #E7A615, #E7A615 );
-				background-image: linear-gradient( top, #E7A615, #E7A615 );
-				-ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorStr='#E7A615', EndColorStr='#E7A615' );
-				color: #ffffff;
-				text-shadow: 0 1px 0 #D0A100;
-			}
 
-			.bookbutton, .booknow {
-				border: 1px solid #E7A615;
-				border-bottom: 1px solid #E7A615;
-				-webkit-box-shadow: inset 0 1px 0 0 #D0A100;
-				box-shadow: inset 0 1px 0 0 #D0A100;
-			}
-
-			.bookbutton:hover, .booknow:hover, .promote:hover {
-				background: #E7A615;
-				/*filter: progid:DXImageTransform.Microsoft.gradient( startColorStr='#E7A615', EndColorStr='#E7A615' );*/
-			}
-
-			.bookbutton:hover, .booknow:hover {
-				border-color: #FFC952;
-				border-bottom-color: #FFC952;
-				-webkit-box-shadow: inset 0 1px 0 0 #D0A100;
-				box-shadow: inset 0 1px 0 0 #D0A100;
-				text-shadow: 0 1px 0 #D0A100;
-			}
-
-			li.promote a {
-				color: #ffffff;
-				text-shadow: 0 1px 0 #D0A100;
-			}
 
 		/*-- Call to Action - Open Content Button --*/
 			.calltoaction {
@@ -874,125 +1079,9 @@
 				background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 55%); /* W3C */
 				-ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 				text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-			}
+		}
 
-		/*-- Content Link Styling --*/
-			.box-content a {
-				color: #E7A615 !important;
-			}
-			a.tooltip i.fa.fa-info-circle {
-		    color: #E7A615;
-			}
 
-			.box-content a:hover {
-				color: #E7A615;
-			}
-
-			.box-content a.button {
-				color: #ffffff;
-			}
-
-			.box-content a.button:hover {
-				color: #ffffff;
-			}
-
-			/*-- Side Navigation Section --*/
-			nav.navside {
-				background: #FFFFFF;
-				background: -moz-linear-gradient( top, rgba( 255, 255, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 50%, rgba( 255, 255, 255, 0 ) 100% ); /* FF3.6+ */
-				background: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, rgba( 255, 255, 255, 1 ) ), color-stop( 50%, rgba( 255, 255, 255, 1 ) ), color-stop( 100%, rgba( 255, 255, 255, 0 ) ) ); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 50%, rgba( 255, 255, 255, 0 ) 100% ); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient( top, rgba( 255, 255, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 50%, rgba( 255, 255, 255, 0 ) 100% ); /* Opera 11.10+ */
-				background: -ms-linear-gradient( top, rgba( 255, 255, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 50%, rgba( 255, 255, 255, 0 ) 100% ); /* IE10+ */
-				background: linear-gradient( to bottom, rgba( 255, 255, 255, 1 ) 0%, rgba( 255, 255, 255, 1 ) 50%, rgba( 255, 255, 255, 0 ) 100% ); /* W3C */
-				-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.09);/* Cross Browser Shadow - May need to be adjusted */
-				-moz-box-shadow:    0px 2px 2px rgba(0, 0, 0, 0.09);/* Cross Browser Shadow - May need to be adjusted */
-				box-shadow:         0px 2px 2px rgba(0, 0, 0, 0.09);/* Cross Browser Shadow - May need to be adjusted */
-			}
-
-			nav.navside li {
-				border-top-color: #EDEAEA;
-				border-bottom-color: #EDEAEA;
-			}
-
-			nav.navside li:before {
-				color: #E7A615;
-			}
-
-			.navside li a {
-				color: #666;
-			}
-
-		/*-- Awards Bar - Should only be visible when Awards icons are inserted --*/
-			.awards {
-				background: rgba( 0, 0, 0, 0.5 );/* rgba with opacity */
-			}
-
-		/*-- Footer Bar with Address - Same values as Main Navigation Bar but should have the facility to change them via the PHP Edit File --*/
-			footer {
-				background: #000000; /* Old browsers */
-				background: -moz-linear-gradient( top, #000000 0%, #000000 100% ); /* FF3.6+ */
-				background: -webkit-gradient( linear, left top, left bottom, color-stop( 0%, #000000 ), color-stop( 100%, #000000 ) ); /* Chrome,Safari4+ */
-				background: -webkit-linear-gradient( top, #000000 0%, #000000 100% ); /* Chrome10+,Safari5.1+ */
-				background: -o-linear-gradient( top, #000000 0%, #000000 100% ); /* Opera 11.10+ */
-				background: -ms-linear-gradient( top, #000000 0%, #000000 100% ); /* IE10+ */
-				background: linear-gradient( to bottom, #000000 0%, #000000 100% ); /* W3C */
-				border-color: #E7A615;
-				color: #767676;
-			}
-			footer a {
-				color: #E7A615;
-			}
-			footer a:hover {
-				color: #E7A615;
-			}
-
-		/*-- Footer Border above Contact Details --*/
-			.grid-footer-bottom {
-				border-color: #E7A615;
-			}
-
-		/*-- Bottom Navigation --*/
-			nav.navbottom li a {
-				color: #ffffff;
-			}
-
-			nav.navbottom li:after {
-				color: #E7A615;
-			}
-
-		/*-- Address --*/
-			.address {
-				color: #DBDBDB;
-			}
-		/*-- Contact --*/
-			.contact {
-				color: #DBDBDB;
-			}
-
-		/*-- Link Styling for Avvio Solution --*/
-			.copyright a {
-				color: #E7A615;
-			}
-
-			.copyright a:hover {
-				color: #3F3F3F;
-			}
-
-			footer .ym-grid{
-				color: #DBDBDB;
-			}
-
-			footer .ym-gr {
-				color: #DBDBDB;
-			}
-
-			footer .row-post-nav a {
-				color: #E7A615;
-			}
-			footer .row-post-nav a:hover {
-				color: #E7A615;
-			}
 
 		/*---- Festures Page Layout ----*/
 			.features:not(.larger_setup) .feature {
@@ -1278,12 +1367,12 @@
 			    padding: 9px;
 			    top: 0;}
 			a.tooltip strong {line-height:30px;}
-			a.tooltip:hover {text-decoration:none;} 
 			a.tooltip span {
 			    z-index:10;display:none; padding:14px 20px;
 			    margin-top:-30px; margin-left:28px;
 			    width:300px; line-height:16px;
 			}
+			a.tooltip:hover {text-decoration:none;} 
 			a.tooltip:hover span{
 			    display:inline; position:absolute; color:#111;
 			    border:1px solid #DCA; background:#fffAF0;}
@@ -1308,7 +1397,7 @@
 			}			
 		   	.element, .all_elements
 		   	{
-		   		border: 1px solid #E7A615;
+		   		/*border: 1px solid #E7A615;*/
 			    min-width: 200px;
 			    text-align: center;
 			    padding: 0 0 0 10px;
@@ -1335,34 +1424,7 @@
 		   	#mcq .element.on:after,
 		   	#valid_choices .element.interim.finalised:after{
 		   		content: "-";
-		   	}
-		   	#valid_choices .element, .all_elements
-		   	{
-		   		border: 1px solid #E7A615;
-		   		color: black;
-		   	}
-		   	
-		   	#mcq .element:hover, .element.interim:hover{
-		   		background-color: #E7A615;
-				color: #4B4B4B ;
-		   	}
-		   	.element.on    	{    	}
-		   	#mcq .element.on, .all_rooms.on{
-		   		background-color: #E7A615;
-				color: white;
-		   	}
-		   	#valid_choices .element.disabled
-		   	{
-		   		border: 1px solid #E7A615;
-		   		color: #E7A615;
-		   		opacity: 0.2;
-		   	}
-		   	#valid_choices .element.interim.finalised
-		   	{    		
-		   		border: 1px solid #E7A615;
-		   		color: white;
-		   		background: #E7A615;
-		   	}    	
+		   	}		   	  	
 		   	.choices{
 		   		cursor: pointer;
 		   	}
@@ -1370,6 +1432,11 @@
 				float: right;
 			    font-size: 18px;
 		   		margin-right: 10px;
+		   		/*margin-top: -15px;*/
+			}
+			div#text-choices-label {
+		    display: inline-block;
+    		margin-left: 20px;
 			}
 			.choices span{
 				margin-left: 150px;
@@ -1389,7 +1456,7 @@
 				width: 100%;
 				max-width: 450px;
 				margin: 10px auto;
-		   		background-color: #F5EFE3;
+		   		/*background-color: #F5EFE3;*/
 		   		padding: 15px;
 				min-height: 20px;
 			}
@@ -1403,7 +1470,7 @@
 				width: 200px;
 				float: right;
 			}
-			.inputfield input.bookbutton, .inputfield input#email_updates{
+			.inputfield input.bookbutton{
 				float: left;
 			}
 			.selection, #valid_choices{
@@ -1456,14 +1523,37 @@
 			}
 			#valid_choices .element, .all_elements
 			{
-				 min-height: 50px;
+				 /*min-height: 50px;*/
 			}
+			#mcq div#prop9{			
+    			width: 100px !important;
+    		}
+
+			#valid_choices .all_elements.all_rooms{
+				width: 100px !important;
+			} 
+
+			#mcq .element{
+				width:212px;
+			}
+			#valid_choices .element{
+				width: 212px;
+			}	
+			div#text-choices-label {
+			    display: inline-block;
+			    margin-left: 0px;
+			}		
+
 			#mcq .element:after, #valid_choices .element.interim:after, .choices span
 			{	display: none;}
 			.choices .fa {
+				/*
 			    float: none;    
 			    margin-right: 0px;
 			    margin-left: 80px;
+			    */
+				float: right;    
+			    margin-right: 0px;		    
 			}
 			.template_singular_group_form .ui-widget-content {
 		  			z-index: 120000!important;
@@ -1665,36 +1755,7 @@
 
 			/*------ Home Page Content ------*/
 
-			/*------ Page Title H1 ------*/
-			.content_title {/*-- COLOUR --*/
-				border-bottom:0;
-				margin: 0;
-				padding: 5px 0px 6px 0;
-				font-size: 28px;
-
-			}
-
-
-			/*------ Page Subtitle H2 ------*/
-			.content_subtitle {/*-- COLOUR --*/
-				border-bottom-style:solid;
-				border-width:1px;
-				min-height: 18px;
-				margin: 0 0px 0px 0px;
-				padding: 0 20px 15px 0px;
-				font-size: 18px;
-				font-weight: 300;
-
-			}
-			.content_subtitle:empty {
-				display: none;
-			}
-			.page_layout_Flexible .content_title, .page_layout_Flexible .content_subtitle {
-				text-align: center;
-			}
-			.page_layout_Flexible .content_subtitle {
-				border-bottom:0;
-			}
+			
 			/*------ Content Area Header Rules ------*/
 			h1 {/*-- COLOUR --*/
 				border-bottom-style:solid;
@@ -1721,9 +1782,6 @@
 				font-weight:bold;
 				margin: 0 0px 20px 0px;
 				padding: 0 20px 15px 0px;
-			}
-			.content_title {
-				font-weight: 300;
 			}
 			/*------ Circle Border Radius and Arrows ------*/
 			.round {
@@ -1799,12 +1857,6 @@
 				border-top-width:1px;
 			}
 
-			.logo {/*-- COLOUR - QUERY WHETHER WE SHOULD ADD THIS AS A VARIABLE IN THE STYLING.PHP - SPECIFY PATH --*/
-				background: url('../img/logo-sample-hotel-group-main.png');
-				background-position: center;
-				background-repeat: no-repeat;
-				height:90px;
-			}
 
 			/*------ Quickbook Section ------*/
 			.quickbook .ym-form > div.hotel {/*-- Display the Hotel Select Dropdown --*/
@@ -1978,19 +2030,23 @@
 			}
 
 			/*-- Call to Action - Booking Button --*/
-			.bookbutton {/*-- COLOUR --*/
+			.bookbutton {/*-- COLOUR --
 				border-bottom-style:solid;
 				border-bottom-width:1px;
 				border-style:solid;
-				border-width:1px;
-				cursor: pointer;
+				border-width:1px;*/
+				border: none;				
 			}
 
 			.bookbutton:hover {
+/*
 				border-bottom-style:solid;
 				border-bottom-width:1px;
 				border-style:solid;
 				border-width:1px;
+*/
+				cursor: pointer;
+
 			}
 
 			/*-- Call to Action - Open Content Button --*/
@@ -2014,10 +2070,6 @@
 				font: 20px Georgia, Times, "Times New Roman", serif;
 			}
 
-			/*-- Content Link Styling --*/
-			.box-content a {
-				/*text-decoration:underline;*/
-			}
 
 			.page_layout_Flexible .box-content a, .box-content  a:hover {
 				text-decoration:none;
@@ -2221,13 +2273,37 @@
 
 		</style>
 
-		<!--
-		<script>
-		AvvioCC.fragments.push( { d:'PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly9zZWN1cmUubGVhZGZvcmVuc2ljcy5jb20vanMvMTI2NTAuanMiID48L3NjcmlwdD4=', b:'m', s:document.currentScript } ); // Lead Forensics
-		</script>
-		<script async src="https://fe.avvio.com/crm/rpc/www.chevalresidences.com/ACC_js.php?lang=en"></script>
-		<div id="ACCsmartBodyContainer" style="width:10px;height:10px;position:absolute;bottom:0;right:0;overflow:hidden;z-index:1;"></div>
-		-->
+<script>
+	// Get height of the main element in the iframe document
+var documentHeight = document.getElementById('form').scrollHeight;
+//var documentHeight = jQuery('.main-element')[0].scrollHeight;
+
+// Add some unique identifier to the string being passed
+var message = 'documentHeight:'+documentHeight;
+
+// Pass message to (any*) parent document
+parent.postMessage(message,'*');
+
+
+// On resize of the window, recalculate the height of the main element, and pass to the parent document again
+window.onresize = function() {
+	var newDocumentHeight = document.getElementById('form').scrollHeight;
+	//var newDocumentHeight = jQuery('.main-element')[0].scrollHeight;
+	
+
+	var heightDiff = documentHeight - newDocumentHeight;
+
+	// If difference between current height and new height is more than 10px
+	if ( heightDiff > 10 | heightDiff < -10 ) {
+
+		documentHeight = newDocumentHeight;
+		message = 'documentHeight:'+documentHeight;
+		parent.postMessage(message,'*');
+	}
+	
+} ;
+</script>
+
 	</html>
 
 <?php endif; ?>
