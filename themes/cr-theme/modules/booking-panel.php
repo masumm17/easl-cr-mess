@@ -218,6 +218,7 @@ if(count($dropdown_columns) == 0) {
 								<h5 class="booking-panel-label"><?php _e('Children', 'crt') ?></h5>
 								<p class="booking-panel-input-wrap">
 									<select name="totalChild1" id="booking-panel-childs" class="u-hide">
+										<option value="0">0</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>

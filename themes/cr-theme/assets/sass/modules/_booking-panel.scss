@@ -34,11 +34,11 @@
         z-index: 2;
         .bp-color-white & {
             background-image: url('../images/theme-base/booking-panel/close-button-bk.svg');
-            @include bgimage-themes("booking-panel/booking-panel/close-button-bk.svg");
+            @include bgimage-themes("booking-panel/close-button-bk.svg");
         }
         .bp-color-black & {
             background-image: url('../images/theme-base/booking-panel/close-icon.svg');
-            @include bgimage-themes("booking-panel/booking-panel/close-icon.svg");
+            @include bgimage-themes("booking-panel/close-icon.svg");
         }
     }
     &-inner {

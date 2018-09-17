@@ -314,7 +314,8 @@
             return !!detectIE();
         },
         ieVersion: function() {
-            return detectIE();
+            var v = detectIE();
+            return v < 12 ? v : 12;
         },
         isSafariDesktop: function() {
             return detectSafariDesktop();
@@ -829,7 +830,7 @@
             
             $(".cr-scroll-up").on("click", function(e) {
                 e.preventDefault();
-                window.scroll && !ob.$body.hasClass("cr-ie11") ? window.scroll({ top: 0, left: 0, behavior: 'smooth' }) : $('html, body').animate({ scrollTop: 0}, 750, 'linear');
+                $('html, body').animate({ scrollTop: 0}, 950, 'linear');
             });
             
         },

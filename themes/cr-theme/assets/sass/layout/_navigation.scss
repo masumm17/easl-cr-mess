@@ -131,7 +131,7 @@
                 .cr-menu-item-content {
                     position: relative;
                     min-height: 6.4rem;
-                    padding: 6rem 1rem 3rem;
+                    padding: 6.7rem 1rem 3rem;
                     white-space: nowrap;
                     > a{
                         position: absolute !important;
@@ -146,12 +146,12 @@
                         opacity: 1;
                         transition-property: top, transform;
                         transition-duration: .5s;
-                        transition-delay: .35s;
+                        //transition-delay: .35s;
                         }
                     &.not-hover .cr-menu-item-content > a {
                     }
                     &.on-hover .cr-menu-item-content > a {
-                        transition-delay: .95s;
+                        //transition-delay: 0s;
                         top: 2rem;
                         transform: translate(-50%, 0);
                         .cr-ie11 & {
@@ -207,12 +207,12 @@
                     column-count: 2;
                     body:not(.theme-base) & {
                         @include respond(desktop-med-only) {
-                            column-count: unset;
+                            column-count: auto;
                         }
                     }
                 }
                 &.on-hover .cr-menu-level-2 {
-                    transition-delay: 1.4s;
+                    transition-delay: .95s;
                     opacity: 1;
                     transform: translateY(0);
                     visibility: visible;
@@ -231,6 +231,9 @@
                     > li {
                         width: 33.333vw;
                         max-width: 44rem;
+                        .cr-ie11 & {
+                            width: 440px;
+                        }
                         &.not-hover {
                             width: 40%;
                             max-width: 100%;
@@ -295,7 +298,7 @@
             }
         }
         &.tertiary-menu-strecthed .cr-menu-level-1 > li {
-            transition-delay: .85s;
+            //transition-delay: .85s;
         }
         &:hover .cr-menu-level-1 {
             opacity: 1;

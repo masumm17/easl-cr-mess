@@ -99,6 +99,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @if $breakpoint == tab-land-only {
         @media only screen and (min-width: 901px) and (max-width: 1365px) { @content };    //1365
     }
+    @if $breakpoint == desktop {
+        @media only screen and (min-width: 1366px) { @content };    //1920
+    }
     @if $breakpoint == desktop-small-only {
         @media only screen and (min-width: 1366px) and (max-width: 1400px) { @content };    //1366-1599
     }

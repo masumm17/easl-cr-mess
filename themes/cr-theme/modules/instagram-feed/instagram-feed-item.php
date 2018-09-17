@@ -23,6 +23,7 @@ if($count > $number - 3) {
 		<div class="cr-instagram-feed-overlay">
 			<div class="cr-instagram-feed-info">
 				<?php if( $item[ 'caption' ] ): ?><h5 class="cr-instagram-feed-caption"><?php echo cr_truncate($item['caption'], 155, '...', true); ?></h5><?php endif; ?>
+				<a class="cr-instagram-feed-lightbox" data-fancybox="instagramfeeds" href="<?php echo esc_url($item['url']); ?>"></a>
 			</div>
 			<div class="cr-instagram-feed-metainfo">
 				<div class="cr-instagram-feed-likes">

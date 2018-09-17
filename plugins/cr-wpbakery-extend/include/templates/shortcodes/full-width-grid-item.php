@@ -63,7 +63,7 @@ switch($display_option) {
 		$cta_class = 'cr-button';
 		break;
 	case 'no_image': 
-		$cta_class = 'cr-button';
+		$cta_class = 'cr-button-bordered';
 		break;
 	case 'title_only': 
 		$cta_class = 'cr-button';

@@ -194,7 +194,7 @@ if (!String.prototype.padStart) {
                 optionsHeight = $filter.find(".accommodations-filter-options").outerHeight(),
                 vpTop = $filter.offset().top - $(window).scrollTop() + $filter.outerHeight();
                 if(!$filter.hasClass("show-options") && (vpTop + optionsHeight > $(window).height()) ) {
-                    window.scroll && !$("body").hasClass("cr-ie11") ? window.scroll({ top: $filter.offset().top + $filter.outerHeight() - 70, left: 0, behavior: 'smooth' }) :$('html, body').animate({scrollTop: $filter.offset().top + $filter.outerHeight() - 70}, 750, 'linear');
+                    $('html, body').animate({scrollTop: $filter.offset().top + $filter.outerHeight() - 70}, 750, 'linear');
                 }
             $filter.hasClass("show-options") ? $filter.removeClass("show-options") : $filter.addClass("show-options"), $(".accommodations-filter", ob.$el).not($filter).removeClass("show-options");
         });
@@ -804,7 +804,61 @@ if (!String.prototype.padStart) {
                         '</svg>' + 
                         '<span></span>' +
                         "</a>"
+                }
+                
+            });
+            
+            $(".cr-instagram-feed-lightbox").fancybox({
+                infobar: false,
+                loop: true,
+                idleTime: 10,
+                //toolbar: false,
+                buttons: ["close"],
+                animationDuration: 500,
+                transitionEffect: "fade",
+                transitionDuration: 500,
+                // Base template for layout
+                baseTpl:
+                  '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+                  '<div class="fancybox-bg"></div>' +
+                  '<div class="fancybox-inner">' +
+                  '<div class="fancybox-toolbar">{{buttons}}</div>' +
+                  '<div class="fancybox-navigation">{{arrows}}</div>' +
+                  '<div class="fancybox-stage"></div>' +
+                  '<div class="fancybox-caption fancybox-caption-instagram"></div>' +
+                  "</div>" +
+                  "</div>",
+                btnTpl: {
+                    arrowLeft:
+                        '<a data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}" href="javascript:;">' +
+                        '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16.625px" height="18.125px" viewBox="0 0 16.625 18.125" enable-background="new 0 0 16.625 18.125" xml:space="preserve">' +
+                            '<g>' + 
+                                '<polyline fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="15.667,17.227 7.564,9.125 15.667,1.023"/>' + 
+                                '<polyline fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="9.667,17.227 1.564,9.125 9.667,1.023"/>' + 
+                            '</g>' + 
+                        '</svg>' + 
+                        '<span></span>' +
+                        "</a>",
+
+                    arrowRight:
+                        '<a data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}" href="javascript:;">' +
+                        '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16.625px" height="18.125px" viewBox="0 0 16.625 18.125" enable-background="new 0 0 16.625 18.125" xml:space="preserve">' +
+                            '<g>' + 
+                                '<polyline fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1.667,1.023 9.769,9.125 1.667,17.227"/>' + 
+                                '<polyline fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7.666,1.023 15.769,9.125 7.666,17.227"/>' + 
+                            '</g>' + 
+                        '</svg>' + 
+                        '<span></span>' +
+                        "</a>"
                 },
+                caption: function(instance, item) {
+                    var $i = $(this).closest(".cr-instagram-feed-overlay").clone();
+                    $i.find(".cr-instagram-feed-lightbox").remove();
+                    return '<div class="fancybox-caption-instagram-inner">' + $i.html() + '</div>';
+                },
+                afterShow: function(instance, slide) {
+                    //instance.$refs.container.find(".fancybox-caption-instagram-inner").width(instance.$refs.container.find(".fancybox-content").outerWidth());
+                }
                 
             });
             $(".cr-gallery-slider").fancybox({
@@ -1282,7 +1336,7 @@ if (!String.prototype.padStart) {
             $(".cr-scroll-down").on("click", function(e) {
                 var $wrapp = $(this).closest(".cr-rev-slider-wrapper"), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
                 e.preventDefault();
-                window.scroll && !$("body").hasClass("cr-ie11") ? window.scroll({ top: sh, left: 0, behavior: 'smooth' }) : $('html, body').animate({scrollTop: sh}, 500, 'linear');});
+                $('html, body').animate({scrollTop: sh}, 500, 'linear');});
         },
         init: function() {
             this.heroSlider();

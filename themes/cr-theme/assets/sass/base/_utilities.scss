@@ -22,6 +22,7 @@
     position: absolute;
     bottom: 2rem;
     left: 50%;
+    display: block;
     width: 5.4rem;
     height: 8.8rem;
     z-index: 100;
@@ -38,12 +39,17 @@
         height: 24px;
         margin-left: -12px;
         animation: scrolDownAnim 2s infinite;
+        backface-visibility: hidden;
         transform: rotate(-45deg);
         opacity: 0;
         box-sizing: border-box;
-        &:before {
+        display: block;
+        .cr-ie12 & {
+        }
+        &::before {
             content: "";
             position: absolute;
+            display: block;
             top: 0;
             left: 0;
             width: 24px;

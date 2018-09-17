@@ -10,6 +10,7 @@
     flex: 1 0 auto;
     overflow: hidden;
     position: relative;
+    min-height: 1px;
     z-index: 1;
     .scroll-header & {
         padding-top: 7rem;
@@ -30,6 +31,7 @@
 }
 #primary {
     flex: 1 0 auto;
+    min-height: 1px;
 }
 .wpb_row.cr-row-has-hero-slider {
     //margin-bottom: 2rem;
@@ -54,6 +56,9 @@
         }
         @include clearfix;
     }
+}
+.scroll-header .site-main>.wpb_row:not(.cr-row-has-hero-slider):first-child .cr-row {
+    padding-top: 4rem;
 }
 .cr-module-wrap  {
     margin-top: 0;

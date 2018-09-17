@@ -54,6 +54,9 @@ if(!empty($items) && is_array($items) && count($items) > 0) {
 			} else {
 				$classes = '';
 			}
+			if('yes' == $item['newtab']) {
+				$attributes[] = 'target="_blank"';
+			}
 			if(count($attributes) > 0) {
 				$attributes = ' ' . join( ' ', $attributes );
 			} else {

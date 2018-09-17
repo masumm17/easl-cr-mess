@@ -189,7 +189,10 @@
                 color: $color-white;
                 margin-bottom: 4rem;
                 .fw-grid-item-noimage & {
-                    color: $color-gray-1
+                    color: $color-gray-1;
+                    .cr-ie11 &{
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -304,20 +307,8 @@
             }
         }
         &-cta {
-            display: inline-block;
-            font-size: 1.4rem;
-            font-weight: 400;
-            line-height: 1em;
-            padding: 1.4rem 4.4rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            color: $color-white;
-            background-color: $color-base-secondary;
         }
         &-noimage &-cta {
-            background-color: transparent;
-            color: $color-base;
-            border: 1px solid $color-base;
         }
         .cr-iframe-video {
             position: absolute;

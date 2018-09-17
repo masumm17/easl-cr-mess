@@ -129,6 +129,11 @@
             display: none;
         }
     }
+    &-caption-instagram {
+        left: 0;
+        right: 0;
+        display: block;
+    }
     &-infobar {
         background-color: rgba(0,0,0,.86);
         top: auto;

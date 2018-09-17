@@ -71,3 +71,15 @@ body .gform_wrapper ul.gform_fields li.gfield.field_sublabel_below .ginput_compl
     display: inline;
     margin-top: 0;
 }
+body .gform_wrapper.gf_browser_ie .gform_footer input.button {
+    padding: 2rem 3.6rem;
+}
+body .gform_wrapper {
+    margin: 0;
+}
+body .gform_anchor {
+    position: absolute !important;
+}
+body .gform_wrapper ul li.gfield:first-child {
+    margin-top: 0;
+}

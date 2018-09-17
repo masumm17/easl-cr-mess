@@ -7,6 +7,9 @@
     left: 0;
     width: 100%;
     z-index: 15;
+    .admin-bar & {
+        top: 32px;
+    }
     @include respond(tab-land) {
         height: 6rem;
         justify-content: center;
