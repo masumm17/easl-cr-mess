@@ -28,11 +28,20 @@ body.compensate-for-scrollbar {
     }
     &-caption {
         @include respond(tab-port) {
-            right: 0;
-            left: 72px;
-            padding: 0;
-            min-height: 75px;
+            padding: 10px 0;
+            align-items: center;
         }
+    }
+    &-toolbar {
+        @include respond(tab-port) {
+            width: 0;
+        }
+    }
+    .cr-ie11 &-can-zoomIn &-content {
+        cursor: url(/wp-content/themes/cr-theme/assets/images/zoomin.cur), move;
+    }
+    .cr-ie11 &-can-drag &-content {
+        cursor: url(/wp-content/themes/cr-theme/assets/images/openhand.cur), move;
     }
 }
 .cr-lightbox {
@@ -68,6 +77,19 @@ body.compensate-for-scrollbar {
                 }
             }
             @include respond(tab-port) {
+                max-width: 200px;
+                li {
+                    display: block;
+                    &:nth-child(n+2) {
+                        margin-top: 1rem;
+                    }
+                    a {
+                        display: block;
+                        text-align: center;
+                    }
+                }
+            }
+            @include respond(phone) {
                 display: none;
             }
             
@@ -96,4 +118,12 @@ body.compensate-for-scrollbar {
             }
         }
     }
+}
+.crfb-bottom-panel {
+    @include respond(tab-port) {
+        min-height: 75px;
+    }
+}
+.fancybox-can-zoomIn .fancybox-content {
+    
 }

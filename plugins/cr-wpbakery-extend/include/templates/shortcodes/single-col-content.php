@@ -39,7 +39,6 @@ if ( ! empty( $atts['el_id'] ) ) {
 		foreach($parsed_buttons as $button): 
 			$link_attributes = array();
 			$link_attributes[] = 'href="' . trim( $button['url'] ) . '"';
-			$link_attributes[] = 'title="' . esc_attr( trim( $button['url'] ) ) . '"';
 			if ( ! empty( $button['target'] ) ) {
 				$link_attributes[] = 'target="' . esc_attr( trim( $button['target'] ) ) . '"';
 			}

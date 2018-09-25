@@ -3,7 +3,8 @@
         font-family: inherit!important;
     }
     &-toolbar {
-        position: static;
+        position: relative;
+        width: 9.8rem;
     }
     &-slide {
         &--image {
@@ -23,7 +24,7 @@
             background-position: center center;
             top: 2.4rem;
             right: 3.2rem;
-            position: absolute;
+            position: fixed;
             z-index: 99997;
             svg {
                 display: none;
@@ -117,13 +118,13 @@
         background-color: rgba($color-black, .9);
     }
     &-caption {
-        background-color: rgba(0,0,0,.86);
         border-left: 1px solid rgba(158,158,158, .24);
-        left: 98px;
-        right: 98px;
+        left: 0;
+        right: 0;
         padding: 1.5rem 0;
-        
+        position: relative;
         display: flex;
+        flex: 1 auto;
         
         &::before, &::after {
             display: none;
@@ -135,13 +136,12 @@
         display: block;
     }
     &-infobar {
-        background-color: rgba(0,0,0,.86);
-        top: auto;
+        top: 0;
         left: 0;
         bottom: 0;
-        height: 7.5rem;
-        line-height: 7.5rem;
+        height: auto;
         width: 9.8rem;
+        position: relative;
         color: $color-white!important;
         font-family: 'Playfair Display', serif;
         font-size: 2.4rem;
@@ -150,6 +150,9 @@
         pointer-events: auto;
         padding: 0;
         mix-blend-mode: initial;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 .cr-lightbox {
@@ -193,12 +196,11 @@
         }
     }
     &-share {
-        width: 9.8rem;
-        height: 7.5rem;
+        width: 100%;
+        height: 100%;
         position: absolute;
-        right: 0;
-        bottom: 0;
-        z-index: 99997;
+        left: 0;
+        top: 0;
         &-button {
             background-color: $color-white!important;
             background-image: url('../images/theme-base/gallery-icons/connect.svg');
@@ -250,5 +252,24 @@
         &:hover &-icons {
             transform: translateY(-100%);
         }
+    }
+}
+.crfb-bottom-panel {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 7.5rem;
+    background: rgba(0,0,0,0.86);
+    z-index: 99997;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s, visibility 0s linear .25s;
+    .fancybox-show-caption & {
+        opacity: 1;
+        transition: opacity .25s, visibility 0s;
+        visibility: visible;
     }
 }

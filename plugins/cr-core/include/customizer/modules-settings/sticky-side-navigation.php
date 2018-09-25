@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) die('-1');
 
 $wp_customize->add_section( 'crt_stikcy_side_navigation', array(
 	'panel' => 'module_settings',
-	'title' => __( 'Stikcy Side Navigation', 'crt' ),
+	'title' => __( 'Sticky Side Navigation', 'crt' ),
 	'priority' => 162,
 	'capability' => 'edit_theme_options',
 ) );

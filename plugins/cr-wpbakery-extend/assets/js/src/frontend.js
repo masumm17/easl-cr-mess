@@ -874,13 +874,15 @@ if (!String.prototype.padStart) {
                   '<div class="fancybox-container" role="dialog" tabindex="-1">' +
                   '<div class="fancybox-bg"></div>' +
                   '<div class="fancybox-inner">' +
-                  '<div class="fancybox-infobar">' +
-                  "<span data-fancybox-index></span>/<span data-fancybox-count></span>" +
-                  "</div>" +
-                  '<div class="fancybox-toolbar">{{buttons}}</div>' +
                   '<div class="fancybox-navigation">{{arrows}}</div>' +
                   '<div class="fancybox-stage"></div>' +
-                  '<div class="fancybox-caption"></div>' +
+                  '<div class="crfb-bottom-panel">' + 
+                    '<div class="fancybox-infobar">' +
+                      '<div class="crfb-infobar-inner"><span data-fancybox-index></span>/<span data-fancybox-count></span></div>' +
+                    "</div>" +
+                    '<div class="fancybox-caption"></div>' +
+                    '<div class="fancybox-toolbar">{{buttons}}</div>' +
+                  "</div>" +
                   "</div>" +
                   "</div>",
                 btnTpl: {
