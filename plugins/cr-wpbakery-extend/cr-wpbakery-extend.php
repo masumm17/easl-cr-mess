@@ -173,6 +173,10 @@ class CR_VcE_Manager {
 			$this,
 			'frontend_enqueue_css_js'
 		));
+		add_action('wp_enqueue_scripts', array(
+			$this,
+			'vc_scripts_override'
+		), 101);
 		
 		add_action('cr_before_footer', array(
 			$this,
@@ -235,6 +239,16 @@ class CR_VcE_Manager {
 		
 		wp_enqueue_style('cr-wpb');
 		wp_enqueue_script('cr-wpb');
+		
+	}
+	
+	public function vc_scripts_override(){
+		if( is_admin() || vc_is_frontend_editor()){
+			return;
+		}
+		wp_deregister_script( 'waypoints' );
+		wp_dequeue_script( 'waypoints' );
+		wp_register_script('waypoints', $this->asset_url( 'library/waypoints/jquery.waypoints.min.js' ), array('jquery'), '4.0.1', true);
 		
 	}
 

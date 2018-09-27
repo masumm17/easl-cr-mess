@@ -1307,7 +1307,7 @@ if (!String.prototype.padStart) {
             // Resize events
             $(window).on("resize", ChevRes.debounce(function(){
                 ChevRes.resizeEevents();
-            }, 250));
+            }, 50));
             // Expanding Images  dfg
             $(".no-touchevents .expanding-image-item").on("mouseenter", function() {
                 $(this).addClass("on-hover").removeClass("not-hover").siblings(".expanding-image-item").removeClass("on-hover").addClass("not-hover");
