@@ -5,7 +5,7 @@ class CR_Dropdown_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	public function menu_item_image($item_id) {
 		$image = get_field('image', $item_id);
-		$size = 'fw1-2_col2-3_x';//1280/540
+		$size = 'fw1-2_x';//1280/540
 		$src = wp_get_attachment_image_src($image, $size);
 		if(!$src) {
 			return '';

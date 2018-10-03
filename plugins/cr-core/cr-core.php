@@ -105,12 +105,6 @@ final class CR_Core {
 				'hide_wpml_translations_where'
 			), 10, 2);
 		}
-		if( is_admin() && isset( $_REQUEST['post_type'] ) && post_type_exists( $_REQUEST['post_type']) && 'page' == $_REQUEST['post_type']) {
-			add_action('pre_get_posts', array(
-				$this,
-				'admin_pages_order'
-			));
-		}
 		
 	}
 	/**
@@ -380,17 +374,6 @@ final class CR_Core {
 		return $where;
 	}
 	
-	public function admin_pages_order($query) {
-		if(!empty($_GET['orderby'])) {
-			return $query_vars;
-		}
-		$query->query_vars['orderby'] = array(
-			'menu_order' => 'desc',
-			'title' => 'asc',
-		);
-		
-	}
-
 	/**
 	 * Enables to add hooks in activation process.
 	 * @since 1.0
