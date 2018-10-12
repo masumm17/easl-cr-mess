@@ -665,6 +665,24 @@ if (!String.prototype.padStart) {
                 });
             });
         },
+        resizeFullScreenCon: function() {
+            $(".cr-force-full-width").each(function() {
+                var $con = $(this),
+                    w = $(this).closest('.wpb_wrapper').width();
+                if(w < window.innerWidth) {
+                    $con.css({
+                        'width': window.innerWidth + 'px',
+                        'margin-left': '-' + ((window.innerWidth - w) /2) + 'px'
+                    });
+                }
+            });
+        },
+        forceFullScreenCon: function() {
+            $(".cr-force-full-width").each(function() {
+                $(this).closest('.wpb_row').addClass('cr-row-force-full-width');
+            });
+            this.resizeFullScreenCon();
+        },
         propertySlider: function() {
             if("undefined" === typeof $.fn.slick){
                 return;
@@ -826,7 +844,7 @@ if (!String.prototype.padStart) {
                   '<div class="fancybox-toolbar">{{buttons}}</div>' +
                   '<div class="fancybox-navigation">{{arrows}}</div>' +
                   '<div class="fancybox-stage"></div>' +
-                  '<div class="fancybox-caption"></div>' +
+                    '<div class="fancybox-caption"></div>' +
                   "</div>" +
                   "</div>",
                 btnTpl: {
@@ -1251,6 +1269,7 @@ if (!String.prototype.padStart) {
             // Resize events
             $(window).on("resize", ChevRes.debounce(function(){
                 ChevRes.resizeEevents();
+                ChevRes.resizeFullScreenCon();
             }, 250));
             // Expanding Images  dfg
             $(".no-touchevents .expanding-image-item").on("mouseenter", function() {
@@ -1280,12 +1299,13 @@ if (!String.prototype.padStart) {
                 }
             });
             $(".cr-scroll-down").on("click", function(e) {
-                var $wrapp = $(this).closest(".cr-rev-slider-wrapper"), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
+                var $wrapp = $(this).parent(), sh = $wrapp.offset().top + $wrapp.outerHeight() - $(".site-header").outerHeight();
                 e.preventDefault();
                 window.scroll && !$("body").hasClass("cr-ie11") ? window.scroll({ top: sh, left: 0, behavior: 'smooth' }) : $('html, body').animate({scrollTop: sh}, 500, 'linear');});
         },
         init: function() {
             this.heroSlider();
+            this.forceFullScreenCon();
             this.waypoint();
             this.propertySlider();
             this.miniGridGallery();

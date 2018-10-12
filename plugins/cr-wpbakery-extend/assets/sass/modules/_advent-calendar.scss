@@ -1,0 +1,38 @@
+.wpb_row.cr-row-force-full-width:first-child .cr-container .cr-row:first-child {
+    padding-top: 0!important;
+}
+.cr-force-full-width {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+.advent-calendar {
+    &-wrap {
+        
+    }
+    &-inner {
+        
+    }
+    &-con {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        height: 768px;
+        .cr-force-full-screen & {
+            height: 100vh!important;
+        }
+        iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 0 none;
+            .cr-force-full-screen & {
+                height: 100vh!important;
+            }
+        }
+        
+    }
+}
