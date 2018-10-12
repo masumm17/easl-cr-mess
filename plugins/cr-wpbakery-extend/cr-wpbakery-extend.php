@@ -366,6 +366,10 @@ class CR_VcE_Manager {
 			'name' => __('Gravity Form', 'crvc_extension'),
 			'file' => $sc_dir . '/gravity-form/class-gravity-form.php',
 		);
+		$this->registered_shortcodes['cr_advent_calendar'] = array(
+			'name' => __('Advent Calendar', 'crvc_extension'),
+			'file' => $sc_dir . '/advent-calendar/class-advent-calendar.php',
+		);
 	}
 	/**
 	 * Load active shortcodes
@@ -398,6 +402,7 @@ class CR_VcE_Manager {
 			'cr_virtual_tour',
 			'cr_allora_integration',
 			'cr_gravity_form',
+			'cr_advent_calendar',
 		);
 	}
 	
