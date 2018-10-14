@@ -670,10 +670,7 @@ if (!String.prototype.padStart) {
                 var $con = $(this),
                     w = $(this).closest('.wpb_wrapper').width();
                 if(w < window.innerWidth) {
-                    $con.css({
-                        'width': window.innerWidth + 'px',
-                        'margin-left': '-' + ((window.innerWidth - w) /2) + 'px'
-                    });
+                    $con.attr('style','width:' +  window.innerWidth + 'px!important; margin-left:-' + ((window.innerWidth - w) /2) + 'px!important;');
                 }
             });
         },
