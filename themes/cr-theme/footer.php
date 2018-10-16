@@ -45,7 +45,22 @@ $footer_mobile_nl_title = crt_get_theme_mode('footer_mobile_nl_title');
 $footer_mobile_nl_link = crt_get_theme_mode('footer_mobile_nl_link');
 $footer_mobile_nl_nt = crt_get_theme_mode('footer_mobile_nl_nt');
 
-$footer_company_addess = str_replace( "\n", '<br/>', strip_tags($footer_company_addess));
+$footer_company_addess = str_replace( "\n", '<br/>', wp_kses($footer_company_addess, array(
+    'a' => array(
+        'href' => array(),
+        'title' => array(),
+        'class' => array(),
+        'target' => array(),
+        'rel'   => array()
+    ),
+    'br' => array(),
+    'em' => array(),
+    'strong' => array(),
+    'span' => array(
+        'class' => array(),
+		'style' => array()
+    ),
+)));
 
 if(!$footer_website_url) {
 	$footer_website_url = home_url();
