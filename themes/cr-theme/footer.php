@@ -60,6 +60,14 @@ $footer_company_addess = str_replace( "\n", '<br/>', wp_kses($footer_company_add
         'class' => array(),
 		'style' => array()
     ),
+	'img' => array(
+        'src' => array(),
+        'alt' => array(),
+        'title' => array(),
+        'class' => array(),
+        'width' => array(),
+        'height'   => array()
+    ),
 )));
 
 if(!$footer_website_url) {
