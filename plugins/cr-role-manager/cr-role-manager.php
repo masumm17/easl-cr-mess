@@ -60,7 +60,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
 			add_filter( 'wp_editor_settings', array( $this, 'wp_editor_settings' ), 999 );
 			// Real Media features
-			add_filter( 'RML/Backend/JS_Localize', array( $this, 'rml_js_options' ), 999 );
+			//add_filter( 'RML/Backend/JS_Localize', array( $this, 'rml_js_options' ), 999 );
 			// Visual Composer features
 			add_filter( 'vc_role_access_with_backend_editor_get_state', array( $this, 'vc_backend_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_frontend_editor_get_state', array( $this, 'vc_frontend_editor' ), 20, 2 );
