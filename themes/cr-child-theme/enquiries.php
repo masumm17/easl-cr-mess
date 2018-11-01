@@ -150,7 +150,7 @@ eventer(messageEvent,function(e) {
 				body.contact_form_body {
 						background-color: white !important;
 					 	color: #2e2e2e !important;
-					    font-family: Open-Sans, sans-serif; !important;
+					    font-family: Open-Sans, sans-serif!important;
 					    font-size:  14px !important;
 					    font-weight: 400 !important;
 				}
@@ -165,8 +165,8 @@ eventer(messageEvent,function(e) {
 				body.contact_form_body form.contact_form label#acc-choices-label{padding-right:170px;}
 				body.contact_form_body form.contact_form .chk {padding-top: 1px;}
 					    
-				body.contact_form_body form.contact_form .inputfield input {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
-				body.contact_form_body form.contact_form .inputfield select {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif; !important;}
+				body.contact_form_body form.contact_form .inputfield input {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif!important;}
+				body.contact_form_body form.contact_form .inputfield select {color:#2e2e2e; font-size:  13px !important;font-weight: 400 !important; font-family: Open-Sans, sans-serif!important;}
 				body.contact_form_body form.contact_form .inputfield input#submit{color:#ffffff; height: 54px; margin-left: -10px;font-size: 16px !important; font-weight: 300 !important; text-transform: uppercase;}
 				body.contact_form_body form.contact_form .inputfield.submit{background-color: transparent !important;}
 				body.contact_form_body form.contact_form #valid_choices .element, .all_elements{color: black;}			   		
@@ -2129,7 +2129,7 @@ $( "#datepicker_two" ).datepicker( "setDate", s2 );
 			}
 			/*-- Address --*/
 			.address {
-				font-size;9px;
+				font-size:9px;
 			}
 
 			/*-- Link Styling for Avvio Solution --*/
