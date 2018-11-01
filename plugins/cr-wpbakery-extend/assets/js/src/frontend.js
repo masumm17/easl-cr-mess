@@ -577,7 +577,7 @@ if (!String.prototype.padStart) {
                 iv_load_policy: 3,
                 loop: 1,
                 playsinline: 1,
-                origin: crSettings.siteURL
+                origin: window.location.protocol + '//' + window.location.host
             }
         },
         Storage: {

@@ -109,7 +109,7 @@ $duration = !empty(CR_VcE_Sc_Hero_Slider::$data['duration']) ? CR_VcE_Sc_Hero_Sl
 				data-videoloop="loop" 
 				data-volume="mute" 
 				data-ytid="<?php echo esc_attr($yt_video_id); ?>" 
-				data-videoattributes="version=3&enablejsapi=1&html5=1&hd=1&vq=hd1080&wmode=opaque&showinfo=0&rel=0&ref=0&origin=<?php echo untrailingslashit( get_home_url() );?>" 
+				data-videoattributes="version=3&enablejsapi=1&html5=1&hd=1&vq=hd1080&wmode=opaque&showinfo=0&rel=0&ref=0&origin=https://www.chevalresidences.com" 
 				data-videorate="1" 
 				data-videowidth="100%" 
 				data-videoheight="100%" 
