@@ -59,6 +59,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'post_row_actions', array( $this, 'row_actions' ), 999 );
 			add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
 			add_filter( 'wp_editor_settings', array( $this, 'wp_editor_settings' ), 999 );
+			add_filter( 'login_redirect', array( $this, 'login_redirect' ), 20, 3 );
 			// Real Media features
 			//add_filter( 'RML/Backend/JS_Localize', array( $this, 'rml_js_options' ), 999 );
 			// Visual Composer features
@@ -139,6 +140,13 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			$role->capabilities[ $part->getStateKey() . '/disabled_ce_editor' ]	 = true;
 
 			return $role;
+		}
+		
+		public function login_redirect($redirect_to, $requested_redirect_to, $user) {
+			if ( !is_wp_error($user) && in_array( 'hotel_editor', $user->roles )  ) {
+				$redirect_to = admin_url( 'edit.php?post_type=page' );
+			}
+			return $redirect_to;
 		}
 
 		public function rml_js_options( $options ) {

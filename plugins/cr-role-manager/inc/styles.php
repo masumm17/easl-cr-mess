@@ -30,4 +30,7 @@
 	.term-php #wpseo_meta {
 		display: none;
 	}
+	#nav-menu-footer .major-publishing-actions .delete-action {
+		display: none!important;
+	}
 </style>
