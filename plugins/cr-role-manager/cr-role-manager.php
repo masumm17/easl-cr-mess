@@ -60,9 +60,13 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
 			add_filter( 'wp_editor_settings', array( $this, 'wp_editor_settings' ), 999 );
 			add_filter( 'login_redirect', array( $this, 'login_redirect' ), 20, 3 );
+			
+			add_action('init', array($this, 'rremove_post_type_supports'), 20);
 			// Real Media features
 			//add_filter( 'RML/Backend/JS_Localize', array( $this, 'rml_js_options' ), 999 );
 			// Visual Composer features
+			add_filter( 'vc_role_access_with_post_types_get_state', array( $this, 'vc_backend_post_types' ), 20, 2 );
+			add_filter( 'vc_role_access_with_post_types_can', array( $this, 'vc_backend_post_types_can' ), 20, 3 );
 			add_filter( 'vc_role_access_with_backend_editor_get_state', array( $this, 'vc_backend_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_frontend_editor_get_state', array( $this, 'vc_frontend_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_backend_editor_can_disabled_ce_editor', array( $this, 'vc_classic_editor' ), 20, 2 );
@@ -87,7 +91,27 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 				$_GET[ 'mode' ] = 'grid';
 			}
 		}
+		
+		public function rremove_post_type_supports() {
+			if ( !$this->is_role( 'hotel_editor' ) ) {
+				return;
+			}
+			remove_post_type_support( 'amenity', 'editor' );
+		}
 
+		public function vc_backend_post_types( $state, $role ) {
+			if ( !$role || ('hotel_editor' != $role->name) ) {
+				return $state;
+			}
+			return 'custom';
+		}
+
+		public function vc_backend_post_types_can( $value, $role, $rule ) {
+			if ( !$role || ('hotel_editor' != $role->name) ) {
+				return $value;
+			}
+			return in_array( $rule, array('apartment', 'offer', 'page') );
+		}
 		public function vc_backend_editor( $state, $role ) {
 			if ( !$role || ('hotel_editor' != $role->name) ) {
 				return $state;
