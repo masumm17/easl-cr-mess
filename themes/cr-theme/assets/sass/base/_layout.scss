@@ -27,6 +27,12 @@
         rgba($color-black, 0));
         z-index: 1;
     }
+    .fixed-header.top-shadow-short &::before{
+        height: 15rem;
+        @include respond(tab-land) {
+            height: 11rem;
+        }
+    }
 }
 #primary {
     flex: 1 0 auto;

@@ -211,6 +211,9 @@ final class CR_Core {
 		}else{
 			$classes[] = 'scroll-header';
 		}
+		
+		$classes[] = 'top-shadow-' . $this->get_top_shadow_type();
+		
 		$classes[] = $this->get_color_theme();
 		if(!crt_get_theme_mode( 'enable_enquire_button', '')) {
 			$classes[] = $this->get_booking_panel_class();
@@ -235,6 +238,18 @@ final class CR_Core {
 			$page_type = crt_get_theme_mode('default_page_types', 'minimal');
 		}
 		return $page_type;
+	}
+	public function get_top_shadow_type() {
+		$shadow_type = '';
+		if( is_home() && !is_front_page() && ($page_for_posts = get_option ( 'page_for_posts' )) ){
+			$shadow_type = function_exists('get_field') ? get_field('top_shadow', $page_for_posts) : get_post_meta($page_for_posts, 'top_shadow', true);
+		}elseif ( is_singular() ) {
+			$shadow_type = function_exists('get_field') ? get_field('top_shadow', get_queried_object_id()) : get_post_meta(get_queried_object_id(), 'top_shadow', true);
+		}
+		if(!$shadow_type || 'default' == $shadow_type) {
+			$shadow_type = 'normal';
+		}
+		return $shadow_type;
 	}
 	
 	public function get_color_theme() {

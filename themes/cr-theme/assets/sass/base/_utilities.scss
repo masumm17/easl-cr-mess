@@ -30,6 +30,11 @@
     @include respond(tab-port) {
         bottom: 60px;
     }
+    @include respond(tab-land) {
+        .top-shadow-short & {
+            display: none!important;
+        }
+    }
     > span {
         position: absolute;
         top: 1rem;
