@@ -42,6 +42,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 		 */
 		private function __construct() {
 			$this->root_path = plugin_dir_path( __FILE__ );
+			$this->root_url = plugin_dir_url( __FILE__ );
 
 			$this->set_roles();
 			
@@ -51,13 +52,14 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 		}
 
 		private function filters() {
+			add_filter( 'admin_body_class', array($this, 'admin_body_class') );
 			add_filter( 'custom_menu_order', '__return_true' );
 			add_filter( 'menu_order', array( $this, 'menu_order' ) );
 			add_filter( 'screen_options_show_screen', array( $this, 'hide_screen_option' ) );
 			add_filter( 'wpseo_accessible_post_types', array( $this, 'wp_seo_post_types' ) );
 			add_filter( 'page_row_actions', array( $this, 'row_actions' ), 999 );
 			add_filter( 'post_row_actions', array( $this, 'row_actions' ), 999 );
-			add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
+			//add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
 			add_filter( 'wp_editor_settings', array( $this, 'wp_editor_settings' ), 999 );
 			add_filter( 'login_redirect', array( $this, 'login_redirect' ), 20, 3 );
 			
@@ -69,6 +71,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'vc_role_access_with_post_types_can', array( $this, 'vc_backend_post_types_can' ), 20, 3 );
 			add_filter( 'vc_role_access_with_backend_editor_get_state', array( $this, 'vc_backend_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_frontend_editor_get_state', array( $this, 'vc_frontend_editor' ), 20, 2 );
+			add_filter( 'vc_role_access_with_templates_get_state', array( $this, 'vc_templates_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_backend_editor_can_disabled_ce_editor', array( $this, 'vc_classic_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_all_caps_role', array( $this, 'vc_all_caps' ), 20 );
 			add_filter( 'vc_nav_controls', array( $this, 'vc_nav_controls' ), 20 );
@@ -81,8 +84,37 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_action( 'load-upload.php', array( $this, 'media_page_loaded' ) );
 			add_action( 'admin_head', array( $this, 'head_style' ) );
 			add_action( 'admin_footer', array( $this, 'footer_scripts' ), 200 );
+			add_action('vc_backend_editor_enqueue_js_css', array(
+				$this,
+				'backend_enqueue_editor_css_js'
+			));
 		}
-
+		public function admin_body_class($classes) {
+			if ( !$this->is_role( 'hotel_editor' ) ) {
+				return $classes;
+			}
+			$screen = get_current_screen();
+			
+			if(!$screen) {
+				return $classes;
+			}
+			if(!empty($screen->post_type) && $this->check_get_var('action', 'edit')){
+				$classes .= ' crrm-screen-' . $screen->post_type . '-edit';
+			}
+			if(!empty($screen->post_type) && $screen->action && ($screen->action == 'add')){
+				$classes .= ' crrm-screen-' . $screen->post_type . '-add-new';
+			}
+			
+			return $classes;
+		}
+		
+		public function check_get_var($key, $val) {
+			if(!empty($_GET[$key]) && $val == $_GET[$key]){
+				return true;
+			}
+			return false;
+		}
+		
 		public function media_page_loaded() {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return;
@@ -149,6 +181,13 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			return false;
 		}
 
+		public function vc_templates_editor( $state, $role ) {
+			if ( !$role || ('hotel_editor' != $role->name) ) {
+				return $state;
+			}
+			return false;
+		}
+
 		public function vc_classic_editor( $state, $role ) {
 			if ( !$role || ('hotel_editor' != $role->name) ) {
 				return $state;
@@ -196,6 +235,12 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 				return;
 			}
 			require_once $this->root_path . 'inc/scripts.php';
+		}
+		public function backend_enqueue_editor_css_js() {
+			if ( !$this->is_role( 'hotel_editor' ) ) {
+				return;
+			}
+			wp_enqueue_script('crvc-backend', $this->root_url . 'assets/js/js-compoer.js', array(), CR_VCE_VERSION, true);
 		}
 
 		public function wp_editor_settings( $settings ) {
@@ -274,6 +319,12 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 					if ( $themes_page[ 2 ] != 'nav-menus.php' ) {
 						unset( $submenu[ 'themes.php' ][ $pos ] );
 					}
+				}
+			}
+			// add classes to submenu items
+			foreach ( $submenu as $menu_file => $items_sub_menus ) {
+				foreach($items_sub_menus as $pos => $sub_menu_item) {
+					$submenu[$menu_file][$pos][4] = 'cr-submenu-item-' . sanitize_title_with_dashes($sub_menu_item[0]);
 				}
 			}
 		}
