@@ -9,7 +9,7 @@
                 parent_id: this.model.id
             });
             if(shortcodes.length < this.maxShortcodes){
-                return window.CrScContainerView.__super__.addElement.clone(this,e);
+                return window.CrScContainerView.__super__.clone.call(this,e);
             } else {
                 _.isObject(e) && e.preventDefault();
                 alert("Maximum number(" + this.maxShortcodes + ") of items added!");

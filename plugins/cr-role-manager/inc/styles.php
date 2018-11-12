@@ -132,5 +132,5 @@
 	.wp-media-buttons #add_gform.button{
 		display: none!important;
 	}
-	
+	 
 </style>
