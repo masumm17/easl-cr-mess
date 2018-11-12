@@ -17,6 +17,11 @@ if ( !defined( 'ABSPATH' ) )
 if ( !class_exists( 'CR_Role_Manager' ) ) {
 
 	class CR_Role_Manager {
+		/**
+		 * Contains all roles data
+		 * @var type array
+		 */
+		private $version = '1.3';
 
 		/**
 		 * Contains all roles data
@@ -244,7 +249,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return;
 			}
-			wp_enqueue_script('crrm-jscompoers', $this->root_url . 'assets/js/js-compoer.js', array(), CR_VCE_VERSION, true);
+			wp_enqueue_script('crrm-jscompoers', $this->root_url . 'assets/js/js-compoer.js', array(), $this->version, true);
 		}
 		public function modify_vc_shortcodes_settings() {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
