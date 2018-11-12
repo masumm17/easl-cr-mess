@@ -3,7 +3,7 @@
 /*
   Plugin Name: CR Role Manager
   Description: A customized role manager for CR.
-  Version: 1.0
+  Version: 1.2.1
   Author: Soto
   Author URI: http://www.gosoto.co/
   License: GPLv2 or later
@@ -240,7 +240,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return;
 			}
-			wp_enqueue_script('crvc-backend', $this->root_url . 'assets/js/js-compoer.js', array(), CR_VCE_VERSION, true);
+			wp_enqueue_script('crrm-jscompoers', $this->root_url . 'assets/js/js-compoer.js', array(), CR_VCE_VERSION, true);
 		}
 
 		public function wp_editor_settings( $settings ) {
@@ -298,7 +298,6 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 				return;
 			}
 			global $menu, $submenu;
-			//var_dump($menu);die();
 			unset( $menu[ 2 ] );
 			unset( $menu[ 4 ] );
 			$to_hide = array(
@@ -321,9 +320,21 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 					}
 				}
 			}
+			$new_files = array(
+				'post-new.php',
+				'post-new.php?post_type=page',
+				'post-new.php?post_type=amenity'.
+				'post-new.php?post_type=accommodation',
+				'post-new.php?post_type=apartment',
+				'post-new.php?post_type=offer'
+				
+			);
 			// add classes to submenu items
 			foreach ( $submenu as $menu_file => $items_sub_menus ) {
 				foreach($items_sub_menus as $pos => $sub_menu_item) {
+					if( in_array( $sub_menu_item[2],  $new_files)){
+						unset( $submenu[ $menu_file ][ $pos ] );
+					}
 					$submenu[$menu_file][$pos][4] = 'cr-submenu-item-' . sanitize_title_with_dashes($sub_menu_item[0]);
 				}
 			}

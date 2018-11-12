@@ -40,25 +40,16 @@
 	.crrm-screen-post-edit .page-title-action,
 	.crrm-screen-amenity-edit .page-title-action,
 	.crrm-screen-apartment-edit .page-title-action,
-	.crrm-screen-offer-edit .page-title-action {
+	.crrm-screen-apartment-edit .page-title-action,
+	.edit-php .page-title-action {
 		display: none!important;
 	}
-	.crrm-screen-post-edit #menu-posts li.cr-submenu-item-add-new,
-	.crrm-screen-post-add-new #menu-posts li.cr-submenu-item-add-new,
-	
-	.crrm-screen-page-edit #menu-pages li.cr-submenu-item-add-new,
-	.crrm-screen-page-add-new #menu-pages li.cr-submenu-item-add-new,
-	
-	.crrm-screen-amenity-edit #menu-posts-amenity li.cr-submenu-item-add-new-amenity,
-	.crrm-screen-amenity-add-new #menu-posts-amenity li.cr-submenu-item-add-new-amenity,
-	
-	.crrm-screen-apartment-edit #menu-posts-apartment li.cr-submenu-item-add-new-apartment,
-	.crrm-screen-apartment-add-new #menu-posts-apartment li.cr-submenu-item-add-new-apartment,
-	
-	.crrm-screen-offer-edit #menu-posts-offer li.cr-submenu-item-add-new-offer,
-	.crrm-screen-offer-add-new #menu-posts-offer li.cr-submenu-item-add-new-offer,
-	
-	.media-new-php #menu-media .cr-submenu-item-add-new {
+	#menu-posts li.cr-submenu-item-add-new,
+	#menu-pages li.cr-submenu-item-add-new,
+	#menu-posts-amenity li.cr-submenu-item-add-new-amenity,
+	#menu-posts-apartment li.cr-submenu-item-add-new-apartment,
+	#menu-posts-offer li.cr-submenu-item-add-new-offer,
+	#menu-media .cr-submenu-item-add-new {
 		display: none!important;
 	}
 	
