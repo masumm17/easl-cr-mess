@@ -126,6 +126,9 @@
 	[data-element_type="cr_title_icons"] .vc_controls .vc_control-btn:not(.vc_element-move) {
 		display: none!important;
 	}
+	.wp-media-buttons .button.wdi_thickbox,
+	.wp-media-buttons #add_gform.button{
+		display: none!important;
+	}
 	 
-	
 </style>

@@ -247,6 +247,11 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return $settings;
 			}
+			$screen = get_current_screen();
+			
+			if($screen && !empty($screen->post_type) && in_array( $screen->post_type, array('post') )){
+				return $settings;
+			}
 			$settings[ 'media_buttons' ] = false;
 			return $settings;
 		}
