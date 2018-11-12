@@ -142,7 +142,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$role || ('hotel_editor' != $role->name) ) {
 				return $value;
 			}
-			return in_array( $rule, array('apartment', 'offer', 'page') );
+			return in_array( $rule, array('apartment', 'offer', 'page', 'accommodation') );
 		}
 		public function vc_backend_editor( $state, $role ) {
 			if ( !$role || ('hotel_editor' != $role->name) ) {
@@ -247,6 +247,11 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return $settings;
 			}
+			$screen = get_current_screen();
+			
+			if($screen && !empty($screen->post_type) && in_array( $screen->post_type, array('post') )){
+				return $settings;
+			}
 			$settings[ 'media_buttons' ] = false;
 			return $settings;
 		}
@@ -301,7 +306,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			unset( $menu[ 2 ] );
 			unset( $menu[ 4 ] );
 			$to_hide = array(
-				'edit.php?post_type=accommodation',
+				//'edit.php?post_type=accommodation',
 				'edit.php?post_type=cr_map',
 				'profile.php',
 				'tools.php',

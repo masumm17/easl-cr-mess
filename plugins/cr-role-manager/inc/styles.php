@@ -38,6 +38,7 @@
 	}
 	.crrm-screen-page-edit .page-title-action,
 	.crrm-screen-post-edit .page-title-action,
+	.crrm-screen-accommodation-edit .page-title-action,
 	.crrm-screen-amenity-edit .page-title-action,
 	.crrm-screen-apartment-edit .page-title-action,
 	.crrm-screen-apartment-edit .page-title-action,
@@ -46,6 +47,7 @@
 	}
 	#menu-posts li.cr-submenu-item-add-new,
 	#menu-pages li.cr-submenu-item-add-new,
+	#menu-posts-accommodation li.cr-submenu-item-add-room,
 	#menu-posts-amenity li.cr-submenu-item-add-new-amenity,
 	#menu-posts-apartment li.cr-submenu-item-add-new-apartment,
 	#menu-posts-offer li.cr-submenu-item-add-new-offer,
@@ -126,6 +128,9 @@
 	[data-element_type="cr_title_icons"] .vc_controls .vc_control-btn:not(.vc_element-move) {
 		display: none!important;
 	}
-	 
+	.wp-media-buttons .button.wdi_thickbox,
+	.wp-media-buttons #add_gform.button{
+		display: none!important;
+	}
 	
 </style>
