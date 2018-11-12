@@ -3,7 +3,7 @@
 /*
   Plugin Name: CR Role Manager
   Description: A customized role manager for CR.
-  Version: 1.2.1
+  Version: 1.3
   Author: Soto
   Author URI: http://www.gosoto.co/
   License: GPLv2 or later
