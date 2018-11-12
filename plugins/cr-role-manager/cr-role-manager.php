@@ -88,6 +88,10 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 				$this,
 				'backend_enqueue_editor_css_js'
 			));
+			add_action('vc_after_init', array(
+				$this,
+				'modify_vc_shortcodes_settings'
+			));
 		}
 		public function admin_body_class($classes) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
@@ -241,6 +245,12 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 				return;
 			}
 			wp_enqueue_script('crrm-jscompoers', $this->root_url . 'assets/js/js-compoer.js', array(), CR_VCE_VERSION, true);
+		}
+		public function modify_vc_shortcodes_settings() {
+			if ( !$this->is_role( 'hotel_editor' ) ) {
+				return;
+			}
+			vc_map_update('vc_video', array('category' => __( 'Radisson Blu', 'crvc_extension' )));
 		}
 
 		public function wp_editor_settings( $settings ) {
