@@ -67,6 +67,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			//add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
 			add_filter( 'wp_editor_settings', array( $this, 'wp_editor_settings' ), 999 );
 			add_filter( 'login_redirect', array( $this, 'login_redirect' ), 20, 3 );
+			add_filter( 'hidden_meta_boxes', array( $this, 'nav_hidden_meta_boxes' ), 20, 3 );
 			
 			add_action('init', array($this, 'rremove_post_type_supports'), 20);
 			// Real Media features
@@ -115,6 +116,24 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			}
 			
 			return $classes;
+		}
+		
+		public function nav_hidden_meta_boxes($hidden, $screen, $use_defaults) {
+			if ( !$this->is_role( 'hotel_editor' ) ) {
+				return $hidden;
+			}
+			if('nav-menus' !== $screen->id){
+				return $hidden;
+			}
+			$enabled_boxes = array(
+				'add-post-type-accommodation'
+			);
+			foreach($hidden as $key=>$item){
+				if( in_array( $item, $enabled_boxes )){
+					unset($hidden[$key]);
+				}
+			}
+			return $hidden;
 		}
 		
 		public function check_get_var($key, $val) {
