@@ -30,6 +30,22 @@ return array(
 			),
 			array(
 				'type' => 'dropdown',
+				'heading' => __( 'Title element tag', 'crvc_extension' ),
+				'param_name' => 'element_tag',
+				'std' => 'h1',
+				'value' => array(
+					__( 'h1', 'crvc_extension' ) => 'h1',
+					__( 'h2', 'crvc_extension' ) => 'h2',
+					__( 'h3', 'crvc_extension' ) => 'h3',
+					__( 'h4', 'crvc_extension' ) => 'h4',
+					__( 'h5', 'crvc_extension' ) => 'h5',
+					__( 'h6', 'crvc_extension' ) => 'h6',
+					__( 'div', 'crvc_extension' ) => 'div',
+				),
+				'description' => __( 'Select the type of the slide item.', 'crvc_extension' ),
+			),
+			array(
+				'type' => 'dropdown',
 				'heading' => __( 'Select a Map', 'crvc_extension' ),
 				'param_name' => 'map',
 				'value' => cr_vce_post_type_dropdown_data('cr_map', __('Select a map', 'crvc_extension')),

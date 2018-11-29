@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Allora_Integration
  */
 $el_class = $css = $css_animation = '';
-$title = $subtitle = $client_type = $client_id = $limit = '';
+$title = $subtitle = $element_tag = $client_type = $client_id = $limit = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 
 extract( $atts );
@@ -57,10 +57,12 @@ if($allora_url && $client_id) {
 }
 
 if( $allora_url ): 
+	
+$title_element_tag = CR_VcE_Sc_Title_Subtitle::get_element_tag($element_tag);
 ?>
 <section class="cr-module-wrap fxw-grid-wrap cr-allora-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?> data-alloraurl="<?php echo $allora_url; ?>">
 	<div class="cr-title-subtitle-wrapper cr-title-has-subtitle">
-		<h2 class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></h2>
+		<<?php echo $title_element_tag; ?> class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></<?php echo $title_element_tag; ?>>
 		<h2 class="cr-sc-subtitle"><span class="cr-subtitle-inner cr-animate-when-visible"><?php echo esc_html($subtitle); ?></span></h2>
 	</div>
 	<div class="fxw-grid-inner cr-animate-when-visible">

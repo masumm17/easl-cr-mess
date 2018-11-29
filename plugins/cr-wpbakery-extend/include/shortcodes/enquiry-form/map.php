@@ -29,6 +29,22 @@ return array(
 				'description' => __( 'Enter optional subtitle', 'crvc_extension' ),
 				'admin_label' => true,
 			),
+			array(
+				'type' => 'dropdown',
+				'heading' => __( 'Element tag', 'crvc_extension' ),
+				'param_name' => 'element_tag',
+				'std' => 'h1',
+				'value' => array(
+					__( 'h1', 'crvc_extension' ) => 'h1',
+					__( 'h2', 'crvc_extension' ) => 'h2',
+					__( 'h3', 'crvc_extension' ) => 'h3',
+					__( 'h4', 'crvc_extension' ) => 'h4',
+					__( 'h5', 'crvc_extension' ) => 'h5',
+					__( 'h6', 'crvc_extension' ) => 'h6',
+					__( 'div', 'crvc_extension' ) => 'div',
+				),
+				'description' => __( 'Select the type of the slide item.', 'crvc_extension' ),
+			),
 		),
 		cr_vce_paramps_common_group()
 	),

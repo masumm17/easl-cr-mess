@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this CR_VcE_Sc_Accommodations
  */
 $el_class = $css = $css_animation = '';
-$title = $subtitle = '';
+$title = $subtitle = $element_tag = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -28,9 +28,12 @@ $accomodations = CR_VcE_Sc_Accommodations::get_accommodations();
 
 ?>
 <section class="cr-module-wrap accommodations-wrap <?php echo esc_attr( $css_class ); ?>" <?php echo implode( ' ', $wrapper_attributes ); ?>>
-	<?php if($title || $subtitle): ?> 
+	<?php 
+	if($title || $subtitle): 
+		$title_element_tag = CR_VcE_Sc_Title_Subtitle::get_element_tag($element_tag);
+	?> 
 	<div class="cr-title-subtitle-wrapper <?php if($subtitle){ echo 'cr-title-has-subtitle'; } ?>">
-		<h2 class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></h2>
+		<<?php echo $title_element_tag; ?> class="cr-sc-title"><span class="cr-title-inner cr-animate-when-visible"><?php echo esc_html($title); ?></span></<?php echo $title_element_tag; ?>>
 		<?php if ($subtitle): ?>
 		<h2 class="cr-sc-subtitle"><span class="cr-subtitle-inner cr-animate-when-visible"><?php echo esc_html($subtitle); ?></span></h2>
 		<?php endif; ?>
