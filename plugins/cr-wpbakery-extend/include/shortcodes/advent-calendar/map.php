@@ -63,7 +63,7 @@ return array(
 				'type' => 'dropdown',
 				'heading' => __( 'Scroll Down Arrow', 'crvc_extension' ),
 				'param_name' => 'scroll_down_arrow',
-				'std' => 'false',
+				'std' => 'yes',
 				'value' => array(
 					__( 'No', 'crvc_extension' ) => 'no',
 					__( 'Yes', 'crvc_extension' ) => 'yes',
