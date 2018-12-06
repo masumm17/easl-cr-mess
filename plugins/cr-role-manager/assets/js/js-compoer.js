@@ -1,6 +1,6 @@
 (function($){
     var toHide = ['cr_title_icons', 'cr_accommodations', 'cr_enquiry_form', 'cr_sitemap', 'cr_allora_integration', 'cr_gravity_form'];
-    var crSites = ['Cheval Residences', 'Radisson Blu']
+    var crSites = ['Cheval Residences', 'Radisson Blu', 'Hillgrove']
 	$('body').on('vcPanel.shown', function(e){
 		$('.vc_edit-form-tab-control', $(e.target)).each(function(){
 			var $t = $(this), text = $t.find('button').text();//Design Options
