@@ -61,7 +61,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'custom_menu_order', '__return_true' );
 			add_filter( 'menu_order', array( $this, 'menu_order' ) );
 			add_filter( 'screen_options_show_screen', array( $this, 'hide_screen_option' ) );
-			add_filter( 'wpseo_accessible_post_types', array( $this, 'wp_seo_post_types' ) );
+			add_filter( 'wpseo_accessible_post_types', array( $this, 'wp_seo_post_types' ), 20 );
 			add_filter( 'page_row_actions', array( $this, 'row_actions' ), 999 );
 			add_filter( 'post_row_actions', array( $this, 'row_actions' ), 999 );
 			//add_filter( 'get_sample_permalink_html', array( $this, 'sample_permalink_html' ), 999 );
@@ -376,7 +376,7 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			if ( !$this->is_role( 'hotel_editor' ) ) {
 				return $show_screen;
 			}
-			return false;
+			return array();
 		}
 
 		public function wp_seo_post_types( $post_types ) {
