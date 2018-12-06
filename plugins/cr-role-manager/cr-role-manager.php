@@ -78,6 +78,9 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 			add_filter( 'vc_role_access_with_frontend_editor_get_state', array( $this, 'vc_frontend_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_templates_get_state', array( $this, 'vc_templates_editor' ), 20, 2 );
 			add_filter( 'vc_role_access_with_backend_editor_can_disabled_ce_editor', array( $this, 'vc_classic_editor' ), 20, 2 );
+			add_filter( 'vc_role_access_with_shortcodes_get_state', array( $this, 'vc_shortcodes_get_state' ), 20, 2 );
+			add_filter( 'vc_role_access_with_shortcodes_can', array( $this, 'vc_shortcodes_can' ), 20, 3 );
+			
 			add_filter( 'vc_role_access_all_caps_role', array( $this, 'vc_all_caps' ), 20 );
 			add_filter( 'vc_nav_controls', array( $this, 'vc_nav_controls' ), 20 );
 		}
@@ -152,6 +155,21 @@ if ( !class_exists( 'CR_Role_Manager' ) ) {
 		public function vc_backend_editor( $state, $role ) {
 			if ( !$role || ('hotel_editor' != $role->name) ) {
 				return $state;
+			}
+			return true;
+		}
+		
+		public function vc_shortcodes_get_state($state, $role) {
+			if ( !$role || ('hotel_editor' != $role->name) ) {
+				return $state;
+			}
+			
+			return 'custom';
+		}
+		
+		public function vc_shortcodes_can($value, $role, $rule) {
+			if ( !$role || ('hotel_editor' != $role->name) ) {
+				return $value;
 			}
 			return true;
 		}
